@@ -6,7 +6,7 @@
     "start": "node ./index.js",
     "dev": "nodemon ./index.js",
     "prepare": "husky install",
-    "test": "tape ./tests/*.js | tap-spec"
+    "test": "tape ./**/*.test.js | tap-spec"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

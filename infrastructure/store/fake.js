@@ -9,7 +9,7 @@ const testTranslations = [
   { id: 3, termId: 2, value: 'سمة' },
 ]
 
-const latency = 10
+const latency = 5
 
 class Store {
   constructor({ terms = [], translations = [] }) {
