@@ -6,8 +6,8 @@ var logger = require('morgan')
 var nunjucks = require('nunjucks')
 
 var indexRouter = require('./routes/index')
-var searchRouter = require('./routes/search')
-var termRouter = require('./routes/term')
+var adminRouter = require('./routes/admin')
+var profileRouter = require('./routes/profile')
 
 var app = express()
 
@@ -28,8 +28,8 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
-app.use('/search', searchRouter)
-app.use('/term', termRouter)
+app.use('/admin', adminRouter)
+app.use('/profile', profileRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
