@@ -1,5 +1,4 @@
 const FakeStore = require('../infrastructure/store/fake')
-const AppService = require('./AppService')
 
 function getUniqueId() {
   return parseInt(Math.random() * 10 ** 14)
@@ -22,10 +21,8 @@ const getUser = makeGetUser({ usersDB: store })
 const signUpUser = makeSignUpUser({ usersDB: store, hashPassword, getUniqueId })
 const signInUser = makeSignInUser({ getUser, hashPassword })
 
-const appService = new AppService(store)
-module.exports = {
-  ...appService,
+module.exports = Object.freeze({
   getUser,
   signUpUser,
   signInUser
-}
+})
