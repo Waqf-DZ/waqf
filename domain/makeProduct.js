@@ -1,4 +1,4 @@
-module.exports = function buildMakeProduct ({ getUniqueId, sanitize }) {
+module.exports = function buildMakeProduct({ getUniqueId }) {
   return function makeProduct({
     id = getUniqueId(),
     name = '',
@@ -11,7 +11,7 @@ module.exports = function buildMakeProduct ({ getUniqueId, sanitize }) {
     freeDays = 0,
     dayPrice = 0,
     createdAt = Date.now(),
-    ownerId
+    ownerId,
   }) {
     if (!type) throw new Error('Product must have a type')
     if (!serial) throw new Error('Product must have a serial')
@@ -22,8 +22,6 @@ module.exports = function buildMakeProduct ({ getUniqueId, sanitize }) {
     if (!Number.isFinite(dayPrice)) {
       throw new Error('Product day price must be a number')
     }
-    name = sanitize(name)
-    description = sanitize(description)
     return Object.freeze({
       getId: () => id,
       getName: () => name,
@@ -37,10 +35,10 @@ module.exports = function buildMakeProduct ({ getUniqueId, sanitize }) {
       getOwnerId: () => ownerId,
       isAvailable: () => isAvailable,
       isBroken: () => isBroken,
-      markAvailable: () => isAvailable = true,
-      markNotAvailable: () => isAvailable = false,
-      markBroken: () => isBroken = true,
-      markNotBroken: () => isBroken = false
+      markAvailable: () => (isAvailable = true),
+      markNotAvailable: () => (isAvailable = false),
+      markBroken: () => (isBroken = true),
+      markNotBroken: () => (isBroken = false),
     })
   }
 }

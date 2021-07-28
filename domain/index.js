@@ -1,9 +1,8 @@
 const getUniqueId = require('../infrastructure/get-unique-id')
-const sanitize = require('../infrastructure/sanitize')
 
 const buildMakeProduct = require('./makeProduct')
-const makeProduct = buildMakeProduct({getUniqueId, sanitize})
+const makeProduct = buildMakeProduct({ getUniqueId })
 
 module.exports = Object.freeze({
-  makeProduct
+  makeProduct,
 })
