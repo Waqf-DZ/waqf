@@ -9,17 +9,21 @@ const makeGetUser = require('./get-user')
 test('sign up user', async (t) => {
   const store = new FakeStore({})
   const getUser = makeGetUser({ usersDB: store })
-  const signUpUser = makeSignUpUser({ usersDB: store, hashPassword, getUniqueId })
+  const signUpUser = makeSignUpUser({
+    usersDB: store,
+    hashPassword,
+    getUniqueId,
+  })
 
   const createdUser = await signUpUser({
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
   })
-  const fetchedUser = await getUser({id: createdUser.id})
+  const fetchedUser = await getUser({ id: createdUser.getId() })
   t.equal(
-    createdUser.id,
-    fetchedUser.id,
+    createdUser.getId(),
+    fetchedUser.getId(),
     'sign up should add a user to the DB'
   )
 
@@ -29,9 +33,8 @@ test('sign up user', async (t) => {
       email: 'john@doe.com',
       password: 'password',
     })
-    t.fail('don\'t accept two users with the same email')
+    t.fail('do not accept two users with the same email')
   } catch {
-    t.pass('don\'t accept two users with the same email')
+    t.pass('do not accept two users with the same email')
   }
-
 })

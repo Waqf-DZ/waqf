@@ -19,10 +19,10 @@ class Store {
     return new Promise((resolve) => {
       setTimeout(() => {
         if (id) {
-          const user = this.users.find((user) => user.id == id)
+          const user = this.users.find((user) => user.getId() == id)
           resolve(user)
         } else if (email) {
-          const user = this.users.find((user) => user.email == email)
+          const user = this.users.find((user) => user.getEmail() == email)
           resolve(user)
         }
       }, latency)

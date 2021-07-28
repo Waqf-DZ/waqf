@@ -1,12 +1,12 @@
-const User = require('../domain/User')
+const { makeUser } = require('../domain/index')
 
-function makeSignUpUser ({usersDB, getUniqueId, hashPassword}) {
-  return async function signUpUser ({ username, email, password }) {
-    let user = await usersDB.getUser({email})
+function makeSignUpUser({ usersDB, getUniqueId, hashPassword }) {
+  return async function signUpUser({ username, email, password }) {
+    let user = await usersDB.getUser({ email })
     if (user) {
       return Promise.reject(null)
     } else {
-      user = new User({
+      user = makeUser({
         id: getUniqueId(),
         username,
         email,
