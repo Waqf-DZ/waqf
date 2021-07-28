@@ -1,6 +1,6 @@
-# Mostalah
+# Waqf
 
-قاموس رقمي إنجليزي - عربي يهدف لتوحيد المصطلحات العربية المستعملة في المجال التقني
+منصة وقف لتسيير العتاد الوقفي
 
 ## Installation
 
@@ -8,10 +8,12 @@
 npm install
 ```
 
-## Contributing
+## Usage
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+```bash
+npm run dev
+```
 
 ## License
 
-[MIT](https://github.com/Abdelaziz18003/mostalah/blob/main/LICENSE)
+[MIT](https://github.com/Abdelaziz18003/waqf/blob/main/LICENSE)
