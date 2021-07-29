@@ -14,7 +14,14 @@ npm install
 npm run dev
 ```
 
-In your browser, navigate to `https://localhost:3000`
+In your browser, navigate to `http://localhost:3000`
+
+## Used Techs
+
+- **Programming language**: Javascript/Node.js
+- **Web framework**: [Express.js](https://expressjs.com/)
+- **CSS framework**: [Bulma](https://bulma.io/)
+- **Templating language**: [Nunjucks](https://mozilla.github.io/nunjucks/)
 
 ## License
 
