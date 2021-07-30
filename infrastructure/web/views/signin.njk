@@ -8,18 +8,24 @@
 <div class="container">
     <div class="columns">
         <div class="column mt-6 is-three-quarters is-centered">
-            <form class="box is-full">
+            <form class="box is-full" method="POST">
                 <div class="field">
-                  <label class="label" for="username">اسم المستخدم</label>
-                  <div class="control">
-                    <input class="input" type="text" placeholder="" id="username" name="username">
+                  <label class="label" for="email">البريد الإلكتروني</label>
+                  <div class="control has-icons-right">
+                    <input class="input" type="email" name="email" id="email">
+                    <span class="icon is-small is-right">
+                      <ion-icon name="mail-outline"></ion-icon>
+                    </span>
                   </div>
                 </div>
               
                 <div class="field">
                   <label class="label" for="password">كلمة السر</label>
-                  <div class="control">
-                    <input class="input" type="password" placeholder="********" id="password" name="password">
+                  <div class="control has-icons-right">
+                    <input class="input" type="password" id="password" name="password">
+                    <span class="icon is-small is-right">
+                      <ion-icon name="key-outline"></ion-icon>
+                    </span>
                   </div>
                 </div>
               
@@ -28,4 +34,6 @@
         </div>
     </div>
 </div>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 {% endblock %}
