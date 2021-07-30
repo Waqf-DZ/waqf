@@ -5,6 +5,10 @@ router.get('/', function (req, res) {
   res.render('profile/index')
 })
 
+router.get('/settings', function (req, res) {
+  res.render('profile/settings')
+})
+
 router.get('/orders/new', function (req, res) {
   res.render('profile/orders/new')
 })

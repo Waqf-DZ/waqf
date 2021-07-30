@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>منصة وقف لتسيير العتاد الوقفي</title>
+    <link rel="stylesheet" href="/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/utils.css">
+    {% block css %}
+    {% endblock %}
+  </head>
+  <body>
+    <div class="container is-fullhd">
+      {% include '../partials/header.njk' %}
+
+      <div class="columns mt-3">
+        {# side bar column #}
+        <div class="column is-3 has-background-light">
+          <aside class="menu">
+            <p class="menu-label">
+              إدارة المستخدمين
+            </p>
+            <ul class="menu-list">
+              <li><a href="/admin/users/new">إنشاء مستخدم جديد</a></li>
+              <li><a href="/admin/users">عرض كل المستخدمين</a></li>
+            </ul>
+
+            <p class="menu-label">
+              إدارة الأوقاف
+            </p>
+            <ul class="menu-list">
+              <li><a href="/admin/products/new">إنشاء وقف جديد</a></li>
+              <li><a href="/admin/products">عرض كل الأوقاف</a></li>
+            </ul>
+
+            <p class="menu-label">
+              إدارة الطلبات
+            </p>
+            <ul class="menu-list">
+              <li><a href="/admin/orders/new">إنشاء طلب جديد</a></li>
+              <li><a href="/admin/orders">عرض كل الطلبات</a></li>
+            </ul>
+          </aside>
+        </div>
+
+        {# main content column #}
+        <main class="column">
+          {% block content %}
+          {% endblock %}
+        </main>
+      </div>
+    </div>
+
+    <script src="/js/index.js"></script>
+  </body>
+</html>
