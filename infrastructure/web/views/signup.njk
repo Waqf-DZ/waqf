@@ -7,13 +7,19 @@
 {% block content %}
 <div class="container">
   <div class="columns">
-    <div class="column my-6 is-three-quarters is-centered">
-      <form class="box is-full" method="POST">
+    <div class="column my-6 is-8 is-offset-2">
 
+      <form action="/signup" method="POST" class="box is-full">
         <div class="field">
           <label class="label" for="displayName">الإسم الكامل</label>
           <div class="control has-icons-right">
-            <input class="input" type="text" id="displayName" name="displayName">
+            <input
+              class="input"
+              type="text"
+              id="displayName"
+              name="displayName"
+              required
+            >
             <span class="icon is-small is-right">
               <ion-icon name="person-outline"></ion-icon>
             </span>
@@ -23,7 +29,7 @@
         <div class="field">
           <label class="label" for="email">البريد الإلكتروني</label>
           <div class="control has-icons-right">
-            <input class="input" type="email" id="email" name="email">
+            <input class="input" type="email" id="email" name="email" required>
             <span class="icon is-small is-right">
               <ion-icon name="mail-outline"></ion-icon>
             </span>
@@ -33,7 +39,13 @@
         <div class="field">
           <label class="label" for="phoneNumber">رقم الهاتف</label>
           <div class="control has-icons-right">
-            <input class="input" type="tel" id="phoneNumber" name="phoneNumber">
+            <input
+              class="input"
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              required
+            >
             <span class="icon is-small is-right">
               <ion-icon name="call-outline"></ion-icon>
             </span>
@@ -43,7 +55,13 @@
         <div class="field">
           <label class="label" for="password">كلمة السر</label>
           <div class="control has-icons-right">
-            <input class="input" type="password" id="password" name="password">
+            <input
+              class="input"
+              type="password"
+              id="password"
+              name="password"
+              required
+            >
             <span class="icon is-small is-right">
               <ion-icon name="key-outline"></ion-icon>
             </span>
@@ -54,22 +72,21 @@
           <label class="label" for="usage">كيف تريد استعمال المنصة؟</label>
           <div class="control">
             <label class="radio">
-              <input type="radio" name="usage" value="provideHelp">
+              <input type="radio" name="usage" value="provideHelp" required>
               أريد المساعدة
             </label>
 
             <label class="radio">
-              <input type="radio" name="usage" value="needHelp">
+              <input type="radio" name="usage" value="needHelp" required>
               أحتاج المساعدة
             </label>
           </div>
         </div>
 
-        <button class="button is-primary">تسجيل</button>
+        <button type="submit" class="button is-primary">تسجيل</button>
       </form>
+
     </div>
   </div>
 </div>
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 {% endblock %}

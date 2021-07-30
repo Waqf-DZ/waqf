@@ -5,35 +5,40 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="columns">
-        <div class="column mt-6 is-three-quarters is-centered">
-            <form class="box is-full" method="POST">
-                <div class="field">
-                  <label class="label" for="email">البريد الإلكتروني</label>
-                  <div class="control has-icons-right">
-                    <input class="input" type="email" name="email" id="email">
-                    <span class="icon is-small is-right">
-                      <ion-icon name="mail-outline"></ion-icon>
-                    </span>
-                  </div>
-                </div>
-              
-                <div class="field">
-                  <label class="label" for="password">كلمة السر</label>
-                  <div class="control has-icons-right">
-                    <input class="input" type="password" id="password" name="password">
-                    <span class="icon is-small is-right">
-                      <ion-icon name="key-outline"></ion-icon>
-                    </span>
-                  </div>
-                </div>
-              
-                <button class="button is-primary">دخول</button>
-            </form>
+<div class="container is-fullhd">
+  <div class="columns">
+    <div class="column mt-6 is-8 is-offset-2">
+
+      <form action="/signin" method="POST" class="box is-full">
+        <div class="field">
+          <label class="label" for="email">البريد الإلكتروني</label>
+          <div class="control has-icons-right">
+            <input class="input" type="email" name="email" id="email" required>
+            <span class="icon is-small is-right">
+              <ion-icon name="mail-outline"></ion-icon>
+            </span>
+          </div>
         </div>
+      
+        <div class="field">
+          <label class="label" for="password">كلمة السر</label>
+          <div class="control has-icons-right">
+            <input
+              class="input"
+              type="password"
+              id="password"
+              name="password"
+              required
+            >
+            <span class="icon is-small is-right">
+              <ion-icon name="key-outline"></ion-icon>
+            </span>
+          </div>
+        </div>
+      
+        <button type="submit" class="button is-primary">دخول</button>
+      </form>
     </div>
+  </div>
 </div>
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 {% endblock %}
