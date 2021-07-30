@@ -5,5 +5,27 @@
 {% endblock %}
 
 {% block content %}
-الدخول
+<div class="container">
+    <div class="columns">
+        <div class="column mt-6 is-three-quarters is-centered">
+            <form class="box is-full">
+                <div class="field">
+                  <label class="label" for="username">اسم المستخدم</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="" id="username" name="username">
+                  </div>
+                </div>
+              
+                <div class="field">
+                  <label class="label" for="password">كلمة السر</label>
+                  <div class="control">
+                    <input class="input" type="password" placeholder="********" id="password" name="password">
+                  </div>
+                </div>
+              
+                <button class="button is-primary">دخول</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
