@@ -5,5 +5,72 @@
 {% endblock %}
 
 {% block content %}
-طلب جديد
+  <h1 class="title is-3">إنشاء طلب جديد</h1>
+
+  <form action="/profile/orders/new" method="POST">
+    <div class="field">
+      <label class="label">الإسم الكامل</label>
+      <div class="control has-icons-right">
+        <input class="input" type="text" name="patientName">
+        <span class="icon is-small is-right">
+          <ion-icon name="person-outline"></ion-icon>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">السن</label>
+      <div class="control has-icons-right">
+        <input class="input" type="number" name="patientAge" min="1" max="99">
+        <span class="icon is-small is-right">
+        <ion-icon name="call-outline"></ion-icon>
+      </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">تشبع الأكسيجين (saturation)</label>
+      <div class="control has-icons-right has-icons-right">
+        <input class="input" type="number" name="oxygenRatio" min="0" max="100">
+        <span class="icon is-small is-right">
+        <ion-icon name="mail-outline"></ion-icon>
+      </span>
+      </div>
+    </div>
+
+
+    <div class="field">
+      <label class="label">نوع المرض</label>
+      <div class="control">
+        <label class="radio">
+          <input type="radio" name="deseaseType" value="covid">
+          كوفيد
+        </label>
+        <label class="radio">
+          <input type="radio" name="deseaseType" value="other">
+          مرض آخر
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">الوصفة الطبية</label>
+      <div class="control has-icons-right">
+        <input class="input" type="file" name="prescription">
+        <span class="icon is-small is-right">
+            <ion-icon name="call-outline"></ion-icon>
+           </span>
+      </div>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link" type="submit">إنشاء</button>
+      </div>
+      <div class="control">
+        <button class="button is-link is-light" type="reset">إلغاء</button>
+      </div>
+    </div>
+  </form>
+
 {% endblock %}
