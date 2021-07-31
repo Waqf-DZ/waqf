@@ -5,6 +5,7 @@
     <title>منصة وقف لتسيير العتاد الوقفي</title>
     <link rel="stylesheet" href="/css/bulma-rtl.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/footerStyle.css">
     <link rel="icon" href="/img/logo.png">
     {% block css %}
     {% endblock %}
@@ -15,6 +16,8 @@
     {% block content %}
     {% endblock %}
     </div>
+    {# it's outside the div with the class "container" so it takes full width #}
+    {% include '../partials/footer.njk' %} 
 
     <script src="/js/index.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
