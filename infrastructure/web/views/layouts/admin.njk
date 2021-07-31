@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>منصة وقف لتسيير العتاد الوقفي</title>
-    <link rel="stylesheet" href="/css/bulma-rtl.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/footerStyle.css">
-    <link rel="icon" href="/img/logo.png">
-    {% block css %}
-    {% endblock %}
+    <link rel="stylesheet" href="/css/bulma-rtl.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/footerStyle.css" />
+    <link rel="icon" href="/img/logo.png" />
+    {% block css %} {% endblock %}
   </head>
   <body>
-    <div class="container is-fullhd">
+    <div>
       {% include '../partials/header.njk' %}
 
-      <div class="columns mt-3">
+      <div class="columns my-0 has-background-light">
         {# side bar column #}
-        <div class="column is-3 has-background-light">
+        <div class="column is-3 has-background-grey-light has-text-light">
           <aside class="menu">
-            <p class="menu-label">
-              إدارة المستخدمين
-            </p>
+            <ul class="menu-list">
+              <li><a href="/admin">واجهة الإدارة</a></li>
+            </ul>
+            <p class="menu-label">إدارة المستخدمين</p>
             <ul class="menu-list">
               <li><a href="/admin/users/new">إنشاء مستخدم جديد</a></li>
               <li><a href="/admin/users">عرض كل المستخدمين</a></li>
             </ul>
 
-            <p class="menu-label">
-              إدارة الأوقاف
-            </p>
+            <p class="menu-label">إدارة الأوقاف</p>
             <ul class="menu-list">
               <li><a href="/admin/products/new">إنشاء وقف جديد</a></li>
               <li><a href="/admin/products">عرض كل الأوقاف</a></li>
             </ul>
 
-            <p class="menu-label">
-              إدارة الطلبات
-            </p>
+            <p class="menu-label">إدارة الطلبات</p>
             <ul class="menu-list">
               <li><a href="/admin/orders/new">إنشاء طلب جديد</a></li>
               <li><a href="/admin/orders">عرض كل الطلبات</a></li>
@@ -45,18 +41,23 @@
         </div>
 
         {# main content column #}
-        <main class="column is-6 is-offset-1">
-          {% block content %}
-          {% endblock %}
+        <main class="column container">
+          {% block content %} {% endblock %}
         </main>
       </div>
     </div>
 
     {# it's outside the div with the class "container" so it takes full width #}
-    {% include '../partials/footer.njk' %} 
+    {% include '../partials/footer.njk' %}
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
     <script src="/js/index.js"></script>
   </body>
 </html>

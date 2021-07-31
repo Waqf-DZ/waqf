@@ -8,64 +8,69 @@
 
   <h1 class="title is-3">إنشاء وقف جديد</h1>
 
-  <form action="/profile/products/new" method="POST">
-    <div class="field">
-      <label class="label">إسم الوقف</label>
-      <div class="control has-icons-right">
-        <input class="input" type="text" name="productName">
-        <span class="icon is-small is-right">
-          <ion-icon name="person-outline"></ion-icon>
-        </span>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="label">نوع الوقف</label>
-      <div class="control">
-        <div class="select">
-          <select>
-            <option value="type1">مكثف أكسيجين</option>
-            <option value="type2">جهاز قياس تركيز الأكسيجين</option>
-          </select>
+  <div class="columns">
+    <div class="column is-8 is-offset-2">
+      <form action="/profile/products/new" method="POST">
+        <div class="field">
+          <label class="label">إسم الوقف</label>
+          <div class="control has-icons-right">
+            <input class="input" type="text" name="productName">
+            <span class="icon is-small is-right">
+              <ion-icon name="person-outline"></ion-icon>
+            </span>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="field">
-      <label class="label">الرقم التسلسلي</label>
-      <div class="control has-icons-right">
-        <input class="input" type="text" name="productSerial">
-        <span class="icon is-small is-right">
-          <ion-icon name="person-outline"></ion-icon>
-        </span>
-      </div>
-    </div>
+        <div class="field">
+          <label class="label">نوع الوقف</label>
+          <div class="control">
+            <div class="select">
+              <select>
+                <option value="type1">مكثف أكسيجين</option>
+                <option value="type2">جهاز قياس تركيز الأكسيجين</option>
+              </select>
+            </div>
+          </div>
+        </div>
 
-    <div class="field">
-      <label class="label">صورة الوقف</label>
-      <div class="control has-icons-right">
-        <input class="input" type="file" name="productImage">
-        <span class="icon is-small is-right">
-          <ion-icon name="person-outline"></ion-icon>
-        </span>
-      </div>
-    </div>
+        <div class="field">
+          <label class="label">الرقم التسلسلي</label>
+          <div class="control has-icons-right">
+            <input class="input" type="text" name="productSerial">
+            <span class="icon is-small is-right">
+              <ion-icon name="person-outline"></ion-icon>
+            </span>
+          </div>
+        </div>
 
-    <div class="field">
-      <label class="label">وصف الوقف</label>
-      <div class="control has-icons-right">
-      <textarea class="textarea" name="productDescription" rows="5">
-      </textarea>
-      </div>
-    </div>
+        <div class="field">
+          <label class="label">صورة الوقف</label>
+          <div class="control has-icons-right">
+            <input class="input" type="file" name="productImage">
+            <span class="icon is-small is-right">
+              <ion-icon name="person-outline"></ion-icon>
+            </span>
+          </div>
+        </div>
 
-    <div class="field is-grouped">
-      <div class="control">
-        <button class="button is-link" type="submit">إنشاء</button>
-      </div>
-      <div class="control">
-        <button class="button is-link is-light" type="reset">إلغاء</button>
-      </div>
+        <div class="field">
+          <label class="label">وصف الوقف</label>
+          <div class="control has-icons-right">
+          <textarea class="textarea" name="productDescription" rows="5">
+          </textarea>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" type="submit">إنشاء</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light" type="reset">إلغاء</button>
+          </div>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
+
 {% endblock %}

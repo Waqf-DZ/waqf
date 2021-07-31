@@ -11,12 +11,12 @@
     {% endblock %}
   </head>
   <body>
-    <div class="container is-fullhd">
+    <div>
       {% include '../partials/header.njk' %}
 
-      <div class="columns mt-3">
+      <div class="columns my-0 has-background-light">
         {# side bar column #}
-        <div class="column is-3 has-background-light">
+        <div class="column is-3 has-background-grey-light">
           <aside class="menu">
             <p class="menu-label">
               الحساب الشخصي
@@ -44,7 +44,7 @@
         </div>
 
         {# main content column #}
-        <main class="column is-6 is-offset-1">
+        <main class="column">
           {% block content %}
           {% endblock %}
         </main>

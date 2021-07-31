@@ -3,358 +3,197 @@
 {% block css %}
 
 {% endblock %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <title>Admin dashboard </title>
-</head>
-
-<body>
-    <!-- navBar -->
-    <nav>
-        <div class="navbar is-white has-shadow">
-            <div class="navbar-brand">
-                <p class="has-text-weight-bold is-size-3 mx-5 ">
-                    وقف
-                </p>
-                <div class="navbar-burger " id="navbar-burger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-            <div class="navbar-menu " id="navbar-menu">
-
-                <div class="navbar-start ">
-                    <a href="#" class=" navbar-item  has-text-centered ">الرئيسية</a>
-                    <a href="#" class="navbar-item  has-text-centered">عبوات الاكسجين</a>
-                    <a href="#" class="navbar-item  has-text-centered">اجهزة الاكسجين</a>
-                    <a href="#" class="navbar-item  has-text-centered">الحساب</a>
-                    <a href="#" class="navbar-item  has-text-centered">الاتصال</a>
-                    <a href="#" class="navbar-item  has-text-centered">انضم لنا</a>
-                </div>
-
-                <div class="navbar-end">
-
-                    <a class=" navbar-item  has-text-centered">
-                        الاشعارات
-                    </a>
-
-                    <div class="navbar-item  has-text-centered">
-                        <div class="select is-dark">
-                            <select>
-                                <option><a href="">تسجيل الخروج</a></option>
-                                <option><a href="">الاعدادات</a></option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <div class="columns is-mobile">
-        <div class="column  	" id="menu-content">
-            <section class="section " id="needy">
-                <p class="title has-text-centered is-hidden-tablet">
-                    المحتاجين
-                </p>
-                <div class="columns">
-                    <div class="column">
-                        <div class="box">
-                            <p class="title is-6 has-text-centered">
-                                :عدد المسجلين  <span class="icon">
-                                    <ion-icon name="add-outline"></ion-icon>
-                                </span>
-                            </p>
-                            <p class="subtitle is-1 has-text-centered">
-                                88
-                            </p>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="box">
-                            <p class="title is-6 has-text-centered">
-                                :عدد المستفيدين <span class="icon">
-                                    <ion-icon name="checkmark-outline"></ion-icon>
-                                </span>
-                            </p>
-                            <p class="subtitle is-1 has-text-centered">
-                                35
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="columns">
-                    <div class="column">
-                        <div class="box">
-                            <p class="title is-6 has-text-centered">
-
-                                :في الانتظار <span class="icon">
-                                    <ion-icon name="radio-button-off-outline"></ion-icon>
-                                </span>
-                            </p>
-                            <p class="subtitle is-1 has-text-centered">
-                                10
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="columns">
-                    <div class="column">
-                        <div class="box">
-                            <p class="title is-6 has-text-centered">
-
-                                :اتمام المهمة <span class="icon">
-                                    <ion-icon name="checkbox-outline"></ion-icon>
-                                </span>
-                            </p>
-                            <progress class="progress is-medium" value="60" max="100">60%</progress>
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="section is-hidden" id="association">
-                <p class="title has-text-centered is-hidden-tablet">
-                    الجمعيات
-                </p>
-                <div class="columns">
-
-                    <div class="column">
-                        <div class="box">
-                            <p class="title is-6 has-text-centered">
-                                :عدد الجمعيات المسجلة  <span class="icon">
-                                    <ion-icon name="add-outline"></ion-icon>
-                                </span>
-                            </p>
-                            <p class="subtitle is-1 has-text-centered">
-                                22
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="box">
-                    <p class="title is-4 has-text-centered">الجمعيات <ion-icon name="people-outline"></ion-icon>
-                    </p>
-                    <ul>
-                        <li>
-                            <div class="box ">
-                                <p class="title is-6 has-text-right"> جمعية ايثار الخير</p>
-                                <p class="subtitle is-6  has-text-right"> 36 جهاز</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="box ">
-                                <p class="title is-6 has-text-right"> جمعية الامل</p>
-                                <p class="subtitle is-6  has-text-right"> 22 جهاز</p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="box ">
-                                <p class="title is-6 has-text-right"> جمعية ناس الخير</p>
-                                <p class="subtitle is-6  has-text-right"> 17 جهاز</p>
-                            </div>
-                        </li>
-                       
-                    </ul>
-                </div>
-            </section>
-            <section class="section is-hidden " id="machine">
-                <p class="title has-text-centered is-hidden-tablet">
-                    الاجهزة
-                </p>
-                <div class="columns">
-                    <div class="column">
-                        <div class="box">
-                            <p class="title is-6 has-text-centered">
-
-                                :عدد الأجهزة الكلية <span class="icon">
-                                  <ion-icon name="fitness-outline"></ion-icon>
-                                </span>
-                            </p>
-                            <p class="subtitle is-1 has-text-centered">
-                               55
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                    <div class="columns">
-                        <div class="column">
-                            <div class="box">
-                                <p class="title is-6 has-text-centered">
-                                    :عدد الأجهزة المتوفرة <span class="icon">
-                                        <ion-icon name="bag-add-outline"></ion-icon>
-                                    </span>
-                                </p>
-                                <p class="subtitle is-1 has-text-centered">
-                                    88
-                                </p>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="box">
-                                <p class="title is-6 has-text-centered">
-                                    :عدد الأجهزة المستعارة  <span class="icon">
-                                        <ion-icon name="bag-remove-outline"></ion-icon>
-                                    </span>
-                                </p>
-                                <p class="subtitle is-1 has-text-centered">
-                                    35
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <div class="columns">
-                        <div class="column">
-                            <div class="box">
-                                <p class="title is-6 has-text-centered">
-    
-                                    :الكمية <span class="icon">
-                                        <ion-icon name="podium-outline"></ion-icon>
-                                    </span>
-                                </p>
-                                <progress class="progress is-medium" value="60" max="100">60%</progress>
-    
-                            </div>
-                        </div>
-                    </div>
-              
-            </section>
-            <section class="section is-hidden" id="order">
-                <p class="title has-text-centered is-hidden-tablet">
-                    الطلبات
-                </p>
-                <div class="columns">
-                    <div class="column">
-                        <div class="box">
-                            <p class="title is-6 has-text-centered">
-
-                                :عدد الطلبات الكلية <span class="icon">
-                                    <ion-icon name="receipt-outline"></ion-icon>
-                                </span>
-                            </p>
-                            <p class="subtitle is-1 has-text-centered">
-                               55
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                    <div class="columns">
-                        <div class="column">
-                            <div class="box">
-                                <p class="title is-6 has-text-centered">
-                                    :عدد الطلبات الجديدة <span class="icon">
-                                        <ion-icon name="add-circle-outline"></ion-icon>
-                                    </span>
-                                </p>
-                                <p class="subtitle is-1 has-text-centered">
-                                    88
-                                </p>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="box">
-                                <p class="title is-6 has-text-centered">
-                                    :عدد الطلبات الملبية  <span class="icon">
-                                        <ion-icon name="remove-circle-outline"></ion-icon>
-                                    </span>
-                                </p>
-                                <p class="subtitle is-1 has-text-centered">
-                                    35
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <div class="columns">
-                        <div class="column">
-                            <div class="box">
-                                <p class="title is-6 has-text-centered">
-    
-                                    : التقدم في تليبة الطلبات <span class="icon">
-                                        <ion-icon name="podium-outline"></ion-icon>
-                                    </span>
-                                </p>
-                                <progress class="progress is-medium" value="60" max="100">60%</progress>
-    
-                            </div>
-                        </div>
-                    </div>
-              
-            </section>
-        </div>
-        <div class="column is-3 is-1-mobile  	">
-            <!-- menu -->
-            <section class="section px-0-mobile py-0-mobile is-pulled-right">
-
-                <aside class="menu   	">
-                    <p class="menu-label  	">
-                        <span class="is-hidden-mobile">لوحة التحكم</span> <span class="icon"><ion-icon name="grid-outline"></ion-icon></span>
-                    </p>
-                    <ul class="menu-list  	">
-                        <li ><a class="is-active " data-target="needy" > <span class="is-hidden-mobile">المحتاجين</span> <span class="icon">
-                                    <ion-icon name="person-outline"></ion-icon>
-                                </span></a></li>
-                        <li><a data-target="association"> <span class="is-hidden-mobile">الجمعيات</span> <span class="icon">
-                                    <ion-icon name="people-outline"></ion-icon>
-                                </span></a></li>
-                        <li><a data-target="machine"><span class="is-hidden-mobile">الأجــهــــزة</span> <span class="icon">
-                                   <ion-icon name="fitness-outline"></ion-icon>
-                                </span></a>
-                            </li>
-                        <li><a data-target="order"><span class="is-hidden-mobile">الطـلـبات</span> <span class="icon">
-                                    <ion-icon name="reader-outline"></ion-icon>
-                                </span></a></li>
-                    </ul>
-                </aside>
-            </section>
-        </div>
-
-    </div>
-    <script>
-        const navbarBurger = document.querySelector("#navbar-burger");
-        const navbarMenu = document.querySelector("#navbar-menu");
-        navbarBurger.addEventListener("click",()=>{
-            navbarMenu.classList.toggle("is-active");
-        })
-
-    </script>
-
-    <script>
-        const menus = document.querySelectorAll(".menu-list a");
-        const menuContents = document.querySelectorAll("#menu-content > section");
-        
-        menus.forEach(menu => {
-           
-            menu.addEventListener("click",()=>{
-                menus.forEach(e => {
-                    e.classList.remove("is-active");
-                });
-              menu.classList.add("is-active")
-              
-              const target = menu.dataset.target;
-           
-           menuContents.forEach(element => {
-               
-             if( element.getAttribute('id')===target) element.classList.remove("is-hidden")
-             else element.classList.add("is-hidden")
-
-           });
-            })
-        });
-    </script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-</body>
-
-</html>
 {% block content %}
-صفحة الإدارة
+<div class="columns is-mobile">
+  <div class="column" id="menu-content">
+
+    <section class="section has-background-grey-lighter" id="association">
+      <p class="title has-text-centered is-hidden-tablet">الجمعيات</p>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد الجمعيات المسجلة
+              <span class="icon">
+                <ion-icon name="add-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">22</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section has-background-grey-lighter mt-3" id="needy">
+      <p class="title has-text-centered is-hidden-tablet">المحتاجين</p>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد المسجلين
+              <span class="icon">
+                <ion-icon name="add-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">88</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد المستفيدين
+              <span class="icon">
+                <ion-icon name="checkmark-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">35</p>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :في الانتظار
+              <span class="icon">
+                <ion-icon name="radio-button-off-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">10</p>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :اتمام المهمة
+              <span class="icon">
+                <ion-icon name="checkbox-outline"></ion-icon>
+              </span>
+            </p>
+            <progress class="progress is-medium" value="60" max="100">
+              60%
+            </progress>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section has-background-grey-lighter mt-3" id="machine">
+      <p class="title has-text-centered is-hidden-tablet">الاجهزة</p>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد الأجهزة الكلية
+              <span class="icon">
+                <ion-icon name="fitness-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">55</p>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد الأجهزة المتوفرة
+              <span class="icon">
+                <ion-icon name="bag-add-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">88</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد الأجهزة المستعارة
+              <span class="icon">
+                <ion-icon name="bag-remove-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">35</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :الكمية
+              <span class="icon">
+                <ion-icon name="podium-outline"></ion-icon>
+              </span>
+            </p>
+            <progress class="progress is-medium" value="60" max="100">
+              60%
+            </progress>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section has-background-grey-lighter mt-3" id="order">
+      <p class="title has-text-centered is-hidden-tablet">الطلبات</p>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد الطلبات الكلية
+              <span class="icon">
+                <ion-icon name="receipt-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">55</p>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد الطلبات الجديدة
+              <span class="icon">
+                <ion-icon name="add-circle-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">88</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد الطلبات الملبية
+              <span class="icon">
+                <ion-icon name="remove-circle-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">35</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              : التقدم في تليبة الطلبات
+              <span class="icon">
+                <ion-icon name="podium-outline"></ion-icon>
+              </span>
+            </p>
+            <progress class="progress is-medium" value="60" max="100">
+              60%
+            </progress>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
 {% endblock %}
