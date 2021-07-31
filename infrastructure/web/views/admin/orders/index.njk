@@ -5,5 +5,60 @@
 {% endblock %}
 
 {% block content %}
-كل الطلبات
+
+    <h1 class="title is-3">كل الطلبات</h1>
+
+    <section class="section">
+        <table class="table is-hoverable">
+            <thead>
+                <tr class="is-selected">
+                    <th>إسم المريض</th>
+                    <th>عمر المريض</th>
+                    <th>تركيز الأكسجين</th>
+                    <th>هل لدى المريض أمراض مزمنة؟</th>
+                    <th>هل المريض مصاب بفيروس كورونا؟</th>
+                    <th>الوصفة الطبية</th>
+                    <th>تحديث طلب</th>
+                    <th>حذف طلب</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr>
+                    <th>محمد عبد الله</th>
+                    <th>50</th>
+                    <th>95</th>
+                    <th>لا</th>
+                    <th>نعم</th>
+                    <th><a href="#">رابط الوصفة</a></th>
+                    <th><button class="button is-info is-light">تحديث</button></th>
+                    <th><button class="button is-danger is-light">حذف</button></th>
+                </tr>
+
+                <tr>
+                    <th>محمد عبد الله</th>
+                    <th>50</th>
+                    <th>95</th>
+                    <th>لا</th>
+                    <th>نعم</th>
+                    <th><a href="#">رابط الوصفة</a></th>
+                    <th><button class="button is-info is-light">تحديث</button></th>
+                    <th><button class="button is-danger is-light">حذف</button></th>
+                </tr>
+
+                <tr>
+                    <th>محمد عبد الله</th>
+                    <th>50</th>
+                    <th>95</th>
+                    <th>لا</th>
+                    <th>نعم</th>
+                    <th><a href="#">رابط الوصفة</a></th>
+                    <th><button class="button is-info is-light">تحديث</button></th>
+                    <th><button class="button is-danger is-light">حذف</button></th>
+                </tr>
+
+            </tbody>
+        </table>
+    </section>
+
 {% endblock %}
