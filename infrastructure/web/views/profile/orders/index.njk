@@ -5,5 +5,48 @@
 {% endblock %}
 
 {% block content %}
-الطلبات
+<h1 class="title is-3">الطلبات</h1>
+<div class="table-container">
+    <table class="table is-fullwidth is-hoverable">
+        <thead>
+            <tr class="is-selected">
+                <th>إسم المريض</th>
+                <th>عمر المريض</th>
+                <th>تركيز الأكسجين</th>
+                <th>هل لدى المريض أمراض مزمنة؟</th>
+                <th>هل المريض مصاب بفيروس كورونا؟</th>
+                <th>الوصفة الطبية</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr>
+                <th>محمد عبد الله</th>
+                <th>50</th>
+                <th>95</th>
+                <th>لا</th>
+                <th>نعم</th>
+                <th><a href="#">رابط الوصفة</a></th>
+            </tr>
+
+            <tr>
+                <th>محمد عبد الله</th>
+                <th>50</th>
+                <th>95</th>
+                <th>لا</th>
+                <th>نعم</th>
+                <th><a href="#">رابط الوصفة</a></th>
+            </tr>
+
+            <tr>
+                <th>محمد عبد الله</th>
+                <th>50</th>
+                <th>95</th>
+                <th>لا</th>
+                <th>نعم</th>
+                <th><a href="#">رابط الوصفة</a></th>
+            </tr>
+        </tbody>
+    </table>
+</div>
 {% endblock %}
