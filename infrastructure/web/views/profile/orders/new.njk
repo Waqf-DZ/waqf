@@ -5,5 +5,86 @@
 {% endblock %}
 
 {% block content %}
-طلب جديد
+  <h1 class="title is-3">إنشاء طلب جديد</h1>
+
+  <form action="/profile/orders/new" method="POST">
+    <div class="field">
+      <label class="label">إسم المريض</label>
+      <div class="control has-icons-right">
+        <input class="input" type="text" name="patientName">
+        <span class="icon is-small is-right">
+          <ion-icon name="person-outline"></ion-icon>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">عمر المريض</label>
+      <div class="control has-icons-right">
+        <input class="input" type="number" name="patientAge">
+        <span class="icon is-small is-right">
+        <ion-icon name="call-outline"></ion-icon>
+      </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">تركيز الأكسجين</label>
+      <div class="control has-icons-right has-icons-right">
+        <input class="input" type="number" name="oxygenRatio">
+        <span class="icon is-small is-right">
+        <ion-icon name="mail-outline"></ion-icon>
+      </span>
+      </div>
+    </div>
+
+
+    <div class="field">
+      <label class="label">هل لدى المريض أمراض مزمنة؟</label>
+      <div class="control">
+        <label class="radio">
+          <input type="radio" name="hasChronicDesease" value="true">
+          نعم
+        </label>
+        <label class="radio">
+          <input type="radio" name="hasChronicDesease" value="false">
+          لا
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">هل المريض مصاب بفيروس كورونا؟</label>
+      <div class="control">
+        <label class="radio">
+          <input type="radio" name="isCovid" value="true">
+          نعم
+        </label>
+        <label class="radio">
+          <input type="radio" name="isCovid" value="false">
+          لا
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">الوصفة الطبية</label>
+      <div class="control has-icons-right">
+        <input class="input" type="file" name="prescription">
+        <span class="icon is-small is-right">
+          <ion-icon name="person-outline"></ion-icon>
+        </span>
+      </div>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link" type="submit">إنشاء</button>
+      </div>
+      <div class="control">
+        <button class="button is-link is-light" type="reset">إلغاء</button>
+      </div>
+    </div>
+  </form>
+
 {% endblock %}
