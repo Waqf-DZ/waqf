@@ -5,5 +5,39 @@
 {% endblock %}
 
 {% block content %}
-إعدادت الحساب
+    <h1>إعدادت الحساب</h1>
+
+    <section class="section">
+        <div class="field">
+            <label class="label">البريد الإلكتروني</label>
+            <div class="control">
+                <input class="input is-warning" type="email" value="example@gmai.com" readonly>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">دور المستخدم</label>
+            <div class="control">
+                <input class="input is-warning" type="text" name="role" value="محتاج" readonly>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">حالة التحقق</label>
+            <div class="control">
+                <input class="input is-warning" type="text" name="role" value="مفعل" readonly>
+            </div>
+        </div>
+         <div class="field">
+            <label class="label">الإسم</label>
+            <div class="control">
+                <input class="input is-danger" type="text" name="name" value="احمد موسى">
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">رقم الهاتف</label>
+            <div class="control">
+                <input class="input is-danger" type="text" name="phone" value="05.55.44.33.22">
+            </div>
+        </div>
+    </section>
+
 {% endblock %}
