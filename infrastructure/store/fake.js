@@ -3,6 +3,7 @@ const latency = 5
 class Store {
   constructor() {
     this.products = []
+    this.orders = []
     this.users = []
   }
 
@@ -55,6 +56,15 @@ class Store {
           products = this.products.filter((p) => p.getOwnerId() == ownerId)
         }
         resolve(products)
+      }, latency)
+    })
+  }
+
+  addOrder(order) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this.orders.push(order)
+        resolve(order)
       }, latency)
     })
   }
