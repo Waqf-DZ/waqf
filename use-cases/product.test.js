@@ -4,6 +4,7 @@ const FakeStore = require('../infrastructure/store/fake')
 const makeAddProduct = require('./add-product')
 const makeGetProduct = require('./get-product')
 const makeListProducts = require('./list-products')
+const makeDeleteProduct = require('./delete-product')
 
 test('add product', async (t) => {
   const productsDB = new FakeStore()
@@ -41,6 +42,28 @@ test('get product', async (t) => {
   t.ok(fetched, 'return product by id')
   fetched = await getProduct('wrong_id')
   t.equal(fetched, null, 'return null if no product found')
+})
+
+test('delete product', async (t) => {
+  const productsDB = new FakeStore()
+  const addProduct = makeAddProduct({ productsDB })
+  const listProducts = makeListProducts({ productsDB })
+  const deleteProduct = makeDeleteProduct({ productsDB })
+
+  const ownerId1 = 'ownerId1'
+  const product = await addProduct({
+    type: 'type',
+    serial: 'serial',
+    ownerId: ownerId1,
+    freeDays: 0,
+    dayPrice: 0,
+  })
+  let beforeProducts = await listProducts({ ownerId: ownerId1 })
+  const beforeLength = beforeProducts.length
+  const deletedId = await deleteProduct(product.id)
+  let afterProducts = await listProducts({ ownerId: ownerId1 })
+  t.equal(beforeLength, afterProducts.length + 1, 'delete a product by id')
+  t.equal(deletedId, product.id, 'return deleted product id')
 })
 
 test('list products', async (t) => {

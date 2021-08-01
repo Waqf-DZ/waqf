@@ -30,6 +30,17 @@ class Store {
     })
   }
 
+  deleteUser(userId) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const index = this.users.findIndex((o) => o.id == userId)
+        const user = this.users[index]
+        this.users.splice(index, 1)
+        resolve(user)
+      }, latency)
+    })
+  }
+
   listUsers() {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -56,13 +67,13 @@ class Store {
     })
   }
 
-  deleteUser(userId) {
+  deleteProduct(productId) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        const index = this.users.findIndex((o) => o.id == userId)
-        const user = this.users[index]
-        this.users.splice(index, 1)
-        resolve(user)
+        const index = this.products.findIndex((o) => o.id == productId)
+        const product = this.products[index]
+        this.products.splice(index, 1)
+        resolve(product)
       }, latency)
     })
   }
