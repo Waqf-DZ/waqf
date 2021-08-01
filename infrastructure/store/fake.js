@@ -77,6 +77,18 @@ class Store {
       }, latency)
     })
   }
+
+  listOrders({ ownerId }) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        let orders = this.orders
+        if (ownerId) {
+          orders = this.orders.filter((p) => p.getOwnerId() == ownerId)
+        }
+        resolve(orders)
+      }, latency)
+    })
+  }
 }
 
 module.exports = Store
