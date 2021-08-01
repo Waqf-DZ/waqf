@@ -6,6 +6,7 @@ const getUniqueId = require('../infrastructure/get-unique-id')
 
 const makeSignUpUser = require('./sign-up-user')
 const makeGetUser = require('./get-user')
+const makeDeleteUser = require('./delete-user')
 const makeSignInUser = require('./sign-in-user')
 const makeListUsers = require('./list-users')
 
@@ -97,6 +98,29 @@ test('get user', async (t) => {
 
   const user2 = await getUser({ id: createdUserId })
   t.ok(user2.getId(), 'A user can be got by id')
+})
+
+test('delete user', async (t) => {
+  const store = new FakeStore({})
+  const listUsers = makeListUsers({ usersDB: store })
+  const deleteUser = makeDeleteUser({ usersDB: store })
+  const signUpUser = makeSignUpUser({
+    usersDB: store,
+    hashPassword,
+    getUniqueId,
+  })
+
+  const user = await signUpUser({
+    username: 'john_doe',
+    email: 'john@doe.com',
+    password: 'password',
+  })
+  const beforeUsers = await listUsers()
+  const beforeLength = beforeUsers.length
+  const deletedId = await deleteUser(user.id)
+  const afterUsers = await listUsers()
+  t.equal(beforeLength, afterUsers.length + 1, 'delete a user by id')
+  t.equal(deletedId, user.id, 'return deleted user id')
 })
 
 test('list users', async (t) => {

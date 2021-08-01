@@ -56,6 +56,17 @@ class Store {
     })
   }
 
+  deleteUser(userId) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const index = this.users.findIndex((o) => o.id == userId)
+        const user = this.users[index]
+        this.users.splice(index, 1)
+        resolve(user)
+      }, latency)
+    })
+  }
+
   listProducts({ ownerId }) {
     return new Promise((resolve) => {
       setTimeout(() => {
