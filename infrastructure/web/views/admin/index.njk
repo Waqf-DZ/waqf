@@ -5,5 +5,42 @@
 {% endblock %}
 
 {% block content %}
-صفحة الإدارة
+
+    <div class="tabs" id="admin-tabs">
+        <ul>
+            <li href="manage-users" class="is-active"><a>ادارة المستخدمين</a></li>
+            <li><a href="manage-products">إدارة المنتجات</a></li>
+            <li><a href="manage-orders" >إدارة الطلبات</a></li>
+        </ul>
+    </div>
+
+    <aside class="menu">
+        <h1 class="title is-5">صفحة الإدارة</h1>
+
+        <ul class="menu-list">
+            <li><a>لوحة القيادة</a></li>
+            <li><a>عملاء</a></li>
+        </ul>
+
+        <p class="menu-label">إدارة المنتجات</p>
+        <ul class="menu-list">
+            <li><a class="is-active">تحضير المنتجات</a></li>
+            <li><a> طلب المنتجات</a></li>
+            <li>
+                <ul>
+                    <li><a>تغيير معلومات المنتجات</a></li>
+                    <li><a>إضافة منتجات جديدة</a></li>
+                    <li><a>حذف المنتجات</a></li>
+                </ul>
+            </li>
+        </ul>
+        
+        <p class="menu-label">المعاملات المالية</p>
+        <ul class="menu-list">
+            <li><a>المدفوعات</a></li>
+            <li><a>التحويلات</a></li>
+            <li><a>توازن</a></li>
+        </ul>
+    </aside>
+
 {% endblock %}
