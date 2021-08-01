@@ -69,6 +69,17 @@ class Store {
     })
   }
 
+  deleteOrder(orderId) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const index = this.orders.findIndex((o) => o.id == orderId)
+        const order = this.orders[index]
+        this.orders.splice(index, 1)
+        resolve(order)
+      }, latency)
+    })
+  }
+
   getOrder(id) {
     return new Promise((resolve) => {
       setTimeout(() => {
