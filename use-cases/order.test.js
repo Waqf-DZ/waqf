@@ -2,7 +2,6 @@ const test = require('tape')
 
 const FakeStore = require('../infrastructure/store/fake')
 const hashPassword = require('../infrastructure/hash-password')
-const getUniqueId = require('../infrastructure/get-unique-id')
 const makeSignUpUser = require('./sign-up-user')
 
 const makeAddOrder = require('./add-order')
@@ -16,7 +15,6 @@ test('create new order', async (t) => {
   const signUpUser = makeSignUpUser({
     usersDB: store,
     hashPassword,
-    getUniqueId,
   })
   const createdUser = await signUpUser({
     username: 'john_doe',
@@ -42,7 +40,6 @@ test('get order', async (t) => {
   const signUpUser = makeSignUpUser({
     usersDB: store,
     hashPassword,
-    getUniqueId,
   })
   const createdUser = await signUpUser({
     username: 'john_doe',
@@ -69,7 +66,6 @@ test('list orders', async (t) => {
   const signUpUser = makeSignUpUser({
     usersDB: store,
     hashPassword,
-    getUniqueId,
   })
   const createdUser = await signUpUser({
     username: 'john_doe',
@@ -101,7 +97,6 @@ test('delete order', async (t) => {
   const signUpUser = makeSignUpUser({
     usersDB: store,
     hashPassword,
-    getUniqueId,
   })
   const createdUser = await signUpUser({
     username: 'john_doe',

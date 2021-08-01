@@ -2,7 +2,6 @@ const test = require('tape')
 
 const FakeStore = require('../infrastructure/store/fake')
 const hashPassword = require('../infrastructure/hash-password')
-const getUniqueId = require('../infrastructure/get-unique-id')
 
 const makeSignUpUser = require('./sign-up-user')
 const makeGetUser = require('./get-user')
@@ -16,7 +15,6 @@ test('sign up user', async (t) => {
   const signUpUser = makeSignUpUser({
     usersDB: store,
     hashPassword,
-    getUniqueId,
   })
 
   const createdUser = await signUpUser({
@@ -49,7 +47,6 @@ test('sign in user', async (t) => {
   const signUpUser = makeSignUpUser({
     usersDB: store,
     hashPassword,
-    getUniqueId,
   })
   const signInUser = makeSignInUser({ getUser, hashPassword })
 
@@ -84,7 +81,6 @@ test('get user', async (t) => {
   const signUpUser = makeSignUpUser({
     usersDB: store,
     hashPassword,
-    getUniqueId,
   })
 
   const createdUser = await signUpUser({
@@ -107,7 +103,6 @@ test('delete user', async (t) => {
   const signUpUser = makeSignUpUser({
     usersDB: store,
     hashPassword,
-    getUniqueId,
   })
 
   const user = await signUpUser({
@@ -129,7 +124,6 @@ test('list users', async (t) => {
   const signUpUser = makeSignUpUser({
     usersDB: store,
     hashPassword,
-    getUniqueId,
   })
 
   await signUpUser({
