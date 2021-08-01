@@ -68,6 +68,15 @@ class Store {
       }, latency)
     })
   }
+
+  getOrder(id) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const order = this.orders.find((o) => o.id == id)
+        resolve(order)
+      }, latency)
+    })
+  }
 }
 
 module.exports = Store
