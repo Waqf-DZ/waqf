@@ -3,9 +3,11 @@ const test = require('tape')
 const FakeStore = require('../infrastructure/store/fake')
 const hashPassword = require('../infrastructure/hash-password')
 const getUniqueId = require('../infrastructure/get-unique-id')
+
 const makeSignUpUser = require('./sign-up-user')
 const makeGetUser = require('./get-user')
 const makeSignInUser = require('./sign-in-user')
+const makeListUsers = require('./list-users')
 
 test('sign up user', async (t) => {
   const store = new FakeStore({})
@@ -95,4 +97,22 @@ test('get user', async (t) => {
 
   const user2 = await getUser({ id: createdUserId })
   t.ok(user2.getId(), 'A user can be got by id')
+})
+
+test('list users', async (t) => {
+  const store = new FakeStore({})
+  const listUsers = makeListUsers({ usersDB: store })
+  const signUpUser = makeSignUpUser({
+    usersDB: store,
+    hashPassword,
+    getUniqueId,
+  })
+
+  await signUpUser({
+    username: 'john_doe',
+    email: 'john@doe.com',
+    password: 'password',
+  })
+  const users = await listUsers()
+  t.equal(users.length, 1, 'list all users')
 })

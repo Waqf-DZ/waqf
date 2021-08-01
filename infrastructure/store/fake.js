@@ -30,6 +30,14 @@ class Store {
     })
   }
 
+  listUsers() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.users)
+      }, latency)
+    })
+  }
+
   addProduct(product) {
     return new Promise((resolve) => {
       setTimeout(() => {
