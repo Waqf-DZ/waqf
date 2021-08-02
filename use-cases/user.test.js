@@ -22,7 +22,7 @@ test('sign up user', async (t) => {
     email: 'john@doe.com',
     password: 'password',
     phoneNumber: '123456789',
-    role: 'HELPER',
+    role: 'GIVING_HELP',
   })
   const fetchedUser = await getUser({ id: createdUser.getId() })
   t.equal(
@@ -31,16 +31,14 @@ test('sign up user', async (t) => {
     'sign up should add a user to the DB'
   )
 
-  try {
-    await addUser({
-      username: 'john_doe',
-      email: 'john@doe.com',
-      password: 'password',
-    })
-    t.fail('do not accept two users with the same email')
-  } catch {
-    t.pass('do not accept two users with the same email')
-  }
+  const createdUser2 = await addUser({
+    username: 'john_doe',
+    email: 'john@doe.com',
+    password: 'password',
+    phoneNumber: '123456789',
+    role: 'GIVING_HELP',
+  })
+  t.notOk(createdUser2, 'do not accept two users with the same email')
 })
 
 test('sign in user', async (t) => {
@@ -57,7 +55,7 @@ test('sign in user', async (t) => {
     email: 'john@doe.com',
     password: 'password',
     phoneNumber: '123456789',
-    role: 'HELPER',
+    role: 'GIVING_HELP',
   })
 
   const user1 = await signInUser({
@@ -92,7 +90,7 @@ test('get user', async (t) => {
     email: 'john@doe.com',
     password: 'password',
     phoneNumber: '123456789',
-    role: 'HELPER',
+    role: 'GIVING_HELP',
   })
   const createdUserId = createdUser.getId()
   const user1 = await getUser({ email: 'john@doe.com' })
@@ -116,7 +114,7 @@ test('delete user', async (t) => {
     email: 'john@doe.com',
     password: 'password',
     phoneNumber: '123456789',
-    role: 'HELPER',
+    role: 'GIVING_HELP',
   })
   const beforeUsers = await listUsers()
   const beforeLength = beforeUsers.length
@@ -139,7 +137,7 @@ test('list users', async (t) => {
     email: 'john@doe.com',
     password: 'password',
     phoneNumber: '123456789',
-    role: 'HELPER',
+    role: 'GIVING_HELP',
   })
   const users = await listUsers()
   t.equal(users.length, 1, 'list all users')

@@ -1,4 +1,9 @@
-const USER_ROLES = ['ADMIN', 'DIRECTOR', 'HELPER', 'HELPED']
+const USER_ROLES = {
+  admin: 'ADMIN',
+  director: 'DIRECTOR',
+  helpGiver: 'GIVING_HELP',
+  helpSeeker: 'SEEKING_HELP',
+}
 
 module.exports = function buildMakeUser({ getUniqueId }) {
   return function makeUser({
@@ -16,7 +21,7 @@ module.exports = function buildMakeUser({ getUniqueId }) {
     if (!email) throw new Error('User must have an email')
     if (!phoneNumber) throw new Error('User must have a phoneNumber')
     if (!passwordHash) throw new Error('User must have a passwordHash')
-    if (!USER_ROLES.includes(role)) {
+    if (!Object.values(USER_ROLES).includes(role)) {
       throw new Error('User must have a valid role')
     }
 
@@ -35,10 +40,10 @@ module.exports = function buildMakeUser({ getUniqueId }) {
         isVerified = true
       },
       isGivingHelp() {
-        return role === 'HELPER'
+        return role === USER_ROLES.helpGiver
       },
       isSeekingHelp() {
-        return role === 'HELPED'
+        return role === USER_ROLES.helpSeeker
       },
     })
   }

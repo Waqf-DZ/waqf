@@ -10,7 +10,7 @@ function makeAddUser({ usersDB, hashPassword }) {
   }) {
     let user = await usersDB.getUser({ email })
     if (user) {
-      return Promise.reject(null)
+      return Promise.resolve(null)
     } else {
       user = makeUser({
         displayName,
