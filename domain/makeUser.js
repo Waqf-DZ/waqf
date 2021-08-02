@@ -34,10 +34,10 @@ module.exports = function buildMakeUser({ getUniqueId }) {
       verify() {
         isVerified = true
       },
-      isHelper() {
+      isGivingHelp() {
         return role === 'HELPER'
       },
-      isHelped() {
+      isSeekingHelp() {
         return role === 'HELPED'
       },
     })
