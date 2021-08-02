@@ -21,6 +21,8 @@ test('sign up user', async (t) => {
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
+    phoneNumber: '123456789',
+    role: 'HELPER',
   })
   const fetchedUser = await getUser({ id: createdUser.getId() })
   t.equal(
@@ -54,6 +56,8 @@ test('sign in user', async (t) => {
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
+    phoneNumber: '123456789',
+    role: 'HELPER',
   })
 
   const user1 = await signInUser({
@@ -87,6 +91,8 @@ test('get user', async (t) => {
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
+    phoneNumber: '123456789',
+    role: 'HELPER',
   })
   const createdUserId = createdUser.getId()
   const user1 = await getUser({ email: 'john@doe.com' })
@@ -109,6 +115,8 @@ test('delete user', async (t) => {
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
+    phoneNumber: '123456789',
+    role: 'HELPER',
   })
   const beforeUsers = await listUsers()
   const beforeLength = beforeUsers.length
@@ -130,6 +138,8 @@ test('list users', async (t) => {
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
+    phoneNumber: '123456789',
+    role: 'HELPER',
   })
   const users = await listUsers()
   t.equal(users.length, 1, 'list all users')

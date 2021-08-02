@@ -20,6 +20,8 @@ test('create new order', async (t) => {
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
+    phoneNumber: '123456789',
+    role: 'HELPER',
   })
   const createdOrder = await addOrder({
     patientName: 'Patient Name',
@@ -45,6 +47,8 @@ test('get order', async (t) => {
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
+    phoneNumber: '123456789',
+    role: 'HELPER',
   })
   const createdOrder = await addOrder({
     patientName: 'Patient Name',
@@ -71,6 +75,8 @@ test('list orders', async (t) => {
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
+    phoneNumber: '123456789',
+    role: 'HELPER',
   })
   const createdOrder = await addOrder({
     patientName: 'Patient Name',
@@ -102,6 +108,8 @@ test('delete order', async (t) => {
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
+    phoneNumber: '123456789',
+    role: 'HELPER',
   })
   const createdOrder = await addOrder({
     patientName: 'Patient Name',
