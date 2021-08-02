@@ -1,6 +1,5 @@
 module.exports = function makePostUser({ addUser, flashMessages }) {
   return async function postUser(req, res) {
-    console.log(req.body)
     const { email, password, displayName, phoneNumber, role } = req.body
     const user = await addUser({
       email,
