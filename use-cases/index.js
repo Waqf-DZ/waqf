@@ -9,16 +9,16 @@ const store = new FakeStore({
   translations: [],
 })
 
-const makeSignUpUser = require('./sign-up-user')
+const makeAddUser = require('./add-user')
 const makeSignInUser = require('./sign-in-user')
 const makeGetUser = require('./get-user')
 
 const getUser = makeGetUser({ usersDB: store })
-const signUpUser = makeSignUpUser({ usersDB: store, hashPassword })
+const addUser = makeAddUser({ usersDB: store, hashPassword })
 const signInUser = makeSignInUser({ getUser, hashPassword })
 
 module.exports = Object.freeze({
   getUser,
-  signUpUser,
+  addUser,
   signInUser,
 })

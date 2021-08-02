@@ -2,7 +2,7 @@ const test = require('tape')
 
 const FakeStore = require('../infrastructure/store/fake')
 const hashPassword = require('../infrastructure/hash-password')
-const makeSignUpUser = require('./sign-up-user')
+const makeAddUser = require('./add-user')
 
 const makeAddOrder = require('./add-order')
 const makeDeleteOrder = require('./delete-order')
@@ -12,11 +12,11 @@ const makeListOrders = require('./list-orders')
 test('create new order', async (t) => {
   const store = new FakeStore({})
   const addOrder = makeAddOrder({ ordersDB: store })
-  const signUpUser = makeSignUpUser({
+  const addUser = makeAddUser({
     usersDB: store,
     hashPassword,
   })
-  const createdUser = await signUpUser({
+  const createdUser = await addUser({
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
@@ -39,11 +39,11 @@ test('get order', async (t) => {
   const store = new FakeStore({})
   const addOrder = makeAddOrder({ ordersDB: store })
   const getOrder = makeGetOrder({ ordersDB: store })
-  const signUpUser = makeSignUpUser({
+  const addUser = makeAddUser({
     usersDB: store,
     hashPassword,
   })
-  const createdUser = await signUpUser({
+  const createdUser = await addUser({
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
@@ -67,11 +67,11 @@ test('list orders', async (t) => {
   const store = new FakeStore({})
   const addOrder = makeAddOrder({ ordersDB: store })
   const listOrders = makeListOrders({ ordersDB: store })
-  const signUpUser = makeSignUpUser({
+  const addUser = makeAddUser({
     usersDB: store,
     hashPassword,
   })
-  const createdUser = await signUpUser({
+  const createdUser = await addUser({
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
@@ -100,11 +100,11 @@ test('delete order', async (t) => {
   const addOrder = makeAddOrder({ ordersDB: store })
   const listOrders = makeListOrders({ ordersDB: store })
   const deleteOrder = makeDeleteOrder({ ordersDB: store })
-  const signUpUser = makeSignUpUser({
+  const addUser = makeAddUser({
     usersDB: store,
     hashPassword,
   })
-  const createdUser = await signUpUser({
+  const createdUser = await addUser({
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',

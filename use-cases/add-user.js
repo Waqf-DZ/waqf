@@ -1,7 +1,7 @@
 const { makeUser } = require('../domain/index')
 
-function makeSignUpUser({ usersDB, hashPassword }) {
-  return async function signUpUser({
+function makeAddUser({ usersDB, hashPassword }) {
+  return async function addUser({
     displayName,
     email,
     password,
@@ -25,4 +25,4 @@ function makeSignUpUser({ usersDB, hashPassword }) {
   }
 }
 
-module.exports = makeSignUpUser
+module.exports = makeAddUser

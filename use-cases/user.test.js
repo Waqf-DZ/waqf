@@ -3,7 +3,7 @@ const test = require('tape')
 const FakeStore = require('../infrastructure/store/fake')
 const hashPassword = require('../infrastructure/hash-password')
 
-const makeSignUpUser = require('./sign-up-user')
+const makeAddUser = require('./add-user')
 const makeGetUser = require('./get-user')
 const makeDeleteUser = require('./delete-user')
 const makeSignInUser = require('./sign-in-user')
@@ -12,12 +12,12 @@ const makeListUsers = require('./list-users')
 test('sign up user', async (t) => {
   const store = new FakeStore({})
   const getUser = makeGetUser({ usersDB: store })
-  const signUpUser = makeSignUpUser({
+  const addUser = makeAddUser({
     usersDB: store,
     hashPassword,
   })
 
-  const createdUser = await signUpUser({
+  const createdUser = await addUser({
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
@@ -32,7 +32,7 @@ test('sign up user', async (t) => {
   )
 
   try {
-    await signUpUser({
+    await addUser({
       username: 'john_doe',
       email: 'john@doe.com',
       password: 'password',
@@ -46,13 +46,13 @@ test('sign up user', async (t) => {
 test('sign in user', async (t) => {
   const store = new FakeStore({})
   const getUser = makeGetUser({ usersDB: store })
-  const signUpUser = makeSignUpUser({
+  const addUser = makeAddUser({
     usersDB: store,
     hashPassword,
   })
   const signInUser = makeSignInUser({ getUser, hashPassword })
 
-  await signUpUser({
+  await addUser({
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
@@ -82,12 +82,12 @@ test('sign in user', async (t) => {
 test('get user', async (t) => {
   const store = new FakeStore({})
   const getUser = makeGetUser({ usersDB: store })
-  const signUpUser = makeSignUpUser({
+  const addUser = makeAddUser({
     usersDB: store,
     hashPassword,
   })
 
-  const createdUser = await signUpUser({
+  const createdUser = await addUser({
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
@@ -106,12 +106,12 @@ test('delete user', async (t) => {
   const store = new FakeStore({})
   const listUsers = makeListUsers({ usersDB: store })
   const deleteUser = makeDeleteUser({ usersDB: store })
-  const signUpUser = makeSignUpUser({
+  const addUser = makeAddUser({
     usersDB: store,
     hashPassword,
   })
 
-  const user = await signUpUser({
+  const user = await addUser({
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
@@ -129,12 +129,12 @@ test('delete user', async (t) => {
 test('list users', async (t) => {
   const store = new FakeStore({})
   const listUsers = makeListUsers({ usersDB: store })
-  const signUpUser = makeSignUpUser({
+  const addUser = makeAddUser({
     usersDB: store,
     hashPassword,
   })
 
-  await signUpUser({
+  await addUser({
     username: 'john_doe',
     email: 'john@doe.com',
     password: 'password',
