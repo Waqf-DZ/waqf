@@ -1,5 +1,7 @@
 var createError = require('http-errors')
 var express = require('express')
+var session = require('express-session')
+var flash = require('connect-flash')
 var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
@@ -14,6 +16,22 @@ var app = express()
 // set default express engine and extension
 app.engine('njk', nunjucks.render)
 app.set('view engine', 'njk')
+
+// setup session
+var sessionConfig = {
+  secret: 'keyboard cat',
+  cookie: {},
+  resave: false,
+  saveUninitialized: false,
+}
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1)
+  sessionConfig.cookie.secure = true
+}
+app.use(session(sessionConfig))
+
+// setup connect flash
+app.use(flash())
 
 // view engine setup
 nunjucks.configure(path.join(__dirname, './views'), {

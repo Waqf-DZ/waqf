@@ -45,6 +45,7 @@
 
         {# main content column #}
         <main class="column">
+          {% include '../partials/flash-messages.njk' %}
           {% block content %}
           {% endblock %}
         </main>
