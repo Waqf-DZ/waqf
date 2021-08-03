@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
-const { getNewOrder } = require('../controllers/index')
+const { getNewOrder, getUserProducts } = require('../controllers/index')
 
 router.get('/', function (req, res) {
   res.render('profile/index')
@@ -21,8 +21,6 @@ router.get('/products/new', function (req, res) {
   res.render('profile/products/new')
 })
 
-router.get('/products', function (req, res) {
-  res.render('profile/products/index')
-})
+router.get('/products', getUserProducts)
 
 module.exports = router
