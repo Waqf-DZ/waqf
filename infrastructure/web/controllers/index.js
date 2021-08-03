@@ -12,6 +12,7 @@ const makePostNewOrder = require('./post-new-order')
 const makeGetAdminOrders = require('./get-admin-orders')
 const makePostNewUser = require('./post-new-user')
 const makeGetAdminProducts = require('./get-admin-products')
+const makeGetUserProducts = require('./get-user-products')
 const makeGetUsers = require('./get-users')
 const makePostSignin = require('./post-signin')
 
@@ -34,6 +35,7 @@ const postNewUser = makePostNewUser({
 const getProducts = makeGetAdminProducts({ listProducts })
 const getUsers = makeGetUsers({ listUsers })
 const postSignin = makePostSignin({ signInUser, flashMessages })
+const getUserProducts = makeGetUserProducts({ listProducts })
 
 module.exports = {
   getSignUp,
@@ -46,4 +48,5 @@ module.exports = {
   getProducts,
   getUsers,
   postSignin,
+  getUserProducts
 }
