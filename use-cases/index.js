@@ -17,7 +17,7 @@ const makeUsersList = require('./list-users')
 const getUser = makeGetUser({ usersDB: store })
 const addUser = makeAddUser({ usersDB: store, hashPassword })
 const signInUser = makeSignInUser({ getUser, hashPassword })
-const listUsers = makeUsersList({ usersDB: FakeStore })
+const listUsers = makeUsersList({ usersDB: store })
 
 module.exports = Object.freeze({
   getUser,

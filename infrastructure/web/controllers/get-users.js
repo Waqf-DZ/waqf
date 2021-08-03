@@ -1,5 +1,5 @@
-module.exports = function getUsersList({ listUsers }) {
-  return async function usersList(req, res) {
+module.exports = function makeGetUsers({ listUsers }) {
+  return async function getUsers(req, res) {
     try {
       const usersList = await listUsers()
       res.render('/admin/users', {
