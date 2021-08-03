@@ -2,17 +2,17 @@ const flashMessages = require('../config/flash-messages')
 const validator = require('../../validator')
 const sanitize = require('../../sanitize')
 
-const { addUser, listOfProducts } = require('../../../use-cases/index')
+const { addUser, listProducts } = require('../../../use-cases/index')
 
 const makeGetSignUp = require('./get-signup')
 const makePostUser = require('./post-signup')
 const makeGetNewOrder = require('./get-new-order')
-const getProductsList = require('./get-admin-products')
+const makeGetAdminProducts = require('./get-admin-products')
 
 const getSignUp = makeGetSignUp()
 const postSignup = makePostUser({ addUser, flashMessages, sanitize, validator })
 const getNewOrder = makeGetNewOrder()
-const getProducts = getProductsList({ listOfProducts })
+const getProducts = makeGetAdminProducts({ listProducts })
 
 module.exports = {
   getSignUp,

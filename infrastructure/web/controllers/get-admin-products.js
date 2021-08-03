@@ -1,5 +1,5 @@
-module.exports = function getProductsList({ listProducts }) {
-  return async function (req, res) {
+module.exports = function makeGetAdminProducts({ listProducts }) {
+  return async function getAdminProducts(req, res) {
     try {
       const { ownerId } = req.body
       const productsList = await listProducts({ ownerId })
