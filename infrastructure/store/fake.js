@@ -3,6 +3,7 @@ const latency = 5
 class Store {
   constructor() {
     this.products = []
+    this.orders = []
     this.users = []
   }
 
@@ -29,6 +30,25 @@ class Store {
     })
   }
 
+  deleteUser(userId) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const index = this.users.findIndex((o) => o.id == userId)
+        const user = this.users[index]
+        this.users.splice(index, 1)
+        resolve(user)
+      }, latency)
+    })
+  }
+
+  listUsers() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.users)
+      }, latency)
+    })
+  }
+
   addProduct(product) {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -47,6 +67,17 @@ class Store {
     })
   }
 
+  deleteProduct(productId) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const index = this.products.findIndex((o) => o.id == productId)
+        const product = this.products[index]
+        this.products.splice(index, 1)
+        resolve(product)
+      }, latency)
+    })
+  }
+
   listProducts({ ownerId }) {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -55,6 +86,47 @@ class Store {
           products = this.products.filter((p) => p.getOwnerId() == ownerId)
         }
         resolve(products)
+      }, latency)
+    })
+  }
+
+  addOrder(order) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this.orders.push(order)
+        resolve(order)
+      }, latency)
+    })
+  }
+
+  deleteOrder(orderId) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const index = this.orders.findIndex((o) => o.id == orderId)
+        const order = this.orders[index]
+        this.orders.splice(index, 1)
+        resolve(order)
+      }, latency)
+    })
+  }
+
+  getOrder(id) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const order = this.orders.find((o) => o.id == id)
+        resolve(order)
+      }, latency)
+    })
+  }
+
+  listOrders({ ownerId }) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        let orders = this.orders
+        if (ownerId) {
+          orders = this.orders.filter((p) => p.getOwnerId() == ownerId)
+        }
+        resolve(orders)
       }, latency)
     })
   }

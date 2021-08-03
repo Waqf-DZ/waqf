@@ -6,70 +6,84 @@
 
 {% block content %}
 <h1 class="title is-3">إنشاء مستخدم جديد</h1>
-<form action="/admin/users/new" method="POST">
-  <div class="field">
-    <label class="label">الإسم</label>
-    <div class="control has-icons-right">
-      <input class="input" type="text" name="name">
-      <span class="icon is-small is-right">
-        <ion-icon name="person-outline"></ion-icon>
-      </span>
-    </div>
-  </div>
 
-  <div class="field">
-    <label class="label">رقم الهاتف</label>
-    <div class="control has-icons-right">
-      <input class="input" type="tel" name="phone">
-      <span class="icon is-small is-right">
-        <ion-icon name="call-outline"></ion-icon>
-      </span>
-    </div>
-  </div>
-
-  <div class="field">
-    <label class="label">البريد الإلكتروني</label>
-    <div class="control has-icons-right has-icons-right">
-      <input class="input" type="email" name="email">
-      <span class="icon is-small is-right">
-        <ion-icon name="mail-outline"></ion-icon>
-      </span>
-    </div>
-  </div>
-
-  <div class="field">
-    <label class="label">الوظيفة</label>
-    <div class="control">
-      <div class="select">
-        <select>
-          <option>محتاج</option>
-          <option>جمعية</option>
-        </select>
+<div class="columns">
+  <div class="column is-8 is-offset-2">
+    <form action="/admin/users/new" method="POST">
+      <div class="field">
+        <label class="label">الإسم</label>
+        <div class="control has-icons-right">
+          <input class="input" type="text" name="name">
+          <span class="icon is-small is-right">
+            <ion-icon name="person-outline"></ion-icon>
+          </span>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="field">
-    <label class="label">هل تريد تفعيل هذا المستخدم؟</label>
-    <div class="control">
-      <label class="radio">
-        <input type="radio" name="question" name="verified" value="true">
-        نعم
-      </label>
-      <label class="radio">
-        <input type="radio" name="question" name="verified" value="false">
-        لا
-      </label>
-    </div>
-  </div>
+      <div class="field">
+        <label class="label">رقم الهاتف</label>
+        <div class="control has-icons-right">
+          <input class="input" type="tel" name="phone">
+          <span class="icon is-small is-right">
+            <ion-icon name="call-outline"></ion-icon>
+          </span>
+        </div>
+      </div>
 
-  <div class="field is-grouped">
-    <div class="control">
-      <button class="button is-link" type="submit">إنشاء</button>
-    </div>
-    <div class="control">
-      <button class="button is-link is-light" type="reset">إلغاء</button>
-    </div>
+      <div class="field">
+        <label class="label">البريد الإلكتروني</label>
+        <div class="control has-icons-right has-icons-right">
+          <input class="input" type="email" name="email">
+          <span class="icon is-small is-right">
+            <ion-icon name="mail-outline"></ion-icon>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">إضافة وصف مختصر</label>
+        <div class="control has-icons-right">
+        <textarea class="textarea" name="description" rows="5">
+        </textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">الدور داخل المنصة</label>
+        <div class="control">
+          <div class="select">
+            <select>
+              <option>محتاج</option>
+              <option>جمعية</option>
+              <option>مدير</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">هل تريد تفعيل هذا المستخدم؟</label>
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="question" name="verified" value="true">
+            نعم
+          </label>
+          <label class="radio">
+            <input type="radio" name="question" name="verified" value="false">
+            لا
+          </label>
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link" type="submit">إنشاء</button>
+        </div>
+        <div class="control">
+          <button class="button is-link is-light" type="reset">إلغاء</button>
+        </div>
+      </div>
+    </form>
   </div>
-</form>
+</div>
 {% endblock %}

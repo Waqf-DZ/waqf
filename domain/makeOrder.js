@@ -20,17 +20,17 @@ module.exports = function buildMakeOrder({ getUniqueId }) {
     completedAt = null,
     ownerId,
   }) {
-    if (!patientName) throw new Error('Product must have a patientName')
-    if (!patientAge) throw new Error('Product must have a patientAge')
-    if (!ownerId) throw new Error('Product must have a ownerId')
-    if (!oxygenRatio) throw new Error('Product must have a oxygenRatio')
+    if (!patientName) throw new Error('Order must have a patientName')
+    if (!patientAge) throw new Error('Order must have a patientAge')
+    if (!ownerId) throw new Error('Order must have a ownerId')
+    if (!oxygenRatio) throw new Error('Order must have a oxygenRatio')
     if (!hasChronicDesease)
-      throw new Error('Product must have a hasChronicDesease')
+      throw new Error('Order must have a hasChronicDesease')
     if (!prescriptionUrl) {
-      throw new Error('Product free days must be a prescriptionUrl')
+      throw new Error('Order must have a prescriptionUrl')
     }
-    if (isCovid) {
-      throw new Error('Product day price must be a isCovid')
+    if (isCovid == undefined) {
+      throw new Error('Order must have isCovid flag')
     }
     return Object.freeze({
       getId: () => id,

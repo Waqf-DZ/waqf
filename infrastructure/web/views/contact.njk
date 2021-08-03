@@ -1,0 +1,48 @@
+{% extends './layouts/default.njk' %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+    <section class="hero is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="columns is-8 is-variable is-vcentered">
+                    <div class="column is-two-thirds has-text-right">
+                        <h1 class="title is-1">تواصل معنا</h1>
+                        <p class="is-size-4 mb-6">لديك سؤال؟ لدينا إجابات، إذا كان لديك أي سؤال حول أي شيء، لا تتردد في الاتصال بنا، يسعدنا دائمًا التحدث إليك.</p>
+                        <div class="social-media">
+                            <a href="#" target="_blank" class="button is-light is-large"><ion-icon name="logo-facebook"></ion-icon></a>
+                            <a href="#" target="_blank" class="button is-light is-large mx-5"><ion-icon name="logo-instagram"></ion-icon></a>
+                            <a href="#" target="_blank" class="button is-light is-large"><ion-icon name="logo-twitter"></ion-icon></i></a>
+                        </div>
+                    </div>
+                    <div class="column is-one-third has-text-right">
+                        <div class="field">
+                            <label class="label">الإسم الكامل</label>
+                            <div class="control">
+                                <input class="input is-medium" type="text">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">البريد الإلكتروني</label>
+                            <div class="control">
+                                <input class="input is-medium" type="text">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">الرسالة</label>
+                            <div class="control">
+                                <textarea class="textarea is-medium"></textarea>
+                            </div>
+                        </div>
+                        <div class="control">
+                            <button type="submit" class="button is-primary is-fullwidth has-text-weight-medium is-medium">إرسال</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

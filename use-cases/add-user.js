@@ -1,16 +1,23 @@
 const { makeUser } = require('../domain/index')
 
-function makeSignUpUser({ usersDB, getUniqueId, hashPassword }) {
-  return async function signUpUser({ username, email, password }) {
+function makeAddUser({ usersDB, hashPassword }) {
+  return async function addUser({
+    displayName,
+    email,
+    password,
+    phoneNumber,
+    role,
+  }) {
     let user = await usersDB.getUser({ email })
     if (user) {
-      return Promise.reject(null)
+      return Promise.resolve(null)
     } else {
       user = makeUser({
-        id: getUniqueId(),
-        username,
+        displayName,
         email,
         passwordHash: hashPassword(password),
+        phoneNumber,
+        role,
       })
       await usersDB.addUser(user)
       return Promise.resolve(user)
@@ -18,4 +25,4 @@ function makeSignUpUser({ usersDB, getUniqueId, hashPassword }) {
   }
 }
 
-module.exports = makeSignUpUser
+module.exports = makeAddUser

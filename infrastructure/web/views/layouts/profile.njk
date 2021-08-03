@@ -5,17 +5,18 @@
     <title>منصة وقف لتسيير العتاد الوقفي</title>
     <link rel="stylesheet" href="/css/bulma-rtl.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/footerStyle.css">
     <link rel="icon" href="/img/logo.png">
     {% block css %}
     {% endblock %}
   </head>
   <body>
-    <div class="container is-fullhd">
+    <div>
       {% include '../partials/header.njk' %}
 
-      <div class="columns mt-3">
+      <div class="columns my-0 has-background-light">
         {# side bar column #}
-        <div class="column is-3 has-background-light">
+        <div class="column is-3 has-background-grey-light">
           <aside class="menu">
             <p class="menu-label">
               الحساب الشخصي
@@ -43,13 +44,16 @@
         </div>
 
         {# main content column #}
-        <main class="column is-6 is-offset-1">
+        <main class="column">
+          {% include '../partials/flash-messages.njk' %}
           {% block content %}
           {% endblock %}
         </main>
       </div>
     </div>
 
+    {# it's outside the div with the class "container" so it takes full width #}
+    {% include '../partials/footer.njk' %} 
     <script src="/js/index.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

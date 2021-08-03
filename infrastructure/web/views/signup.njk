@@ -6,6 +6,9 @@
 
 {% block content %}
 <div class="container">
+  
+  {% include './partials/flash-messages.njk' %}
+
   <div class="columns">
     <div class="column my-6 is-8 is-offset-2">
 
@@ -69,15 +72,15 @@
         </div>
 
         <div class="field">
-          <label class="label" for="usage">كيف تريد استعمال المنصة؟</label>
+          <label class="label" for="role">كيف تريد استعمال المنصة؟</label>
           <div class="control">
             <label class="radio">
-              <input type="radio" name="usage" value="provideHelp" required>
+              <input type="radio" name="role" value="GIVING_HELP" required>
               أريد المساعدة
             </label>
 
             <label class="radio">
-              <input type="radio" name="usage" value="needHelp" required>
+              <input type="radio" name="role" value="SEEKING_HELP" required>
               أحتاج المساعدة
             </label>
           </div>

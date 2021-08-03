@@ -5,5 +5,50 @@
 {% endblock %}
 
 {% block content %}
-إعدادت الحساب
+    <h1>إعدادت الحساب</h1>
+
+    <section class="section">
+        <form action="/users/profile/settings" method="POST">
+            <div class="field">
+                <label class="label">البريد الإلكتروني</label>
+                <div class="control">
+                    <input class="input is-warning" type="email" value="example@gmai.com" readonly>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">دور المستخدم</label>
+                <div class="control">
+                    <input class="input is-warning" type="text" name="role" value="محتاج" readonly>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">حالة التحقق</label>
+                <div class="control">
+                    <input class="input is-warning" type="text" name="role" value="مفعل" readonly>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">الإسم</label>
+                <div class="control">
+                    <input class="input is-danger" type="text" name="name" value="احمد موسى">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">رقم الهاتف</label>
+                <div class="control">
+                    <input class="input is-danger" type="text" name="phone" value="05.55.44.33.22">
+                </div>
+            </div>
+
+              <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-warning" type="submit">قم بإجراء التحديث</button>
+                </div>
+                <div class="control">
+                    <button class="button is-success is-light" type="reset">قم بإلغاء التحديث</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
 {% endblock %}

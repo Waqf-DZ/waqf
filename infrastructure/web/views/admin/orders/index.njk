@@ -5,5 +5,56 @@
 {% endblock %}
 
 {% block content %}
-كل الطلبات
+<h1 class="title is-3">كل الطلبات</h1>
+<div class="table-container">
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th>إسم المريض</th>
+        <th>عمر المريض</th>
+        <th>تركيز الأكسجين</th>
+        <th>هل لدى المريض أمراض مزمنة؟</th>
+        <th>هل المريض مصاب بفيروس كورونا؟</th>
+        <th>الوصفة الطبية</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr>
+        <td>محمد عبد الله</td>
+        <td>50</td>
+        <td>95</td>
+        <td>لا</td>
+        <td>نعم</td>
+        <td><a href="#">رابط الوصفة</a></td>
+        <td><button class="button is-info is-light">تحديث</button></td>
+        <td><button class="button is-danger is-light">حذف</button></td>
+      </tr>
+
+      <tr>
+        <td>محمد عبد الله</td>
+        <td>50</td>
+        <td>95</td>
+        <td>لا</td>
+        <td>نعم</td>
+        <td><a href="#">رابط الوصفة</a></td>
+        <td><button class="button is-info is-light">تحديث</button></td>
+        <td><button class="button is-danger is-light">حذف</button></td>
+      </tr>
+
+      <tr>
+        <td>محمد عبد الله</td>
+        <td>50</td>
+        <td>95</td>
+        <td>لا</td>
+        <td>نعم</td>
+        <td><a href="#">رابط الوصفة</a></td>
+        <td><button class="button is-info is-light">تحديث</button></td>
+        <td><button class="button is-danger is-light">حذف</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 {% endblock %}
