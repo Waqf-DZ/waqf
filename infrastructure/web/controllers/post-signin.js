@@ -6,7 +6,7 @@ module.exports = function makePostUser({ signInUser, flashMessages }) {
       password,
     })
     if (!user) {
-      req.flash('error', flashMessages.ACCOUNT_DOES_NOT_EXIST)
+      req.flash('error', flashMessages.WRONG_CREDENTIALS)
       res.redirect('/signup')
       return
     }
