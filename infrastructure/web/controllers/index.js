@@ -2,7 +2,15 @@ const flashMessages = require('../config/flash-messages')
 const validator = require('../../validator')
 const sanitize = require('../../sanitize')
 
-const { addUser, addOrder, addProduct, listUsers, listProducts, signInUser, listOrders } = require('../../../use-cases/index')
+const {
+  addUser,
+  addOrder,
+  addProduct,
+  listUsers,
+  listProducts,
+  signInUser,
+  listOrders,
+} = require('../../../use-cases/index')
 
 const makeGetSignUp = require('./get-signup')
 const makePostUser = require('./post-signup')
@@ -15,6 +23,7 @@ const makeGetAdminProducts = require('./get-admin-products')
 const makeGetUserProducts = require('./get-user-products')
 const makeGetUsers = require('./get-users')
 const makePostSignin = require('./post-signin')
+const makeGetUserOrders = require('./get-user-orders')
 
 const getSignUp = makeGetSignUp()
 const postSignup = makePostUser({ addUser, flashMessages, sanitize, validator })
@@ -35,6 +44,7 @@ const postNewUser = makePostNewUser({
 const getProducts = makeGetAdminProducts({ listProducts })
 const getUsers = makeGetUsers({ listUsers })
 const postSignin = makePostSignin({ signInUser, flashMessages })
+const getUserOrders = makeGetUserOrders({ listOrders })
 const getUserProducts = makeGetUserProducts({ listProducts })
 
 module.exports = {
@@ -48,5 +58,6 @@ module.exports = {
   getProducts,
   getUsers,
   postSignin,
-  getUserProducts
+  getUserOrders,
+  getUserProducts,
 }
