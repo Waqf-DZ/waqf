@@ -1,4 +1,4 @@
-module.exports = function makePostUser({ signInUser, flashMessages }) {
+module.exports = function makePostSignIn({ signInUser, flashMessages }) {
   return async function _(req, res) {
     const { email, password } = req.body
     const user = await signInUser({
