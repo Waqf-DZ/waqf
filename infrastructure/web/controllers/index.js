@@ -2,7 +2,7 @@ const flashMessages = require('../config/flash-messages')
 const validator = require('../../validator')
 const sanitize = require('../../sanitize')
 
-const { addUser, listProducts } = require('../../../use-cases/index')
+const { addUser, listOfProducts } = require('../../../use-cases/index')
 
 const makeGetSignUp = require('./get-signup')
 const makePostUser = require('./post-signup')
@@ -12,7 +12,7 @@ const getProductsList = require('./get-admin-products')
 const getSignUp = makeGetSignUp()
 const postSignup = makePostUser({ addUser, flashMessages, sanitize, validator })
 const getNewOrder = makeGetNewOrder()
-const getProducts = getProductsList({ listProducts })
+const getProducts = getProductsList({ listOfProducts })
 
 module.exports = {
   getSignUp,
