@@ -1,10 +1,10 @@
-module.exports = function adminMakePostUser({
+module.exports = function makePostNewUser({
   addUser,
   flashMessages,
   sanitize,
   validator,
 }) {
-  return async function adminPostUser(req, res) {
+  return async function postNewUser(req, res) {
     // NOTE: I GUESS THE PASSWORD FIELD IS MISSING FROM THE CLIENT
     const { name, phoneNumber, email, description, role, verified } = req.body
     if (

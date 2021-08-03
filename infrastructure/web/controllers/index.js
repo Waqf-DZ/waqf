@@ -7,12 +7,12 @@ const { addUser } = require('../../../use-cases/index')
 const makeGetSignUp = require('./get-signup')
 const makePostUser = require('./post-signup')
 const makeGetNewOrder = require('./get-new-order')
-const adminMakePostUser = require('./post-new-user')
+const makePostNewUser = require('./post-new-user')
 
 const getSignUp = makeGetSignUp()
 const postSignup = makePostUser({ addUser, flashMessages, sanitize, validator })
 const getNewOrder = makeGetNewOrder()
-const adminPostUser = adminMakePostUser({
+const postNewUser = makePostNewUser({
   addUser,
   flashMessages,
   sanitize,
@@ -23,5 +23,5 @@ module.exports = {
   getSignUp,
   getNewOrder,
   postSignup,
-  adminPostUser,
+  postNewUser,
 }
