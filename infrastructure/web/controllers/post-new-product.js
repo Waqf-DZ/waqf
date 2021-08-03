@@ -1,9 +1,9 @@
-module.exports = function makePostProduct({
+module.exports = function makePostNewProduct({
   addProduct,
   flashMessages,
   sanitize,
 }) {
-  return async function postProduct(req, res) {
+  return async function postNewProduct(req, res) {
     try {
       const ownerId = 'hard-coded-id' // FIXME: remove this line and replace it with an actual ownerId
       const { productName, type, serial, imageUrl, description } = req.body

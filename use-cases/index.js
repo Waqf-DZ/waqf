@@ -12,12 +12,12 @@ const store = new FakeStore({
 const makeAddUser = require('./add-user')
 const makeSignInUser = require('./sign-in-user')
 const makeGetUser = require('./get-user')
-const makePostProduct = require('./add-product')
+const makePostNewProduct = require('./add-product')
 
 const getUser = makeGetUser({ usersDB: store })
 const addUser = makeAddUser({ usersDB: store, hashPassword })
 const signInUser = makeSignInUser({ getUser, hashPassword })
-const addProduct = makePostProduct({ productsDB: FakeStore })
+const addProduct = makePostNewProduct({ productsDB: store })
 
 module.exports = Object.freeze({
   getUser,
