@@ -4,10 +4,7 @@ function hashPassword(password) {
   return password
 }
 
-const store = new FakeStore({
-  terms: [],
-  translations: [],
-})
+const store = new FakeStore()
 
 const makeAddUser = require('./add-user')
 const makeSignInUser = require('./sign-in-user')
@@ -19,8 +16,8 @@ const makeListProducts = require('./list-products')
 const makeListUsers = require('./list-users')
 const makeUpdateUser = require('./update-user')
 
-const getUser = makeGetUser({ usersDB: store })
 const addUser = makeAddUser({ usersDB: store, hashPassword })
+const getUser = makeGetUser({ usersDB: store })
 const signInUser = makeSignInUser({ getUser, hashPassword })
 const addProduct = makeAddProduct({ productsDB: store })
 const addOrder = makeAddOrder({ ordersDB: store })
@@ -28,14 +25,21 @@ const listOrders = makeListOrders({ ordersDB: store })
 const listProducts = makeListProducts({ productsDB: store })
 const listUsers = makeListUsers({ usersDB: store })
 const updateUser = makeUpdateUser({ usersDB: store })
+const listUsers = makeListUsers({ usersDB: store })
+const addProduct = makeAddProduct({ productsDB: store })
+const listProducts = makeListProducts({ productsDB: store })
+const addOrder = makeAddOrder({ ordersDB: store })
+const listOrders = makeListOrders({ ordersDB: store })
+
 
 module.exports = Object.freeze({
-  getUser,
   addUser,
+  getUser,
   signInUser,
-  addProduct,
+  listUsers,
   addOrder,
   listOrders,
+  addProduct,
   listProducts,
   listUsers,
   updateUser,

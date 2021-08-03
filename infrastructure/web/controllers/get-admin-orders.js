@@ -3,9 +3,9 @@ module.exports = function makeGetAdminOrders({ listOrders }) {
     try {
       const { ownerId } = req.body
       const ordersList = await listOrders({ ownerId })
-      res.render('/admin/orders', { data: { orders: ordersList } })
+      res.render('admin/orders/index', { data: { orders: ordersList } })
     } catch (err) {
-      res.render('/admin/orders/new', { errorMessages: err.message })
+      res.render('admin/orders/new', { errorMessages: err.message })
     }
   }
 }

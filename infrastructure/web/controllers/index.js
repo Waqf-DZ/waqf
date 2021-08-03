@@ -14,34 +14,35 @@ const {
 } = require('../../../use-cases/index')
 
 const makeGetSignUp = require('./get-signup')
-const makePostUser = require('./post-signup')
+const makePostSignup = require('./post-signup')
+const makePostSignin = require('./post-signin')
+const makePostNewUser = require('./post-new-user')
+const makeGetUsers = require('./get-users')
 const makeGetNewOrder = require('./get-new-order')
-const makePostNewProduct = require('./post-new-product')
 const makePostNewOrder = require('./post-new-order')
 const makeGetAdminOrders = require('./get-admin-orders')
-const makePostNewUser = require('./post-new-user')
+const makeGetUserOrders = require('./get-user-orders')
+const makePostNewProduct = require('./post-new-product')
 const makeGetAdminProducts = require('./get-admin-products')
 const makeGetUsers = require('./get-users')
 const makePostSignin = require('./post-signin')
 const makePutUserSettings = require('./put-user-settings')
+const makeGetUserProducts = require('./get-user-products')
 
 const getSignUp = makeGetSignUp()
-const postSignup = makePostUser({ addUser, flashMessages, sanitize, validator })
-const getNewOrder = makeGetNewOrder()
-const postNewProduct = makePostNewProduct({
-  addProduct,
+const postSignup = makePostSignup({
+  addUser,
   flashMessages,
   sanitize,
+  validator,
 })
-const postNewOrder = makePostNewOrder({ addOrder, flashMessages, sanitize })
-const getAdminOrders = makeGetAdminOrders({ listOrders })
+const postSignin = makePostSignin({ signInUser, flashMessages })
 const postNewUser = makePostNewUser({
   addUser,
   flashMessages,
   sanitize,
   validator,
 })
-const getProducts = makeGetAdminProducts({ listProducts })
 const getUsers = makeGetUsers({ listUsers })
 const postSignin = makePostSignin({ signInUser, flashMessages })
 const putUserSettings = makePutUserSettings({
@@ -49,17 +50,32 @@ const putUserSettings = makePutUserSettings({
   flashMessages,
   sanitize,
 })
+const getNewOrder = makeGetNewOrder()
+const postNewOrder = makePostNewOrder({ addOrder, flashMessages, sanitize })
+const getAdminOrders = makeGetAdminOrders({ listOrders })
+const getUserOrders = makeGetUserOrders({ listOrders })
+const postNewProduct = makePostNewProduct({
+  addProduct,
+  flashMessages,
+  sanitize,
+})
+const getAdminProducts = makeGetAdminProducts({ listProducts })
+const getUserProducts = makeGetUserProducts({ listProducts })
+
 
 module.exports = {
   getSignUp,
-  getNewOrder,
   postSignup,
-  postNewProduct,
-  postNewOrder,
-  getAdminOrders,
+  postSignin,
   postNewUser,
-  getProducts,
   getUsers,
   postSignin,
   putUserSettings,
+  getNewOrder,
+  postNewOrder,
+  getAdminOrders,
+  getUserOrders,
+  postNewProduct,
+  getAdminProducts,
+  getUserProducts,
 }
