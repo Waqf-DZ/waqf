@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
-const { getSignUp, postSignup } = require('../controllers/index')
+const { getSignUp, postSignup, postSignin } = require('../controllers/index')
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -16,6 +16,8 @@ router.get('/signin', function (req, res) {
   const errorMessages = req.flash('error')
   res.render('signin', { successMessages, errorMessages })
 })
+
+router.post('/signin', postSignin)
 
 router.get('/about', function (req, res) {
   res.render('about')
