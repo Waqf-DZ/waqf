@@ -1,9 +1,9 @@
-module.exports = function makePostNewOrder({
+module.exports = function makePostUserNewOrder({
   addOrder,
   flashMessages,
   sanitize,
 }) {
-  return async function postNewOrder(req, res) {
+  return async function postUserNewOrder(req, res) {
     try {
       const ownerId = 'hard-coded-id' // FIXME: remove this line and replace it with an actual ownerId
       const prescriptionUrl = 'hard-coded-file' // FIXME: remove this line and replace it with an actual file
