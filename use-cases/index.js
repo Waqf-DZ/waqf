@@ -17,7 +17,7 @@ const makePostOrder = require('./add-order')
 const getUser = makeGetUser({ usersDB: store })
 const addUser = makeAddUser({ usersDB: store, hashPassword })
 const signInUser = makeSignInUser({ getUser, hashPassword })
-const addOrder = makePostOrder({ ordersDB: FakeStore })
+const addOrder = makePostOrder({ ordersDB: store })
 
 module.exports = Object.freeze({
   getUser,
