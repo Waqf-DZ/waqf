@@ -1,4 +1,6 @@
 const flashMessages = require('../config/flash-messages')
+const validator = require('../../validator')
+const sanitize = require('../../sanitize')
 
 const { addUser, signInUser } = require('../../../use-cases/index')
 
@@ -8,7 +10,7 @@ const makeGetNewOrder = require('./get-new-order')
 const makeSignInUser = require('./post-signin')
 
 const getSignUp = makeGetSignUp()
-const postSignup = makePostUser({ addUser, flashMessages })
+const postSignup = makePostUser({ addUser, flashMessages, sanitize, validator })
 const getNewOrder = makeGetNewOrder()
 const postSignin = makeSignInUser({ signInUser, flashMessages })
 

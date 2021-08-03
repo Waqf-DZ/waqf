@@ -1,10 +1,23 @@
-module.exports = function makePostUser({ addUser, flashMessages }) {
+module.exports = function makePostUser({
+  addUser,
+  flashMessages,
+  sanitize,
+  validator,
+}) {
   return async function postUser(req, res) {
     const { email, password, displayName, phoneNumber, role } = req.body
+    if (
+      !validator.isEmailValid(email) ||
+      !validator.isPhoneValid(phoneNumber)
+    ) {
+      req.flash('error', flashMessages.INPUTS_NOT_VALID)
+      res.redirect('/signup')
+      return
+    }
     const user = await addUser({
       email,
       password,
-      displayName,
+      displayName: sanitize(displayName),
       role,
       phoneNumber,
     })
