@@ -181,7 +181,7 @@ class Store {
       setTimeout(() => {
         let products = this.products
         if (ownerId) {
-          products = this.products.filter((p) => p.getOwnerId() == ownerId)
+          products = this.products.filter((p) => p.ownerId == ownerId)
         }
         resolve(products)
       }, latency)

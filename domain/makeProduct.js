@@ -23,16 +23,36 @@ module.exports = function buildMakeProduct({ getUniqueId }) {
       throw new Error('Product day price must be a number')
     }
     return Object.freeze({
-      getId: () => id,
-      getName: () => name,
-      getType: () => type,
-      getSerial: () => serial,
-      getImageUrl: () => imageUrl,
-      getDescription: () => description,
-      getDayPrice: () => dayPrice,
-      getFreeDays: () => freeDays,
-      getCreatedAt: () => createdAt,
-      getOwnerId: () => ownerId,
+      get id() {
+        return id
+      },
+      get name() {
+        return name
+      },
+      get type() {
+        return type
+      },
+      get serial() {
+        return serial
+      },
+      get imageUrl() {
+        return imageUrl
+      },
+      get description() {
+        return description
+      },
+      get dayPrice() {
+        return dayPrice
+      },
+      get freeDays() {
+        return freeDays
+      },
+      get createdAt() {
+        return createdAt
+      },
+      get ownerId() {
+        return ownerId
+      },
       isAvailable: () => isAvailable,
       isBroken: () => isBroken,
       markAvailable: () => (isAvailable = true),

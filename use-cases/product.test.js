@@ -19,7 +19,7 @@ test('add product', async (t) => {
     freeDays: 0,
     dayPrice: 0,
   })
-  t.ok(product.getId(), 'return the created product')
+  t.ok(product.id, 'return the created product')
   const products = await listProducts({ ownerId })
   const found = products.find((p) => (p.ownerId = ownerId))
   t.ok(found, 'add a product to the database')
