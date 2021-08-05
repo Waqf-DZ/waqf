@@ -1,9 +1,9 @@
-module.exports = function makePostNewProduct({
+module.exports = function makePostUserNewProduct({
   addProduct,
   flashMessages,
   sanitize,
 }) {
-  return async function postNewProduct(req, res) {
+  return async function postUserNewProduct(req, res) {
     try {
       const ownerId = 'hard-coded-id' // FIXME: remove this line and replace it with an actual ownerId
       const { productName, type, serial, imageUrl, description } = req.body
@@ -32,7 +32,7 @@ module.exports = function makePostNewProduct({
         res.redirect('/profile/products/new')
       }
     } catch (err) {
-      res.render('/profile/products/new', { errorMessages: err.message })
+      res.render('profile/products/new', { errorMessages: err.message })
     }
   }
 }
