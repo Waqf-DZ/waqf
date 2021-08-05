@@ -14,13 +14,13 @@ module.exports = function makePutUserSettings({
 
       if (updatedUser) {
         req.flash('success', flashMessages.PROFILE_UPDATE_SUCCESS)
-        res.redirect('/profile')
+        res.redirect('/profile/settings')
       } else {
         req.flash('error', flashMessages.PROFILE_UPDATE_FAILURE)
-        res.redirect('/profile/products/new')
+        res.redirect('/profile/settings')
       }
     } catch (err) {
-      res.render('/profile/settings', { errorMessages: err.message })
+      res.render('profile/settings', { errorMessages: err.message })
     }
   }
 }

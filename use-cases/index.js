@@ -26,7 +26,6 @@ const listProducts = makeListProducts({ productsDB: store })
 const listUsers = makeListUsers({ usersDB: store })
 const updateUser = makeUpdateUser({ usersDB: store })
 
-
 module.exports = Object.freeze({
   addUser,
   getUser,

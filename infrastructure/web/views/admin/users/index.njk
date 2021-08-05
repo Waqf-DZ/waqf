@@ -5,39 +5,41 @@
 {% endblock %}
 
 {% block content %}
-
-<html><head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-</head>
-<body>
-<table  class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth   "  >
-  <thead>
-    <tr>
-    <th>تفعيل المستخدم</th>
-    <th>الوظيفة </th>
-    <th>البريد الالكتروني</th>
-    <th>رقم الهاتف</th>
-    <th>الاسم</th>
-    </tr>
-  </thead>
-  
-  <tbody>
-    <tr>
-      <td>نعم</td>
-      <td>محتاج</td>
-      <td>ahmed@gmail.com</td>
-      <td>05254841</td>
-      <td>احمد</td>
-    </tr>
-    <tr>
-      <td>نعم</td>
-      <td>جمعية</td>
-      <td>souboullkheir@gmail.com</td>
-      <td>0214258</td>
-      <td>سبل الخير</td>
-    </tr>
-  </tbody>
-</table>
-</body>
-</html>
+<h1 class="title is-3">كل المستخدمين</h1>
+<div class="table-container">
+  <table class="table is-fullwidth"  >
+    <thead>
+      <tr>
+        <th>الاسم</th>
+        <th>رقم الهاتف</th>
+        <th>البريد الالكتروني</th>
+        <th>الوظيفة </th>
+        <th>مفعل</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr>
+        <td>احمد</td>
+        <td>05254841</td>
+        <td>ahmed@gmail.com</td>
+        <td>محتاج</td>
+        <td>نعم</td>
+        <td><button class="button is-info is-light">تحديث</button></td>
+        <td><button class="button is-danger is-light">حذف</button></td>
+      </tr>
+      <tr>
+        <td>سبل الخير</td>
+        <td>0214258</td>
+        <td>souboullkheir@gmail.com</td>
+        <td>جمعية</td>
+        <td>نعم</td>
+        <td><button class="button is-info is-light">تحديث</button></td>
+        <td><button class="button is-danger is-light">حذف</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 {% endblock %}
