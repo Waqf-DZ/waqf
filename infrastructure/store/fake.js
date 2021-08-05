@@ -30,6 +30,21 @@ class Store {
     })
   }
 
+  updateUser({ updatedUser, email, name, phoneNumber }) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        updatedUser.name = name
+        updatedUser.phoneNumber = phoneNumber
+        this.users.forEach((user) => {
+          if (user.email == email) {
+            user = updatedUser
+          }
+        })
+        resolve(updatedUser)
+      }, latency)
+    })
+  }
+
   deleteUser(userId) {
     return new Promise((resolve) => {
       setTimeout(() => {

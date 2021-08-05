@@ -10,6 +10,7 @@ const {
   listProducts,
   signInUser,
   listOrders,
+  updateUser,
 } = require('../../../use-cases/index')
 
 const makeGetAdminDashboard = require('./get-admin-dashboard')
@@ -30,6 +31,7 @@ const makeGetUserOrders = require('./get-user-orders')
 const makeGetUserNewProduct = require('./get-user-new-product')
 const makePostUserNewProduct = require('./post-user-new-product')
 const makeGetAdminProducts = require('./get-admin-products')
+const makePutUserSettings = require('./put-user-settings')
 const makeGetUserProducts = require('./get-user-products')
 
 const getAdminDashboard = makeGetAdminDashboard()
@@ -42,7 +44,6 @@ const postSignup = makePostSignup({
   validator,
 })
 const postSignin = makePostSignin({ signInUser, flashMessages })
-
 const getUsers = makeGetUsers({ listUsers })
 const getNewUser = makeGetNewUser()
 const postNewUser = makePostNewUser({
@@ -52,6 +53,14 @@ const postNewUser = makePostNewUser({
   validator,
 })
 
+const putUserSettings = makePutUserSettings({
+  updateUser,
+  flashMessages,
+  sanitize,
+})
+const getAdminOrders = makeGetAdminOrders({ listOrders })
+const getUserOrders = makeGetUserOrders({ listOrders })
+
 const getUserSettings = makeGetUserSettings()
 const getUserNewOrder = makeGetUserNewOrder()
 const postUserNewOrder = makePostUserNewOrder({
@@ -59,8 +68,6 @@ const postUserNewOrder = makePostUserNewOrder({
   flashMessages,
   sanitize,
 })
-const getAdminOrders = makeGetAdminOrders({ listOrders })
-const getUserOrders = makeGetUserOrders({ listOrders })
 
 const getUserNewProduct = makeGetUserNewProduct()
 const postUserNewProduct = makePostUserNewProduct({
@@ -80,6 +87,7 @@ module.exports = {
   getNewUser,
   postNewUser,
   getUsers,
+  putUserSettings,
   getUserSettings,
   getUserNewOrder,
   postUserNewOrder,
