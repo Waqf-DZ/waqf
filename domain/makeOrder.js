@@ -33,19 +33,45 @@ module.exports = function buildMakeOrder({ getUniqueId }) {
       throw new Error('Order must have isCovid flag')
     }
     return Object.freeze({
-      getId: () => id,
-      getPatientName: () => patientName,
-      getPatientAge: () => patientAge,
-      getOxygenRatio: () => oxygenRatio,
-      getHasChronicDesease: () => hasChronicDesease,
-      getIsCovid: () => isCovid,
-      getPrescriptionUrl: () => prescriptionUrl,
-      getOwnerId: () => ownerId,
-      getStatus: () => status,
-      getAssignedProductId: () => assignedProductId,
-      getCreatedAt: () => createdAt,
-      getAcceptedAt: () => acceptedAt,
-      getCompletedAt: () => completedAt,
+      get id() {
+        return id
+      },
+      get patientName() {
+        return patientName
+      },
+      get patientAge() {
+        return patientAge
+      },
+      get oxygenRatio() {
+        return oxygenRatio
+      },
+      get hasChronicDesease() {
+        return hasChronicDesease
+      },
+      get isCovid() {
+        return isCovid
+      },
+      get prescriptionUrl() {
+        return prescriptionUrl
+      },
+      get ownerId() {
+        return ownerId
+      },
+      get status() {
+        return status
+      },
+      get assignedProductId() {
+        return assignedProductId
+      },
+      get createdAt() {
+        return createdAt
+      },
+      get acceptedAt() {
+        return acceptedAt
+      },
+      get completedAt() {
+        return completedAt
+      },
 
       markPending: () => {
         status = STATUS_OPTIONS.pending

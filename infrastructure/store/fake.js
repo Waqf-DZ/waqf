@@ -222,7 +222,7 @@ class Store {
       setTimeout(() => {
         let orders = this.orders
         if (ownerId) {
-          orders = this.orders.filter((p) => p.getOwnerId() == ownerId)
+          orders = this.orders.filter((o) => o.ownerId == ownerId)
         }
         resolve(orders)
       }, latency)
