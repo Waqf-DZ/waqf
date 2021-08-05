@@ -30,7 +30,7 @@ test('create new order', async (t) => {
     hasChronicDesease: true,
     isCovid: true,
     prescriptionUrl: 'https://prescription.url/id',
-    ownerId: createdUser.getId(),
+    ownerId: createdUser.id,
   })
   t.ok(createdOrder, 'returns newly created order')
 })
@@ -57,7 +57,7 @@ test('get order', async (t) => {
     hasChronicDesease: true,
     isCovid: true,
     prescriptionUrl: 'https://prescription.url/id',
-    ownerId: createdUser.getId(),
+    ownerId: createdUser.id,
   })
   const fetchedUser = await getOrder(createdOrder.id)
   t.equal(createdOrder.id, fetchedUser.id, 'get order by id')
@@ -85,7 +85,7 @@ test('list orders', async (t) => {
     hasChronicDesease: true,
     isCovid: true,
     prescriptionUrl: 'https://prescription.url/id',
-    ownerId: createdUser.getId(),
+    ownerId: createdUser.id,
   })
   const orders = await listOrders({ ownerId: createdOrder.ownerId })
   const allOrders = await listOrders()
@@ -118,7 +118,7 @@ test('delete order', async (t) => {
     hasChronicDesease: true,
     isCovid: true,
     prescriptionUrl: 'https://prescription.url/id',
-    ownerId: createdUser.getId(),
+    ownerId: createdUser.id,
   })
   const beforeOrders = await listOrders()
   const beforeLength = beforeOrders.length

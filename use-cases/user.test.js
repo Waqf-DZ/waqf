@@ -24,12 +24,8 @@ test('sign up user', async (t) => {
     phoneNumber: '123456789',
     role: 'GIVING_HELP',
   })
-  const fetchedUser = await getUser({ id: createdUser.getId() })
-  t.equal(
-    createdUser.getId(),
-    fetchedUser.getId(),
-    'sign up should add a user to the DB'
-  )
+  const fetchedUser = await getUser({ id: createdUser.id })
+  t.equal(createdUser.id, fetchedUser.id, 'sign up should add a user to the DB')
 
   const createdUser2 = await addUser({
     username: 'john_doe',
@@ -92,12 +88,12 @@ test('get user', async (t) => {
     phoneNumber: '123456789',
     role: 'GIVING_HELP',
   })
-  const createdUserId = createdUser.getId()
+  const createdUserId = createdUser.id
   const user1 = await getUser({ email: 'john@doe.com' })
-  t.ok(user1.getId(), 'A user can be got by email')
+  t.ok(user1.id, 'A user can be got by email')
 
   const user2 = await getUser({ id: createdUserId })
-  t.ok(user2.getId(), 'A user can be got by id')
+  t.ok(user2.id, 'A user can be got by id')
 })
 
 test('delete user', async (t) => {

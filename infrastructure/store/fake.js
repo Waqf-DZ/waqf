@@ -101,10 +101,10 @@ class Store {
     return new Promise((resolve) => {
       setTimeout(() => {
         if (id) {
-          const user = this.users.find((user) => user.getId() == id)
+          const user = this.users.find((user) => user.id == id)
           resolve(user)
         } else if (email) {
-          const user = this.users.find((user) => user.getEmail() == email)
+          const user = this.users.find((user) => user.email == email)
           resolve(user)
         } else {
           throw new Error('getUser require id or email')
