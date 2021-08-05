@@ -25,11 +25,6 @@ const listOrders = makeListOrders({ ordersDB: store })
 const listProducts = makeListProducts({ productsDB: store })
 const listUsers = makeListUsers({ usersDB: store })
 const updateUser = makeUpdateUser({ usersDB: store })
-const listUsers = makeListUsers({ usersDB: store })
-const addProduct = makeAddProduct({ productsDB: store })
-const listProducts = makeListProducts({ productsDB: store })
-const addOrder = makeAddOrder({ ordersDB: store })
-const listOrders = makeListOrders({ ordersDB: store })
 
 
 module.exports = Object.freeze({
@@ -41,6 +36,5 @@ module.exports = Object.freeze({
   listOrders,
   addProduct,
   listProducts,
-  listUsers,
   updateUser,
 })
