@@ -10,11 +10,13 @@ const {
   postUserNewProduct,
   getUserOrders,
   getUserProducts,
+  putUserSettings,
 } = require('../controllers/index')
 
 router.get('/', getUserDashboard)
 
 router.get('/settings', getUserSettings)
+router.post('/settings', putUserSettings)
 
 router.get('/orders', getUserOrders)
 router.get('/orders/new', getUserNewOrder)

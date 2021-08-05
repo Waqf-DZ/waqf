@@ -25,6 +25,8 @@ class Store {
         } else if (email) {
           const user = this.users.find((user) => user.getEmail() == email)
           resolve(user)
+        } else {
+          throw new Error('getUser require id or email')
         }
       }, latency)
     })
