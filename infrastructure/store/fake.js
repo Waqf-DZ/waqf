@@ -1,10 +1,92 @@
+const { makeUser } = require('../../domain/index')
 const latency = 5
 
 class Store {
   constructor() {
-    this.products = []
-    this.orders = []
-    this.users = []
+    this.products = [
+      {
+        name: 'منتج صيني',
+        type: 'مكثف محمول',
+        serial: '729893-TD',
+        imageUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+        description: 'بعض الوصف العشوائي',
+        isAvailable: true,
+        isBroken: false,
+        freeDays: 0,
+        dayPrice: 120,
+        createdAt: Date.now(),
+        ownerId: 'xx129',
+      },
+      {
+        name: 'منتج صيني',
+        type: 'مكثف محمول',
+        serial: '223934-BS',
+        imageUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+        description: 'بعض الوصف العشوائي',
+        isAvailable: true,
+        isBroken: false,
+        freeDays: 0,
+        dayPrice: 175,
+        createdAt: Date.now(),
+        ownerId: 'yy234',
+      },
+    ]
+    this.users = [
+      {
+        id: '74676743abcyhd',
+        displayName: 'مدير المنصة',
+        email: 'admin@gmail.com',
+        phoneNumber: '0555443322',
+        passwordHash: 'password',
+        role: 'ADMIN',
+        isVerified: true,
+        description: 'مدير منصة وقف',
+        createdAt: Date.now(),
+      },
+      {
+        id: '74676743zyxus',
+        displayName: 'جون دو',
+        email: 'doe@gmail.com',
+        phoneNumber: '0555443322',
+        passwordHash: 'password',
+        role: 'SEEKING_HELP',
+        isVerified: false,
+        description: 'يمكن أن يحدث خطأ ما مع هذا المستخدم',
+        createdAt: Date.now(),
+      },
+    ]
+    this.orders = [
+      {
+        id: 'Bcbegf73hukUGifeg',
+        patientName: 'محمد عبد الله',
+        patientAge: 50,
+        oxygenRatio: 95,
+        hasChronicDesease: false,
+        isCovid: true,
+        prescriptionUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+        createdAt: Date.now(),
+        status: 'PENDING',
+        acceptedAt: null,
+        completedAt: null,
+        assignedProductId: '',
+        ownerId: 'h84k8djfieSNcjdd',
+      },
+      {
+        id: 'Dn8HD338ccuhDJH8df',
+        patientName: 'سامي محمد',
+        patientAge: 65,
+        oxygenRatio: 92,
+        hasChronicDesease: true,
+        isCovid: true,
+        prescriptionUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+        createdAt: Date.now(),
+        status: 'PENDING',
+        acceptedAt: null,
+        completedAt: null,
+        assignedProductId: '',
+        ownerId: 'JudnYdh263jdkf8h',
+      },
+    ]
   }
 
   addUser(user) {
@@ -20,11 +102,11 @@ class Store {
     return new Promise((resolve) => {
       setTimeout(() => {
         if (id) {
-          const user = this.users.find((user) => user.getId() == id)
-          resolve(user)
+          const user = this.users.find((user) => user.id == id)
+          resolve(user ? makeUser(user) : null)
         } else if (email) {
-          const user = this.users.find((user) => user.getEmail() == email)
-          resolve(user)
+          const user = this.users.find((user) => user.email == email)
+          resolve(user ? makeUser(user) : null)
         } else {
           throw new Error('getUser require id or email')
         }
@@ -60,8 +142,9 @@ class Store {
 
   listUsers() {
     return new Promise((resolve) => {
+      const users = this.users.map((u) => makeUser(u))
       setTimeout(() => {
-        resolve(this.users)
+        resolve(users)
       }, latency)
     })
   }
@@ -100,7 +183,7 @@ class Store {
       setTimeout(() => {
         let products = this.products
         if (ownerId) {
-          products = this.products.filter((p) => p.getOwnerId() == ownerId)
+          products = this.products.filter((p) => p.ownerId == ownerId)
         }
         resolve(products)
       }, latency)
@@ -141,7 +224,7 @@ class Store {
       setTimeout(() => {
         let orders = this.orders
         if (ownerId) {
-          orders = this.orders.filter((p) => p.getOwnerId() == ownerId)
+          orders = this.orders.filter((o) => o.ownerId == ownerId)
         }
         resolve(orders)
       }, latency)

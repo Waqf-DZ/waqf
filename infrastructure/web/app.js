@@ -1,17 +1,21 @@
-var createError = require('http-errors')
-var express = require('express')
-var session = require('express-session')
-var flash = require('connect-flash')
-var path = require('path')
-var cookieParser = require('cookie-parser')
-var logger = require('morgan')
-var nunjucks = require('nunjucks')
+const createError = require('http-errors')
+const express = require('express')
+const session = require('express-session')
+const flash = require('connect-flash')
+const path = require('path')
+const cookieParser = require('cookie-parser')
+const logger = require('morgan')
+const nunjucks = require('nunjucks')
 
-var indexRouter = require('./routes/index')
-var adminRouter = require('./routes/admin')
-var profileRouter = require('./routes/profile')
+const indexRouter = require('./routes/index')
+const adminRouter = require('./routes/admin')
+const profileRouter = require('./routes/profile')
 
-var app = express()
+const passport = require('./middlewares/passport-local-strategy')
+const isAuthenticatedAdmin = require('./middlewares/is-authenticated-admin')
+const isAuthenticatedUser = require('./middlewares/is-authenticated-user')
+
+const app = express()
 
 // set default express engine and extension
 app.engine('njk', nunjucks.render)
@@ -39,6 +43,9 @@ nunjucks.configure(path.join(__dirname, './views'), {
   express: app,
 })
 
+app.use(passport.initialize())
+app.use(passport.session())
+
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -46,8 +53,8 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', indexRouter)
-app.use('/admin', adminRouter)
-app.use('/profile', profileRouter)
+app.use('/admin', isAuthenticatedAdmin, adminRouter)
+app.use('/profile', isAuthenticatedUser, profileRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

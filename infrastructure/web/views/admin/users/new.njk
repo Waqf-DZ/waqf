@@ -13,7 +13,7 @@
       <div class="field">
         <label class="label">الإسم</label>
         <div class="control has-icons-right">
-          <input class="input" type="text" name="name">
+          <input class="input" type="text" name="name" required>
           <span class="icon is-small is-right">
             <ion-icon name="person-outline"></ion-icon>
           </span>
@@ -23,7 +23,7 @@
       <div class="field">
         <label class="label">رقم الهاتف</label>
         <div class="control has-icons-right">
-          <input class="input" type="tel" name="phone">
+          <input class="input" type="tel" name="phoneNumber" required>
           <span class="icon is-small is-right">
             <ion-icon name="call-outline"></ion-icon>
           </span>
@@ -33,9 +33,25 @@
       <div class="field">
         <label class="label">البريد الإلكتروني</label>
         <div class="control has-icons-right has-icons-right">
-          <input class="input" type="email" name="email">
+          <input class="input" type="email" name="email" required>
           <span class="icon is-small is-right">
             <ion-icon name="mail-outline"></ion-icon>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="password">كلمة السر</label>
+        <div class="control has-icons-right">
+          <input
+            class="input"
+            type="password"
+            id="password"
+            name="password"
+            required
+          >
+          <span class="icon is-small is-right">
+            <ion-icon name="key-outline"></ion-icon>
           </span>
         </div>
       </div>
@@ -52,10 +68,10 @@
         <label class="label">الدور داخل المنصة</label>
         <div class="control">
           <div class="select">
-            <select>
-              <option>محتاج</option>
-              <option>جمعية</option>
-              <option>مدير</option>
+            <select name="role">
+              <option value="SEEKING_HELP">محتاج</option>
+              <option value="GIVING_HELP">جمعية</option>
+              <option value="DIRECTOR">مدير</option>
             </select>
           </div>
         </div>
@@ -65,11 +81,11 @@
         <label class="label">هل تريد تفعيل هذا المستخدم؟</label>
         <div class="control">
           <label class="radio">
-            <input type="radio" name="question" name="verified" value="true">
+            <input type="radio" name="question" name="verified" value="true" required>
             نعم
           </label>
           <label class="radio">
-            <input type="radio" name="question" name="verified" value="false">
+            <input type="radio" name="question" name="verified" value="false" required>
             لا
           </label>
         </div>

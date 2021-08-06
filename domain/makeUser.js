@@ -26,24 +26,48 @@ module.exports = function buildMakeUser({ getUniqueId }) {
     }
 
     return Object.freeze({
-      getId: () => id,
-      getRole: () => role,
-      getEmail: () => email,
-      getPhoneNumber: () => phoneNumber,
-      getDisplayName: () => displayName,
-      getDescription: () => description,
-      getPasswordHash: () => passwordHash,
-      getIsVerified: () => isVerified,
-      getCreatedAt: () => createdAt,
+      get id() {
+        return id
+      },
+      get role() {
+        return role
+      },
+      get email() {
+        return email
+      },
+      get phoneNumber() {
+        return phoneNumber
+      },
+      get displayName() {
+        return displayName
+      },
+      get description() {
+        return description
+      },
+      get passwordHash() {
+        return passwordHash
+      },
+      get isVerified() {
+        return isVerified
+      },
+      get createdAt() {
+        return createdAt
+      },
+      get isAdmin() {
+        return role === USER_ROLES.admin
+      },
+      get isDirector() {
+        return role === USER_ROLES.admin
+      },
+      get isGivingHelp() {
+        return role === USER_ROLES.helpGiver
+      },
+      get isSeekingHelp() {
+        return role === USER_ROLES.helpSeeker
+      },
 
       verify() {
         isVerified = true
-      },
-      isGivingHelp() {
-        return role === USER_ROLES.helpGiver
-      },
-      isSeekingHelp() {
-        return role === USER_ROLES.helpSeeker
       },
     })
   }

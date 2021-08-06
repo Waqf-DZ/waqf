@@ -1,6 +1,7 @@
 const flashMessages = require('../config/flash-messages')
 const validator = require('../../validator')
 const sanitize = require('../../sanitize')
+const passport = require('../middlewares/passport-local-strategy')
 
 const {
   addUser,
@@ -43,7 +44,7 @@ const postSignup = makePostSignup({
   sanitize,
   validator,
 })
-const postSignin = makePostSignin({ signInUser, flashMessages })
+const postSignin = makePostSignin({ signInUser, flashMessages, passport })
 const getUsers = makeGetUsers({ listUsers })
 const getNewUser = makeGetNewUser()
 const postNewUser = makePostNewUser({

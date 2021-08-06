@@ -6,6 +6,7 @@ function makeAddUser({ usersDB, hashPassword }) {
     email,
     password,
     phoneNumber,
+    description,
     role,
   }) {
     let user = await usersDB.getUser({ email })
@@ -17,6 +18,7 @@ function makeAddUser({ usersDB, hashPassword }) {
         email,
         passwordHash: hashPassword(password),
         phoneNumber,
+        description,
         role,
       })
       await usersDB.addUser(user)

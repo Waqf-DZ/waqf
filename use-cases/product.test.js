@@ -19,7 +19,7 @@ test('add product', async (t) => {
     freeDays: 0,
     dayPrice: 0,
   })
-  t.ok(product.getId(), 'return the created product')
+  t.ok(product.id, 'return the created product')
   const products = await listProducts({ ownerId })
   const found = products.find((p) => (p.ownerId = ownerId))
   t.ok(found, 'add a product to the database')
@@ -90,7 +90,7 @@ test('list products', async (t) => {
   let products = await listProducts({ ownerId: ownerId1 })
   t.equal(products.length, 1, 'can list products by ownerId')
   products = await listProducts()
-  t.equal(products.length, 2, 'list all products if no filter given')
+  t.ok(products.length > 1, 'list all products if no filter given')
   products = await listProducts({ ownerId: 'wrong' })
   t.equal(products.length, 0, 'return empty array if no products found')
 })

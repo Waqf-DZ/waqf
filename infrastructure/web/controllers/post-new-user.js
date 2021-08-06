@@ -5,8 +5,8 @@ module.exports = function makePostNewUser({
   validator,
 }) {
   return async function postNewUser(req, res) {
-    // NOTE: I GUESS THE PASSWORD FIELD IS MISSING FROM THE CLIENT
-    const { name, phoneNumber, email, description, role, verified } = req.body
+    const { name, phoneNumber, email, password, description, role, verified } =
+      req.body
     if (
       !validator.isEmailValid(email) ||
       !validator.isPhoneValid(phoneNumber)
@@ -16,9 +16,10 @@ module.exports = function makePostNewUser({
       return
     }
     const user = await addUser({
-      name: sanitize(name),
+      displayName: sanitize(name),
       phoneNumber,
       email,
+      password,
       description,
       role,
       verified,
