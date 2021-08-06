@@ -4,7 +4,30 @@ class Store {
   constructor() {
     this.products = []
     this.orders = []
-    this.users = []
+    this.users = [
+      {
+        id: '74676743abcyhd',
+        displayName: 'جون سينا',
+        email: 'cena@gmail.com',
+        phoneNumber: '0555443322',
+        password: 'strong-password',
+        role: 'DIRECTOR',
+        isVerified: true,
+        description: 'نجم ​​وممثل أفلام جريء',
+        createdAt: Date.now(),
+      },
+      {
+        id: '74676743zyxus',
+        displayName: 'جون دو',
+        email: 'doe@gmail.com',
+        phoneNumber: '0555443322',
+        password: 'strong-password',
+        role: 'SEEKING_HELP',
+        isVerified: false,
+        description: 'يمكن أن يحدث خطأ ما مع هذا المستخدم',
+        createdAt: Date.now(),
+      },
+    ]
   }
 
   addUser(user) {

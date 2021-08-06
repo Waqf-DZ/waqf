@@ -5,41 +5,67 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="title is-3">كل المستخدمين</h1>
-<div class="table-container">
-  <table class="table is-fullwidth"  >
-    <thead>
-      <tr>
-        <th>الاسم</th>
-        <th>رقم الهاتف</th>
-        <th>البريد الالكتروني</th>
-        <th>الوظيفة </th>
-        <th>مفعل</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    
-    <tbody>
-      <tr>
-        <td>احمد</td>
-        <td>05254841</td>
-        <td>ahmed@gmail.com</td>
-        <td>محتاج</td>
-        <td>نعم</td>
-        <td><button class="button is-info is-light">تحديث</button></td>
-        <td><button class="button is-danger is-light">حذف</button></td>
-      </tr>
-      <tr>
-        <td>سبل الخير</td>
-        <td>0214258</td>
-        <td>souboullkheir@gmail.com</td>
-        <td>جمعية</td>
-        <td>نعم</td>
-        <td><button class="button is-info is-light">تحديث</button></td>
-        <td><button class="button is-danger is-light">حذف</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+  <h1 class="title is-4"> عرض المستخدمين</h1>
+
+  {% set users = data.users %}
+
+  {% if users.length %}
+    <section class="section">
+    <div class="table-container">
+      <table class="table is-fullwidth is-hoverable">
+        <thead>
+            <tr>
+              <th>اسم االمستخدم</th>
+              <th>البريد الإلكتروني</th>
+              <th>رقم الهاتف</th>
+              <th>دور المستخدم</th>
+              <th>حالة التحقق</th>
+              <th>وصف إضافي</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          {% for user in users %}
+          <tbody>
+            <tr>
+              <td>{{ user.displayName }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phoneNumber }}</td>
+
+              {# user role #}
+              {% if user.role == "ADMIN" %}
+                <td>مشرف</td>
+              {% elif user.role == "DIRECTOR" %}
+                <td>مدير</td>
+              {% elif user.role == "GIVING_HELP" %}
+                <td>مانح المساعدة</td>
+              {% else %}
+                <td>محتاج</td>
+              {% endif %}
+
+              {# user verification #}
+              {% if user.isVerified %}
+                <td>مفعل</td>
+              {% else %}
+                <td>غير مفعل</td>
+              {% endif %}
+              
+              <td>{{ user.description }}</td>
+              <td><button class="button is-info is-light">تحديث</button></td>
+              <td><button class="button is-danger is-light">حذف</button></td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+      </section>
+    {% else %}
+      <section class="section">
+        <figure class="image">
+          <img src="/img/nothingFound.gif">
+        </figure>
+      </section>
+    {% endif %}
+
 {% endblock %}
