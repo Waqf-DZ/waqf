@@ -3,6 +3,30 @@ const latency = 5
 class Store {
   constructor() {
     this.products = []
+    this.users = [
+      {
+        id: '74676743abcyhd',
+        displayName: 'جون سينا',
+        email: 'cena@gmail.com',
+        phoneNumber: '0555443322',
+        passwordHash: 'strong-passwordHash',
+        role: 'DIRECTOR',
+        isVerified: true,
+        description: 'نجم ​​وممثل أفلام جريء',
+        createdAt: Date.now(),
+      },
+      {
+        id: '74676743zyxus',
+        displayName: 'جون دو',
+        email: 'doe@gmail.com',
+        phoneNumber: '0555443322',
+        passwordHash: 'strong-passwordHash',
+        role: 'SEEKING_HELP',
+        isVerified: false,
+        description: 'يمكن أن يحدث خطأ ما مع هذا المستخدم',
+        createdAt: Date.now(),
+      },
+    ]
     this.orders = [
       {
         id: 'Bcbegf73hukUGifeg',
@@ -35,7 +59,6 @@ class Store {
         ownerId: 'JudnYdh263jdkf8h',
       },
     ]
-    this.users = []
   }
 
   addUser(user) {
