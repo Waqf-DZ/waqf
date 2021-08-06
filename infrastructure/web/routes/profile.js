@@ -1,28 +1,29 @@
 var express = require('express')
 var router = express.Router()
 
-const { getNewOrder } = require('../controllers/index')
+const {
+  getUserDashboard,
+  getUserSettings,
+  getUserNewOrder,
+  postUserNewOrder,
+  getUserNewProduct,
+  postUserNewProduct,
+  getUserOrders,
+  getUserProducts,
+  putUserSettings,
+} = require('../controllers/index')
 
-router.get('/', function (req, res) {
-  res.render('profile/index')
-})
+router.get('/', getUserDashboard)
 
-router.get('/settings', function (req, res) {
-  res.render('profile/settings')
-})
+router.get('/settings', getUserSettings)
+router.post('/settings', putUserSettings)
 
-router.get('/orders/new', getNewOrder)
+router.get('/orders', getUserOrders)
+router.get('/orders/new', getUserNewOrder)
+router.post('/orders/new', postUserNewOrder)
 
-router.get('/orders', function (req, res) {
-  res.render('profile/orders/index')
-})
-
-router.get('/products/new', function (req, res) {
-  res.render('profile/products/new')
-})
-
-router.get('/products', function (req, res) {
-  res.render('profile/products/index')
-})
+router.get('/products', getUserProducts)
+router.get('/products/new', getUserNewProduct)
+router.post('/products/new', postUserNewProduct)
 
 module.exports = router

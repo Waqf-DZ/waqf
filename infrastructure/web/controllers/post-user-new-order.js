@@ -1,12 +1,12 @@
-module.exports = function makePostNewOrder({
+module.exports = function makePostUserNewOrder({
   addOrder,
   flashMessages,
   sanitize,
 }) {
-  return async function postNewOrder(req, res) {
+  return async function postUserNewOrder(req, res) {
     try {
       const ownerId = 'hard-coded-id' // FIXME: remove this line and replace it with an actual ownerId
-      const prescription = 'hard-coded-file' // FIXME: remove this line and replace it with an actual file
+      const prescriptionUrl = 'hard-coded-file' // FIXME: remove this line and replace it with an actual file
       const {
         patientName,
         patientAge,
@@ -28,7 +28,7 @@ module.exports = function makePostNewOrder({
         oxygenRatio,
         hasChronicDesease,
         isCovid,
-        prescription,
+        prescriptionUrl,
       })
 
       if (newOrder) {
@@ -40,7 +40,8 @@ module.exports = function makePostNewOrder({
         res.redirect('/profile/orders/new')
       }
     } catch (err) {
-      res.render('/profile/orders/new', { errorMessages: err.message })
+      req.flash('error', err.message)
+      res.redirect('/profile/orders/new')
     }
   }
 }
