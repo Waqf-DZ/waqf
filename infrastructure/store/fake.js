@@ -6,22 +6,26 @@ class Store {
     this.orders = []
     this.users = [
       {
+        id: '86495X74hd',
         displayName: 'جون سينا',
         email: 'cena@gmail.com',
         phoneNumber: '0555443322',
-        password: 'strong-password',
-        role: 'جمعية',
+        passwordHash: 'strong-passwordHash',
+        role: 'DIRECTOR',
         isVerified: true,
         description: 'نجم ​​وممثل أفلام جريء',
+        createdAt: Date.now(),
       },
       {
+        id: '86495hdu&84j',
         displayName: 'جون دو',
         email: 'doe@gmail.com',
         phoneNumber: '0555443322',
-        password: 'strong-password',
-        role: 'محتاج',
+        passwordHash: 'strong-passwordHash',
+        role: 'SEEKING_HELP',
         isVerified: false,
         description: 'يمكن أن يحدث خطأ ما مع هذا المستخدم',
+        createdAt: Date.now(),
       },
     ]
   }
