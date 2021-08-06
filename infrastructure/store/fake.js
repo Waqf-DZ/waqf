@@ -2,7 +2,34 @@ const latency = 5
 
 class Store {
   constructor() {
-    this.products = []
+    this.products = [
+      {
+        name: 'منتج صيني',
+        type: 'مكثف محمول',
+        serial: '729893-TD',
+        imageUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+        description: 'بعض الوصف العشوائي',
+        isAvailable: true,
+        isBroken: false,
+        freeDays: 0,
+        dayPrice: 120,
+        createdAt: Date.now(),
+        ownerId: "xx129,
+      },
+      {
+        name: 'منتج صيني',
+        type: 'مكثف محمول',
+        serial: '223934-BS',
+        imageUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+        description: 'بعض الوصف العشوائي',
+        isAvailable: true,
+        isBroken: false,
+        freeDays: 0,
+        dayPrice: 175,
+        createdAt: Date.now(),
+        ownerId: "yy234",
+      },
+    ]
     this.users = [
       {
         id: '74676743abcyhd',
