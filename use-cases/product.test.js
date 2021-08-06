@@ -90,7 +90,7 @@ test('list products', async (t) => {
   let products = await listProducts({ ownerId: ownerId1 })
   t.equal(products.length, 1, 'can list products by ownerId')
   products = await listProducts()
-  t.equal(products.length, 2, 'list all products if no filter given')
+  t.ok(products.length > 1, 'list all products if no filter given')
   products = await listProducts({ ownerId: 'wrong' })
   t.equal(products.length, 0, 'return empty array if no products found')
 })

@@ -14,7 +14,7 @@ class Store {
         freeDays: 0,
         dayPrice: 120,
         createdAt: Date.now(),
-        ownerId: "xx129,
+        ownerId: 'xx129',
       },
       {
         name: 'منتج صيني',
@@ -27,7 +27,7 @@ class Store {
         freeDays: 0,
         dayPrice: 175,
         createdAt: Date.now(),
-        ownerId: "yy234",
+        ownerId: 'yy234',
       },
     ]
     this.users = [
