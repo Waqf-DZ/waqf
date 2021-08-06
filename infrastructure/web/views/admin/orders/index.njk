@@ -32,8 +32,16 @@
             <td>{{ order.patientName }}</td>
             <td>{{ order.patientAge }}</td>
             <td>{{ order.oxygenRatio }}</td>
-            <td>{{ order.hasChronicDesease }}</td>
-            <td>{{ order.isCovid }}</td>
+            {% if order.hasChronicDesease %}
+              <td>نعم</td>
+            {% else %}
+              <td>لا</td>
+            {% endif %}
+            {% if order.isCovid%}
+              <td>نعم</td>
+            {% else %}
+              <td>لا</td>
+            {% endif %}
             <td><a href="{{ order.prescriptionUrl }}">رابط الوصفة</a></td>
             <td><button class="button is-info is-light">تحديث</button></td>
             <td><button class="button is-danger is-light">حذف</button></td>
@@ -43,11 +51,9 @@
       </table>
     </div>
   {% else %}
-    <div class="">
-      <figure class="image">
-        {# <img src="/img/noFile.gif"> #}
-      </figure>
-    </div>
+    <figure class="image">
+      <img src="/img/nothingFound.gif">
+    </figure>
   {% endif %}
   </section>
 
