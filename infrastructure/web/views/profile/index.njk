@@ -5,5 +5,122 @@
 {% endblock %}
 
 {% block content %}
-الحساب الشخصي
+<div class="columns is-mobile">
+  <div class="column" id="menu-content">
+
+    <section class="section has-background-grey-lighter mt-3" id="machine">
+      <p class="title has-text-centered is-hidden-tablet">الاجهزة</p>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد الأجهزة الكلية
+              <span class="icon">
+                <ion-icon name="fitness-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">55</p>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد الأجهزة المتوفرة
+              <span class="icon">
+                <ion-icon name="bag-add-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">88</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد الأجهزة المستعارة
+              <span class="icon">
+                <ion-icon name="bag-remove-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">35</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :الكمية
+              <span class="icon">
+                <ion-icon name="podium-outline"></ion-icon>
+              </span>
+            </p>
+            <progress class="progress is-medium" value="60" max="100">
+              60%
+            </progress>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section has-background-grey-lighter mt-3" id="order">
+      <p class="title has-text-centered is-hidden-tablet">الطلبات</p>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد الطلبات الكلية
+              <span class="icon">
+                <ion-icon name="receipt-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">55</p>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد الطلبات الجديدة
+              <span class="icon">
+                <ion-icon name="add-circle-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">88</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              :عدد الطلبات الملبية
+              <span class="icon">
+                <ion-icon name="remove-circle-outline"></ion-icon>
+              </span>
+            </p>
+            <p class="subtitle is-1 has-text-centered">35</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <p class="title is-6 has-text-centered">
+              : التقدم في تليبة الطلبات
+              <span class="icon">
+                <ion-icon name="podium-outline"></ion-icon>
+              </span>
+            </p>
+            <progress class="progress is-medium" value="60" max="100">
+              60%
+            </progress>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
 {% endblock %}
