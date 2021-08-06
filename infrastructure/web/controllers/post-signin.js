@@ -1,19 +1,26 @@
-module.exports = function makePostSignIn({ signInUser, flashMessages }) {
-  return async function _(req, res) {
-    const { email, password } = req.body
-    const user = await signInUser({
-      email,
-      password,
-    })
-    if (!user) {
-      req.flash('error', flashMessages.WRONG_CREDENTIALS)
-      res.redirect('/signup')
-      return
-    }
-    if (user.isGivingHelp()) {
-      res.redirect('/profile/products/new')
-    } else if (user.isSeekingHelp()) {
-      res.redirect('/profile/orders/new')
-    }
+module.exports = function makePostSignIn({ flashMessages, passport }) {
+  return async function (req, res, next) {
+    passport.authenticate('local', function (err, user) {
+      if (err) {
+        return next(err)
+      }
+      if (!user) {
+        req.flash('error', flashMessages.WRONG_CREDENTIALS)
+        return res.redirect('/signin')
+      }
+      req.logIn(user, function (err) {
+        if (err) {
+          return next(err)
+        }
+        if (user.isAdmin && user.isDirector) {
+          console.log('redirect to /admin')
+          return res.redirect('/admin')
+        } else {
+          console.log('redirect to /profile')
+          return res.redirect('/profile')
+        }
+      })
+      console.log({ reqUser: req.user })
+    })(req, res, next)
   }
 }

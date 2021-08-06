@@ -26,12 +26,16 @@ module.exports = function makePostUser({
       res.redirect('/signup')
       return
     }
-    if (user.isGivingHelp()) {
-      req.flash('success', flashMessages.SIGNUP_SUCCESSFUL_SEEKER)
-      res.redirect('/profile/products/new')
-    } else if (user.isSeekingHelp()) {
-      req.flash('success', flashMessages.SIGNUP_SUCCESSFUL_GIVER)
-      res.redirect('/profile/orders/new')
+    if (user.isGivingHelp) {
+      req.logIn(user, () => {
+        req.flash('success', flashMessages.SIGNUP_SUCCESSFUL_SEEKER)
+        res.redirect('/profile/products/new')
+      })
+    } else if (user.isSeekingHelp) {
+      req.logIn(user, () => {
+        req.flash('success', flashMessages.SIGNUP_SUCCESSFUL_GIVER)
+        res.redirect('/profile/orders/new')
+      })
     }
   }
 }

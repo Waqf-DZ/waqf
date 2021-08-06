@@ -1,3 +1,4 @@
+const { makeUser } = require('../../domain/index')
 const latency = 5
 
 class Store {
@@ -33,13 +34,13 @@ class Store {
     this.users = [
       {
         id: '74676743abcyhd',
-        displayName: 'جون سينا',
-        email: 'cena@gmail.com',
+        displayName: 'مدير المنصة',
+        email: 'admin@gmail.com',
         phoneNumber: '0555443322',
-        passwordHash: 'strong-passwordHash',
-        role: 'DIRECTOR',
+        passwordHash: 'password',
+        role: 'ADMIN',
         isVerified: true,
-        description: 'نجم ​​وممثل أفلام جريء',
+        description: 'مدير منصة وقف',
         createdAt: Date.now(),
       },
       {
@@ -47,7 +48,7 @@ class Store {
         displayName: 'جون دو',
         email: 'doe@gmail.com',
         phoneNumber: '0555443322',
-        passwordHash: 'strong-passwordHash',
+        passwordHash: 'password',
         role: 'SEEKING_HELP',
         isVerified: false,
         description: 'يمكن أن يحدث خطأ ما مع هذا المستخدم',
@@ -102,10 +103,10 @@ class Store {
       setTimeout(() => {
         if (id) {
           const user = this.users.find((user) => user.id == id)
-          resolve(user)
+          resolve(user ? makeUser(user) : null)
         } else if (email) {
           const user = this.users.find((user) => user.email == email)
-          resolve(user)
+          resolve(user ? makeUser(user) : null)
         } else {
           throw new Error('getUser require id or email')
         }
@@ -141,8 +142,9 @@ class Store {
 
   listUsers() {
     return new Promise((resolve) => {
+      const users = this.users.map((u) => makeUser(u))
       setTimeout(() => {
-        resolve(this.users)
+        resolve(users)
       }, latency)
     })
   }

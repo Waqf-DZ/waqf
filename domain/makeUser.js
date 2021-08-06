@@ -53,15 +53,21 @@ module.exports = function buildMakeUser({ getUniqueId }) {
       get createdAt() {
         return createdAt
       },
+      get isAdmin() {
+        return role === USER_ROLES.admin
+      },
+      get isDirector() {
+        return role === USER_ROLES.admin
+      },
+      get isGivingHelp() {
+        return role === USER_ROLES.helpGiver
+      },
+      get isSeekingHelp() {
+        return role === USER_ROLES.helpSeeker
+      },
 
       verify() {
         isVerified = true
-      },
-      isGivingHelp() {
-        return role === USER_ROLES.helpGiver
-      },
-      isSeekingHelp() {
-        return role === USER_ROLES.helpSeeker
       },
     })
   }
