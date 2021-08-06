@@ -3,7 +3,24 @@ const latency = 5
 class Store {
   constructor() {
     this.products = []
-    this.orders = []
+    this.orders = [
+      {
+        patientName: 'محمد عبد الله',
+        patientAge: 50,
+        oxygenRatio: 95,
+        hasChronicDesease: 'لا',
+        isCovid: 'نعم',
+        prescriptionUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+      },
+      {
+        patientName: 'سامي محمد',
+        patientAge: 65,
+        oxygenRatio: 92,
+        hasChronicDesease: 'نعم',
+        isCovid: 'نعم',
+        prescriptionUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+      },
+    ]
     this.users = []
   }
 
