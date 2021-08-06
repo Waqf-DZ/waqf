@@ -9,9 +9,8 @@
   <h1 class="title is-4"> عرض المستخدمين</h1>
 
   {% set users = data.users %}
-
+  <section class="section">
   {% if users.length %}
-    <section class="section">
     <div class="table-container">
       <table class="table is-fullwidth is-hoverable">
         <thead>
@@ -26,8 +25,8 @@
               <th></th>
             </tr>
           </thead>
-          {% for user in users %}
           <tbody>
+          {% for user in users %}
             <tr>
               <td>{{ user.displayName }}</td>
               <td>{{ user.email }}</td>
@@ -42,17 +41,15 @@
               <td><button class="button is-info is-light">تحديث</button></td>
               <td><button class="button is-danger is-light">حذف</button></td>
             </tr>
-          </tbody>
           {% endfor %}
+          </tbody>
         </table>
       </div>
-      </section>
     {% else %}
-      <section class="section">
-        <figure class="image">
-          <img src="/img/nothingFound.gif">
-        </figure>
-      </section>
+      <figure class="image">
+        <img src="/img/nothingFound.gif">
+      </figure>
     {% endif %}
+    </section>
 
 {% endblock %}
