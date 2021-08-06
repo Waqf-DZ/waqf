@@ -13,6 +13,8 @@ class Store {
         isBroken: false,
         freeDays: 0,
         dayPrice: 120,
+        createdAt: Date.now(),
+        ownerId: "xx129,
       },
       {
         name: 'منتج صيني',
@@ -24,10 +26,66 @@ class Store {
         isBroken: false,
         freeDays: 0,
         dayPrice: 175,
+        createdAt: Date.now(),
+        ownerId: "yy234",
       },
     ]
-    this.orders = []
-    this.users = []
+    this.users = [
+      {
+        id: '74676743abcyhd',
+        displayName: 'جون سينا',
+        email: 'cena@gmail.com',
+        phoneNumber: '0555443322',
+        passwordHash: 'strong-passwordHash',
+        role: 'DIRECTOR',
+        isVerified: true,
+        description: 'نجم ​​وممثل أفلام جريء',
+        createdAt: Date.now(),
+      },
+      {
+        id: '74676743zyxus',
+        displayName: 'جون دو',
+        email: 'doe@gmail.com',
+        phoneNumber: '0555443322',
+        passwordHash: 'strong-passwordHash',
+        role: 'SEEKING_HELP',
+        isVerified: false,
+        description: 'يمكن أن يحدث خطأ ما مع هذا المستخدم',
+        createdAt: Date.now(),
+      },
+    ]
+    this.orders = [
+      {
+        id: 'Bcbegf73hukUGifeg',
+        patientName: 'محمد عبد الله',
+        patientAge: 50,
+        oxygenRatio: 95,
+        hasChronicDesease: false,
+        isCovid: true,
+        prescriptionUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+        createdAt: Date.now(),
+        status: 'PENDING',
+        acceptedAt: null,
+        completedAt: null,
+        assignedProductId: '',
+        ownerId: 'h84k8djfieSNcjdd',
+      },
+      {
+        id: 'Dn8HD338ccuhDJH8df',
+        patientName: 'سامي محمد',
+        patientAge: 65,
+        oxygenRatio: 92,
+        hasChronicDesease: true,
+        isCovid: true,
+        prescriptionUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+        createdAt: Date.now(),
+        status: 'PENDING',
+        acceptedAt: null,
+        completedAt: null,
+        assignedProductId: '',
+        ownerId: 'JudnYdh263jdkf8h',
+      },
+    ]
   }
 
   addUser(user) {
