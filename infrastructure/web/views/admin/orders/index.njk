@@ -5,56 +5,56 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="title is-3">كل الطلبات</h1>
-<div class="table-container">
-  <table class="table is-fullwidth">
-    <thead>
-      <tr>
-        <th>إسم المريض</th>
-        <th>عمر المريض</th>
-        <th>تركيز الأكسجين</th>
-        <th>هل لدى المريض أمراض مزمنة؟</th>
-        <th>هل المريض مصاب بفيروس كورونا؟</th>
-        <th>الوصفة الطبية</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-  
-    <tbody>
-      <tr>
-        <td>محمد عبد الله</td>
-        <td>50</td>
-        <td>95</td>
-        <td>لا</td>
-        <td>نعم</td>
-        <td><a href="#">رابط الوصفة</a></td>
-        <td><button class="button is-info is-light">تحديث</button></td>
-        <td><button class="button is-danger is-light">حذف</button></td>
-      </tr>
 
-      <tr>
-        <td>محمد عبد الله</td>
-        <td>50</td>
-        <td>95</td>
-        <td>لا</td>
-        <td>نعم</td>
-        <td><a href="#">رابط الوصفة</a></td>
-        <td><button class="button is-info is-light">تحديث</button></td>
-        <td><button class="button is-danger is-light">حذف</button></td>
-      </tr>
+  <h1 class="title is-4">كل الطلبات</h1>
 
-      <tr>
-        <td>محمد عبد الله</td>
-        <td>50</td>
-        <td>95</td>
-        <td>لا</td>
-        <td>نعم</td>
-        <td><a href="#">رابط الوصفة</a></td>
-        <td><button class="button is-info is-light">تحديث</button></td>
-        <td><button class="button is-danger is-light">حذف</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  {% set orders = data.orders %}
+
+  <section class="section">
+  {% if orders.length %}
+    <div class="table-container">
+      <table class="table is-fullwidth">
+        <thead>
+          <tr>
+            <th>إسم المريض</th>
+            <th>عمر المريض</th>
+            <th>تركيز الأكسجين</th>
+            <th>هل لدى المريض أمراض مزمنة؟</th>
+            <th>هل المريض مصاب بفيروس كورونا؟</th>
+            <th>الوصفة الطبية</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+          <tr>
+            <td>{{ order.patientName }}</td>
+            <td>{{ order.patientAge }}</td>
+            <td>{{ order.oxygenRatio }}</td>
+            {% if order.hasChronicDesease %}
+              <td>نعم</td>
+            {% else %}
+              <td>لا</td>
+            {% endif %}
+            {% if order.isCovid%}
+              <td>نعم</td>
+            {% else %}
+              <td>لا</td>
+            {% endif %}
+            <td><a href="{{ order.prescriptionUrl }}">رابط الوصفة</a></td>
+            <td><button class="button is-info is-light">تحديث</button></td>
+            <td><button class="button is-danger is-light">حذف</button></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <figure class="image">
+      <img src="/img/nothingFound.gif">
+    </figure>
+  {% endif %}
+  </section>
+
 {% endblock %}
