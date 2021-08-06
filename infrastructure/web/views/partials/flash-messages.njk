@@ -1,19 +1,21 @@
-<div class="columns">
-  <div class="column is-8 is-offset-2">
-    {# success flash messages #}
-    {% for message in successMessages %}
-      <div class="notification is-success">
-        <button class="delete"></button>
-        {{ message }}
-      </div>
-    {% endfor %}
+{% if successMessages.length or errorMessages.length %}
+  <div class="columns flash-messages">
+    <div class="column is-8 is-offset-2">
+      {# success flash messages #}
+      {% for message in successMessages %}
+        <div class="notification is-success">
+          <button class="delete"></button>
+          {{ message }}
+        </div>
+      {% endfor %}
 
-    {# error flash messages #}
-    {% for message in errorMessages %}
-      <div class="notification is-danger">
-        <button class="delete"></button>
-        {{ message }}
-      </div>
-    {% endfor %}
+      {# error flash messages #}
+      {% for message in errorMessages %}
+        <div class="notification is-danger">
+          <button class="delete"></button>
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
   </div>
-</div>
+{% endif %}
