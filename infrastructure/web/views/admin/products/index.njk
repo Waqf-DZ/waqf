@@ -5,31 +5,22 @@
 {% endblock %}
 
 {% block content %}
-
-  <h1 class="title is-4">كل الأوقاف</h1>
+  <h1 class="title is-3">كل الأوقاف</h1>
 
   {% set products = data.products %}
 
-  <section class="section">
   {% if products.length %}
-    <div class="table-container">
-      <table class="table is-fullwidth">
-        <thead>
-          <tr>
-            <th>إسم الوقف</th>
-            <th>نوع الوقف</th>
-            <th>الرقم التسلسلي</th>
-            <th>وصف الوقف</th>
-            <th>التوفر</th>
-            <th>مكسور</th>
-            <th>أيام مجانية</th>
-            <th>السعر اليومي</th>
-            <th>رابط الصورة</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
+  <div class="table-container">
+    <table class="table is-fullwidth">
+      <thead>
+      <th>الإسم</th>
+      <th>النوع</th>
+      <th>الرقم</th>
+      <th>الوصف</th>
+      <th>الصورة</th>
+      <th></th>
+      </thead>
+      <tbody>
         {% for product in products %}
           <tr>
             <td>{{ product.name }}</td>
@@ -53,14 +44,43 @@
             <td><button class="button is-danger is-light">حذف</button></td>
           </tr>
         {% endfor %}
-        </tbody>
-      </table>
-    </div>
+      </tbody>
+    </table>
+  </div>
+
+  <nav class="pagination" role="navigation" aria-label="pagination">
+    <a class="pagination-previous">الصفحة السابقة</a>
+    <a class="pagination-next">الصفحة التالية</a>
+    <ul class="pagination-list">
+      <li>
+        <a class="pagination-link" aria-label="Goto page 1">1</a>
+      </li>
+      <li>
+        <span class="pagination-ellipsis">&hellip;</span>
+      </li>
+      <li>
+        <a class="pagination-link" aria-label="Goto page 45">45</a>
+      </li>
+      <li>
+        <a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a>
+      </li>
+      <li>
+        <a class="pagination-link" aria-label="Goto page 47">47</a>
+      </li>
+      <li>
+        <span class="pagination-ellipsis">&hellip;</span>
+      </li>
+      <li>
+        <a class="pagination-link" aria-label="Goto page 86">86</a>
+      </li>
+    </ul>
+  </nav>
   {% else %}
-    <figure class="image">
-      <img src="/img/nothingFound.gif">
-    </figure>
+    <section class="section">
+      <figure class="image">
+        <img src="/img/nothingFound.gif">
+      </figure>
+    </section>
   {% endif %}
-  </section>
 
 {% endblock %}

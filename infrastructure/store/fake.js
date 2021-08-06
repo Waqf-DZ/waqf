@@ -48,7 +48,24 @@ class Store {
         } else if (email) {
           const user = this.users.find((user) => user.getEmail() == email)
           resolve(user)
+        } else {
+          throw new Error('getUser require id or email')
         }
+      }, latency)
+    })
+  }
+
+  updateUser({ updatedUser, email, name, phoneNumber }) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        updatedUser.name = name
+        updatedUser.phoneNumber = phoneNumber
+        this.users.forEach((user) => {
+          if (user.email == email) {
+            user = updatedUser
+          }
+        })
+        resolve(updatedUser)
       }, latency)
     })
   }
