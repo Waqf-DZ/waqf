@@ -5,5 +5,54 @@
 {% endblock %}
 
 {% block content %}
-المستخدمون
+
+  <h1 class="title is-4"> عرض المستخدمين</h1>
+
+  {% set users = data.users %}
+
+  {% if users.length %}
+    <section class="section">
+    <div class="table-container">
+      <table class="table is-fullwidth is-hoverable">
+        <thead>
+            <tr>
+              <th>اسم االمستخدم</th>
+              <th>البريد الإلكتروني</th>
+              <th>رقم الهاتف</th>
+              <th>دور المستخدم</th>
+              <th>حالة التحقق</th>
+              <th>وصف إضافي</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          {% for user in users %}
+          <tbody>
+            <tr>
+              <td>{{ user.displayName }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phoneNumber }}</td>
+              <td>{{ user.role }}</td>
+              {% if user.isVerified %}
+                <td>مفعل</td>
+              {% else %}
+                <td>غير مفعل</td>
+              {% endif %}
+              <td>{{ user.description }}</td>
+              <td><button class="button is-info is-light">تحديث</button></td>
+              <td><button class="button is-danger is-light">حذف</button></td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </div>
+      </section>
+    {% else %}
+      <section class="section">
+        <figure class="image">
+          <img src="/img/nothingFound.gif">
+        </figure>
+      </section>
+    {% endif %}
+
 {% endblock %}

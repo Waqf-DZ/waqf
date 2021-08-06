@@ -1,5 +1,6 @@
 var express = require('express')
 var router = express.Router()
+const { getUsers } = require('../controllers/index')
 
 router.get('/', function (req, res) {
   res.render('admin/index')
@@ -22,7 +23,7 @@ router.get('/products/new', function (req, res) {
 })
 
 router.get('/users', function (req, res) {
-  res.render('admin/users/index')
+  getUsers(req, res)
 })
 
 router.get('/users/new', function (req, res) {
