@@ -1,6 +1,8 @@
 var express = require('express')
 var router = express.Router()
 
+const { getProducts } = require('../controllers/index')
+
 router.get('/', function (req, res) {
   res.render('admin/index')
 })
@@ -14,7 +16,7 @@ router.get('/orders/new', function (req, res) {
 })
 
 router.get('/products', function (req, res) {
-  res.render('admin/products/index')
+  getProducts(req, res)
 })
 
 router.get('/products/new', function (req, res) {

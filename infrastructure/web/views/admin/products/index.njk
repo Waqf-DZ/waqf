@@ -5,5 +5,62 @@
 {% endblock %}
 
 {% block content %}
-كل الأوقاف
+
+  <h1 class="title is-4">كل الأوقاف</h1>
+
+  {% set products = data.products %}
+
+  <section class="section">
+  {% if products.length %}
+    <div class="table-container">
+      <table class="table is-fullwidth">
+        <thead>
+          <tr>
+            <th>إسم الوقف</th>
+            <th>نوع الوقف</th>
+            <th>الرقم التسلسلي</th>
+            <th>وصف الوقف</th>
+            <th>التوفر</th>
+            <th>مكسور</th>
+            <th>أيام مجانية</th>
+            <th>السعر اليومي</th>
+            <th>رابط الصورة</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+          <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.type }}</td>
+            <td>{{ product.serial }}</td>
+            <td>{{ product.description }}</td>
+            {% if product.isAvailable %}
+              <td>نعم</td>
+            {% else %}
+              <td>لا</td>
+            {% endif %}
+            {% if product.isBroken %}
+              <td>نعم</td>
+            {% else %}
+              <td>لا</td>
+            {% endif %}
+            <td>{{ product.freeDays }}</td>
+            <td>{{ product.dayPrice }}</td>
+            <td><a href="{{ product.imageUrl }}">رابط الصورة</a></td>
+            <td><button class="button is-info is-light">تحديث</button></td>
+            <td><button class="button is-danger is-light">حذف</button></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <figure class="image">
+      <img src="/img/nothingFound.gif">
+    </figure>
+  {% endif %}
+  </section>
+
 {% endblock %}
