@@ -9,8 +9,9 @@
   <h1 class="title is-4"> عرض المستخدمين</h1>
 
   {% set users = data.users %}
-  <section class="section">
+
   {% if users.length %}
+    <section class="section">
     <div class="table-container">
       <table class="table is-fullwidth is-hoverable">
         <thead>
@@ -25,31 +26,46 @@
               <th></th>
             </tr>
           </thead>
-          <tbody>
           {% for user in users %}
+          <tbody>
             <tr>
               <td>{{ user.displayName }}</td>
               <td>{{ user.email }}</td>
               <td>{{ user.phoneNumber }}</td>
-              <td>{{ user.role }}</td>
+
+              {# user role #}
+              {% if user.role == "ADMIN" %}
+                <td>مشرف</td>
+              {% elif user.role == "DIRECTOR" %}
+                <td>مدير</td>
+              {% elif user.role == "GIVING_HELP" %}
+                <td>مانح المساعدة</td>
+              {% else %}
+                <td>محتاج</td>
+              {% endif %}
+
+              {# user verification #}
               {% if user.isVerified %}
                 <td>مفعل</td>
               {% else %}
                 <td>غير مفعل</td>
               {% endif %}
+              
               <td>{{ user.description }}</td>
               <td><button class="button is-info is-light">تحديث</button></td>
               <td><button class="button is-danger is-light">حذف</button></td>
             </tr>
-          {% endfor %}
           </tbody>
+          {% endfor %}
         </table>
       </div>
+      </section>
     {% else %}
-      <figure class="image">
-        <img src="/img/nothingFound.gif">
-      </figure>
+      <section class="section">
+        <figure class="image">
+          <img src="/img/nothingFound.gif">
+        </figure>
+      </section>
     {% endif %}
-    </section>
 
 {% endblock %}

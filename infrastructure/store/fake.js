@@ -6,7 +6,7 @@ class Store {
     this.orders = []
     this.users = [
       {
-        id: '86495X74hd',
+        id: '74676743abcyhd',
         displayName: 'جون سينا',
         email: 'cena@gmail.com',
         phoneNumber: '0555443322',
@@ -17,7 +17,7 @@ class Store {
         createdAt: Date.now(),
       },
       {
-        id: '86495hdu&84j',
+        id: '74676743zyxus',
         displayName: 'جون دو',
         email: 'doe@gmail.com',
         phoneNumber: '0555443322',
@@ -48,7 +48,24 @@ class Store {
         } else if (email) {
           const user = this.users.find((user) => user.getEmail() == email)
           resolve(user)
+        } else {
+          throw new Error('getUser require id or email')
         }
+      }, latency)
+    })
+  }
+
+  updateUser({ updatedUser, email, name, phoneNumber }) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        updatedUser.name = name
+        updatedUser.phoneNumber = phoneNumber
+        this.users.forEach((user) => {
+          if (user.email == email) {
+            user = updatedUser
+          }
+        })
+        resolve(updatedUser)
       }, latency)
     })
   }
