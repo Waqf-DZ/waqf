@@ -5,60 +5,62 @@
 {% endblock %}
 
 {% block content %}
-<h1>إعدادت الحساب</h1>
+<h1 class="title is-3">إعدادت الحساب</h1>
 
-<section class="section">
-  <form action="/profile/settings" method="POST">
-    <div class="field">
-      <label class="label">البريد الإلكتروني</label>
-      <div class="control">
-        <input
-          class="input"
-          type="email"
-          name="email"
-          value="example@gmai.com"
-          readonly
-        >
+<div class="columns">
+  <div class="column is-8 is-offset-2">
+    <form action="/profile/settings" method="POST">
+      <div class="field">
+        <label class="label">البريد الإلكتروني</label>
+        <div class="control">
+          <input
+            class="input"
+            type="email"
+            name="email"
+            value="example@gmai.com"
+            readonly
+          >
+        </div>
       </div>
-    </div>
 
-    <div class="field">
-      <label class="label">دور المستخدم</label>
-      <div class="control">
-        <input class="input" type="text" name="role" value="محتاج" readonly>
+      <div class="field">
+        <label class="label">دور المستخدم</label>
+        <div class="control">
+          <input class="input" type="text" name="role" value="محتاج" readonly>
+        </div>
       </div>
-    </div>
 
-    <div class="field">
-      <label class="label">حالة التحقق</label>
-      <div class="control">
-        <input class="input" type="text" name="role" value="مفعل" readonly>
+      <div class="field">
+        <label class="label">حالة التحقق</label>
+        <div class="control">
+          <input class="input" type="text" name="role" value="مفعل" readonly>
+        </div>
       </div>
-    </div>
 
-    <div class="field">
-      <label class="label">الإسم</label>
-      <div class="control">
-        <input class="input" type="text" name="name" value="احمد موسى">
+      <div class="field">
+        <label class="label">الإسم</label>
+        <div class="control">
+          <input class="input" type="text" name="name" value="احمد موسى">
+        </div>
       </div>
-    </div>
 
-    <div class="field">
-      <label class="label">رقم الهاتف</label>
-      <div class="control">
-        <input class="input" type="text" name="phoneNumber" value="05.55.44.33.22">
+      <div class="field">
+        <label class="label">رقم الهاتف</label>
+        <div class="control">
+          <input class="input" type="text" name="phoneNumber" value="05.55.44.33.22">
+        </div>
       </div>
-    </div>
 
-    <div class="field is-grouped">
-      <div class="control">
-        <button class="button is-primary" type="submit">تحديث</button>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-primary" type="submit">تحديث</button>
+        </div>
+        <div class="control">
+          <button class="button" type="reset">إلغاء</button>
+        </div>
       </div>
-      <div class="control">
-        <button class="button" type="reset">إلغاء</button>
-      </div>
-    </div>
-  </form>
-</section>
+    </form>
+  </div>
+</div>
 
 {% endblock %}
