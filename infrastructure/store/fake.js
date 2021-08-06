@@ -5,20 +5,34 @@ class Store {
     this.products = []
     this.orders = [
       {
+        id: 'Bcbegf73hukUGifeg',
         patientName: 'محمد عبد الله',
         patientAge: 50,
         oxygenRatio: 95,
         hasChronicDesease: false,
         isCovid: true,
         prescriptionUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+        createdAt: Date.now(),
+        status: 'PENDING',
+        acceptedAt: null,
+        completedAt: null,
+        assignedProductId: '',
+        ownerId: 'h84k8djfieSNcjdd',
       },
       {
+        id: 'Dn8HD338ccuhDJH8df',
         patientName: 'سامي محمد',
         patientAge: 65,
         oxygenRatio: 92,
         hasChronicDesease: true,
         isCovid: true,
         prescriptionUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+        createdAt: Date.now(),
+        status: 'PENDING',
+        acceptedAt: null,
+        completedAt: null,
+        assignedProductId: '',
+        ownerId: 'JudnYdh263jdkf8h',
       },
     ]
     this.users = []
