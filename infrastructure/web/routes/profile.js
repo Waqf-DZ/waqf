@@ -33,6 +33,6 @@ router.post('/orders/new', upload.single('prescription'), postUserNewOrder)
 
 router.get('/products', getUserProducts)
 router.get('/products/new', getUserNewProduct)
-router.post('/products/new', postUserNewProduct)
+router.post('/products/new', upload.single('productImage'), postUserNewProduct)
 
 module.exports = router

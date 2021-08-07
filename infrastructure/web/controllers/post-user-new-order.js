@@ -13,7 +13,8 @@ module.exports = function makePostUserNewOrder({
         hasChronicDesease,
         isCovid,
       } = req.body
-      const prescriptionUrl = req.file.path
+      const imageFile = req.file
+      const prescriptionUrl = imageFile ? imageFile.path : undefined
 
       // make an early check for the rquired fileds
       if (!ownerId || !patientAge || !patientAge || !oxygenRatio) {
