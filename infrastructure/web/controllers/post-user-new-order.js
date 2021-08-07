@@ -5,7 +5,7 @@ module.exports = function makePostUserNewOrder({
 }) {
   return async function postUserNewOrder(req, res) {
     try {
-      const ownerId = 'hard-coded-id' // FIXME: remove this line and replace it with an actual ownerId
+      const ownerId = req.user.id
       const {
         patientName,
         patientAge,

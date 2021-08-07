@@ -5,7 +5,7 @@ module.exports = function makePostUserNewProduct({
 }) {
   return async function postUserNewProduct(req, res) {
     try {
-      const ownerId = 'hard-coded-id' // FIXME: remove this line and replace it with an actual ownerId
+      const ownerId = req.user.id
       const { productName, type, serial, description } = req.body
       const imageFile = req.file
       const imageUrl = imageFile ? imageFile.path : undefined

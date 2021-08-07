@@ -3,8 +3,10 @@ module.exports = function makeGetUserDashboard({ listProducts, listOrders }) {
     try {
       // NOTE: THIS CODE IS DUPLICATED IN THE getAdminDashboard controller
 
-      // products statistics //////////////////////////////////////////
-      const productsList = await listProducts()
+      const ownerId = req.user.id
+
+      // products statistics
+      const productsList = await listProducts({ ownerId })
       const availableDevices = productsList.filter(
         (product) => product.isAvailable
       )
@@ -15,8 +17,8 @@ module.exports = function makeGetUserDashboard({ listProducts, listOrders }) {
         (availableDevices.length / productsList.length) * 100
       )
 
-      // orders statistics ////////////////////////////////////////////
-      const ordersList = await listOrders()
+      // orders statistics
+      const ordersList = await listOrders({ ownerId })
       const totalNewOrders = ordersList.filter((order) => {
         const hour = 60000 * 60
         const twoDays = hour * 48
@@ -27,7 +29,6 @@ module.exports = function makeGetUserDashboard({ listProducts, listOrders }) {
         (order) => order.status == 'COMPLETED'
       )
 
-      // FIXME: statisticsData will be replaced with real stats later
       let statisticsData = {
         products: {
           totalDevices: productsList.length,
