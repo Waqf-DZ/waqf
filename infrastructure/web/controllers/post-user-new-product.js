@@ -6,12 +6,15 @@ module.exports = function makePostUserNewProduct({
   return async function postUserNewProduct(req, res) {
     try {
       const ownerId = 'hard-coded-id' // FIXME: remove this line and replace it with an actual ownerId
-      const { productName, type, serial, imageUrl, description } = req.body
+      const { productName, type, serial, description } = req.body
+      const imageFile = req.file
+      const imageUrl = imageFile ? imageFile.path : undefined
 
       // make an early check for the rquired fileds
       if (!ownerId || !productName || !type || !serial) {
         req.flash('error', flashMessages.INPUTS_NOT_VALID)
-        res.redirect('/profile/orders/new')
+        res.redirect('/profile/products/new')
+        return
       }
 
       const newProduct = await addProduct({

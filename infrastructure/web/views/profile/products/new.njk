@@ -10,7 +10,7 @@
 
   <div class="columns">
     <div class="column is-8 is-offset-2">
-      <form action="/profile/products/new" method="POST">
+      <form action="/profile/products/new" method="POST" enctype="multipart/form-data">
         <div class="field">
           <label class="label">إسم الوقف</label>
           <div class="control has-icons-right">
@@ -46,7 +46,7 @@
         <div class="field">
           <label class="label">صورة الوقف</label>
           <div class="control has-icons-right">
-            <input class="input" type="file" name="imageUrl">
+            <input class="input" type="file" name="productImage">
             <span class="icon is-small is-right">
               <ion-icon name="person-outline"></ion-icon>
             </span>
