@@ -13,7 +13,7 @@
     <div>
       {% include '../partials/header.njk' %}
 
-      <div class="columns my-0 has-background-light">
+      <div class="columns m-0 has-background-light">
         {# side bar column #}
         <div class="column is-3 has-background-grey-light has-text-light">
           <aside class="menu">
@@ -39,7 +39,7 @@
         </div>
 
         {# main content column #}
-        <main class="column container">
+        <main class="column is-9">
           {% include '../partials/flash-messages.njk' %}
           {% block content %} {% endblock %}
         </main>
