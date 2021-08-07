@@ -5,6 +5,12 @@
 {% endblock %}
 
 {% block content %}
+
+{% set stats = data.statisticsData %}
+{% set users = stats.users %}
+{% set products = stats.products %}
+{% set orders = stats.orders %}
+
 <div class="columns is-mobile">
   <div class="column" id="menu-content">
 
@@ -14,12 +20,12 @@
         <div class="column">
           <div class="box">
             <p class="title is-6 has-text-centered">
-              :عدد الجمعيات المسجلة
+              :عدد المسجلين
               <span class="icon">
                 <ion-icon name="add-outline"></ion-icon>
               </span>
             </p>
-            <p class="subtitle is-1 has-text-centered">22</p>
+            <p class="subtitle is-1 has-text-centered">{{ users.totalUsers }}</p>
           </div>
         </div>
       </div>
@@ -31,12 +37,12 @@
         <div class="column">
           <div class="box">
             <p class="title is-6 has-text-centered">
-              :عدد المسجلين
+              :عدد الجمعيات المسجلة
               <span class="icon">
                 <ion-icon name="add-outline"></ion-icon>
               </span>
             </p>
-            <p class="subtitle is-1 has-text-centered">88</p>
+            <p class="subtitle is-1 has-text-centered">{{ users.registeredAssociations }}</p>
           </div>
         </div>
         <div class="column">
@@ -47,7 +53,7 @@
                 <ion-icon name="checkmark-outline"></ion-icon>
               </span>
             </p>
-            <p class="subtitle is-1 has-text-centered">35</p>
+            <p class="subtitle is-1 has-text-centered">{{ users.totalBeneficiaries }}</p>
           </div>
         </div>
       </div>
@@ -60,7 +66,7 @@
                 <ion-icon name="radio-button-off-outline"></ion-icon>
               </span>
             </p>
-            <p class="subtitle is-1 has-text-centered">10</p>
+            <p class="subtitle is-1 has-text-centered">{{ users.pendingUsers }}</p>
           </div>
         </div>
       </div>
@@ -73,8 +79,7 @@
                 <ion-icon name="checkbox-outline"></ion-icon>
               </span>
             </p>
-            <progress class="progress is-medium" value="60" max="100">
-              60%
+            <progress class="progress is-medium" value="{{ users.missionProgress }}" max="100">
             </progress>
           </div>
         </div>
@@ -92,7 +97,7 @@
                 <ion-icon name="fitness-outline"></ion-icon>
               </span>
             </p>
-            <p class="subtitle is-1 has-text-centered">55</p>
+            <p class="subtitle is-1 has-text-centered">{{ products.totalDevices }}</p>
           </div>
         </div>
       </div>
@@ -105,7 +110,7 @@
                 <ion-icon name="bag-add-outline"></ion-icon>
               </span>
             </p>
-            <p class="subtitle is-1 has-text-centered">88</p>
+            <p class="subtitle is-1 has-text-centered">{{ products.availableDevices }}</p>
           </div>
         </div>
         <div class="column">
@@ -116,7 +121,7 @@
                 <ion-icon name="bag-remove-outline"></ion-icon>
               </span>
             </p>
-            <p class="subtitle is-1 has-text-centered">35</p>
+            <p class="subtitle is-1 has-text-centered">{{ products.borrowedDevices }}</p>
           </div>
         </div>
       </div>
@@ -130,8 +135,8 @@
                 <ion-icon name="podium-outline"></ion-icon>
               </span>
             </p>
-            <progress class="progress is-medium" value="60" max="100">
-              60%
+            {{products.availability}}
+            <progress class="progress is-medium" value="{{ products.availability }}" max="100">
             </progress>
           </div>
         </div>
@@ -149,7 +154,7 @@
                 <ion-icon name="receipt-outline"></ion-icon>
               </span>
             </p>
-            <p class="subtitle is-1 has-text-centered">55</p>
+            <p class="subtitle is-1 has-text-centered">{{ orders.totalOrders }}</p>
           </div>
         </div>
       </div>
@@ -162,7 +167,7 @@
                 <ion-icon name="add-circle-outline"></ion-icon>
               </span>
             </p>
-            <p class="subtitle is-1 has-text-centered">88</p>
+            <p class="subtitle is-1 has-text-centered">{{ orders.totalNewOrders }}</p>
           </div>
         </div>
         <div class="column">
@@ -173,7 +178,7 @@
                 <ion-icon name="remove-circle-outline"></ion-icon>
               </span>
             </p>
-            <p class="subtitle is-1 has-text-centered">35</p>
+            <p class="subtitle is-1 has-text-centered">{{ orders.fulfilledOrders }}</p>
           </div>
         </div>
       </div>
@@ -187,8 +192,10 @@
                 <ion-icon name="podium-outline"></ion-icon>
               </span>
             </p>
-            <progress class="progress is-medium" value="60" max="100">
-              60%
+            <div class="buttons">
+              <span class="tag is-primary is-light is-medium"> متوسط ​​الطلبات يومي : <span class="tag is-primary is-light is-medium"> {{ orders.averageOrders }} طلبات </span></span>
+            </div>
+            <progress class="progress is-medium" value="{{ orders.averageOrders }}" max="100">
             </progress>
           </div>
         </div>
