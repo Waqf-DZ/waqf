@@ -5,7 +5,8 @@ class Store {
   constructor() {
     this.products = [
       {
-        name: 'منتج صيني',
+        id: 'product_1',
+        name: 'منتج 1',
         type: 'مكثف محمول',
         serial: '729893-TD',
         imageUrl: 'https://m.media-amazon.com/images/I/514xi17BAGL._SX679_.jpg',
@@ -15,10 +16,11 @@ class Store {
         freeDays: 0,
         dayPrice: 120,
         createdAt: Date.now(),
-        ownerId: 'xx129',
+        ownerId: 'org_1',
       },
       {
-        name: 'منتج صيني',
+        id: 'product_2',
+        name: 'منتج 2',
         type: 'مكثف محمول',
         serial: '223934-BS',
         imageUrl:
@@ -29,10 +31,11 @@ class Store {
         freeDays: 0,
         dayPrice: 175,
         createdAt: Date.now(),
-        ownerId: 'xx129',
+        ownerId: 'org_1',
       },
       {
-        name: 'منتج صيني',
+        id: 'product_3',
+        name: 'منتج 3',
         type: 'مكثف محمول',
         serial: '9988634-HQ',
         imageUrl:
@@ -43,7 +46,7 @@ class Store {
         freeDays: 3,
         dayPrice: 140,
         createdAt: Date.now(),
-        ownerId: 'yy873',
+        ownerId: 'org_2',
       },
     ]
     this.users = [
@@ -59,20 +62,53 @@ class Store {
         createdAt: Date.now(),
       },
       {
-        id: '74676743zyxus',
-        displayName: 'جون دو',
-        email: 'doe@gmail.com',
+        id: 'user_1',
+        displayName: 'محتاج 1',
+        email: 'user1@gmail.com',
         phoneNumber: '0555443322',
         passwordHash: 'password',
         role: 'SEEKING_HELP',
-        isVerified: false,
-        description: 'يمكن أن يحدث خطأ ما مع هذا المستخدم',
+        isVerified: true,
+        description: 'وصف مختصر 1',
+        createdAt: Date.now(),
+      },
+      {
+        id: 'user_2',
+        displayName: 'محتاج 2',
+        email: 'user2@gmail.com',
+        phoneNumber: '0565541253',
+        passwordHash: 'password',
+        role: 'SEEKING_HELP',
+        isVerified: true,
+        description: 'وصف مختصر 2',
+        createdAt: Date.now(),
+      },
+      {
+        id: 'org_1',
+        displayName: 'جمعية 1',
+        email: 'org1@gmail.com',
+        phoneNumber: '0666443322',
+        passwordHash: 'password',
+        role: 'GIVING_HELP',
+        isVerified: true,
+        description: 'جمعية مهتمة بالإغاثة ومساعدة المحتاجين',
+        createdAt: Date.now(),
+      },
+      {
+        id: 'org_2',
+        displayName: 'جمعية 2',
+        email: 'org2@gmail.com',
+        phoneNumber: '0666893322',
+        passwordHash: 'password',
+        role: 'GIVING_HELP',
+        isVerified: true,
+        description: 'جمعية مهتمة بتقديم المساعدات الطبية للمرضى',
         createdAt: Date.now(),
       },
     ]
     this.orders = [
       {
-        id: 'Bcbegf73hukUGifeg',
+        id: 'order_1',
         patientName: 'محمد عبد الله',
         patientAge: 50,
         oxygenRatio: 95,
@@ -84,10 +120,10 @@ class Store {
         acceptedAt: null,
         completedAt: null,
         assignedProductId: '',
-        ownerId: 'h84k8djfieSNcjdd',
+        ownerId: 'user_1',
       },
       {
-        id: 'Dn8HD338ccuhDJH8df',
+        id: 'order_2',
         patientName: 'سامي محمد',
         patientAge: 65,
         oxygenRatio: 92,
@@ -99,7 +135,7 @@ class Store {
         acceptedAt: null,
         completedAt: null,
         assignedProductId: '',
-        ownerId: 'JudnYdh263jdkf8h',
+        ownerId: 'user_2',
       },
     ]
   }
