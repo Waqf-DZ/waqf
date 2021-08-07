@@ -6,7 +6,6 @@ module.exports = function makePostUserNewOrder({
   return async function postUserNewOrder(req, res) {
     try {
       const ownerId = 'hard-coded-id' // FIXME: remove this line and replace it with an actual ownerId
-      const prescriptionUrl = 'hard-coded-file' // FIXME: remove this line and replace it with an actual file
       const {
         patientName,
         patientAge,
@@ -14,11 +13,13 @@ module.exports = function makePostUserNewOrder({
         hasChronicDesease,
         isCovid,
       } = req.body
+      const prescriptionUrl = req.file.path
 
       // make an early check for the rquired fileds
       if (!ownerId || !patientAge || !patientAge || !oxygenRatio) {
         req.flash('error', flashMessages.INPUTS_NOT_VALID)
         res.redirect('/profile/orders/new')
+        return
       }
 
       const newOrder = await addOrder({

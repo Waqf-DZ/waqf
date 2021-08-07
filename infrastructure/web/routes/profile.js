@@ -1,5 +1,14 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
+// middleware for parsing and saving image files
+const multer = require('multer')
+const storage = multer.diskStorage({
+  destination: 'infrastructure/web/uploads/',
+  filename: function (req, file, callback) {
+    callback(null, file.originalname)
+  },
+})
+const upload = multer({ storage: storage })
 
 const {
   getUserDashboard,
@@ -20,7 +29,7 @@ router.post('/settings', putUserSettings)
 
 router.get('/orders', getUserOrders)
 router.get('/orders/new', getUserNewOrder)
-router.post('/orders/new', postUserNewOrder)
+router.post('/orders/new', upload.single('prescriptionUrl'), postUserNewOrder)
 
 router.get('/products', getUserProducts)
 router.get('/products/new', getUserNewProduct)
