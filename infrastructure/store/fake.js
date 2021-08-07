@@ -38,7 +38,7 @@ class Store {
         imageUrl:
           'https://ae01.alicdn.com/kf/H45940412467d4ee3b8aa44e05d5b73afd/2-10LMP-10L-liter-portable-home-oxygen-concentrator-price-medical-machine-for-sales.jpg_Q90.jpg_.webp',
         description: 'بعض الوصف العشوائي',
-        isAvailable: true,
+        isAvailable: false,
         isBroken: true,
         freeDays: 3,
         dayPrice: 140,
