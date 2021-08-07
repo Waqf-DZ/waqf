@@ -30,38 +30,30 @@
 	        حول المشروع
 	      </a>
 
-		  <a href="/contact" class="navbar-item">
+		  	<a href="/contact" class="navbar-item">
 	        تواصل معنا
 	      </a>
-
-	      <div class="navbar-item has-dropdown is-hoverable">
-	        <a class="navbar-link">
-	          قائمة منسدلة
-	        </a>
-
-	        <div class="navbar-dropdown">
-	          <a class="navbar-item">
-	            إتصل بنا
-	          </a>
-	          <a class="navbar-item">
-	            ساهم معنا
-	          </a>
-	          <a class="navbar-item">
-	            تبرع
-	          </a>
-	          <hr class="navbar-divider">
-	          <a class="navbar-item">
-	            إنضم لفريق العمل
-	          </a>
-	        </div>
-	      </div>
 	    </div>
 
 			{% if authenticatedUser %}
 				<div class="navbar-end">
-					<div class="navbar-item">
-						<div class="buttons">
-							<a href="/signout" class="button is-light">
+					<div class="navbar-item has-dropdown is-hoverable">
+						<a class="navbar-link">
+							{{ authenticatedUser.displayName }}
+						</a>
+
+						<div class="navbar-dropdown">
+							{% if authenticatedUser.isAdmin %}
+								<a class="navbar-item" href="/admin">
+									إدارة الموقع
+								</a>
+							{% else %}
+								<a class="navbar-item" href="/profile">
+									الحساب
+								</a>
+							{% endif %}
+							<hr class="navbar-divider">
+							<a class="navbar-item" href="/signout">
 								خروج
 							</a>
 						</div>
