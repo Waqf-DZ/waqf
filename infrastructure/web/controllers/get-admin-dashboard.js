@@ -58,7 +58,7 @@ module.exports = function makeGetAdminDashboard({
         orders: {
           totalOrders: ordersList.length,
           totalNewOrders: totalNewOrders.length,
-          fulfilledOrders: fulfilledOrders.length || 0,
+          fulfilledOrders: fulfilledOrders.length,
           averageOrders: 9,
         },
       }
