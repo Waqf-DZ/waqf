@@ -36,7 +36,7 @@ const makePutUserSettings = require('./put-user-settings')
 const makeGetUserProducts = require('./get-user-products')
 
 const getAdminDashboard = makeGetAdminDashboard()
-const getUserDashboard = makeGetUserDashboard()
+const getUserDashboard = makeGetUserDashboard({ listProducts, listOrders })
 const getSignUp = makeGetSignUp()
 const postSignup = makePostSignup({
   addUser,
