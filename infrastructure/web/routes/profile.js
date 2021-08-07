@@ -29,7 +29,7 @@ router.post('/settings', putUserSettings)
 
 router.get('/orders', getUserOrders)
 router.get('/orders/new', getUserNewOrder)
-router.post('/orders/new', upload.single('prescriptionUrl'), postUserNewOrder)
+router.post('/orders/new', upload.single('prescription'), postUserNewOrder)
 
 router.get('/products', getUserProducts)
 router.get('/products/new', getUserNewProduct)
