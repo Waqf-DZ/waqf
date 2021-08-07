@@ -17,6 +17,7 @@ const {
 const makeGetAdminDashboard = require('./get-admin-dashboard')
 const makeGetUserDashboard = require('./get-user-dashboard')
 const makeGetSignUp = require('./get-signup')
+const makeGetSignout = require('./get-signout')
 const makePostSignup = require('./post-signup')
 const makePostSignin = require('./post-signin')
 const makeGetNewUser = require('./get-new-user')
@@ -43,6 +44,7 @@ const getAdminDashboard = makeGetAdminDashboard({
 })
 
 const getSignUp = makeGetSignUp()
+const getSignout = makeGetSignout()
 const postSignup = makePostSignup({
   addUser,
   flashMessages,
@@ -88,6 +90,7 @@ module.exports = {
   getAdminDashboard,
   getUserDashboard,
   getSignUp,
+  getSignout,
   postSignup,
   postSignin,
   getNewUser,

@@ -20,7 +20,6 @@ module.exports = function makePostSignIn({ flashMessages, passport }) {
           return res.redirect('/profile')
         }
       })
-      console.log({ reqUser: req.user })
     })(req, res, next)
   }
 }

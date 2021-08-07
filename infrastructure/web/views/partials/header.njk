@@ -57,18 +57,30 @@
 	      </div>
 	    </div>
 
-	    <div class="navbar-end">
-	      <div class="navbar-item">
-	        <div class="buttons">
-	          <a href="/signup" class="button is-primary">
-	            <strong>تسجيل حساب جديد</strong>
-	          </a>
-	          <a href="/signin" class="button is-light">
-	            تسجيل الدخول
-	          </a>
-	        </div>
-	      </div>
-	    </div>
+			{% if authenticatedUser %}
+				<div class="navbar-end">
+					<div class="navbar-item">
+						<div class="buttons">
+							<a href="/signout" class="button is-light">
+								خروج
+							</a>
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<div class="navbar-end">
+					<div class="navbar-item">
+						<div class="buttons">
+							<a href="/signup" class="button is-primary">
+								تسجيل حساب جديد
+							</a>
+							<a href="/signin" class="button is-light">
+								تسجيل الدخول
+							</a>
+						</div>
+					</div>
+				</div>
+			{% endif %}
 	  </div>
 	</nav>
 </header>
