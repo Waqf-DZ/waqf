@@ -7,6 +7,7 @@ const {
   addUser,
   addOrder,
   addProduct,
+  getProduct,
   listUsers,
   listProducts,
   signInUser,
@@ -37,6 +38,7 @@ const makePostUserNewProduct = require('./post-user-new-product')
 const makeGetAdminProducts = require('./get-admin-products')
 const makePutUserSettings = require('./put-user-settings')
 const makeGetUserProducts = require('./get-user-products')
+const makeGetUserProduct = require('./get-user-product')
 
 const makeUpdateUserProduct = require('./update-user-product')
 const makeUpdateUserOrder = require('./update-user-order')
@@ -90,6 +92,7 @@ const postUserNewProduct = makePostUserNewProduct({
 })
 const getAdminProducts = makeGetAdminProducts({ listProducts })
 const getUserProducts = makeGetUserProducts({ listProducts })
+const getUserProduct = makeGetUserProduct({ getProduct })
 
 const updateUserProduct = makeUpdateUserProduct({
   updateProduct,
@@ -120,6 +123,7 @@ module.exports = {
   getUserNewProduct,
   postUserNewProduct,
   getAdminProducts,
+  getUserProduct,
   getUserProducts,
   updateUserProduct,
   updateUserOrder,

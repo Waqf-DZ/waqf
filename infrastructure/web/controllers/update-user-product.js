@@ -4,18 +4,18 @@ module.exports = function makeUpdateUserProduct({
 }) {
   return async function updateUserProduct(req, res) {
     try {
-      const productId = req.query.id
-      const userParams = req.body
-      const imageFile = req.file
-      if (imageFile) {
-        userParams.productImage = imageFile.path
+      const productInfo = {
+        id: req.params.id,
+        productImage: req.file ? req.file.path : null,
+        ...req.body,
       }
-
-      const updatedProduct = await updateProduct({ productId, userParams })
-
+      const updatedProduct = await updateProduct(productInfo)
       if (updatedProduct) {
         req.flash('success', flashMessages.PROFILE_UPDATE_SUCCESS)
-        res.redirect('products')
+        res.redirect('/profile/products')
+      } else {
+        req.flash('error', flashMessages.PROFILE_UPDATE_FAILURE)
+        res.redirect('/profile/products')
       }
     } catch (err) {
       res.render('profile/products/index', { errorMessages: [err.message] })

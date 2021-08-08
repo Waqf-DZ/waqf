@@ -222,20 +222,12 @@ class Store {
     })
   }
 
-  updateProduct({ productId, userParams }) {
+  updateProduct(product) {
     return new Promise((resolve) => {
       setTimeout(async () => {
-        let updatedProduct = await this.getProduct(productId)
-        for (let entry in userParams) {
-          updatedProduct[entry] = userParams[entry]
-        }
-
-        this.products.forEach((product) => {
-          if (product.id == productId) {
-            product = updatedProduct
-          }
-        })
-        resolve(updatedProduct)
+        const index = this.products.findIndex((o) => o.id == product.id)
+        this.products.splice(index, 1, product)
+        resolve(product)
       }, latency)
     })
   }
