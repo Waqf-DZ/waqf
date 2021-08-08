@@ -5,7 +5,7 @@ module.exports = function makeGetUserProducts({ listProducts }) {
       const productsList = await listProducts({ ownerId })
       res.render('profile/products/index', { data: { products: productsList } })
     } catch (err) {
-      res.render('profile/products/index', { errorMessages: err.message })
+      res.render('profile/products/index', { errorMessages: [err.message] })
     }
   }
 }
