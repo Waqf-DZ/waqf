@@ -218,6 +218,24 @@ class Store {
     })
   }
 
+  updateProduct({ productId, userParams }) {
+    return new Promise((resolve) => {
+      setTimeout(async () => {
+        let updatedProduct = await this.getProduct(productId)
+        for (let entry in userParams) {
+          updatedProduct[entry] = userParams[entry]
+        }
+
+        this.products.forEach((product) => {
+          if (product.id == productId) {
+            product = updatedProduct
+          }
+        })
+        resolve(updatedProduct)
+      }, latency)
+    })
+  }
+
   deleteProduct(productId) {
     return new Promise((resolve) => {
       setTimeout(() => {

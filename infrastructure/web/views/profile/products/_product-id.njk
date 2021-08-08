@@ -1,0 +1,97 @@
+{% extends '../../layouts/profile.njk' %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="title is-4">تحديث الطلب</h1>
+
+  {% set product = data.product %}
+
+  <div class="columns">
+    <div class="column is-8 is-offset-2">
+
+      <form action="/profile/orders?id={{ order.id }}" method="POST" enctype="multipart/form-data">
+        <div class="field">
+          <label class="label">إسم المريض</label>
+          <div class="control has-icons-right">
+            <input class="input" type="text" name="patientName" value="{{ order.patientName }}">
+            <span class="icon is-small is-right">
+              <ion-icon name="person-outline"></ion-icon>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">عمر المريض</label>
+          <div class="control has-icons-right">
+            <input class="input" type="number" name="patientAge" value="{{ order.patientAge }}">
+            <span class="icon is-small is-right">
+            <ion-icon name="calendar-outline"></ion-icon>
+          </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">تركيز الأكسجين</label>
+          <div class="control has-icons-right has-icons-right">
+            <input class="input" type="number" name="oxygenRatio" value="{{ order.oxygenRatio }}">
+            <span class="icon is-small is-right">
+            <ion-icon name="heart-outline"></ion-icon>
+          </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">لديه مرض مزمن</label>
+          <div class="control">
+            <label class="radio">
+              <input type="radio" name="hasChronicDesease" value="true">
+              نعم
+            </label>
+            <label class="radio">
+              <input type="radio" name="hasChronicDesease" value="false">
+              لا
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">مصاب بفيروس كورونا</label>
+          <div class="control">
+            <label class="radio">
+              <input type="radio" name="isCovid" value="true">
+              نعم
+            </label>
+            <label class="radio">
+              <input type="radio" name="isCovid" value="false">
+              لا
+            </label>
+          </div>
+        </div>
+        
+        <div class="field">
+          <label class="label">الوصفة الطبية</label>
+          <div class="control has-icons-right">
+            <input class="input" type="file" name="prescription">
+            <span class="icon is-small is-right">
+              <ion-icon name="image-outline"></ion-icon>
+            </span>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" type="submit">تحديث</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light" type="reset"><a href="/profile/orders">إلغاء</a></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

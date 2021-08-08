@@ -16,6 +16,8 @@ const makeListProducts = require('./list-products')
 const makeListUsers = require('./list-users')
 const makeUpdateUser = require('./update-user')
 
+const makeUpdateProduct = require('./update-product')
+
 const addUser = makeAddUser({ usersDB: store, hashPassword })
 const getUser = makeGetUser({ usersDB: store })
 const signInUser = makeSignInUser({ getUser, hashPassword })
@@ -25,6 +27,8 @@ const listOrders = makeListOrders({ ordersDB: store })
 const listProducts = makeListProducts({ productsDB: store })
 const listUsers = makeListUsers({ usersDB: store })
 const updateUser = makeUpdateUser({ usersDB: store })
+
+const updateProduct = makeUpdateProduct({ usersDB: store })
 
 module.exports = Object.freeze({
   addUser,
@@ -36,4 +40,5 @@ module.exports = Object.freeze({
   addProduct,
   listProducts,
   updateUser,
+  updateProduct,
 })
