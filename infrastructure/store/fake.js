@@ -1,6 +1,5 @@
+const { makeUser } = require('../../domain/index')
 const latency = 5
-
-/* eslint-disable */
 
 class Store {
   constructor() {
@@ -171,7 +170,7 @@ class Store {
   updateUser({ email, name, phoneNumber }) {
     return new Promise((resolve) => {
       setTimeout(async () => {
-        updatedUser = await this.getUser({ email })
+        const updatedUser = await this.getUser({ email })
         updatedUser.name = name
         updatedUser.phoneNumber = phoneNumber
 
