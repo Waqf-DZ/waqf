@@ -21,6 +21,7 @@ const {
   getUserProducts,
   putUserSettings,
   updateUserProduct,
+  updateUserOrder,
 } = require('../controllers/index')
 
 router.get('/', getUserDashboard)
@@ -29,8 +30,10 @@ router.get('/settings', getUserSettings)
 router.post('/settings', putUserSettings)
 
 router.get('/orders', getUserOrders)
+router.get('/orders/:id', getUserOrders)
 router.get('/orders/new', getUserNewOrder)
 router.post('/orders/new', upload.single('prescription'), postUserNewOrder)
+router.post('/orders', upload.single('prescription'), updateUserOrder)
 
 router.get('/products', getUserProducts)
 router.get('/products/new', getUserNewProduct)

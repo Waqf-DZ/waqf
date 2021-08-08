@@ -13,6 +13,7 @@ const {
   listOrders,
   updateUser,
   updateProduct,
+  updateOrder,
 } = require('../../../use-cases/index')
 
 const makeGetAdminDashboard = require('./get-admin-dashboard')
@@ -38,6 +39,7 @@ const makePutUserSettings = require('./put-user-settings')
 const makeGetUserProducts = require('./get-user-products')
 
 const makeUpdateUserProduct = require('./update-user-product')
+const makeUpdateUserOrder = require('./update-user-order')
 
 const getUserDashboard = makeGetUserDashboard({ listProducts, listOrders })
 const getAdminDashboard = makeGetAdminDashboard({
@@ -94,6 +96,11 @@ const updateUserProduct = makeUpdateUserProduct({
   flashMessages,
 })
 
+const updateUserOrder = makeUpdateUserOrder({
+  updateOrder,
+  flashMessages,
+})
+
 module.exports = {
   getAdminDashboard,
   getUserDashboard,
@@ -115,4 +122,5 @@ module.exports = {
   getAdminProducts,
   getUserProducts,
   updateUserProduct,
+  updateUserOrder,
 }
