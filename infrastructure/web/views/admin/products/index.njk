@@ -5,13 +5,13 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="title is-3">كل الأوقاف</h1>
+  <h1 class="title is-4">كل الأوقاف</h1>
 
   {% set products = data.products %}
 
   {% if products.length %}
   <div class="table-container">
-    <table class="table is-fullwidth">
+    <table class="table is-fullwidth is-hoverable">
       <thead>
       <th>الإسم</th>
       <th>النوع</th>
@@ -45,8 +45,8 @@
             <td>{{ product.freeDays }}</td>
             <td>{{ product.dayPrice }}</td>
             <td><a href="{{ product.imageUrl }}">رابط الصورة</a></td>
-            <td><button class="button is-info is-light">تحديث</button></td>
-            <td><button class="button is-danger is-light">حذف</button></td>
+            <td><a href="/admin/products/{{ product.id }}" class="button is-info is-light">تحديث</a></td>
+            <td><a class="button is-danger is-light">حذف</a></td>
           </tr>
         {% endfor %}
       </tbody>

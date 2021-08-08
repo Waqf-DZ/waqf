@@ -13,7 +13,7 @@
   <section class="section">
   {% if orders.length %}
     <div class="table-container">
-      <table class="table is-fullwidth">
+      <table class="table is-fullwidth is-hoverable">
         <thead>
           <tr>
             <th>إسم المريض</th>
@@ -43,8 +43,8 @@
               <td>لا</td>
             {% endif %}
             <td><a href="{{ order.prescriptionUrl }}">رابط الوصفة</a></td>
-            <td><button class="button is-info is-light">تحديث</button></td>
-            <td><button class="button is-danger is-light">حذف</button></td>
+            <td><a href="/admin/orders/{{ order.id }}" class="button is-info is-light">تحديث</a></td>
+            <td><a class="button is-danger is-light">حذف</a></td>
           </tr>
         {% endfor %}
         </tbody>

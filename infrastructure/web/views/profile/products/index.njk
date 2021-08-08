@@ -6,19 +6,20 @@
 
 {% block content %}
 
-  <h1 class="title is-3">كل الأوقاف</h1>
+  <h1 class="title is-4">كل الأوقاف</h1>
 
   {% set products = data.products %}
   
   {% if products.length %}
   <div class="table-container">
-    <table class="table is-fullwidth">
+    <table class="table is-fullwidth is-hoverable">
       <thead>
         <th>الإسم</th>
         <th>النوع</th>
         <th>الرقم</th>
         <th>الوصف</th>
         <th>الصورة</th>
+        <th></th>
         <th></th>
       </thead>
       <tbody>
@@ -29,22 +30,12 @@
             <td>{{ product.serial }}</td>
             <td>{{ product.description }}</td>
             <td>
-              <figure class="image is-128x128">
+              <figure class="image is-64x64">
                 <img src="{{ product.imageUrl }}">
               </figure>
             </td>
-            <td>
-              <a class="button is-medium">
-              <span class="icon is-small is-right" style="color: red;">
-                <ion-icon name="trash-outline"></ion-icon>
-              </span>
-              </a>
-              <a class="button is-medium" href="/profile/products/{{ product.id }}">
-              <span class="icon is-small is-right">
-                <ion-icon name="create-outline"></ion-icon>
-              </span>
-              </a>
-            </td>
+            <td><a href="/profile/products/{{ product.id }}" class="button is-info is-light">تحديث</a></td>
+            <td><a class="button is-danger is-light">حذف</a></td>
           </tr>
         {% endfor %}
       </tbody>
