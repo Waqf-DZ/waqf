@@ -27,6 +27,6 @@ async function getUserProductById(req, res, listProducts, productId) {
 
     res.render('profile/products/_product-id', { data: { product } })
   } catch (err) {
-    res.render('profile/products/', { errorMessages: err.message })
+    res.render('profile/products/', { errorMessages: [err.message] })
   }
 }

@@ -66,8 +66,7 @@ module.exports = function makeGetAdminDashboard({
       const successMessages = req.flash('success')
       res.render('admin/index', { data: { successMessages, statisticsData } })
     } catch (err) {
-      const errorMessages = req.flash('error')
-      res.render('admin/index', { errorMessages })
+      res.render('admin/index', { errorMessages: [err.message] })
     }
   }
 }

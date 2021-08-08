@@ -20,7 +20,7 @@ module.exports = function makePutUserSettings({
         res.redirect('/profile/settings')
       }
     } catch (err) {
-      res.render('profile/settings', { errorMessages: err.message })
+      res.render('profile/settings', { errorMessages: [err.message] })
     }
   }
 }

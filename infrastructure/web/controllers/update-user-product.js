@@ -7,9 +7,6 @@ module.exports = function makeUpdateUserProduct({
       const productId = req.query.id
       const userParams = req.body
       const imageFile = req.file
-
-      console.log('COOL THINGS ARE GONNA HAPPEN')
-
       if (imageFile) {
         userParams.productImage = imageFile.path
       }
@@ -17,11 +14,11 @@ module.exports = function makeUpdateUserProduct({
       const updatedProduct = await updateProduct({ productId, userParams })
 
       if (updatedProduct) {
-        req.flash('success', flashMessages.XXX)
-        res.redirect('orders')
+        req.flash('success', flashMessages.PROFILE_UPDATE_SUCCESS)
+        res.redirect('products')
       }
     } catch (err) {
-      res.render('profile/orders/index', { errorMessages: [err.message] })
+      res.render('profile/products/index', { errorMessages: [err.message] })
     }
   }
 }
