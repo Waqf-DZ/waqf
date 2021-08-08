@@ -1,14 +1,7 @@
 const express = require('express')
 const router = express.Router()
-// middleware for parsing and saving image files
-const multer = require('multer')
-const storage = multer.diskStorage({
-  destination: 'infrastructure/web/uploads/',
-  filename: function (req, file, callback) {
-    callback(null, file.originalname)
-  },
-})
-const upload = multer({ storage: storage })
+
+const upload = require('../middlewares/upload')
 
 const {
   getUserDashboard,
