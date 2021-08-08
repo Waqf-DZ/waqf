@@ -20,6 +20,7 @@ const {
   getUserOrders,
   getUserProducts,
   putUserSettings,
+  updateUserProduct,
   updateUserOrder,
 } = require('../controllers/index')
 
@@ -37,6 +38,8 @@ router.post('/orders/new', upload.single('prescription'), postUserNewOrder)
 
 router.get('/products', getUserProducts)
 router.get('/products/new', getUserNewProduct)
+router.get('/products/:id', getUserProducts)
 router.post('/products/new', upload.single('productImage'), postUserNewProduct)
+router.post('/products', upload.single('productImage'), updateUserProduct)
 
 module.exports = router

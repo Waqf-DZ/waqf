@@ -35,7 +35,7 @@ module.exports = function makePostUserNewProduct({
         res.redirect('/profile/products/new')
       }
     } catch (err) {
-      res.render('profile/products/new', { errorMessages: err.message })
+      res.render('profile/products/new', { errorMessages: [err.message] })
     }
   }
 }
