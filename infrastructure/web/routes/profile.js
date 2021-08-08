@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 
 const upload = require('../middlewares/upload')
+const isHelpGiver = require('../middlewares/is-help-giver-authenticated')
+const isHelpSeeker = require('../middlewares/is-help-seeker-authenticated')
 
 const {
   getUserDashboard,
@@ -19,21 +21,43 @@ const {
   updateUserOrder,
 } = require('../controllers/index')
 
+// user general routes
 router.get('/', getUserDashboard)
-
 router.get('/settings', getUserSettings)
 router.post('/settings', putUserSettings)
 
-router.get('/orders/new', getUserNewOrder)
-router.post('/orders/new', upload.single('prescription'), postUserNewOrder)
+// user orders routes
+router.get('/orders/new', isHelpSeeker, getUserNewOrder)
 router.get('/orders', getUserOrders)
 router.get('/orders/:id', getUserOrder)
-router.post('/orders/:id', upload.single('prescription'), updateUserOrder)
+router.post(
+  '/orders/new',
+  isHelpSeeker,
+  upload.single('prescription'),
+  postUserNewOrder
+)
+router.post(
+  '/orders/:id',
+  isHelpSeeker,
+  upload.single('prescription'),
+  updateUserOrder
+)
 
-router.get('/products/new', getUserNewProduct)
-router.post('/products/new', upload.single('productImage'), postUserNewProduct)
-router.get('/products', getUserProducts)
-router.get('/products/:id', getUserProduct)
-router.post('/products/:id', upload.single('productImage'), updateUserProduct)
+// user products routes
+router.get('/products/new', isHelpGiver, getUserNewProduct)
+router.get('/products', isHelpGiver, getUserProducts)
+router.get('/products/:id', isHelpGiver, getUserProduct)
+router.post(
+  '/products/new',
+  isHelpGiver,
+  upload.single('productImage'),
+  postUserNewProduct
+)
+router.post(
+  '/products/:id',
+  isHelpGiver,
+  upload.single('productImage'),
+  updateUserProduct
+)
 
 module.exports = router
