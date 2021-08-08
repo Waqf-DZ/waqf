@@ -1,21 +1,19 @@
 module.exports = function makeUpdateUserOrder({ updateOrder, flashMessages }) {
   return async function updateUserOrder(req, res) {
-    try {
-      const orderId = req.query.id
-      const userParams = req.body
-      const imageFile = req.file
-      if (imageFile) {
-        userParams.prescriptionUrl = imageFile.path
-      }
+    const orderInfo = {
+      id: req.params.id,
+      ownerId: req.user.id,
+      ...req.body,
+    }
+    if (req.file) {
+      orderInfo.prescriptionUrl = req.file.path
+    }
 
-      const updatedOrder = await updateOrder({ orderId, userParams })
+    const updatedOrder = await updateOrder(orderInfo)
 
-      if (updatedOrder) {
-        req.flash('success', flashMessages.ORDER_UPDATE_SUCCESS)
-        res.redirect('orders')
-      }
-    } catch (err) {
-      res.render('profile/orders/index', { errorMessages: [err.message] })
+    if (updatedOrder) {
+      req.flash('success', flashMessages.ORDER_UPDATE_SUCCESS)
+      res.redirect('/profile/orders')
     }
   }
 }

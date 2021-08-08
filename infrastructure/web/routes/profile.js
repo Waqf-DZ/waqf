@@ -30,9 +30,10 @@ router.post('/settings', putUserSettings)
 
 router.get('/orders', getUserOrders)
 router.get('/orders/:id', getUserOrders)
+router.post('/orders/:id', upload.single('prescription'), updateUserOrder)
+
 router.get('/orders/new', getUserNewOrder)
 router.post('/orders/new', upload.single('prescription'), postUserNewOrder)
-router.post('/orders', upload.single('prescription'), updateUserOrder)
 
 router.get('/products', getUserProducts)
 router.get('/products/new', getUserNewProduct)

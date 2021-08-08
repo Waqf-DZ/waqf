@@ -1,9 +1,11 @@
-module.exports = function makeUpdateOrder({ usersDB }) {
-  return async function updateOrder({ orderId, userParams }) {
-    const updatedOrder = await usersDB.updateOrder({
-      orderId,
-      userParams,
-    })
+const { makeOrder } = require('../domain/index')
+
+module.exports = function makeUpdateOrder({ ordersDB, getOrder }) {
+  return async function updateOrder(orderInfo) {
+    const oldOrder = await getOrder(orderInfo.id)
+    const order = makeOrder(Object.assign({}, oldOrder, orderInfo))
+    console.log({ order })
+    const updatedOrder = await ordersDB.updateOrder(order)
     return updatedOrder
   }
 }
