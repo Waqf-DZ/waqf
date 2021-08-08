@@ -26,6 +26,6 @@ async function getUserOrderById(req, res, listOrders, orderId) {
 
     res.render('profile/orders/_order-id', { data: { order } })
   } catch (err) {
-    res.render('profile/orders/', { errorMessages: err.message })
+    res.render('profile/orders/', { errorMessages: [err.message] })
   }
 }
