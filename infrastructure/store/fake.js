@@ -1,5 +1,6 @@
-const { makeUser } = require('../../domain/index')
 const latency = 5
+
+/* eslint-disable */
 
 class Store {
   constructor() {
@@ -114,7 +115,8 @@ class Store {
         oxygenRatio: 95,
         hasChronicDesease: false,
         isCovid: true,
-        prescriptionUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+        prescriptionUrl:
+          'https://previews.123rf.com/images/jes2ufoto/jes2ufoto1407/jes2ufoto140700223/30278466-prescription-note-representing-a-doctor-s-medicine-remedy-given-to-a-pharmacist-.jpg',
         createdAt: Date.now(),
         status: 'PENDING',
         acceptedAt: null,
@@ -129,7 +131,8 @@ class Store {
         oxygenRatio: 92,
         hasChronicDesease: true,
         isCovid: true,
-        prescriptionUrl: 'https://github.com/Waqf-DZ/waqf/issues',
+        prescriptionUrl:
+          'https://previews.123rf.com/images/jes2ufoto/jes2ufoto1407/jes2ufoto140700223/30278466-prescription-note-representing-a-doctor-s-medicine-remedy-given-to-a-pharmacist-.jpg',
         createdAt: Date.now(),
         status: 'PENDING',
         acceptedAt: null,
@@ -165,11 +168,13 @@ class Store {
     })
   }
 
-  updateUser({ updatedUser, email, name, phoneNumber }) {
+  updateUser({ email, name, phoneNumber }) {
     return new Promise((resolve) => {
-      setTimeout(() => {
+      setTimeout(async () => {
+        updatedUser = await this.getUser({ email })
         updatedUser.name = name
         updatedUser.phoneNumber = phoneNumber
+
         this.users.forEach((user) => {
           if (user.email == email) {
             user = updatedUser
@@ -278,6 +283,24 @@ class Store {
           orders = this.orders.filter((o) => o.ownerId == ownerId)
         }
         resolve(orders)
+      }, latency)
+    })
+  }
+
+  updateOrder({ orderId, userParams }) {
+    return new Promise((resolve) => {
+      setTimeout(async () => {
+        let updatedOrder = await this.getOrder(orderId)
+        for (let entry in userParams) {
+          updatedOrder[entry] = userParams[entry]
+        }
+
+        this.orders.forEach((order) => {
+          if (order.id == orderId) {
+            order = updatedOrder
+          }
+        })
+        resolve(updatedOrder)
       }, latency)
     })
   }
