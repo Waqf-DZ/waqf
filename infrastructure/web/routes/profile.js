@@ -10,6 +10,7 @@ const {
   postUserNewOrder,
   getUserNewProduct,
   postUserNewProduct,
+  getUserOrder,
   getUserOrders,
   getUserProduct,
   getUserProducts,
@@ -26,7 +27,7 @@ router.post('/settings', putUserSettings)
 router.get('/orders/new', getUserNewOrder)
 router.post('/orders/new', upload.single('prescription'), postUserNewOrder)
 router.get('/orders', getUserOrders)
-router.get('/orders/:id', getUserOrders)
+router.get('/orders/:id', getUserOrder)
 router.post('/orders/:id', upload.single('prescription'), updateUserOrder)
 
 router.get('/products/new', getUserNewProduct)

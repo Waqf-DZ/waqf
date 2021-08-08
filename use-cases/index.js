@@ -43,6 +43,7 @@ module.exports = Object.freeze({
   signInUser,
   listUsers,
   addOrder,
+  getOrder,
   listOrders,
   addProduct,
   getProduct,
