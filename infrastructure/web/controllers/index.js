@@ -32,6 +32,7 @@ const makeGetUserNewOrder = require('./get-user-new-order')
 const makePostUserNewOrder = require('./post-user-new-order')
 const makeGetAdminOrders = require('./get-admin-orders')
 const makeGetUserOrders = require('./get-user-orders')
+const makeGetUserOrder = require('./get-user-order')
 
 const makeGetUserNewProduct = require('./get-user-new-product')
 const makePostUserNewProduct = require('./post-user-new-product')
@@ -77,6 +78,7 @@ const putUserSettings = makePutUserSettings({
 })
 const getAdminOrders = makeGetAdminOrders({ listOrders })
 const getUserOrders = makeGetUserOrders({ listOrders })
+const getUserOrder = makeGetUserOrder({ listOrders })
 
 const getUserSettings = makeGetUserSettings()
 const getUserNewOrder = makeGetUserNewOrder()
@@ -132,4 +134,5 @@ module.exports = {
   updateUserProduct,
   updateUserOrder,
   updateAdminOrder,
+  getUserOrder,
 }

@@ -5,9 +5,7 @@ module.exports = function makeGetAdminOrders({ listOrders }) {
       if (orderId) {
         getAdminOrderById(req, res, listOrders, orderId)
       } else {
-        // FIXME: THE USER_ID IS UNDEFINED FOR THE TIME BEIGN, SO WE ARE USING A HARD_CODED_ID
-        const user = req.user
-        const ownerId = user ? user.id : 'user_1'
+        const ownerId = req.user.id
 
         const ordersList = await listOrders({ ownerId })
         res.render('admin/orders/index', { data: { orders: ordersList } })
