@@ -14,7 +14,6 @@ const {
   postUserNewProduct,
   getUserOrder,
   getUserOrders,
-  getUserOrder,
   getUserProduct,
   getUserProducts,
   putUserSettings,

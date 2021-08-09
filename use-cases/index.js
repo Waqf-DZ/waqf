@@ -1,8 +1,9 @@
 const FakeStore = require('../infrastructure/store/fake')
 
-function hashPassword(password) {
-  return password
-}
+const {
+  hashPassword,
+  verifyPassword,
+} = require('../infrastructure/hash-password')
 
 const store = new FakeStore()
 
@@ -24,7 +25,7 @@ const makeUpdateProduct = require('./update-product')
 const addUser = makeAddUser({ usersDB: store, hashPassword })
 const getUser = makeGetUser({ usersDB: store })
 const listUsers = makeListUsers({ usersDB: store })
-const signInUser = makeSignInUser({ getUser, hashPassword })
+const signInUser = makeSignInUser({ getUser, verifyPassword })
 const updateUser = makeUpdateUser({ usersDB: store })
 
 const addProduct = makeAddProduct({ productsDB: store })
