@@ -2,6 +2,7 @@ const flashMessages = require('../config/flash-messages')
 const validator = require('../../validator')
 const sanitize = require('../../sanitize')
 const passport = require('../middlewares/passport-local-strategy')
+const adjustUploadPath = require('../utils/adjust-upload-path')
 
 const {
   addUser,
@@ -91,6 +92,7 @@ const postUserNewOrder = makePostUserNewOrder({
   addOrder,
   flashMessages,
   sanitize,
+  adjustUploadPath,
 })
 
 const getUserNewProduct = makeGetUserNewProduct()
@@ -98,6 +100,7 @@ const postUserNewProduct = makePostUserNewProduct({
   addProduct,
   flashMessages,
   sanitize,
+  adjustUploadPath,
 })
 const getAdminProducts = makeGetAdminProducts({ listProducts })
 const getUserProducts = makeGetUserProducts({ listProducts })
@@ -107,18 +110,25 @@ const getAdminProduct = makeGetAdminProduct({ getProduct })
 const updateUserProduct = makeUpdateUserProduct({
   updateProduct,
   flashMessages,
+  adjustUploadPath,
 })
 
 const updateUserOrder = makeUpdateUserOrder({
   updateOrder,
   flashMessages,
+  adjustUploadPath,
 })
 
 const updateAdminProduct = makeUpdateAdminProduct({
   updateProduct,
   flashMessages,
+  adjustUploadPath,
 })
-const updateAdminOrder = makeUpdateAdminOrder({ updateOrder, flashMessages })
+const updateAdminOrder = makeUpdateAdminOrder({
+  updateOrder,
+  flashMessages,
+  adjustUploadPath,
+})
 
 module.exports = {
   getAdminDashboard,
@@ -147,6 +157,5 @@ module.exports = {
   getAdminProduct,
   updateAdminProduct,
   updateAdminOrder,
-  getUserOrder,
   getAdminOrder,
 }

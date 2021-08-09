@@ -2,13 +2,14 @@ module.exports = function makePostUserNewProduct({
   addProduct,
   flashMessages,
   sanitize,
+  adjustUploadPath,
 }) {
   return async function postUserNewProduct(req, res) {
     try {
       const ownerId = req.user.id
       const { name, type, serial, description } = req.body
       const imageFile = req.file
-      const imageUrl = imageFile ? imageFile.path : undefined
+      const imageUrl = imageFile ? adjustUploadPath(imageFile.path) : undefined
 
       const newProduct = await addProduct({
         ownerId,
