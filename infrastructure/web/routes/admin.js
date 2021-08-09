@@ -12,11 +12,15 @@ const {
   getAdminProducts,
   getAdminProduct,
   updateAdminProduct,
+  updateAdminOrder,
+  getAdminOrder,
 } = require('../controllers/index')
 
 router.get('/', getAdminDashboard)
 
 router.get('/orders', getAdminOrders)
+router.get('/orders/:id', getAdminOrder)
+router.post('/orders/:id', upload.single('prescription'), updateAdminOrder)
 
 router.get('/products', getAdminProducts)
 router.get('/products/:id', getAdminProduct)
