@@ -45,6 +45,7 @@ const makeGetAdminProduct = require('./get-admin-product')
 
 const makeUpdateUserProduct = require('./update-user-product')
 const makeUpdateUserOrder = require('./update-user-order')
+const makeUpdateAdminProduct = require('./update-admin-product')
 
 const getUserDashboard = makeGetUserDashboard({ listProducts, listOrders })
 const getAdminDashboard = makeGetAdminDashboard({
@@ -109,6 +110,11 @@ const updateUserOrder = makeUpdateUserOrder({
   flashMessages,
 })
 
+const updateAdminProduct = makeUpdateAdminProduct({
+  updateProduct,
+  flashMessages,
+})
+
 module.exports = {
   getAdminDashboard,
   getUserDashboard,
@@ -134,4 +140,5 @@ module.exports = {
   updateUserProduct,
   updateUserOrder,
   getAdminProduct,
+  updateAdminProduct,
 }

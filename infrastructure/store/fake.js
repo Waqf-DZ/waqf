@@ -7,7 +7,7 @@ class Store {
       {
         id: 'product_1',
         name: 'منتج 1',
-        type: 'مكثف محمول',
+        type: 'مكثف',
         serial: '729893-TD',
         imageUrl: 'https://m.media-amazon.com/images/I/514xi17BAGL._SX679_.jpg',
         description: 'بعض الوصف العشوائي',

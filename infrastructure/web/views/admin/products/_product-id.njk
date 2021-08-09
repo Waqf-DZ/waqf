@@ -12,7 +12,7 @@
 
   <div class="columns">
     <div class="column is-8 is-offset-2">
-      <form action="/profile/products?id={{ product.id }}" method="POST" enctype="multipart/form-data">
+      <form action="/profile/products/{{ product.id }}" method="POST" enctype="multipart/form-data">
         <div class="field">
           <label class="label">إسم الوقف</label>
           <div class="control has-icons-right">
@@ -28,8 +28,9 @@
           <div class="control">
             <div class="select">
               <select>
-                <option value="type1">مكثف أكسيجين</option>
-                <option value="type2">جهاز قياس تركيز الأكسيجين</option>
+                <option value="type1">مكثف محمول</option>
+                <option value="type2">مكثف أكسيجين</option>
+                <option value="type3">جهاز قياس تركيز الأكسيجين</option>
               </select>
             </div>
           </div>
