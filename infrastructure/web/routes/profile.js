@@ -14,6 +14,7 @@ const {
   postUserNewProduct,
   getUserOrder,
   getUserOrders,
+  getUserOrder,
   getUserProduct,
   getUserProducts,
   putUserSettings,
@@ -30,6 +31,7 @@ router.post('/settings', putUserSettings)
 router.get('/orders/new', isHelpSeeker, getUserNewOrder)
 router.get('/orders', getUserOrders)
 router.get('/orders/:id', getUserOrder)
+
 router.post(
   '/orders/new',
   isHelpSeeker,
