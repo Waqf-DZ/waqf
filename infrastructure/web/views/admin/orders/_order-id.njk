@@ -48,11 +48,21 @@
           <label class="label">لديه مرض مزمن</label>
           <div class="control">
             <label class="radio">
-              <input type="radio" name="hasChronicDesease" value="true">
+              <input 
+                type="radio"
+                name="hasChronicDesease" 
+                value="true"  
+                {{"checked" if order.hasChronicDesease}}
+              >
               نعم
             </label>
             <label class="radio">
-              <input type="radio" name="hasChronicDesease" value="false">
+              <input 
+                type="radio" 
+                name="hasChronicDesease"
+                value="false"
+                {{"checked" if not(order.hasChronicDesease)}}
+              >
               لا
             </label>
           </div>
@@ -62,11 +72,11 @@
           <label class="label">مصاب بفيروس كورونا</label>
           <div class="control">
             <label class="radio">
-              <input type="radio" name="isCovid" value="true">
+              <input type="radio" name="isCovid" value="true" {{"checked" if order.isCovid}}>
               نعم
             </label>
             <label class="radio">
-              <input type="radio" name="isCovid" value="false">
+              <input type="radio" name="isCovid" value="false" {{"checked" if not(order.isCovid)}}>
               لا
             </label>
           </div>
