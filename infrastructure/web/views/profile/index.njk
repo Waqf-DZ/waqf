@@ -13,61 +13,74 @@
   <div class="columns is-mobile">
     <div class="column" id="menu-content">
 
-      <section class="section has-background-grey-lighter mt-3" id="machine">
-        <p class="title has-text-centered is-hidden-tablet">الاجهزة</p>
-        <div class="columns">
-          <div class="column">
-            <div class="box">
-              <p class="title is-6 has-text-centered">
-                :عدد الأجهزة الكلية
-                <span class="icon">
-                  <ion-icon name="fitness-outline"></ion-icon>
-                </span>
-              </p>
-              <p class="subtitle is-1 has-text-centered">{{ products.totalDevices }}</p>
+      {# products statistics #}
+      {% if authenticatedUser.isGivingHelp %}
+        <section class="section has-background-grey-lighter mt-3" id="machine">
+          <p class="title has-text-centered is-hidden-tablet">الاجهزة</p>
+          <div class="columns">
+            <div class="column">
+              <div class="box">
+                <p class="title is-6 has-text-centered">
+                  :عدد الأجهزة الكلية
+                  <span class="icon">
+                    <ion-icon name="fitness-outline"></ion-icon>
+                  </span>
+                </p>
+                <p class="subtitle is-1 has-text-centered">
+                  {{ products.totalDevices }}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="columns">
-          <div class="column">
-            <div class="box">
-              <p class="title is-6 has-text-centered">
-                :عدد الأجهزة المتوفرة
-                <span class="icon">
-                  <ion-icon name="bag-add-outline"></ion-icon>
-                </span>
-              </p>
-              <p class="subtitle is-1 has-text-centered">{{ products.availableDevices }}</p>
+          <div class="columns">
+            <div class="column">
+              <div class="box">
+                <p class="title is-6 has-text-centered">
+                  :عدد الأجهزة المتوفرة
+                  <span class="icon">
+                    <ion-icon name="bag-add-outline"></ion-icon>
+                  </span>
+                </p>
+                <p class="subtitle is-1 has-text-centered">
+                  {{ products.availableDevices }}
+                </p>
+              </div>
+            </div>
+            <div class="column">
+              <div class="box">
+                <p class="title is-6 has-text-centered">
+                  :عدد الأجهزة المستعارة
+                  <span class="icon">
+                    <ion-icon name="bag-remove-outline"></ion-icon>
+                  </span>
+                </p>
+                <p class="subtitle is-1 has-text-centered">
+                  {{ products.borrowedDevices }}
+                </p>
+              </div>
             </div>
           </div>
-          <div class="column">
-            <div class="box">
-              <p class="title is-6 has-text-centered">
-                :عدد الأجهزة المستعارة
-                <span class="icon">
-                  <ion-icon name="bag-remove-outline"></ion-icon>
-                </span>
-              </p>
-              <p class="subtitle is-1 has-text-centered">{{ products.borrowedDevices }}</p>
-            </div>
-          </div>
-        </div>
 
-        <div class="columns">
-          <div class="column">
-            <div class="box">
-              <p class="title is-6 has-text-centered">
-                :الكمية
-                <span class="icon">
-                  <ion-icon name="podium-outline"></ion-icon>
-                </span>
-              </p>
-              <progress class="progress is-medium" value="{{ products.availability }}" max="100">
-              </progress>
+          <div class="columns">
+            <div class="column">
+              <div class="box">
+                <p class="title is-6 has-text-centered">
+                  :الكمية
+                  <span class="icon">
+                    <ion-icon name="podium-outline"></ion-icon>
+                  </span>
+                </p>
+                <progress
+                  class="progress is-medium"
+                  value="{{ products.availability }}"
+                  max="100"
+                >
+                </progress>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      {% endif %}
 
       <section class="section has-background-grey-lighter mt-3" id="order">
         <p class="title has-text-centered is-hidden-tablet">الطلبات</p>

@@ -6,6 +6,7 @@ const passport = require('../middlewares/passport-local-strategy')
 const {
   addUser,
   addOrder,
+  getOrder,
   addProduct,
   getProduct,
   listUsers,
@@ -80,7 +81,7 @@ const putUserSettings = makePutUserSettings({
 const getAdminOrders = makeGetAdminOrders({ listOrders })
 const getAdminOrder = makeGetAdminOrder({ listOrders })
 const getUserOrders = makeGetUserOrders({ listOrders })
-const getUserOrder = makeGetUserOrder({ listOrders })
+const getUserOrder = makeGetUserOrder({ getOrder })
 
 const getUserSettings = makeGetUserSettings()
 const getUserNewOrder = makeGetUserNewOrder()
@@ -128,6 +129,7 @@ module.exports = {
   postUserNewOrder,
   getAdminOrders,
   getUserOrders,
+  getUserOrder,
   getUserNewProduct,
   postUserNewProduct,
   getAdminProducts,

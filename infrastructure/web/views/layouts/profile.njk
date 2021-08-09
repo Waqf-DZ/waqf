@@ -29,17 +29,22 @@
               الطلبات
             </p>
             <ul class="menu-list">
-              <li><a href="/profile/orders/new">إنشاء طلب جديد</a></li>
+              {% if authenticatedUser.isSeekingHelp %}
+                <li><a href="/profile/orders/new">إنشاء طلب جديد</a></li>
+              {% endif %}
               <li><a href="/profile/orders">عرض كل الطلبات</a></li>
             </ul>
 
-            <p class="menu-label">
-              الأوقاف
-            </p>
-            <ul class="menu-list">
-              <li><a href="/profile/products/new">إنشاء وقف جديد</a></li>
-              <li><a href="/profile/products">عرض كل الأوقاف</a></li>
-            </ul>
+            {# products pages #}
+            {% if authenticatedUser.isGivingHelp %}
+              <p class="menu-label">
+                الأوقاف
+              </p>
+              <ul class="menu-list">
+                <li><a href="/profile/products/new">إنشاء وقف جديد</a></li>
+                <li><a href="/profile/products">عرض كل الأوقاف</a></li>
+              </ul>
+            {% endif %}
           </aside>
         </div>
 

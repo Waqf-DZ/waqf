@@ -1,13 +1,11 @@
-module.exports = function makeGetUserOrder({ listOrders }) {
-  return async function getUserOrders(req, res) {
+module.exports = function makeGetUserOrder({ getOrder }) {
+  return async function getUserOrder(req, res) {
     try {
       const orderId = req.params.id
-      const ordersList = await listOrders()
-      const order = ordersList.filter((order) => order.id == orderId)[0]
-
+      const order = await getOrder(orderId)
       res.render('profile/orders/_order-id', { data: { order } })
     } catch (err) {
-      res.render('profile/orders/', { errorMessages: [err.message] })
+      res.render('profile/orders/', { errorMessages: err.message })
     }
   }
 }
