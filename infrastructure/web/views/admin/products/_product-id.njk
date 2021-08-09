@@ -1,0 +1,77 @@
+{% extends '../../layouts/admin.njk' %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="title is-4">تحديث الوقف</h1>
+
+  {% set product = data.product %}
+
+  <div class="columns">
+    <div class="column is-8 is-offset-2">
+      <form action="/profile/products?id={{ product.id }}" method="POST" enctype="multipart/form-data">
+        <div class="field">
+          <label class="label">إسم الوقف</label>
+          <div class="control has-icons-right">
+            <input class="input" type="text" name="name" value="{{ product.name }}"}>
+            <span class="icon is-small is-right">
+              <ion-icon name="person-outline"></ion-icon>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">نوع الوقف</label>
+          <div class="control">
+            <div class="select">
+              <select>
+                <option value="type1">مكثف أكسيجين</option>
+                <option value="type2">جهاز قياس تركيز الأكسيجين</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">الرقم التسلسلي</label>
+          <div class="control has-icons-right">
+            <input class="input" type="text" name="serial" value="{{ product.serial }}">
+            <span class="icon is-small is-right">
+              <ion-icon name="person-outline"></ion-icon>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">صورة الوقف</label>
+          <div class="control has-icons-right">
+            <input class="input" type="file" name="productImage">
+            <span class="icon is-small is-right">
+              <ion-icon name="person-outline"></ion-icon>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">وصف الوقف</label>
+          <div class="control has-icons-right">
+          <textarea class="textarea" name="description" rows="5">{{ product.description }}</textarea>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" type="submit">تحديث</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light" type="reset"><a href="/profile/products">إلغاء</a></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

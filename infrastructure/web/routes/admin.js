@@ -8,6 +8,7 @@ const {
   getUsers,
   getAdminOrders,
   getAdminProducts,
+  getAdminProduct,
 } = require('../controllers/index')
 
 router.get('/', getAdminDashboard)
@@ -15,6 +16,7 @@ router.get('/', getAdminDashboard)
 router.get('/orders', getAdminOrders)
 
 router.get('/products', getAdminProducts)
+router.get('/products/:id', getAdminProduct)
 
 router.get('/users', getUsers)
 router.get('/users/new', getNewUser)
