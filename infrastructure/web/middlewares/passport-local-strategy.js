@@ -9,7 +9,6 @@ const localStrategy = new LocalStrategy(
     passwordField: 'password',
   },
   async (email, password, done) => {
-    console.log('passport local strategy', { email, password })
     try {
       const user = await signInUser({ email, password })
       if (!user) {

@@ -13,10 +13,8 @@ module.exports = function makePostSignIn({ flashMessages, passport }) {
           return next(err)
         }
         if (user.isAdmin && user.isDirector) {
-          console.log('redirect to /admin')
           return res.redirect('/admin')
         } else {
-          console.log('redirect to /profile')
           return res.redirect('/profile')
         }
       })

@@ -19,9 +19,6 @@ module.exports = function makePostUserNewOrder({
         ? adjustUploadPath(imageFile.path)
         : undefined
 
-      console.log(imageFile)
-      console.log(prescriptionUrl)
-
       // make an early check for the rquired fileds
       if (!ownerId || !patientAge || !patientAge || !oxygenRatio) {
         req.flash('error', flashMessages.INPUTS_NOT_VALID)
