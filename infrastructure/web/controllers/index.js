@@ -2,6 +2,7 @@ const flashMessages = require('../config/flash-messages')
 const validator = require('../../validator')
 const sanitize = require('../../sanitize')
 const passport = require('../middlewares/passport-local-strategy')
+const adjustUploadPath = require('../utils/adjust-upload-path')
 
 const {
   addUser,
@@ -16,6 +17,7 @@ const {
   updateUser,
   updateProduct,
   updateOrder,
+  getUser,
 } = require('../../../use-cases/index')
 
 const makeGetAdminDashboard = require('./get-admin-dashboard')
@@ -27,6 +29,7 @@ const makePostSignin = require('./post-signin')
 const makeGetNewUser = require('./get-new-user')
 const makePostNewUser = require('./post-new-user')
 const makeGetUsers = require('./get-users')
+const makeGetAdminUser = require('./get-admin-user')
 
 const makeGetUserSettings = require('./get-user-settings')
 const makeGetUserNewOrder = require('./get-user-new-order')
@@ -49,6 +52,8 @@ const makeUpdateUserOrder = require('./update-user-order')
 const makeUpdateAdminProduct = require('./update-admin-product')
 
 const makeUpdateAdminOrder = require('./update-admin-order')
+
+const makeUpdateAdminUser = require('./update-admin-user')
 
 const getUserDashboard = makeGetUserDashboard({ listProducts, listOrders })
 const getAdminDashboard = makeGetAdminDashboard({
@@ -75,6 +80,8 @@ const postNewUser = makePostNewUser({
   validator,
 })
 
+const getAdminUser = makeGetAdminUser({ getUser })
+
 const putUserSettings = makePutUserSettings({
   updateUser,
   flashMessages,
@@ -91,6 +98,7 @@ const postUserNewOrder = makePostUserNewOrder({
   addOrder,
   flashMessages,
   sanitize,
+  adjustUploadPath,
 })
 
 const getUserNewProduct = makeGetUserNewProduct()
@@ -98,6 +106,7 @@ const postUserNewProduct = makePostUserNewProduct({
   addProduct,
   flashMessages,
   sanitize,
+  adjustUploadPath,
 })
 const getAdminProducts = makeGetAdminProducts({ listProducts })
 const getUserProducts = makeGetUserProducts({ listProducts })
@@ -107,18 +116,30 @@ const getAdminProduct = makeGetAdminProduct({ getProduct })
 const updateUserProduct = makeUpdateUserProduct({
   updateProduct,
   flashMessages,
+  adjustUploadPath,
 })
 
 const updateUserOrder = makeUpdateUserOrder({
   updateOrder,
   flashMessages,
+  adjustUploadPath,
 })
 
 const updateAdminProduct = makeUpdateAdminProduct({
   updateProduct,
   flashMessages,
+  adjustUploadPath,
 })
-const updateAdminOrder = makeUpdateAdminOrder({ updateOrder, flashMessages })
+const updateAdminOrder = makeUpdateAdminOrder({
+  updateOrder,
+  flashMessages,
+  adjustUploadPath,
+})
+
+const updateAdminUser = makeUpdateAdminUser({
+  updateUser,
+  flashMessages,
+})
 
 module.exports = {
   getAdminDashboard,
@@ -147,6 +168,7 @@ module.exports = {
   getAdminProduct,
   updateAdminProduct,
   updateAdminOrder,
-  getUserOrder,
   getAdminOrder,
+  getAdminUser,
+  updateAdminUser,
 }

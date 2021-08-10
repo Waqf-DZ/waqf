@@ -1,0 +1,121 @@
+{% extends '../../layouts/admin.njk' %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="title is-4">تحديث معلومات المستخدم</h1>
+
+  {% set user = data.user %}
+  
+  <div class="columns">
+    <div class="column is-8 is-offset-2">
+      <form action="/admin/users/{{ user.id }}" method="POST">
+        <div class="field">
+          <label class="label">الإسم</label>
+          <div class="control has-icons-right">
+            <input class="input" type="text" name="displayName" value="{{ user.displayName }}" required>
+            <span class="icon is-small is-right">
+              <ion-icon name="person-outline"></ion-icon>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">رقم الهاتف</label>
+          <div class="control has-icons-right">
+            <input class="input" type="tel" name="phoneNumber" value="{{ user.phoneNumber }}" required>
+            <span class="icon is-small is-right">
+              <ion-icon name="call-outline"></ion-icon>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">البريد الإلكتروني</label>
+          <div class="control has-icons-right has-icons-right">
+            <input class="input" type="email" name="email" value="{{ user.email }}" required>
+            <span class="icon is-small is-right">
+              <ion-icon name="mail-outline"></ion-icon>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="password">كلمة السر</label>
+          <div class="control has-icons-right">
+            <input
+              class="input"
+              type="password"
+              id="password"
+              name="password"
+            >
+            <span class="icon is-small is-right">
+              <ion-icon name="key-outline"></ion-icon>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">الوصف مختصر للمستخدم</label>
+          <div class="control has-icons-right">
+          <textarea class="textarea" name="description" rows="5">{{ user.description }}</textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">الدور داخل المنصة</label>
+          <div class="control">
+            <div class="select">
+              <select name="role">
+                <option value="SEEKING_HELP">محتاج</option>
+                <option value="GIVING_HELP">جمعية</option>
+                <option value="DIRECTOR">مدير</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">هل تريد تفعيل هذا المستخدم؟</label>
+          <div class="control">
+            <label class="radio">
+              <input 
+                type="radio" 
+                name="question" 
+                name="verified" 
+                value="true" 
+                {{ "checked" if user.isVerified }}
+              >
+              نعم
+            </label>
+            <label class="radio">
+              <input 
+                type="radio" 
+                name="question" 
+                name="verified" 
+                value="false" 
+                {{ "checked" if not(user.isVerified) }}
+              >
+              لا
+            </label>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" type="submit">تحديث</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light" type="reset">
+              <a href="/admin/users">إلغاء</a>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

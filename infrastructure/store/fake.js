@@ -167,19 +167,17 @@ class Store {
     })
   }
 
-  updateUser({ email, name, phoneNumber }) {
+  updateUser(user) {
     return new Promise((resolve) => {
-      setTimeout(async () => {
-        const updatedUser = await this.getUser({ email })
-        updatedUser.name = name
-        updatedUser.phoneNumber = phoneNumber
-
-        this.users.forEach((user) => {
-          if (user.email == email) {
-            user = updatedUser
-          }
-        })
-        resolve(updatedUser)
+      console.log(user.id)
+      setTimeout(() => {
+        try {
+          const index = this.users.findIndex((o) => o.id == user.id)
+          this.users.splice(index, 1, user)
+          resolve(user)
+        } catch (err) {
+          console.log(err.message)
+        }
       }, latency)
     })
   }
@@ -224,7 +222,7 @@ class Store {
 
   updateProduct(product) {
     return new Promise((resolve) => {
-      setTimeout(async () => {
+      setTimeout(() => {
         const index = this.products.findIndex((o) => o.id == product.id)
         this.products.splice(index, 1, product)
         resolve(product)
@@ -298,7 +296,7 @@ class Store {
 
   updateOrder(order) {
     return new Promise((resolve) => {
-      setTimeout(async () => {
+      setTimeout(() => {
         const index = this.orders.findIndex((o) => o.id == order.id)
         this.orders.splice(index, 1, order)
         resolve(order)

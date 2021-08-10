@@ -1,12 +1,13 @@
 module.exports = function makeUpdateAdminProduct({
   updateProduct,
   flashMessages,
+  adjustUploadPath,
 }) {
   return async function updateAdminProduct(req, res) {
     try {
       const productInfo = {
         id: req.params.id,
-        productImage: req.file ? req.file.path : null,
+        productImage: req.file ? adjustUploadPath(req.file.path) : null,
         ...req.body,
       }
       const updatedProduct = await updateProduct(productInfo)

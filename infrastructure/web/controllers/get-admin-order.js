@@ -7,7 +7,7 @@ module.exports = function makeGetAdminOrder({ listOrders }) {
 
       res.render('admin/orders/_order-id', { data: { order } })
     } catch (err) {
-      res.render('admin/orders/', { errorMessages: [err.message] })
+      res.render('admin/orders/index', { errorMessages: [err.message] })
     }
   }
 }

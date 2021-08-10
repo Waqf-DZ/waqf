@@ -2,6 +2,7 @@ module.exports = function makePostUserNewOrder({
   addOrder,
   flashMessages,
   sanitize,
+  adjustUploadPath,
 }) {
   return async function postUserNewOrder(req, res) {
     try {
@@ -14,7 +15,12 @@ module.exports = function makePostUserNewOrder({
         isCovid,
       } = req.body
       const imageFile = req.file
-      const prescriptionUrl = imageFile ? imageFile.path : undefined
+      const prescriptionUrl = imageFile
+        ? adjustUploadPath(imageFile.path)
+        : undefined
+
+      console.log(imageFile)
+      console.log(prescriptionUrl)
 
       // make an early check for the rquired fileds
       if (!ownerId || !patientAge || !patientAge || !oxygenRatio) {

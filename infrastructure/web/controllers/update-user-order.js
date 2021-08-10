@@ -1,13 +1,17 @@
-module.exports = function makeUpdateUserOrder({ updateOrder, flashMessages }) {
+module.exports = function makeUpdateUserOrder({
+  updateOrder,
+  flashMessages,
+  adjustUploadPath,
+}) {
   return async function updateUserOrder(req, res) {
     const orderInfo = {
       id: req.params.id,
       ownerId: req.user.id,
       ...req.body,
     }
-    if (req.file) {
-      orderInfo.prescriptionUrl = req.file.path
-    }
+    orderInfo.prescriptionUrl = req.file
+      ? adjustUploadPath(req.file.path)
+      : null
 
     const updatedOrder = await updateOrder(orderInfo)
 
