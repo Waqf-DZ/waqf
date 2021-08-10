@@ -25,7 +25,7 @@ const addUser = makeAddUser({ usersDB: store, hashPassword })
 const getUser = makeGetUser({ usersDB: store })
 const listUsers = makeListUsers({ usersDB: store })
 const signInUser = makeSignInUser({ getUser, hashPassword })
-const updateUser = makeUpdateUser({ usersDB: store })
+const updateUser = makeUpdateUser({ usersDB: store, getUser })
 
 const addProduct = makeAddProduct({ productsDB: store })
 const getProduct = makeGetProduct({ productsDB: store })

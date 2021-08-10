@@ -14,6 +14,8 @@ const {
   updateAdminProduct,
   updateAdminOrder,
   getAdminOrder,
+  getAdminUser,
+  updateAdminUser,
 } = require('../controllers/index')
 
 router.get('/', getAdminDashboard)
@@ -27,6 +29,8 @@ router.get('/products/:id', getAdminProduct)
 router.post('products/:id', upload.single('productImage'), updateAdminProduct)
 
 router.get('/users', getUsers)
+router.get('/users/:id', getAdminUser)
+router.post('/users/:id', updateAdminUser)
 router.get('/users/new', getNewUser)
 router.post('/users/new', postNewUser)
 
