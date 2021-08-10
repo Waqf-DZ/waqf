@@ -7,7 +7,10 @@ module.exports = function makeGetUserOrder({ getOrder, listProducts }) {
       const products = req.user.isGivingHelp
         ? await listProducts({ ownerId })
         : []
-      res.render('profile/orders/_order-id', { data: { order, products } })
+      const availableProducts = products.filter((p) => p.isAvailable)
+      res.render('profile/orders/_order-id', {
+        data: { order, products: availableProducts },
+      })
     } catch (err) {
       res.render('profile/orders/', { errorMessages: err.message })
     }

@@ -53,8 +53,12 @@ module.exports = function buildMakeProduct({ getUniqueId }) {
       get ownerId() {
         return ownerId
       },
-      isAvailable: () => isAvailable,
-      isBroken: () => isBroken,
+      get isAvailable() {
+        return isAvailable
+      },
+      get isBroken() {
+        return isBroken
+      },
       markAvailable: () => (isAvailable = true),
       markNotAvailable: () => (isAvailable = false),
       markBroken: () => (isBroken = true),
