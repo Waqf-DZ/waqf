@@ -14,7 +14,8 @@ module.exports = function buildMakeOrder({ getUniqueId }) {
     isCovid,
     prescriptionUrl,
     status = STATUS_OPTIONS.pending,
-    assignedProductId = '',
+    assignedProductId = null,
+    assignedUserId = null,
     createdAt = Date.now(),
     acceptedAt = null,
     completedAt = null,
@@ -24,7 +25,7 @@ module.exports = function buildMakeOrder({ getUniqueId }) {
     if (!patientAge) throw new Error('Order must have a patientAge')
     if (!ownerId) throw new Error('Order must have a ownerId')
     if (!oxygenRatio) throw new Error('Order must have a oxygenRatio')
-    if (!hasChronicDesease)
+    if (hasChronicDesease == undefined)
       throw new Error('Order must have a hasChronicDesease')
     if (!prescriptionUrl) {
       throw new Error('Order must have a prescriptionUrl')
@@ -63,6 +64,9 @@ module.exports = function buildMakeOrder({ getUniqueId }) {
       get assignedProductId() {
         return assignedProductId
       },
+      get assignedUserId() {
+        return assignedUserId
+      },
       get createdAt() {
         return createdAt
       },
@@ -82,8 +86,11 @@ module.exports = function buildMakeOrder({ getUniqueId }) {
       markCompleted: () => {
         status = STATUS_OPTIONS.completed
       },
-      assignProduct: (productId) => {
+      assignProductId: (productId) => {
         assignedProductId = productId
+      },
+      assignUserId: (userId) => {
+        assignedUserId = userId
       },
     })
   }

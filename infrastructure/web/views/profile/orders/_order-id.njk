@@ -6,9 +6,10 @@
 
 {% block content %}
 
-  <h1 class="title is-4">تحديث الطلب</h1>
+  <h1 class="title is-4">تفاصيل الطلب</h1>
 
   {% set order = data.order %}
+  {% set products = data.products %}
 
   <div class="columns">
     <div class="column is-8 is-offset-2">
@@ -102,16 +103,49 @@
           </div>
         </div>
 
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-link" type="submit">تحديث</button>
+        {% if authenticatedUser.isSeekingHelp %}
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link" type="submit">تحديث</button>
+            </div>
+            <div class="control">
+              <button class="button is-link is-light" type="reset"><a href="/profile/orders">إلغاء</a></button>
+            </div>
           </div>
-          <div class="control">
-            <button class="button is-link is-light" type="reset"><a href="/profile/orders">إلغاء</a></button>
-          </div>
-        </div>
+        {% endif %}
+
       </form>
     </div>
   </div>
 
+  {% if authenticatedUser.isGivingHelp %}
+    {# help giver accept order section #}
+    <h1 class="title is-4">هل تريد قبول هذا الطلب؟</h1>
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+
+        <form action="/profile/orders/{{order.id}}/accept" method="POST">
+          <div class="field">
+            <label class="label">اختر الجهاز المناسب</label>
+            <div class="control">
+              <div class="select">
+                <select name="productId" required>
+                  {% for product in products %}
+                    <option value="{{product.id}}">{{product.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link" type="submit">قبول الطلب</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  {% endif %}
 {% endblock %}

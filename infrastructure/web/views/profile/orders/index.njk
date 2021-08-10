@@ -22,6 +22,7 @@
               <th>أمراض مزمنة؟</th>
               <th>كورونا؟</th>
               <th>الوصفة الطبية</th>
+              <th>حالة الطلب</th>
               <th></th>
               <th></th>
             </tr>
@@ -42,9 +43,37 @@
               {% else %}
                 <td>لا</td>
               {% endif %}
-              <td><a href="{{ order.prescriptionUrl }}">رابط الوصفة</a></td>
-              <td><a href="/profile/orders/{{ order.id }}" class="button is-info is-light">تحديث</a></td>
-              <td><a class="button is-danger is-light">حذف</a></td>
+              <td>
+                <figure class="image is-64x64">
+                  <img src="{{ order.prescriptionUrl }}">
+                </figure>
+              </td>
+              <td>
+                {{ order.status }}
+              </td>
+
+              {% if authenticatedUser.isSeekingHelp %}
+              <td>
+                <a href="/profile/orders/{{ order.id }}" class="button is-info is-light">
+                  تفاصيل
+                </a>
+              </td>
+                <td><a class="button is-danger is-light">حذف</a></td>
+              {% else %}
+              <td>
+                <a href="/profile/orders/{{ order.id }}" class="button is-info is-light">
+                  تفاصيل
+                </a>
+              </td>
+              <td>
+                <a
+                  href="/profile/orders/{{ order.id }}"
+                  class="button is-success is-light"
+                >
+                  قبول الطلب
+                </a>
+              </td>
+              {% endif %}
             </tr>
           {% endfor %}
           </tbody>

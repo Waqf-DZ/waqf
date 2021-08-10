@@ -1,4 +1,4 @@
-const { makeUser } = require('../../domain/index')
+const { makeOrder, makeProduct, makeUser } = require('../../domain/index')
 const latency = 5
 
 class Store {
@@ -169,7 +169,6 @@ class Store {
 
   updateUser(user) {
     return new Promise((resolve) => {
-      console.log(user.id)
       setTimeout(() => {
         try {
           const index = this.users.findIndex((o) => o.id == user.id)
@@ -215,7 +214,7 @@ class Store {
     return new Promise((resolve) => {
       setTimeout(() => {
         const product = this.products.find((p) => p.id == id)
-        resolve(product)
+        resolve(product ? makeProduct(product) : null)
       }, latency)
     })
   }
@@ -277,7 +276,7 @@ class Store {
     return new Promise((resolve) => {
       setTimeout(() => {
         const order = this.orders.find((o) => o.id == id)
-        resolve(order)
+        resolve(order ? makeOrder(order) : null)
       }, latency)
     })
   }
