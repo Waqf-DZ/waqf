@@ -4,7 +4,7 @@ module.exports = function makeGetAdminOrders({ listOrders }) {
       const ordersList = await listOrders()
       res.render('admin/orders/index', { data: { orders: ordersList } })
     } catch (err) {
-      res.render('admin/orders/new', { errorMessages: [err.message] })
+      res.render('admin/orders/index', { errorMessages: [err.message] })
     }
   }
 }

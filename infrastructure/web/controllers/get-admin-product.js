@@ -5,7 +5,7 @@ module.exports = function makeGetAdminProduct({ getProduct }) {
       const product = await getProduct(productId)
       res.render('admin/products/_product-id', { data: { product } })
     } catch (err) {
-      res.render('admin/products/', { errorMessages: [err.message] })
+      res.render('admin/products/index', { errorMessages: [err.message] })
     }
   }
 }
