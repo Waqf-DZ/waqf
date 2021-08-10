@@ -18,9 +18,7 @@ router.get('/signout', getSignout)
 router.post('/signup', postSignup)
 
 router.get('/signin', function (req, res) {
-  const successMessages = req.flash('success')
-  const errorMessages = req.flash('error')
-  res.render('signin', { successMessages, errorMessages })
+  res.render('signin')
 })
 
 router.post('/signin', postSignin)

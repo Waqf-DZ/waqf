@@ -43,9 +43,7 @@ module.exports = function makeGetUserDashboard({ listProducts, listOrders }) {
           averageOrders: 9,
         },
       }
-
-      const successMessages = req.flash('success')
-      res.render('profile/index', { data: { successMessages, statisticsData } })
+      res.render('profile/index', { data: { statisticsData } })
     } catch (err) {
       res.render('profile/index', { errorMessages: [err.message] })
     }

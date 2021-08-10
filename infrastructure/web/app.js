@@ -15,6 +15,7 @@ const passport = require('./middlewares/passport-local-strategy')
 const isAuthenticated = require('./middlewares/is-authenticated')
 const isAuthenticatedAdmin = require('./middlewares/is-authenticated-admin')
 const isAuthenticatedUser = require('./middlewares/is-authenticated-user')
+const renderFlashMessages = require('./middlewares/render-flash-messages')
 
 const app = express()
 
@@ -33,10 +34,6 @@ if (app.get('env') === 'production') {
   app.set('trust proxy', 1)
   sessionConfig.cookie.secure = true
 }
-app.use(session(sessionConfig))
-
-// setup connect flash
-app.use(flash())
 
 // view engine setup
 nunjucks.configure(path.join(__dirname, './views'), {
@@ -44,14 +41,15 @@ nunjucks.configure(path.join(__dirname, './views'), {
   express: app,
 })
 
+app.use(session(sessionConfig))
+app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
-
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-
+app.use(renderFlashMessages)
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(
   '/uploads',
