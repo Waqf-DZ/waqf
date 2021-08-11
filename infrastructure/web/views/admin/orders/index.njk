@@ -42,7 +42,11 @@
             {% else %}
               <td>لا</td>
             {% endif %}
-            <td><a href="{{ order.prescriptionUrl }}">رابط الوصفة</a></td>
+            <td>
+              <figure class="image is-64x64">
+                <img src="{{ order.prescriptionUrl }}">
+              </figure>
+            </td>
             <td><a href="/admin/orders/{{ order.id }}" class="button is-info is-light">عرض</a></td>
             <td><a class="button is-danger is-light">حذف</a></td>
           </tr>
