@@ -76,6 +76,15 @@ module.exports = function buildMakeOrder({ getUniqueId }) {
       get completedAt() {
         return completedAt
       },
+      get isPending() {
+        return status == STATUS_OPTIONS.pending
+      },
+      get isAccepted() {
+        return status == STATUS_OPTIONS.accepted
+      },
+      get isCompleted() {
+        return status == STATUS_OPTIONS.completed
+      },
 
       markPending: () => {
         status = STATUS_OPTIONS.pending

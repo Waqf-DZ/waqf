@@ -16,6 +16,7 @@ const makeAddOrder = require('./add-order')
 const makeGetOrder = require('./get-order')
 const makeListOrders = require('./list-orders')
 const makeAcceptOrder = require('./accept-order')
+const makeCompleteOrder = require('./complete-order')
 const makeListProducts = require('./list-products')
 const makeListUsers = require('./list-users')
 const makeUpdateUser = require('./update-user')
@@ -38,12 +39,8 @@ const addOrder = makeAddOrder({ ordersDB: store })
 const getOrder = makeGetOrder({ ordersDB: store })
 const listOrders = makeListOrders({ ordersDB: store })
 const updateOrder = makeUpdateOrder({ ordersDB: store, getOrder })
-const acceptOrder = makeAcceptOrder({
-  ordersDB: store,
-  productsDB: store,
-  getOrder,
-  getProduct,
-})
+const acceptOrder = makeAcceptOrder({ ordersDB: store, productsDB: store })
+const completeOrder = makeCompleteOrder({ ordersDB: store, productsDB: store })
 
 module.exports = Object.freeze({
   addUser,
@@ -55,6 +52,7 @@ module.exports = Object.freeze({
   getOrder,
   updateOrder,
   acceptOrder,
+  completeOrder,
   listOrders,
   addProduct,
   getProduct,

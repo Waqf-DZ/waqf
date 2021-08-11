@@ -14,6 +14,7 @@ const {
   postUserNewProduct,
   getUserOrder,
   postUserAcceptOrder,
+  postUserCompleteOrder,
   getUserOrders,
   getUserProduct,
   getUserProducts,
@@ -32,6 +33,7 @@ router.get('/orders/new', isHelpSeeker, getUserNewOrder)
 router.get('/orders', getUserOrders)
 router.get('/orders/:id', getUserOrder)
 router.post('/orders/:id/accept', postUserAcceptOrder)
+router.post('/orders/:id/complete', postUserCompleteOrder)
 
 router.post(
   '/orders/new',

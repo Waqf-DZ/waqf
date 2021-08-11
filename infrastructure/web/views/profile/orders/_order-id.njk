@@ -118,7 +118,8 @@
     </div>
   </div>
 
-  {% if authenticatedUser.isGivingHelp %}
+  {# accept order form #}
+  {% if authenticatedUser.isGivingHelp and order.isPending %}
     {# help giver accept order section #}
     <h1 class="title is-4">هل تريد قبول هذا الطلب؟</h1>
     <div class="columns">
@@ -141,6 +142,27 @@
           <div class="field is-grouped">
             <div class="control">
               <button class="button is-link" type="submit">قبول الطلب</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  {% endif %}
+
+  {# complete order form #}
+  {% if authenticatedUser.isGivingHelp and order.isAccepted %}
+    {# help giver accept order section #}
+    <h1 class="title is-4">هل تريد إتمام هذا الطلب؟</h1>
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+
+        <form action="/profile/orders/{{order.id}}/complete" method="POST">
+          <p>بعد استعادة الجهاز الخص بك اضغط على "إتمام الطلب"</p>
+
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button is-link" type="submit">إتمام الطلب</button>
             </div>
           </div>
         </form>
