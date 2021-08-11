@@ -6,9 +6,8 @@ module.exports = function makeGetUsers({ listUsers }) {
         data: { users: usersList },
       })
     } catch (err) {
-      res.render('admin/users/index', {
-        errorMessages: [err.message],
-      })
+      console.log(err)
+      res.render('admin/users/index')
     }
   }
 }

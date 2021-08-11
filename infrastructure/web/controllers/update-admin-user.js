@@ -5,7 +5,6 @@ module.exports = function makeUpdateAdminUser({ updateUser, flashMessages }) {
         id: req.params.id,
         ...req.body,
       }
-
       const updatedUser = await updateUser(userInfo)
       if (updatedUser) {
         req.flash('success', flashMessages.PROFILE_UPDATE_SUCCESS)
@@ -15,7 +14,7 @@ module.exports = function makeUpdateAdminUser({ updateUser, flashMessages }) {
         res.redirect('/admin/users')
       }
     } catch (err) {
-      res.render('admin/users/index', { errorMessages: [err.message] })
+      console.log(err)
     }
   }
 }

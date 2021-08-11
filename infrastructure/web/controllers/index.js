@@ -73,7 +73,7 @@ const postSignup = makePostSignup({
   validator,
 })
 const postSignin = makePostSignin({ signInUser, flashMessages, passport })
-const getUsers = makeGetUsers({ listUsers })
+const getUsers = makeGetUsers({ listUsers, flashMessages })
 const getNewUser = makeGetNewUser()
 const postNewUser = makePostNewUser({
   addUser,
