@@ -7,8 +7,10 @@ module.exports = function makeUpdateAdminProduct({
     try {
       const productInfo = {
         id: req.params.id,
-        productImage: req.file ? adjustUploadPath(req.file.path) : null,
         ...req.body,
+      }
+      if (req.file) {
+        productInfo.productImage = adjustUploadPath(req.file.path)
       }
       const updatedProduct = await updateProduct(productInfo)
       if (updatedProduct) {
