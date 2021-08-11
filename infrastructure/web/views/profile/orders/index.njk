@@ -52,28 +52,16 @@
                 {{ order.status }}
               </td>
 
-              {% if authenticatedUser.isSeekingHelp %}
               <td>
                 <a href="/profile/orders/{{ order.id }}" class="button is-info is-light">
-                  تفاصيل
+                  عرض
                 </a>
               </td>
-                <td><a class="button is-danger is-light">حذف</a></td>
-              {% else %}
-              <td>
-                <a href="/profile/orders/{{ order.id }}" class="button is-info is-light">
-                  تفاصيل
-                </a>
-              </td>
-              <td>
-                <a
-                  href="/profile/orders/{{ order.id }}"
-                  class="button is-success is-light"
-                >
-                  قبول الطلب
-                </a>
-              </td>
-              {% endif %}
+                <td>
+                  {% if authenticatedUser.isSeekingHelp %}
+                    <a class="button is-danger is-light">حذف</a>
+                  {% endif %}
+                </td>
             </tr>
           {% endfor %}
           </tbody>
