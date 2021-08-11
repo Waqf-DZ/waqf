@@ -82,9 +82,11 @@ module.exports = function buildMakeOrder({ getUniqueId }) {
       },
       markAccepted: () => {
         status = STATUS_OPTIONS.accepted
+        acceptedAt = Date.now()
       },
       markCompleted: () => {
         status = STATUS_OPTIONS.completed
+        completedAt = Date.now()
       },
       assignProductId: (productId) => {
         assignedProductId = productId
