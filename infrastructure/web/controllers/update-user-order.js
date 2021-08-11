@@ -7,12 +7,15 @@ module.exports = function makeUpdateUserOrder({
     const orderInfo = {
       id: req.params.id,
       ownerId: req.user.id,
-      ...req.body,
+      patientName: req.body.patientName,
+      patientAge: req.body.patientAge,
+      oxygenRatio: req.body.oxygenRatio,
+      hasChronicDesease: req.body.hasChronicDesease == 'true',
+      isCovid: req.body.isCovid == 'true',
     }
-    orderInfo.prescriptionUrl = req.file
-      ? adjustUploadPath(req.file.path)
-      : null
-
+    if (req.file) {
+      orderInfo.prescriptionUrl = adjustUploadPath(req.file.path)
+    }
     const updatedOrder = await updateOrder(orderInfo)
 
     if (updatedOrder) {
