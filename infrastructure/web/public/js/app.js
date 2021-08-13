@@ -60,7 +60,7 @@ $(function () {
 // Location
 $(document).ready(function () {
   var Selected = 0
-  $.getJSON('assets/w_json/dz_cities.json', function (data) {
+  $.getJSON('/w_json/dz_cities.json', function (data) {
     var html = ''
     var len = data.length
     for (var i = 0; i < len; i++) {
@@ -69,7 +69,7 @@ $(document).ready(function () {
     $('#cityValidat').append(html)
   })
   $('#cityValidat').change((e) => {
-    $.getJSON('assets/w_json/dz_com.json', function (data) {
+    $.getJSON('/w_json/dz_com.json', function (data) {
       var html = ''
       $('#municValidat').append('')
       const DATA = data.filter((itm) => itm.cw_id == e.target.selectedIndex)
