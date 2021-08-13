@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Droid Arabic Kufi';
-  src: url('/fonts/Droid-Arabic-Kufi.ttf') format('TrueType');
+  src: url('/font/Droid-Arabic-Kufi.ttf') format('TrueType');
 }
 
 :root {

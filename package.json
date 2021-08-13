@@ -6,7 +6,8 @@
     "start": "NODE_ENV=production node ./index.js",
     "dev": "nodemon ./index.js",
     "prepare": "husky install",
-    "test": "tape ./**/*.test.js | tap-spec"
+    "test": "tape ./**/*.test.js | tap-spec",
+    "lint": "eslint"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
