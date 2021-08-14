@@ -13,11 +13,11 @@
     {% endblock %}
   </head>
   <body>
-    <div class="container is-fullhd">
+    <main>
     {% include '../partials/header.njk' %}
     {% block content %}
     {% endblock %}
-    </div>
+    </main>
     {# it's outside the div with the class "container" so it takes full width #}
     {% include '../partials/footer.njk' %} 
 

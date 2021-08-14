@@ -1,82 +1,466 @@
-<header>
-	<nav class="navbar" role="navigation" aria-label="main navigation">
-	  <div class="navbar-brand">
-	    <a class="navbar-item" href="/">
-	      <img src="/img/logo.png">
-	    </a>
-
-	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-	      <span aria-hidden="true"></span>
-	      <span aria-hidden="true"></span>
-	      <span aria-hidden="true"></span>
-	    </a>
-	  </div>
-
-	  <div id="navbarBasicExample" class="navbar-menu">
-	    <div class="navbar-start">
-	      <a href="/" class="navbar-item">
-	        الرئيسية
-	      </a>
-
-	      <a href="/admin" class="navbar-item">
-	        إدارة الموقع
-	      </a>
-
-	      <a href="/profile" class="navbar-item">
-	        الحساب
-	      </a>
-
-	      <a href="/about" class="navbar-item">
-	        حول المشروع
-	      </a>
-
-		  	<a href="/contact" class="navbar-item">
-	        تواصل معنا
-	      </a>
-	    </div>
-
-			{% if authenticatedUser %}
-				<div class="navbar-end">
-					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link">
-							{{ authenticatedUser.displayName }}
+<div class="sticky-top bg-white shadow-soft py-3 d-nonse d-lg-flex">
+	<div
+		class="
+			container
+			d-flex
+			justify-content-lg-between
+			align-items-center
+			px-3
+		"
+	>
+		<div class="d-flex d-lg-none justify-content-between w-100">
+			<a href="index.html" class="media logo">
+				<img src="/img/logo/logo_dark.png" class="u-sm-avatar" alt="logo" />
+			</a>
+			<div class="dropdown my-auto">
+				<button
+					class="btn btn-lg p-0"
+					type="button"
+					id="dropdownNotifications"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false"
+				>
+					<i class="fa-regular fa-bell op-80"></i>
+				</button>
+				<div
+					class="dropdown-menu dropdown-wide text-right mt-4 pb-0 shadow-lg"
+					id="notif_list"
+					aria-labelledby="dropdownNotifications"
+				>
+					<ul class="list-unstyled px-3 pt-2 mb-0">
+						<li class="media py-2 position-relative">
+							<div
+								class="u-avatar bg-cover rounded-circle"
+								style="background: url('/img/bg/oxygen.jpg')"
+							></div>
+							<div class="media-body my-auto mr-2 w-50">
+								<h5 class="font-size-1 mb-0 ellipsis">
+									نص شكلي ويُستخدم في صناعات المطابع ودور النشر
+								</h5>
+								<p class="mb-0 medium text-primary">منذ 5 دقيقة</p>
+							</div>
+							<a href="#" class="stretched-link"></a>
+						</li>
+						<li class="media py-2 position-relative">
+							<div
+								class="u-avatar bg-cover rounded-circle"
+								style="background: url('/img/users/01.png')"
+							></div>
+							<div class="media-body my-auto mr-2 w-50">
+								<h5 class="font-size-1 mb-0 ellipsis">
+									نص شكلي ويُستخدم في صناعات المطابع ودور النشر
+								</h5>
+								<p class="mb-0 medium text-primary">منذ 6 ساعة</p>
+							</div>
+							<a href="#" class="stretched-link"></a>
+						</li>
+						<li class="media py-2 position-relative">
+							<div
+								class="u-avatar bg-cover rounded-circle"
+								style="background: url('/img/doc.png')"
+							></div>
+							<div class="media-body my-auto mr-2 w-50">
+								<h5 class="font-size-1 mb-0 ellipsis">
+									نص شكلي ويُستخدم في صناعات المطابع ودور النشر
+								</h5>
+								<p class="mb-0 medium text-primary">منذ 10 ساعة</p>
+							</div>
+							<a href="#" class="stretched-link"></a>
+						</li>
+					</ul>
+					<div class="border-top py-1 text-center">
+						<a
+							class="dropdown-item font-weight-semi-bold text-dark"
+							href="#"
+							><i class="fa-regular fa-bell font-size-2 pl-2"></i>جميع
+							الإشعارات</a
+						>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="d-flex">
+			<ul class="nav nav-lg d-none d-lg-flex align-items-center">
+				<li>
+					<a href="index.html" class="media logo">
+						<img
+							src="/img/logo/logo_dark.png"
+							class="u-sm-avatar"
+							alt="logo"
+						/>
+					</a>
+				</li>
+				<li>
+					<a href="/" class="active">الرئيسية</a>
+				</li>
+				<li>
+					<div class="dropdown">
+						<a
+							class="btn font-weight-semi-bold text-lh-sm p-0"
+							href="#"
+							role="button"
+							id="dropdownMenuLink"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							خدمات<i class="far fa-chevron-down pr-2 small"></i>
 						</a>
 
-						<div class="navbar-dropdown">
-							{% if authenticatedUser.isAdmin %}
-								<a class="navbar-item" href="/admin">
-									إدارة الموقع
-								</a>
-							{% else %}
-								<a class="navbar-item" href="/profile">
-									الحساب
-								</a>
-							{% endif %}
-							<hr class="navbar-divider">
-							<a class="navbar-item" href="/signout">
-								خروج
+						<div
+							class="
+								dropdown-menu dropdown-menu-right
+								text-right
+								mt-5
+								shadow-lg
+							"
+							aria-labelledby="dropdownMenuLink"
+						>
+							<a
+								class="dropdown-item font-weight-semi-bold"
+								href="/profile/orders/new"
+							>
+								إنشاء طلب جديد
+							</a>
+							<div class="dropdown-divider"></div>
+							<a
+								class="dropdown-item font-weight-semi-bold"
+								href="/profile/products/new"
+							>
+								إنشاء وقف جديد
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item font-weight-semi-bold" href="/profile/orders">
+								عرض الطلبات
+							</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item font-weight-semi-bold" href="/profile/products">
+								عرض الأوقاف
 							</a>
 						</div>
 					</div>
-				</div>
-			{% else %}
-				<div class="navbar-end">
-					<div class="navbar-item">
-						<div class="buttons">
-							<a href="/signup" class="button is-primary">
-								تسجيل حساب جديد
-							</a>
-							<a href="/signin" class="button is-light">
-								تسجيل الدخول
-							</a>
-						</div>
-					</div>
-				</div>
-			{% endif %}
-	  </div>
-	</nav>
-</header>
+				</li>
+				<li><a href="/about">حول المشروع</a></li>
+				<li><a href="/contact">تواصل معنا</a></li>
+			</ul>
+		</div>
 
+		{% if authenticatedUser %}
+		<!-- notifications -->
+		<div class="d-none d-lg-flex my-auto">
+			<div class="dropdown my-auto mx-4">
+				<button
+					class="btn btn-lg py-0"
+					type="button"
+					id="dropdownNotifications"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false"
+				>
+					<i class="fa-regular fa-bell op-80"></i>
+				</button>
+				<div
+					class="dropdown-menu dropdown-wide text-right mt-4 pb-0 shadow-lg"
+					id="notif_list"
+					aria-labelledby="dropdownNotifications"
+				>
+					<ul class="list-unstyled px-3 pt-2 mb-0">
+						<li class="media py-2">
+							<div
+								class="u-avatar bg-cover rounded-circle"
+								style="background: url('/img/bg/oxygen.jpg')"
+							></div>
+							<div class="media-body my-auto mr-2 w-50">
+								<h5 class="font-size-1 mb-0 ellipsis">
+									نص شكلي ويُستخدم في صناعات المطابع ودور النشر
+								</h5>
+								<p class="mb-0 medium text-primary">منذ 5 دقيقة</p>
+							</div>
+						</li>
+						<li class="media py-2">
+							<div
+								class="u-avatar bg-cover rounded-circle"
+								style="background: url('/img/users/01.png')"
+							></div>
+							<div class="media-body my-auto mr-2 w-50">
+								<h5 class="font-size-1 mb-0 ellipsis">
+									نص شكلي ويُستخدم في صناعات المطابع ودور النشر
+								</h5>
+								<p class="mb-0 medium text-primary">منذ 6 ساعة</p>
+							</div>
+						</li>
+						<li class="media py-2">
+							<div
+								class="u-avatar bg-cover rounded-circle"
+								style="background: url('/img/doc.png')"
+							></div>
+							<div class="media-body my-auto mr-2 w-50">
+								<h5 class="font-size-1 mb-0 ellipsis">
+									نص شكلي ويُستخدم في صناعات المطابع ودور النشر
+								</h5>
+								<p class="mb-0 medium text-primary">منذ 10 ساعة</p>
+							</div>
+						</li>
+					</ul>
+					<div class="border-top py-1 text-center">
+						<a
+							class="dropdown-item font-weight-semi-bold text-dark"
+							href="#"
+							><i class="fa-regular fa-bell font-size-2 pl-2"></i>جميع
+							الإشعارات</a
+						>
+					</div>
+				</div>
+			</div>
+
+			{# account dropdown #}
+			<div class="dropdown">
+				<button
+					class="btn p-0"
+					type="button"
+					id="dropdownMenuAccount"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false"
+				>
+					<div
+						class="u-md-avatar bg-cover rounded-circle"
+						style="background: url('/img/users/01.png')"
+					></div>
+				</button>
+
+				<div
+					class="
+						dropdown-menu dropdown-menu-left dropdown-wide
+						menu-toggle
+						py-0
+						mt-4
+						shadow-lg
+					"
+					aria-labelledby="userAction"
+				>
+					<div class="dropdown-item py-3">
+						<div class="media">
+							<div
+								class="u-avatar rounded-circle bg-cover ml-2"
+								style="background: url('/img/users/01.png')"
+							></div>
+							<div class="media-body my-auto text-right">
+								<h6 class="font-size-2 mb-0">{{authenticatedUser.displayName}}</h6>
+								<p class="medium text-reset mb-0">{{authenticatedUser.role}}</p>
+							</div>
+						</div>
+					</div>
+					<div class="row gx-0 text-center">
+						<div class="col-6">
+							<a
+								class="
+									dropdown-item
+									font-size-2 font-weight-normal
+									py-4
+									border-top border-left
+								"
+								href="/profile/settings"
+							>
+								<i class="fad fa-user-gear pl-2"></i>إعدادات
+							</a>
+						</div>
+
+						<div class="col-6">
+							<a
+								class="
+									dropdown-item
+									font-size-2 font-weight-normal
+									py-4
+									border-top
+								"
+								href="/signout"
+							>
+								<i class="fad fa-sign-out-alt pl-2"></i>خروج
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{% else %}
+			<div>
+				<a href="/signin" class="btn btn-sm btn-outline-dark py-2">
+					دخول
+				</a>
+				<a
+					href="/signup"
+					class="btn btn-sm btn-success-g text-white py-2 mr-2"
+				>
+					حساب جديد
+				</a>
+			</div>
+			{% endif %}
+
+		</div>
+	</div>
+</div>
+
+{# sm navigation #}
+{% if authenticatedUser %}
+<div
+	class="
+		fixed-bottom
+		d-flex d-lg-none
+		bg-white
+		shadow-lg
+		pb-2
+		pt-3
+		z-index-20
+	"
+	id="nav-sm"
+>
+	<div
+		class="
+			nav
+			container
+			d-flex d-lg-none
+			justify-content-between
+			align-items-center
+			px-2
+		"
+	>
+		<!-- Profile -->
+		<div class="dropdown">
+			<button
+				class="btn btn-lg py-0"
+				type="button"
+				id="dropdownMenuAccount"
+				data-toggle="dropdown"
+				aria-haspopup="true"
+				aria-expanded="false"
+			>
+				<i class="far fa-user-circle"></i>
+			</button>
+			<div
+				class="dropdown-menu dropdown-wide py-0 mb-4 shadow-lg"
+				aria-labelledby="userAction"
+			>
+				<div class="dropdown-item py-3">
+					<div class="media">
+						<div
+							class="u-avatar rounded-circle bg-cover ml-2"
+							style="background: url('/img/users/01.png')"
+						></div>
+						<div class="media-body my-auto text-right">
+							<h6 class="font-size-2 mb-0">{{authenticatedUser.displayName}}</h6>
+							<p class="font-weight-semi-bold medium mb-0">{{authenticatedUser.role}}</p>
+						</div>
+					</div>
+				</div>
+				<div class="row gx-0 text-center">
+					<div class="col-6">
+						<a
+							class="
+								dropdown-item
+								font-size-2 font-weight-normal
+								py-4
+								border-y border-left
+							"
+							href="/profile/settings"
+						>
+							<i class="fad fa-user-gear pl-2"></i>الحساب
+						</a>
+					</div>
+
+					<div class="col-6">
+						<a
+							class="
+								dropdown-item
+								font-size-2 font-weight-normal
+								py-4
+								border-y
+								settings
+							"
+							href="/profile/settings"
+						>
+							<i class="fad fa-sliders pl-2"></i>إعدادات
+						</a>
+					</div>
+
+					<div class="col-6">
+						<a
+							class="
+								dropdown-item
+								font-size-2 font-weight-normal
+								py-4
+								border-left
+							"
+							href="#"
+						>
+							<i class="fad fa-headset pl-2"></i>دعم
+						</a>
+					</div>
+
+					<div class="col-6">
+						<a
+							class="dropdown-item font-size-2 font-weight-normal py-4"
+							href="/signout"
+						>
+							<i class="fad fa-sign-out-alt pl-2"></i>خروج
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- info -->
+		<a href="/profile" class="btn btn-lg py-0">
+			<i class="far fa-circle-info"></i>
+		</a>
+
+		<!-- New -->
+		<div class="dropdown">
+			<button
+				class="btn btn-lg py-0"
+				type="button"
+				id="dropdownNewHelp"
+				data-toggle="dropdown"
+				aria-haspopup="true"
+				aria-expanded="false"
+			>
+				<i class="far fa-plus-circle"></i>
+			</button>
+			<div
+				class="dropdown-menu dropdown-wide text-right mb-7 shadow-lg"
+				aria-labelledby="dropdownMenuLink"
+			>
+				<a class="dropdown-item font-weight-semi-bold" href="/profile/orders/new">
+				إنشاء طلب جديد
+				</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item font-weight-semi-bold" href="/profile/products/new">
+					إنشاء وقف جديد
+				</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item font-weight-semi-bold" href="/profile/orders">
+					عرض الطلبات
+				</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item font-weight-semi-bold" href="/profile/products">
+					عرض الأوقاف
+				</a>
+			</div>
+		</div>
+
+		<!-- Nav toggle -->
+		<button type="button" class="btn btn-lg py-0">
+			<i class="far fa-envelope"></i>
+		</button>
+
+		<!-- Home -->
+		<a href="/profile" class="btn btn-lg py-0">
+			<i class="far fa-house"></i>
+		</a>
+	</div>
+</div>
+{% endif %}
 
 
 

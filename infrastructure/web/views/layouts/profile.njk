@@ -8,62 +8,28 @@
     <link rel="stylesheet" href="/css/footerStyle.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@6.8.1/swiper-bundle.min.css"
+    />
     <link rel="icon" href="/img/logo.png">
     {% block css %}
     {% endblock %}
   </head>
   <body>
-    <div>
-      {% include '../partials/header.njk' %}
+    {% include '../partials/header.njk' %}
 
-      <div class="columns m-0 has-background-light">
-        {# side bar column #}
-        <div class="column is-3 has-background-grey-light">
-          <aside class="menu">
-            <p class="menu-label">
-              الحساب الشخصي
-            </p>
-            <ul class="menu-list">
-              <li><a href="/profile/settings">إعدادات الحساب</a></li>
-            </ul>
+    {# main content column #}
+    <main>
+      {% include '../partials/flash-messages.njk' %}
+      {% block content %}
+      {% endblock %}
+    </main>
 
-            <p class="menu-label">
-              الطلبات
-            </p>
-            <ul class="menu-list">
-              {% if authenticatedUser.isSeekingHelp %}
-                <li><a href="/profile/orders/new">إنشاء طلب جديد</a></li>
-              {% endif %}
-              <li><a href="/profile/orders">عرض كل الطلبات</a></li>
-            </ul>
-
-            {# products pages #}
-            {% if authenticatedUser.isGivingHelp %}
-              <p class="menu-label">
-                الأوقاف
-              </p>
-              <ul class="menu-list">
-                <li><a href="/profile/products/new">إنشاء وقف جديد</a></li>
-                <li><a href="/profile/products">عرض كل الأوقاف</a></li>
-              </ul>
-            {% endif %}
-          </aside>
-        </div>
-
-        {# main content column #}
-        <main class="column is-9">
-          {% include '../partials/flash-messages.njk' %}
-          {% block content %}
-          {% endblock %}
-        </main>
-      </div>
-    </div>
-
-    {# it's outside the div with the class "container" so it takes full width #}
-    {% include '../partials/footer.njk' %} 
     <script src="/js/index.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
