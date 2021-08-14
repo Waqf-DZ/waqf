@@ -6,71 +6,231 @@
 
 {% block content %}
 
-  <h1 class="title is-4">إنشاء وقف جديد</h1>
+  <form 
+    class="needs-validation"
+    action="/profile/products/new" 
+    method="POST" 
+    enctype="multipart/form-data" 
+    novalidate
+  >
+    <div class="container pt-5 pb-10">
+      <div class="row row-reverse justify-content-center">
+        <div class="col-12 col-lg-9 d-flex mb-4 mb-lg-0">
+          <div class="card container shadow-sm border-0 px-0">
+            <div class="card-body pt-5">
+              <h2 class="mb-5">إنشاء وقف جديد</h2>
+              <!-- User Info -->
+              <div class="form-row">
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label
+                      class="medium font-weight-semi-bold"
+                      for="name"
+                      >إسم الوقف</label
+                    >
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-user font-size-2"></i>
+                        </div>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        id="name"
+                        placeholder="الإسم"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        رجاءا قم بإدخال إسم الوقف
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label
+                      class="medium font-weight-semi-bold"
+                      for="serial"
+                      >الرقم التسلسلي</label
+                    >
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-hashtag font-size-2"></i>
+                        </div>
+                      </div>
+                      <input
+                        type="number"
+                        class="form-control form-control-sm"
+                        id="serial"
+                        placeholder="T54578f"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        رجاءا قم بإدخال الرقم التسلسلي
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-  <div class="columns">
-    <div class="column is-8 is-offset-2">
-      <form action="/profile/products/new" method="POST" enctype="multipart/form-data">
-        <div class="field">
-          <label class="label">إسم الوقف</label>
-          <div class="control has-icons-right">
-            <input class="input" type="text" name="name">
-            <span class="icon is-small is-right">
-              <ion-icon name="person-outline"></ion-icon>
-            </span>
-          </div>
-        </div>
 
-        <div class="field">
-          <label class="label">نوع الوقف</label>
-          <div class="control">
-            <div class="select">
-              <select name="type">
-                <option value="type1">مكثف أكسيجين</option>
-                <option value="type2">جهاز قياس تركيز الأكسيجين</option>
-              </select>
+              <div class="form-row">
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <label
+                    class="medium font-weight-semi-bold"
+                    for="type"
+                    >نوع الوقف</label
+                  >
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text border-0 z-index-9">
+                        <i class="far fa-location-crosshairs font-size-2"></i>
+                      </div>
+                    </div>
+                    <select
+                      class="custom-select bg-transparent shadow-soft pr-5"
+                      id="type"
+                      name="type"
+                      required
+                    >
+                      <option selected disabled value="">
+                        اختر نوع الوقف
+                      </option>
+                    </select>
+                    <div class="invalid-feedback">
+                      يرجى اختيار نوع الوقف
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <label
+                    class="medium font-weight-semi-bold"
+                    for="countryState"
+                    >الولاية</label
+                  >
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text border-0 z-index-9">
+                        <i class="far fa-location-dot font-size-2"></i>
+                      </div>
+                    </div>
+                    <select
+                      class="custom-select bg-transparent shadow-soft pr-5"
+                      id="countryState"
+                      name="countryState"
+                      required
+                    >
+                      <option selected disabled value="">اختر الولاية</option>
+                    </select>
+                    <div class="invalid-feedback">يرجى اختيار الولاية</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3 mb-lg-4">
+                <label
+                  class="medium font-weight-semi-bold"
+                  for="countryDistrict"
+                  >البلدية/الدائرة</label
+                >
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text border-0 z-index-9">
+                      <i class="far fa-location-crosshairs font-size-2"></i>
+                    </div>
+                  </div>
+                  <select
+                    class="custom-select bg-transparent shadow-soft pr-5"
+                    id="countryDistrict"
+                    required
+                  >
+                    <option selected disabled value="">
+                      اختر البلدية/الدائرة
+                    </option>
+                  </select>
+                  <div class="invalid-feedback">
+                    يرجى اختيار دائرة / بلديتك سكنك
+                  </div>
+                </div>
+              </div>
+            
+              <div class="form-group">
+                <label
+                  for="description"
+                  class="medium font-weight-semi-bold"
+                  >وصف الوقف:</label
+                >
+                <textarea
+                  class="form-control"
+                  id="description"
+                  rows="5"
+                  required
+                ></textarea>
+                <div class="invalid-feedback">رجاءا قم بإدخال وصف للوقف</div>
+              </div>
             </div>
           </div>
         </div>
+        <div class="col-12 col-lg-3">
+          <div class="card shadow-sm border-0 rounded mb-4">
+            <div class="card-body py-4">
+              <div class="d-flex justify-content-between">
+                <h1 class="font-size-2 mb-0">صور الوقف:</h1>
+                <span
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="يرجى إرفاق صور الوصفة الطبية أو الوثائق التي تثبت حالة المريض، بعد أن نتحقق من الطلب سيتم الموافقة عليه مباشرة."
+                >
+                  <i class="fa-regular fa-circle-info"></i>
+                </span>
+              </div>
+              <small class="font-weight-semi-bold"></small>
 
-        <div class="field">
-          <label class="label">الرقم التسلسلي</label>
-          <div class="control has-icons-right">
-            <input class="input" type="text" name="serial">
-            <span class="icon is-small is-right">
-              <ion-icon name="person-outline"></ion-icon>
-            </span>
+              <div
+                id="idValidationAttach"
+                class="
+                  position-relative
+                  dropzone-boxed
+                  text-center
+                  my-3
+                  py-10
+                "
+              >
+                <span class="small font-weight-semi-bold text-center"
+                  >تصفح الملفات الخاصة بك أو اسحبها إلى المربع</span
+                >
+                <input
+                  type="file"
+                  class="
+                    file-attachment-btn-label
+                    custom-file-input
+                    cursor-pointer
+                  "
+                  id="IDUploader"
+                  name="productImage"
+                  required
+                />
+                <div class="invalid-feedback">رجاءا قم برفع صور للوقف</div>
+              </div>
+            </div>
           </div>
+          <button
+            type="submit"
+            class="
+              btn btn-sm btn-success-g
+              w-100
+              font-weight-semi-bold
+              text-white
+            "
+          >
+            إنشاء الوقف
+          </button>
         </div>
-
-        <div class="field">
-          <label class="label">صورة الوقف</label>
-          <div class="control has-icons-right">
-            <input class="input" type="file" name="productImage">
-            <span class="icon is-small is-right">
-              <ion-icon name="person-outline"></ion-icon>
-            </span>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">وصف الوقف</label>
-          <div class="control has-icons-right">
-          <textarea class="textarea" name="description" rows="5">
-          </textarea>
-          </div>
-        </div>
-
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-link" type="submit">إنشاء</button>
-          </div>
-          <div class="control">
-            <button class="button is-link is-light" type="reset">إلغاء</button>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>
+  </form>
 
 {% endblock %}
