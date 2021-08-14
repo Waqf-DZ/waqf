@@ -5,89 +5,317 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="title is-4">إنشاء طلب جديد</h1>
-  <div class="columns">
-    <div class="column is-8 is-offset-2">
 
-      <form action="/profile/orders/new" method="POST" enctype="multipart/form-data">
-        <div class="field">
-          <label class="label">إسم المريض</label>
-          <div class="control has-icons-right">
-            <input class="input" type="text" name="patientName">
-            <span class="icon is-small is-right">
-              <ion-icon name="person-outline"></ion-icon>
-            </span>
+  <form 
+    class="needs-validation" 
+    action="/profile/orders/new" 
+    method="POST" 
+    enctype="multipart/form-data" 
+    novalidate
+  >
+    <div class="container pt-5 pb-10">
+      <div class="row row-reverse">
+        <div class="col-12 col-lg-9 d-flex mb-4 mb-lg-0">
+          <div class="card container shadow-sm border-0 px-0">
+            <div class="card-body pt-5">
+              <h2 class="mb-5">طلب جديد</h2>
+              <!-- User Info -->
+              <div class="form-row">
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label
+                      class="medium font-weight-semi-bold"
+                      for="patientName"
+                      >إسم المريض</label
+                    >
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-user font-size-2"></i>
+                        </div>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        id="patientName"
+                        placeholder="الإسم"
+                        required
+                      />
+                      <div class="invalid-feedback">رجاءا قم بإدخال إسمك</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label
+                      class="medium font-weight-semi-bold"
+                      for="patientFamilyName"
+                      >لقب المريض</label
+                    >
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-user-plus font-size-2"></i>
+                        </div>
+                      </div>
+                      <input
+                        type="email"
+                        class="form-control form-control-sm"
+                        id="patientFamilyName"
+                        placeholder="اللقب"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        رجاءا قم بإدخال لقب المريض
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label
+                      class="medium font-weight-semi-bold"
+                      for="oxygenRatio"
+                      >تركيز الأكسجين</label
+                    >
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-heart-pulse font-size-2"></i>
+                        </div>
+                      </div>
+                      <input
+                        type="number"
+                        class="form-control form-control-sm"
+                        id="oxygenRatio"
+                        name="oxygenRatio"
+                        placeholder="90"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        رجاءا قم بإدخال تركيز الأكسجين
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label
+                      class="medium font-weight-semi-bold"
+                      for="patientAge"
+                      >عمر المريض</label
+                    >
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-calendar-range font-size-2"></i>
+                        </div>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        id="patientAge"
+                        name="patientAge"
+                        placeholder="65"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        رجاءا قم بإدخال عمر المريض
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label
+                      class="medium font-weight-semi-bold"
+                      for="hasChronicDesease"
+                      >لديه مرض مزمن</label
+                    >
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-face-thermometer font-size-2"></i>
+                        </div>
+                      </div>
+                      <select
+                        class="
+                          custom-select
+                          bg-transparent
+                          shadow-soft
+                          border-0
+                          pr-5
+                        "
+                        required
+                      >
+                        <option selected disabled value="">
+                          قم بالإختيار
+                        </option>
+                        <option>نعم</option>
+                        <option>لا</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        رجاءا قم بتحديد الخيار المناسب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label
+                      class="medium font-weight-semi-bold"
+                      for="isCovid"
+                      >مصاب بفيروس كورونا</label
+                    >
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-virus font-size-2"></i>
+                        </div>
+                      </div>
+                      <select
+                        class="
+                          custom-select
+                          bg-transparent
+                          shadow-soft
+                          border-0
+                          pr-5
+                        "
+                        required
+                      >
+                        <option selected disabled value="">
+                          قم بالإختيار
+                        </option>
+                        <option>نعم</option>
+                        <option>لا</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        رجاءا قم بتحديد الخيار المناسب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <label
+                    class="medium font-weight-semi-bold"
+                    for="countryState"
+                    >الولاية</label
+                  >
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text border-0 z-index-9">
+                        <i class="far fa-location-dot font-size-2"></i>
+                      </div>
+                    </div>
+                    <select
+                      class="custom-select bg-transparent shadow-soft pr-5"
+                      id="countryState"
+                      required
+                    >
+                      <option selected disabled value="">اختر الولاية</option>
+                    </select>
+                    <div class="invalid-feedback">يرجى اختيار الولاية</div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <label
+                    class="medium font-weight-semi-bold"
+                    for="countryDistrict"
+                    >البلدية/الدائرة</label
+                  >
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text border-0 z-index-9">
+                        <i class="far fa-location-crosshairs font-size-2"></i>
+                      </div>
+                    </div>
+                    <select
+                      class="custom-select bg-transparent shadow-soft pr-5"
+                      id="countryDistrict"
+                      required
+                    >
+                      <option selected disabled value="">
+                        اختر البلدية/الدائرة
+                      </option>
+                    </select>
+                    <div class="invalid-feedback">
+                      يرجى اختيار دائرة / بلديتك سكنك
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <div class="col-12 col-lg-3">
+          <!-- Unverified Account -->
+          <div class="card shadow-sm border-0 rounded mb-4">
+            <div class="card-body py-4">
+              <div class="d-flex justify-content-between">
+                <h1 class="font-size-2 mb-0">
+                  الوصفة الطبية / وثائق الإثبات:
+                </h1>
+                <span
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="يرجى إرفاق صور الوصفة الطبية أو الوثائق التي تثبت حالة المريض، بعد أن نتحقق من الطلب سيتم الموافقة عليه مباشرة."
+                >
+                  <i class="fa-regular fa-circle-info"></i>
+                </span>
+              </div>
+              <small class="font-weight-semi-bold"></small>
 
-        <div class="field">
-          <label class="label">عمر المريض</label>
-          <div class="control has-icons-right">
-            <input class="input" type="number" name="patientAge">
-            <span class="icon is-small is-right">
-            <ion-icon name="call-outline"></ion-icon>
-          </span>
+              <div
+                id="medAttach"
+                class="
+                  position-relative
+                  dropzone-boxed
+                  text-center
+                  my-3
+                  py-10
+                "
+              >
+                <span class="small font-weight-semi-bold text-center"
+                  >تصفح الملفات الخاصة بك أو اسحبها إلى المربع</span
+                >
+                <input
+                  type="file"
+                  name="prescription"
+                  class="
+                    file-attachment-btn-label
+                    custom-file-input
+                    cursor-pointer
+                  "
+                  required
+                />
+                <div class="invalid-feedback">
+                  رجاءا قم برفع صور للوصفة الطبية أو الوثائق التي تثبت حالة
+                  المريض
+                </div>
+              </div>
+            </div>
           </div>
+          <button
+            type="submit"
+            class="
+              btn btn-sm btn-success-g
+              w-100
+              font-weight-semi-bold
+              text-white
+            "
+          >
+            إرسال الطلب
+          </button>
         </div>
-
-        <div class="field">
-          <label class="label">تركيز الأكسجين</label>
-          <div class="control has-icons-right has-icons-right">
-            <input class="input" type="number" name="oxygenRatio">
-            <span class="icon is-small is-right">
-            <ion-icon name="mail-outline"></ion-icon>
-          </span>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">هل لدى المريض أمراض مزمنة؟</label>
-          <div class="control">
-            <label class="radio">
-              <input type="radio" name="hasChronicDesease" value="true">
-              نعم
-            </label>
-            <label class="radio">
-              <input type="radio" name="hasChronicDesease" value="false">
-              لا
-            </label>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">هل المريض مصاب بفيروس كورونا؟</label>
-          <div class="control">
-            <label class="radio">
-              <input type="radio" name="isCovid" value="true">
-              نعم
-            </label>
-            <label class="radio">
-              <input type="radio" name="isCovid" value="false">
-              لا
-            </label>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">الوصفة الطبية</label>
-          <div class="control has-icons-right">
-            <input class="input" type="file" name="prescription">
-            <span class="icon is-small is-right">
-              <ion-icon name="person-outline"></ion-icon>
-            </span>
-          </div>
-        </div>
-
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-link" type="submit">إنشاء</button>
-          </div>
-          <div class="control">
-            <button class="button is-link is-light" type="reset">إلغاء</button>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>
+  </form>
 
 {% endblock %}
