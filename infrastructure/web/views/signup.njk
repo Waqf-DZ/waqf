@@ -9,87 +9,169 @@
   
   {% include './partials/flash-messages.njk' %}
 
-  <div class="columns">
-    <div class="column my-6 is-8 is-offset-2">
-
-      <form action="/signup" method="POST" class="box is-full">
-        <div class="field">
-          <label class="label" for="displayName">الإسم الكامل</label>
-          <div class="control has-icons-right">
-            <input
-              class="input"
-              type="text"
-              id="displayName"
-              name="displayName"
-              required
-            >
-            <span class="icon is-small is-right">
-              <ion-icon name="person-outline"></ion-icon>
-            </span>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label" for="email">البريد الإلكتروني</label>
-          <div class="control has-icons-right">
-            <input class="input" type="email" id="email" name="email" required>
-            <span class="icon is-small is-right">
-              <ion-icon name="mail-outline"></ion-icon>
-            </span>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label" for="phoneNumber">رقم الهاتف</label>
-          <div class="control has-icons-right">
-            <input
-              class="input"
-              type="tel"
-              id="phoneNumber"
-              name="phoneNumber"
-              required
-            >
-            <span class="icon is-small is-right">
-              <ion-icon name="call-outline"></ion-icon>
-            </span>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label" for="password">كلمة السر</label>
-          <div class="control has-icons-right">
-            <input
-              class="input"
-              type="password"
-              id="password"
-              name="password"
-              required
-            >
-            <span class="icon is-small is-right">
-              <ion-icon name="key-outline"></ion-icon>
-            </span>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label" for="role">كيف تريد استعمال المنصة؟</label>
-          <div class="control">
-            <label class="radio">
-              <input type="radio" name="role" value="GIVING_HELP" required>
-              أريد المساعدة
-            </label>
-
-            <label class="radio">
-              <input type="radio" name="role" value="SEEKING_HELP" required>
-              أحتاج المساعدة
-            </label>
-          </div>
-        </div>
-
-        <button type="submit" class="button is-primary">تسجيل</button>
-      </form>
-
+  <!-- User Regestration Email -->
+  <div class=".container-md mt-5 mb-5" >
+    <div class="w-35 mx-auto">
+      <div class="text-center">
+      <img
+        src="/img/logo/logo_white.png"
+        class="u-lg-avatar mb-3"
+        alt="Logo"
+      />
+      <h2 class="font-size-4 mb-1">منصة وقف</h2>
+      <p class="small font-weight-semi-bold mb-2">
+        تسجيل الدخول باستخدام البريد الإلكتروني
+      </p>
     </div>
+    
+    <form class="mx-auto">
+      <div class="form-group mb-4">
+        <label class="medium font-weight-semi-bold" for="displayName"
+          >الإسم</label
+        >
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <div class="input-group-text border-0 z-index-9 border-0">
+              <i class="far fa-envelope font-size-2"></i>
+            </div>
+          </div>
+          <input
+            type="email"
+            class="form-control form-control-sm"
+            id="displayName"
+            name="displayName"
+            placeholder="john Deo"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group mb-4">
+        <label class="medium font-weight-semi-bold" for="email"
+          >البريد الإلكتروني</label
+        >
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <div class="input-group-text border-0 z-index-9 border-0">
+              <i class="far fa-envelope font-size-2"></i>
+            </div>
+          </div>
+          <input
+            type="email"
+            class="form-control form-control-sm"
+            id="email"
+            name="email"
+            placeholder="john@example.com"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group mb-4">
+        <label class="medium font-weight-semi-bold" for="phoneNumber"
+          >رقم الهاتف</label
+        >
+        <div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <div class="input-group-text border-0 z-index-9 border-0">
+              <i class="far fa-envelope font-size-2"></i>
+            </div>
+          </div>
+          <input
+            type="number"
+            class="form-control form-control-sm"
+            id="phoneNumber"
+            name="phoneNumber"
+            placeholder="123-456-789"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group position-relative mb-4">
+        <label class="medium font-weight-semi-bold" for="passwordHash"
+          >كلمة السر</label
+        >
+        <div class="input-group input-group-sm position-relative">
+          <div class="input-group-prepend">
+            <div class="input-group-text border-0 z-index-9 border-0">
+              <i class="far fa-lock font-size-2"></i>
+            </div>
+          </div>
+          <input
+            type="password"
+            class="form-control form-control-sm"
+            id="passwordHash"
+            name="passwordHash"
+            placeholder="****************"
+            required
+          />
+          <div
+            class="position-absolute left-0 z-index-9 toggle-password"
+          >
+            <span class="far fa-eye p-3 cursor-pointer op-50"></span>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="custom-control custom-radio custom-control-inline mb-3"
+      >
+        <input
+          type="radio"
+          id="SEEKING_HELP"
+          name="role"
+          value="SEEKING_HELP"
+          class="custom-control-input"
+        />
+        <label class="custom-control-label" for="SEEKING_HELP"
+          >أريد المساعدة</label
+        >
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input
+          type="radio"
+          id="GIVING_HELP"
+          name="role"
+          value="GIVING_HELP"
+          class="custom-control-input"
+        />
+        <label class="custom-control-label" for="GIVING_HELP"
+          >أحتاج المساعدة</label
+        >
+      </div>
+
+      <button
+        type="submit"
+        class="
+          btn btn-sm btn-block btn-success-g
+          text-white
+          medium
+          font-weight-semi-bold
+          border-0
+          mb-2
+        "
+      >
+        تسجيل الدخول
+      </button>
+      <div
+        class="medium font-weight-semi-bold mt-2 w-100 text-center"
+      >
+        نسيت كلمة السر؟<a
+          href="#"
+          class="
+            btn btn-sm
+            small
+            p-0
+            mr-1
+            font-weight-semi-bold
+            text-primary
+          "
+          data-dismiss="modal"
+          data-toggle="modal"
+          data-target="#fPassword"
+          >إعادة تعيين</a
+        >
+      </div>
+    </form>
   </div>
-</div>
+
 {% endblock %}

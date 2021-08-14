@@ -8,40 +8,46 @@
 <div class="container is-fullhd">
 
   {% include './partials/flash-messages.njk' %}
+  
+   <div
+      class="container-fluid bg-cover mt-n5"
+      style="background: url('/img/misc/corner-2.png') top right no-repeat"
+    >
+      <div class="vh-100 d-flex justify-content-center align-items-center">
+        <div class="d-block w-100">
+          <form action="/signin" method="POST" class="w-90 w-md-35 mx-auto">
+            <div class="form-group mb-2">
+                <label class="medium font-weight-semi-bold" for="uLogEmail">البريد الإلكتروني</label>
+                <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9 border-0"><i class="far fa-envelope font-size-2"></i></div>
+                    </div>
+                    <input type="email" class="form-control form-control-sm" id="uLogEmail" placeholder="أدخل بريدك الالكتروني" required />
+                </div>
+            </div>
 
-  <div class="columns">
-    <div class="column mt-6 is-8 is-offset-2">
+            <div class="form-group position-relative mb-7">
+                <label class="medium font-weight-semi-bold" for="uLogPass">كلمة المرور</label>
+                <div class="input-group input-group-sm position-relative">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9 border-0"><i class="far fa-lock font-size-2"></i></div>
+                    </div>
+                    <input type="password" class="form-control form-control-sm" id="uLogPass" placeholder="أدخل كلمة السر" required />
+                    <div class="position-absolute left-0 z-index-9 toggle-password">
+                        <span class="far fa-eye p-3 cursor-pointer op-50"></span>
+                    </div>
+                </div>
+            </div>
 
-      <form action="/signin" method="POST" class="box is-full">
-        <div class="field">
-          <label class="label" for="email">البريد الإلكتروني</label>
-          <div class="control has-icons-right">
-            <input class="input" type="email" name="email" id="email" required>
-            <span class="icon is-small is-right">
-              <ion-icon name="mail-outline"></ion-icon>
-            </span>
-          </div>
+            <button type="submit" class="btn btn-sm btn-block btn-success-g text-white medium font-weight-semi-bold border-0 mb-2">تسجيل الدخول</button>
+            <div class="medium font-weight-semi-bold mt-2 w-100 text-center">
+                نسيت كلمة السر؟<a href="#" class="btn btn-sm small p-0 mr-1 font-weight-semi-bold text-primary" data-toggle="modal" data-target="#fPassword">إعادة تعيين</a>
+            </div>
+            <div class="divider-text text-center my-3">أو</div>
+            <a href="/signup" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">إنشاء حساب جديد</a>
+          </form>
         </div>
-      
-        <div class="field">
-          <label class="label" for="password">كلمة السر</label>
-          <div class="control has-icons-right">
-            <input
-              class="input"
-              type="password"
-              id="password"
-              name="password"
-              required
-            >
-            <span class="icon is-small is-right">
-              <ion-icon name="key-outline"></ion-icon>
-            </span>
-          </div>
-        </div>
-      
-        <button type="submit" class="button is-primary">دخول</button>
-      </form>
+      </div>
     </div>
-  </div>
-</div>
+
 {% endblock %}
