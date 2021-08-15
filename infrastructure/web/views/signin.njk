@@ -1,53 +1,102 @@
 {% extends './layouts/default.njk' %}
-
 {% block css %}
-
 {% endblock %}
 
 {% block content %}
 <div class="container is-fullhd">
-
   {% include './partials/flash-messages.njk' %}
-  
-   <div
-      class="container-fluid bg-cover mt-n5"
-      style="background: url('/img/misc/corner-2.png') top right no-repeat"
-    >
-      <div class="vh-100 d-flex justify-content-center align-items-center">
-        <div class="d-block w-100">
-          <form action="/signin" method="POST" class="w-90 w-md-35 mx-auto">
-            <div class="form-group mb-2">
-                <label class="medium font-weight-semi-bold" for="uLogEmail">البريد الإلكتروني</label>
-                <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text border-0 z-index-9 border-0"><i class="far fa-envelope font-size-2"></i></div>
-                    </div>
-                    <input type="email" class="form-control form-control-sm" id="uLogEmail" placeholder="أدخل بريدك الالكتروني" required />
-                </div>
-            </div>
 
-            <div class="form-group position-relative mb-7">
-                <label class="medium font-weight-semi-bold" for="uLogPass">كلمة المرور</label>
-                <div class="input-group input-group-sm position-relative">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text border-0 z-index-9 border-0"><i class="far fa-lock font-size-2"></i></div>
-                    </div>
-                    <input type="password" class="form-control form-control-sm" id="uLogPass" placeholder="أدخل كلمة السر" required />
-                    <div class="position-absolute left-0 z-index-9 toggle-password">
-                        <span class="far fa-eye p-3 cursor-pointer op-50"></span>
-                    </div>
+  <div
+    class="container-fluid bg-cover mt-n5"
+    style="background: url('/img/misc/corner-2.png') top right no-repeat"
+  >
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+      <div class="d-block w-100">
+        <form action="/signin" method="POST" class="w-90 w-md-35 mx-auto">
+          <div class="form-group mb-2">
+            <label class="medium font-weight-semi-bold" for="uLogEmail">
+              البريد الإلكتروني
+            </label>
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+                <div class="input-group-text border-0 z-index-9 border-0">
+                  <i class="far fa-envelope font-size-2"></i>
                 </div>
+              </div>
+              <input
+                id="uLogEmail"
+                type="email"
+                name="email"
+                class="form-control form-control-sm"
+                placeholder="أدخل بريدك الالكتروني"
+                required
+              />
             </div>
+          </div>
 
-            <button type="submit" class="btn btn-sm btn-block btn-success-g text-white medium font-weight-semi-bold border-0 mb-2">تسجيل الدخول</button>
-            <div class="medium font-weight-semi-bold mt-2 w-100 text-center">
-                نسيت كلمة السر؟<a href="#" class="btn btn-sm small p-0 mr-1 font-weight-semi-bold text-primary" data-toggle="modal" data-target="#fPassword">إعادة تعيين</a>
+          <div class="form-group position-relative mb-7">
+            <label class="medium font-weight-semi-bold" for="uLogPass">
+              كلمة المرور
+            </label>
+            <div class="input-group input-group-sm position-relative">
+              <div class="input-group-prepend">
+                <div class="input-group-text border-0 z-index-9 border-0">
+                  <i class="far fa-lock font-size-2"></i>
+                </div>
+              </div>
+              <input
+                id="uLogPass"
+                type="password"
+                name="password"
+                class="form-control form-control-sm"
+                placeholder="أدخل كلمة السر"
+                required
+              />
+              <div class="position-absolute left-0 z-index-9 toggle-password">
+                <span class="far fa-eye p-3 cursor-pointer op-50"></span>
+              </div>
             </div>
-            <div class="divider-text text-center my-3">أو</div>
-            <a href="/signup" class="btn btn-sm btn-outline-dark btn-block font-weight-bold">إنشاء حساب جديد</a>
-          </form>
-        </div>
+          </div>
+
+          <button
+            type="submit"
+            class="
+              btn btn-sm btn-block btn-success-g
+              text-white
+              medium
+              font-weight-semi-bold
+              border-0
+              mb-2
+            "
+          >
+            تسجيل الدخول
+          </button>
+          <div class="medium font-weight-semi-bold mt-2 w-100 text-center">
+            نسيت كلمة السر؟<a
+              href="#"
+              class="
+                btn btn-sm
+                small
+                p-0
+                mr-1
+                font-weight-semi-bold
+                text-primary
+              "
+              data-toggle="modal"
+              data-target="#fPassword"
+              >إعادة تعيين</a
+            >
+          </div>
+          <div class="divider-text text-center my-3">أو</div>
+          <a
+            href="/signup"
+            class="btn btn-sm btn-outline-dark btn-block font-weight-bold"
+            >إنشاء حساب جديد</a
+          >
+        </form>
       </div>
     </div>
+  </div>
 
-{% endblock %}
+  {% endblock %}
+</div>
