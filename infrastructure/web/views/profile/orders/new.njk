@@ -35,9 +35,10 @@
                         </div>
                       </div>
                       <input
-                        type="text"
-                        class="form-control form-control-sm"
                         id="patientName"
+                        type="text"
+                        name="patientName"
+                        class="form-control form-control-sm"
                         placeholder="الإسم"
                         required
                       />
@@ -59,7 +60,6 @@
                         </div>
                       </div>
                       <input
-                        type="email"
                         class="form-control form-control-sm"
                         id="patientFamilyName"
                         placeholder="اللقب"
@@ -85,10 +85,10 @@
                         </div>
                       </div>
                       <input
-                        type="number"
-                        class="form-control form-control-sm"
                         id="oxygenRatio"
+                        type="number"
                         name="oxygenRatio"
+                        class="form-control form-control-sm"
                         placeholder="90"
                         required
                       />
@@ -103,7 +103,8 @@
                     <label
                       class="medium font-weight-semi-bold"
                       for="patientAge"
-                      >عمر المريض</label
+                      >
+                      عمر المريض</label
                     >
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
@@ -133,8 +134,9 @@
                     <label
                       class="medium font-weight-semi-bold"
                       for="hasChronicDesease"
-                      >لديه مرض مزمن</label
                     >
+                      لديه مرض مزمن
+                    </label>
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <div class="input-group-text border-0 z-index-9">
@@ -142,6 +144,7 @@
                         </div>
                       </div>
                       <select
+                        name="hasChronicDesease"
                         class="
                           custom-select
                           bg-transparent
@@ -154,8 +157,8 @@
                         <option selected disabled value="">
                           قم بالإختيار
                         </option>
-                        <option>نعم</option>
-                        <option>لا</option>
+                        <option value="true">نعم</option>
+                        <option value="false">لا</option>
                       </select>
                       <div class="invalid-feedback">
                         رجاءا قم بتحديد الخيار المناسب
@@ -163,13 +166,15 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="col-md-6 mb-3 mb-lg-4">
                   <div class="form-group mb-0">
                     <label
                       class="medium font-weight-semi-bold"
                       for="isCovid"
-                      >مصاب بفيروس كورونا</label
                     >
+                      مصاب بفيروس كورونا
+                    </label>
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <div class="input-group-text border-0 z-index-9">
@@ -177,6 +182,7 @@
                         </div>
                       </div>
                       <select
+                        name="isCovid"
                         class="
                           custom-select
                           bg-transparent
@@ -189,8 +195,8 @@
                         <option selected disabled value="">
                           قم بالإختيار
                         </option>
-                        <option>نعم</option>
-                        <option>لا</option>
+                        <option value="true">نعم</option>
+                        <option value="true">لا</option>
                       </select>
                       <div class="invalid-feedback">
                         رجاءا قم بتحديد الخيار المناسب
@@ -205,8 +211,9 @@
                   <label
                     class="medium font-weight-semi-bold"
                     for="countryState"
-                    >الولاية</label
                   >
+                    الولاية
+                  </label>
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                       <div class="input-group-text border-0 z-index-9">
@@ -216,9 +223,11 @@
                     <select
                       class="custom-select bg-transparent shadow-soft pr-5"
                       id="countryState"
+                      name="wilaya"
                       required
                     >
                       <option selected disabled value="">اختر الولاية</option>
+                      <option value="18">جيجل</option>
                     </select>
                     <div class="invalid-feedback">يرجى اختيار الولاية</div>
                   </div>
@@ -228,8 +237,9 @@
                   <label
                     class="medium font-weight-semi-bold"
                     for="countryDistrict"
-                    >البلدية/الدائرة</label
                   >
+                    البلدية/الدائرة
+                  </label>
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                       <div class="input-group-text border-0 z-index-9">
@@ -239,10 +249,14 @@
                     <select
                       class="custom-select bg-transparent shadow-soft pr-5"
                       id="countryDistrict"
+                      name="city"
                       required
                     >
                       <option selected disabled value="">
                         اختر البلدية/الدائرة
+                      </option>
+                      <option value="5">
+                        الشقفة
                       </option>
                     </select>
                     <div class="invalid-feedback">
@@ -254,6 +268,7 @@
             </div>
           </div>
         </div>
+
         <div class="col-12 col-lg-3">
           <!-- Unverified Account -->
           <div class="card shadow-sm border-0 rounded mb-4">
@@ -282,9 +297,9 @@
                   py-10
                 "
               >
-                <span class="small font-weight-semi-bold text-center"
-                  >تصفح الملفات الخاصة بك أو اسحبها إلى المربع</span
-                >
+                <span class="small font-weight-semi-bold text-center">
+                  تصفح الملفات الخاصة بك أو اسحبها إلى المربع
+                </span>
                 <input
                   type="file"
                   name="prescription"

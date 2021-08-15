@@ -11,7 +11,7 @@
 
   <!-- User Regestration Email -->
   <div class=".container-md mt-5 mb-5" >
-    <div class="w-35 mx-auto">
+    <div class="w-90 w-md-35 mx-auto">
       <div class="text-center">
       <img
         src="/img/logo/logo_white.png"
@@ -24,7 +24,7 @@
       </p>
     </div>
     
-    <form class="mx-auto">
+    <form class="mx-auto" action="/signup" method="POST">
       <div class="form-group mb-4">
         <label class="medium font-weight-semi-bold" for="displayName"
           >الإسم</label
@@ -36,10 +36,9 @@
             </div>
           </div>
           <input
-            type="email"
-            class="form-control form-control-sm"
             id="displayName"
             name="displayName"
+            class="form-control form-control-sm"
             placeholder="john Deo"
             required
           />
@@ -100,7 +99,7 @@
             type="password"
             class="form-control form-control-sm"
             id="passwordHash"
-            name="passwordHash"
+            name="password"
             placeholder="****************"
             required
           />
