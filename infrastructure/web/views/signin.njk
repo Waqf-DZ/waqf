@@ -17,22 +17,36 @@
         <div class="d-block w-100">
           <form action="/signin" method="POST" class="w-90 w-md-35 mx-auto">
             <div class="form-group mb-2">
-                <label class="medium font-weight-semi-bold" for="uLogEmail">البريد الإلكتروني</label>
+                <label class="medium font-weight-semi-bold" for="email">البريد الإلكتروني</label>
                 <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                         <div class="input-group-text border-0 z-index-9 border-0"><i class="far fa-envelope font-size-2"></i></div>
                     </div>
-                    <input type="email" class="form-control form-control-sm" id="uLogEmail" placeholder="أدخل بريدك الالكتروني" required />
+                    <input 
+                      type="email" 
+                      class="form-control form-control-sm" 
+                      id="email" 
+                      name="email" 
+                      placeholder="أدخل بريدك الالكتروني" 
+                      required
+                    />
                 </div>
             </div>
 
             <div class="form-group position-relative mb-7">
-                <label class="medium font-weight-semi-bold" for="uLogPass">كلمة المرور</label>
+                <label class="medium font-weight-semi-bold" for="password">كلمة المرور</label>
                 <div class="input-group input-group-sm position-relative">
                     <div class="input-group-prepend">
                         <div class="input-group-text border-0 z-index-9 border-0"><i class="far fa-lock font-size-2"></i></div>
                     </div>
-                    <input type="password" class="form-control form-control-sm" id="uLogPass" placeholder="أدخل كلمة السر" required />
+                    <input 
+                      type="password" 
+                      class="form-control form-control-sm" 
+                      id="password" 
+                      name="password" 
+                      placeholder="أدخل كلمة السر" 
+                      required 
+                    />
                     <div class="position-absolute left-0 z-index-9 toggle-password">
                         <span class="far fa-eye p-3 cursor-pointer op-50"></span>
                     </div>
