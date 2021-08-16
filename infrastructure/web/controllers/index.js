@@ -104,7 +104,7 @@ const postUserCompleteOrder = makePostUserCompleteOrder({
   flashMessages,
 })
 
-const getUserSettings = makeGetUserSettings()
+const getUserSettings = makeGetUserSettings({ getUser })
 const getUserNewOrder = makeGetUserNewOrder()
 const postUserNewOrder = makePostUserNewOrder({
   addOrder,
