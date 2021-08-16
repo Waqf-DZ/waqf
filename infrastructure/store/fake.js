@@ -55,7 +55,9 @@ class Store {
         displayName: 'مدير المنصة',
         email: 'admin@gmail.com',
         phoneNumber: '0555443322',
-        passwordHash: 'password',
+        // password: "password"
+        passwordHash:
+          '$2a$10$wz5ZphSSFSQMJ9VqDWBQ/.GJh9ZTOpkq/l8OUnNpY7POAGZkH3YrW',
         role: 'ADMIN',
         isVerified: true,
         description: 'مدير منصة وقف',
@@ -66,7 +68,9 @@ class Store {
         displayName: 'محتاج 1',
         email: 'user1@gmail.com',
         phoneNumber: '0555443322',
-        passwordHash: 'password',
+        // password: "password"
+        passwordHash:
+          '$2a$10$wz5ZphSSFSQMJ9VqDWBQ/.GJh9ZTOpkq/l8OUnNpY7POAGZkH3YrW',
         role: 'SEEKING_HELP',
         isVerified: true,
         description: 'وصف مختصر 1',
@@ -77,7 +81,9 @@ class Store {
         displayName: 'محتاج 2',
         email: 'user2@gmail.com',
         phoneNumber: '0565541253',
-        passwordHash: 'password',
+        // password: "password"
+        passwordHash:
+          '$2a$10$wz5ZphSSFSQMJ9VqDWBQ/.GJh9ZTOpkq/l8OUnNpY7POAGZkH3YrW',
         role: 'SEEKING_HELP',
         isVerified: true,
         description: 'وصف مختصر 2',
@@ -88,7 +94,9 @@ class Store {
         displayName: 'جمعية 1',
         email: 'org1@gmail.com',
         phoneNumber: '0666443322',
-        passwordHash: 'password',
+        // password: "password"
+        passwordHash:
+          '$2a$10$wz5ZphSSFSQMJ9VqDWBQ/.GJh9ZTOpkq/l8OUnNpY7POAGZkH3YrW',
         role: 'GIVING_HELP',
         isVerified: true,
         description: 'جمعية مهتمة بالإغاثة ومساعدة المحتاجين',
@@ -99,7 +107,9 @@ class Store {
         displayName: 'جمعية 2',
         email: 'org2@gmail.com',
         phoneNumber: '0666893322',
-        passwordHash: 'password',
+        // password: "password"
+        passwordHash:
+          '$2a$10$wz5ZphSSFSQMJ9VqDWBQ/.GJh9ZTOpkq/l8OUnNpY7POAGZkH3YrW',
         role: 'GIVING_HELP',
         isVerified: true,
         description: 'جمعية مهتمة بتقديم المساعدات الطبية للمرضى',
