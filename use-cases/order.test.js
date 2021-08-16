@@ -1,7 +1,10 @@
+function hashPassword(password) {
+  return password
+}
+
 const test = require('tape')
 
 const FakeStore = require('../infrastructure/store/fake')
-const hashPassword = require('../infrastructure/hash-password')
 const makeAddUser = require('./add-user')
 
 const makeAddOrder = require('./add-order')

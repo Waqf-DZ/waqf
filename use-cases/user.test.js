@@ -1,7 +1,14 @@
+function hashPassword(password) {
+  return password
+}
+
+function verifyPassword(password, hash) {
+  return password == hash
+}
+
 const test = require('tape')
 
 const FakeStore = require('../infrastructure/store/fake')
-const hashPassword = require('../infrastructure/hash-password')
 
 const makeAddUser = require('./add-user')
 const makeGetUser = require('./get-user')
@@ -44,7 +51,7 @@ test('sign in user', async (t) => {
     usersDB: store,
     hashPassword,
   })
-  const signInUser = makeSignInUser({ getUser, hashPassword })
+  const signInUser = makeSignInUser({ getUser, verifyPassword })
 
   await addUser({
     username: 'john_doe',
@@ -61,7 +68,7 @@ test('sign in user', async (t) => {
   t.ok(user1, 'sign in if both email and password are correct')
 
   const user2 = await signInUser({
-    email: 'john@doe.co',
+    email: 'john@wrong.com',
     password: 'password',
   })
   t.notOk(user2, 'sign in should fail if email is wrong')

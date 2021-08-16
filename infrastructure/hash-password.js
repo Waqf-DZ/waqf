@@ -16,10 +16,7 @@ function hashPassword(password) {
 
 async function verifyPassword(rawPassword, passwordHash) {
   const isMatch = await bcrypt.compare(rawPassword, passwordHash)
-  if (isMatch) {
-    return true
-  }
-  return false
+  return Boolean(isMatch)
 }
 
 module.exports = {
