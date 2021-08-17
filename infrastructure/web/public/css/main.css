@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: "Almarai", sans-serif;
+  font-family: 'Almarai', sans-serif;
   background: #fefefe;
   color: #65676b;
   height: 1.2;
@@ -52,7 +52,7 @@ a {
 }
 
 .nav.nav-lg li a:not(.logo):not(.dropdown-item)::after {
-  content: "";
+  content: '';
   position: absolute;
   right: -0.25rem;
   bottom: -1.65rem;
@@ -148,7 +148,7 @@ a {
 }
 
 #hiw::before, #hiw::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 45%;
   height: 3px;
@@ -221,6 +221,50 @@ a {
   background: #08d9d6 !important;
 }
 
+.hax-table thead tr {
+  border: 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: default !important;
+}
+
+.hax-table tr {
+  border: 1px solid #e7eaf3;
+}
+
+.hax-table tr th {
+  padding: 1rem 0.85rem;
+  border-left: 0;
+}
+
+.hax-table tr td {
+  font-size: 14px;
+  color: #495057;
+  vertical-align: middle;
+}
+
+.hax-table tr td .badge {
+  padding: 0.4em;
+  font-size: 80%;
+}
+
+.hax-table tr td .dropdown-menu button {
+  font-weight: 500;
+}
+
+.hax-table tr td .dropdown-menu button:hover {
+  background: #efefef;
+}
+
+@media (max-width: 992px) {
+  #dash .col {
+    margin-bottom: 2.5rem;
+  }
+  #dash .col:first-child {
+    text-align: center;
+  }
+}
+
 @media (max-width: 768px) {
   .cover {
     height: 80vh;
@@ -255,7 +299,7 @@ a {
     right: 0;
     background: #eee;
     background: rgba(0, 0, 0, 0.4);
-    content: "";
+    content: '';
     z-index: 1;
   }
   .donate-title h1 {
