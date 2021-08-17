@@ -1,4 +1,4 @@
-{% extends '../layouts/admin.njk' %}
+{% extends '../layouts/profile.njk' %}
 
 {% block css %}
 
@@ -6,200 +6,189 @@
 
 {% block content %}
 
-{% set stats = data.statisticsData %}
-{% set users = stats.users %}
-{% set products = stats.products %}
-{% set orders = stats.orders %}
+  {% set stats = data.statisticsData %}
+  {% set users = stats.users %}
+  {% set products = stats.products %}
+  {% set orders = stats.orders %}
 
-<div class="columns is-mobile">
-  <div class="column" id="menu-content">
-
-    <section class="section has-background-grey-lighter" id="association">
-      <p class="title has-text-centered is-hidden-tablet">الجمعيات</p>
-      <div class="columns">
-        <div class="column">
-          <div class="box">
-            <p class="title is-6 has-text-centered">
-              :عدد المسجلين
-              <span class="icon">
-                <ion-icon name="add-outline"></ion-icon>
-              </span>
-            </p>
-            <p class="subtitle is-1 has-text-centered">{{ users.totalUsers }}</p>
+  <div class="covers bg-cover pt-5 pb-10">
+    <div class="container" id="dash">
+      <div class="bg-soft-success rounded-lg px-5 px-lg-10 py-10">
+        <div class="row row-cols-1 row-cols-lg-6">
+          <div class="col my-lg-auto">
+            <h4 class="mb-2">المستخدمين</h4>
+            <p class="medium mb-0">معلومات وملخص حول المستخدمين</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section has-background-grey-lighter mt-3" id="needy">
-      <p class="title has-text-centered is-hidden-tablet">المحتاجين</p>
-      <div class="columns">
-        <div class="column">
-          <div class="box">
-            <p class="title is-6 has-text-centered">
-              :عدد الجمعيات المسجلة
-              <span class="icon">
-                <ion-icon name="add-outline"></ion-icon>
-              </span>
-            </p>
-            <p class="subtitle is-1 has-text-centered">{{ users.registeredAssociations }}</p>
-          </div>
-        </div>
-        <div class="column">
-          <div class="box">
-            <p class="title is-6 has-text-centered">
-              :عدد المستفيدين
-              <span class="icon">
-                <ion-icon name="checkmark-outline"></ion-icon>
-              </span>
-            </p>
-            <p class="subtitle is-1 has-text-centered">{{ users.totalBeneficiaries }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column">
-          <div class="box">
-            <p class="title is-6 has-text-centered">
-              :في الانتظار
-              <span class="icon">
-                <ion-icon name="radio-button-off-outline"></ion-icon>
-              </span>
-            </p>
-            <p class="subtitle is-1 has-text-centered">{{ users.pendingUsers }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column">
-          <div class="box">
-            <p class="title is-6 has-text-centered">
-              :اتمام المهمة
-              <span class="icon">
-                <ion-icon name="checkbox-outline"></ion-icon>
-              </span>
-            </p>
-            <progress class="progress is-medium" value="{{ users.missionProgress }}" max="100">
-            </progress>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section has-background-grey-lighter mt-3" id="machine">
-      <p class="title has-text-centered is-hidden-tablet">الاجهزة</p>
-      <div class="columns">
-        <div class="column">
-          <div class="box">
-            <p class="title is-6 has-text-centered">
-              :عدد الأجهزة الكلية
-              <span class="icon">
-                <ion-icon name="fitness-outline"></ion-icon>
-              </span>
-            </p>
-            <p class="subtitle is-1 has-text-centered">{{ products.totalDevices }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column">
-          <div class="box">
-            <p class="title is-6 has-text-centered">
-              :عدد الأجهزة المتوفرة
-              <span class="icon">
-                <ion-icon name="bag-add-outline"></ion-icon>
-              </span>
-            </p>
-            <p class="subtitle is-1 has-text-centered">{{ products.availableDevices }}</p>
-          </div>
-        </div>
-        <div class="column">
-          <div class="box">
-            <p class="title is-6 has-text-centered">
-              :عدد الأجهزة المستعارة
-              <span class="icon">
-                <ion-icon name="bag-remove-outline"></ion-icon>
-              </span>
-            </p>
-            <p class="subtitle is-1 has-text-centered">{{ products.borrowedDevices }}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="columns">
-        <div class="column">
-          <div class="box">
-            <p class="title is-6 has-text-centered">
-              :الكمية
-              <span class="icon">
-                <ion-icon name="podium-outline"></ion-icon>
-              </span>
-            </p>
-            <progress class="progress is-medium" value="{{ products.availability }}" max="100">
-            </progress>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section has-background-grey-lighter mt-3" id="order">
-      <p class="title has-text-centered is-hidden-tablet">الطلبات</p>
-      <div class="columns">
-        <div class="column">
-          <div class="box">
-            <p class="title is-6 has-text-centered">
-              :عدد الطلبات الكلية
-              <span class="icon">
-                <ion-icon name="receipt-outline"></ion-icon>
-              </span>
-            </p>
-            <p class="subtitle is-1 has-text-centered">{{ orders.totalOrders }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column">
-          <div class="box">
-            <p class="title is-6 has-text-centered">
-              :عدد الطلبات الجديدة
-              <span class="icon">
-                <ion-icon name="add-circle-outline"></ion-icon>
-              </span>
-            </p>
-            <p class="subtitle is-1 has-text-centered">{{ orders.totalNewOrders }}</p>
-          </div>
-        </div>
-        <div class="column">
-          <div class="box">
-            <p class="title is-6 has-text-centered">
-              :عدد الطلبات الملبية
-              <span class="icon">
-                <ion-icon name="remove-circle-outline"></ion-icon>
-              </span>
-            </p>
-            <p class="subtitle is-1 has-text-centered">{{ orders.fulfilledOrders }}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="columns">
-        <div class="column">
-          <div class="box">
-            <p class="title is-6 has-text-centered">
-              : التقدم في تليبة الطلبات
-              <span class="icon">
-                <ion-icon name="podium-outline"></ion-icon>
-              </span>
-            </p>
-            <div class="buttons">
-              <span class="tag is-primary is-light is-medium"> متوسط ​​الطلبات يومي : <span class="tag is-primary is-light is-medium"> {{ orders.averageOrders }} طلبات </span></span>
+          <div class="col">
+            <div class="card border-0 rounded-lg">
+              <div class="card-body text-center">
+                <h6 class="mb-4">عدد المسجلين</h6>
+                <h6 class="font-size-3 mb-0">{{ users.totalUsers }}</h6>
+              </div>
             </div>
-            <progress class="progress is-medium" value="{{ orders.averageOrders }}" max="100">
-            </progress>
+          </div>
+          <div class="col">
+            <div class="card border-0 rounded-lg">
+              <div class="card-body text-center">
+                <h6 class="mb-4">الجمعيات المسجلة</h6>
+                <h6 class="font-size-3 mb-0">{{ users.registeredAssociations }}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card border-0 rounded-lg">
+              <div class="card-body text-center">
+                <h6 class="mb-4">عدد المستخدمين</h6>
+                <h6 class="font-size-3 mb-0">{{ users.totalBeneficiaries }}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card border-0 rounded-lg">
+              <div class="card-body text-center">
+                <h6 class="mb-4">في الإنتظار</h6>
+                <h6 class="font-size-3 mb-0">{{ users.pendingUsers }}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card border-0 rounded-lg h-100">
+              <div class="card-body text-center">
+                <h6 class="mb-4">عدد المسجلين</h6>
+                <div class="mt-n2">
+                  <p class="medium font-weight-semi-bold mb-0">{{ users.missionProgress }}%</p>
+                  <div class="progress">
+                    <div
+                      class="
+                        progress-bar progress-bar-striped
+                        bg-success
+                        w-75
+                      "
+                      role="progressbar"
+                      aria-valuenow="{{users.missionProgress}}"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+      <div class="bg-soft-primary rounded-lg px-5 px-lg-10 py-10 my-5">
+        <div class="row row-cols-1 row-cols-lg-6">
+          <div class="col my-lg-auto">
+            <h4 class="mb-2">الأجهزة</h4>
+            <p class="medium mb-0">معلومات وملخص حول الأجهزة</p>
+          </div>
+          <div class="col">
+            <div class="card border-0 rounded-lg">
+              <div class="card-body text-center">
+                <h6 class="mb-4">عدد الأجهزة</h6>
+                <h6 class="font-size-3 mb-0">{{ products.totalDevices }}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card border-0 rounded-lg">
+              <div class="card-body text-center">
+                <h6 class="mb-4">الأجهزة المتوفرة</h6>
+                <h6 class="font-size-3 mb-0">{{ products.availableDevices }}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card border-0 rounded-lg">
+              <div class="card-body text-center">
+                <h6 class="mb-4">الأجهزة المستعارة</h6>
+                <h6 class="font-size-3 mb-0">{{ products.borrowedDevices }}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card border-0 rounded-lg h-100">
+              <div class="card-body text-center">
+                <h6 class="mb-4">الكمية</h6>
+                <div class="mt-n2">
+                  <p class="medium font-weight-semi-bold mb-0">{{ products.availability }}%</p>
+                  <div class="progress">
+                    <div
+                      class="
+                        progress-bar progress-bar-striped
+                        bg-success
+                        w-95
+                      "
+                      role="progressbar"
+                      aria-valuenow="95"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {# orders #}
+      <div class="bg-soft-danger rounded-lg px-5 px-lg-10 py-10">
+        <div class="row row-cols-1 row-cols-lg-6">
+          <div class="col my-lg-auto">
+            <h4 class="mb-2">الطلبات</h4>
+            <p class="medium mb-0">معلومات وملخص حول الطلبات</p>
+          </div>
+          <div class="col">
+            <div class="card border-0 rounded-lg">
+              <div class="card-body text-center">
+                <h6 class="mb-4">عدد الطلبات الكلي</h6>
+                <h6 class="font-size-3 mb-0">{{ orders.totalOrders }}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card border-0 rounded-lg">
+              <div class="card-body text-center">
+                <h6 class="mb-4">الطلبات الجديدة</h6>
+                <h6 class="font-size-3 mb-0">{{ orders.totalNewOrders }}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card border-0 rounded-lg">
+              <div class="card-body text-center">
+                <h6 class="mb-4">طلبات تم تلبيتها</h6>
+                <h6 class="font-size-3 mb-0">{{ orders.fulfilledOrders }}</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card border-0 rounded-lg h-100">
+              <div class="card-body text-center">
+                <h6 class="mb-4">التقدم في تلبية الطلبات</h6>
+                <div class="mt-n2">
+                  <p class="medium font-weight-semi-bold mb-0">{{orders.averageOrders}}%</p>
+                  <div class="progress">
+                    <div
+                      class="
+                        progress-bar progress-bar-striped
+                        bg-success
+                        w-95
+                      "
+                      role="progressbar"
+                      aria-valuenow="95"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+
 {% endblock %}
