@@ -20,6 +20,10 @@ module.exports = function buildMakeOrder({ getUniqueId }) {
     acceptedAt = null,
     completedAt = null,
     ownerId,
+    isHospitalized,
+    wilaya,
+    city,
+    description,
   }) {
     if (!patientName) throw new Error('Order must have a patientName')
     if (!patientAge) throw new Error('Order must have a patientAge')
@@ -84,6 +88,18 @@ module.exports = function buildMakeOrder({ getUniqueId }) {
       },
       get isCompleted() {
         return status == STATUS_OPTIONS.completed
+      },
+      get isHospitalized() {
+        return isHospitalized
+      },
+      get wilaya() {
+        return wilaya
+      },
+      get city() {
+        return city
+      },
+      get description() {
+        return description
       },
 
       markPending: () => {
