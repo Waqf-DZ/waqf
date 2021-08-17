@@ -1,48 +1,109 @@
 {% extends './layouts/default.njk' %}
-
 {% block css %}
-
 {% endblock %}
 
 {% block content %}
-    <section class="hero is-fullheight">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <div class="columns is-8 is-variable is-vcentered">
-                    <div class="column is-two-thirds has-text-right">
-                        <h1 class="title is-1">تواصل معنا</h1>
-                        <p class="is-size-4 mb-6">لديك سؤال؟ لدينا إجابات، إذا كان لديك أي سؤال حول أي شيء، لا تتردد في الاتصال بنا، يسعدنا دائمًا التحدث إليك.</p>
-                        <div class="social-media">
-                            <a href="#" target="_blank" class="button is-light is-large"><ion-icon name="logo-facebook"></ion-icon></a>
-                            <a href="#" target="_blank" class="button is-light is-large mx-5"><ion-icon name="logo-instagram"></ion-icon></a>
-                            <a href="#" target="_blank" class="button is-light is-large"><ion-icon name="logo-twitter"></ion-icon></i></a>
-                        </div>
-                    </div>
-                    <div class="column is-one-third has-text-right">
-                        <div class="field">
-                            <label class="label">الإسم الكامل</label>
-                            <div class="control">
-                                <input class="input is-medium" type="text">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label class="label">البريد الإلكتروني</label>
-                            <div class="control">
-                                <input class="input is-medium" type="text">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label class="label">الرسالة</label>
-                            <div class="control">
-                                <textarea class="textarea is-medium"></textarea>
-                            </div>
-                        </div>
-                        <div class="control">
-                            <button type="submit" class="button is-primary is-fullwidth has-text-weight-medium is-medium">إرسال</button>
-                        </div>
-                    </div>
-                </div>
+<div
+  class="container-fluid bg-cover"
+  style="background: url('/img/misc/corner-2.png') top right no-repeat"
+>
+  <div class="vh-100 d-flex justify-content-center align-items-center">
+    <div class="d-block w-100">
+      <div class="w-md-35 text-center mx-auto">
+        <img
+          src="/img/logo/logo_white.png"
+          class="u-lg-avatar mb-3"
+          alt="Logo"
+        />
+        <h2 class="font-size-4 mb-1">منصة وقف</h2>
+        <p class="font-size-1 font-weight-semi-bold mb-4">رسالنا الان</p>
+      </div>
+
+      <form class="w-lg-35 mt5-10 mt-lg-0 mx-auto">
+        <!-- Name -->
+        <div class="form-group">
+          <label class="medium font-weight-semi-bold" for="uProfileName"
+            >الإسم</label
+          >
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+              <div class="input-group-text border-0 z-index-9 border-0">
+                <i class="far fa-user font-size-2"></i>
+              </div>
             </div>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="uProfileName"
+              placeholder="John"
+              required
+            />
+            <div class="invalid-feedback">رجاءا قم بإدخال إسمك</div>
+          </div>
         </div>
-    </section>
+        <!-- Email -->
+        <div class="form-group my-4">
+          <label class="medium font-weight-semi-bold" for="uProfileEmail"
+            >البريد الإلكتروني</label
+          >
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+              <div class="input-group-text border-0 z-index-9 border-0">
+                <i class="far fa-envelope font-size-2"></i>
+              </div>
+            </div>
+            <input
+              type="email"
+              class="form-control form-control-sm"
+              id="uProfileEmail"
+              placeholder="john@example.com"
+              required=""
+            />
+            <div class="invalid-feedback">رجاءا قم بإدخال بريدك الإلكتروني</div>
+          </div>
+        </div>
+        <!-- Phone Number -->
+        <div class="form-group mb-4">
+          <label class="medium font-weight-semi-bold" for="uProfilePhone"
+            >رقم الهاتف</label
+          >
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+              <div class="input-group-text border-0 z-index-9 border-0">
+                <i class="far fa-phone-alt font-size-2"></i>
+              </div>
+            </div>
+            <input
+              type="number"
+              class="form-control form-control-sm"
+              id="uProfilePhone"
+              placeholder="123-456-789"
+              required
+            />
+            <div class="invalid-feedback">رجاءا قم بإدخال رقم هاتفك</div>
+          </div>
+        </div>
+        <!-- Message -->
+        <div class="form-group">
+          <label for="msgArea" class="medium font-weight-semi-bold"
+            >رسالتك</label
+          >
+          <textarea
+            class="form-control"
+            id="msgArea"
+            rows="3"
+            required
+          ></textarea>
+          <div class="invalid-feedback">رجاءا قم بكتابة رسالتك</div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-sm btn-block btn-success-g text-white"
+        >
+          إرسال
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}
