@@ -1,21 +1,72 @@
-{% if successMessages.length or errorMessages.length %}
-  <div class="columns flash-messages">
-    <div class="column is-8 is-offset-2">
-      {# success flash messages #}
-      {% for message in successMessages %}
-        <div class="notification is-success">
-          <button class="delete"></button>
-          {{ message }}
+{% if successMessages.length or warningMessages.length or errorMessages.length %}
+<div class="container mt-10">
+  {# success flash messages #}
+  {% for message in successMessages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <div class="media align-items-center">
+        <i class="far fa-check-circle font-size-4"></i>
+        <div class="media-body mr-3">
+          <h5 class="font-size-2 font-weight-bold mb-0">نجاح</h5>
+          <p class="medium font-weight-semi-bold mb-0">
+            {{ message }}
+          </p>
         </div>
-      {% endfor %}
-
-      {# error flash messages #}
-      {% for message in errorMessages %}
-        <div class="notification is-danger">
-          <button class="delete"></button>
-          {{ message }}
-        </div>
-      {% endfor %}
+        <button
+          type="button"
+          class="close position-relative"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true" class="font-size-3">&times;</span>
+        </button>
+      </div>
     </div>
-  </div>
+  {% endfor %}
+
+  {# warning flash messages #}
+  {% for message in warningMessages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <div class="media align-items-center">
+        <i class="far fa-triangle-exclamation font-size-4"></i>
+        <div class="media-body mr-3">
+          <h5 class="font-size-2 font-weight-bold mb-0">تحذير</h5>
+          <p class="medium font-weight-semi-bold mb-0">
+            {{ message }}
+          </p>
+        </div>
+        <button
+          type="button"
+          class="close position-relative"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true" class="font-size-3">&times;</span>
+        </button>
+      </div>
+    </div>
+  {% endfor %}
+
+  {# error flash messages #}
+  {% for message in errorMessages %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <div class="media align-items-center">
+        <i class="far fa-circle-exclamation font-size-4"></i>
+        <div class="media-body mr-3">
+          <h5 class="font-size-2 font-weight-bold mb-0">خطأ</h5>
+          <p class="medium font-weight-semi-bold mb-0">
+            {{ message }}
+          </p>
+        </div>
+        <button
+          type="button"
+          class="close position-relative"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true" class="font-size-3">&times;</span>
+        </button>
+      </div>
+    </div>
+  {% endfor %}
+</div>
 {% endif %}
