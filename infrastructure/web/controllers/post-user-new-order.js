@@ -13,6 +13,10 @@ module.exports = function makePostUserNewOrder({
         oxygenRatio,
         hasChronicDesease,
         isCovid,
+        isHospitalized,
+        wilaya,
+        city,
+        description,
       } = req.body
       const imageFile = req.file
       const prescriptionUrl = imageFile
@@ -34,6 +38,10 @@ module.exports = function makePostUserNewOrder({
         hasChronicDesease,
         isCovid,
         prescriptionUrl,
+        isHospitalized,
+        wilaya,
+        city,
+        description,
       })
 
       if (newOrder) {

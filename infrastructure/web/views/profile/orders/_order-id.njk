@@ -60,13 +60,42 @@
             تركيز الأكسجين: <span class="mr-2">{{order.oxygenRatio}}</span>
           </li>
           <li class="font-size-1 font-weight-semi-bold op-90">
-            لديه مرض مزمن: <span class="mr-2">{{order.hasChronicDesease}}</span>
+            لديه مرض مزمن: 
+            <span class="mr-2">
+              {% if order.hasChronicDesease %}
+                نعم
+              {% else %}
+                لا
+              {% endif %}
+            </span>
           </li>
           <li class="font-size-1 font-weight-semi-bold op-90">
-            مصاب بفيروس كورونا: <span class="mr-2">{{order.isCovid}}</span>
+            مصاب بفيروس كورونا:
+            <span class="mr-2">
+              {% if order.isCovid %}
+                نعم
+              {% else %}
+                لا
+              {% endif %}
+            </span>
+          </li>
+          <li class="font-size-1 font-weight-semi-bold op-90">
+            المريض في المستشفى:
+            <span class="mr-2">
+              {% if order.isHospitalized %}
+                نعم
+              {% else %}
+                لا
+              {% endif %}
+            </span>
+          </li>
+          <li class="font-size-1 font-weight-semi-bold op-90">
+            وصف إضافي:<span class="mr-2">{{order.description}}</span>
           </li>
         </ul>
       </div>
+
+
 
       {# <p class="medium font-weight-semi-bold mb-2">ملاحظة:</p>
       <div class="bg-light rounded-sm p-3">

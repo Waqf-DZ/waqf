@@ -46,6 +46,18 @@ const Order = sequelize.define('order', {
   ownerId: {
     type: DataTypes.STRING,
   },
+  isHospitalized: {
+    type: DataTypes.BOOLEAN,
+  },
+  wilaya: {
+    type: DataTypes.STRING,
+  },
+  city: {
+    type: DataTypes.STRING,
+  },
+  description: {
+    type: DataTypes.STRING,
+  },
 })
 
 module.exports = Order

@@ -18,6 +18,10 @@ module.exports = function makeOrdersDB({ model }) {
         acceptedAt: order.acceptedAt,
         completedAt: order.completedAt,
         ownerId: order.ownerId,
+        isHospitalized: order.isHospitalized,
+        wilaya: order.wilaya,
+        city: order.city,
+        description: order.description,
       })
     },
 
@@ -45,6 +49,10 @@ module.exports = function makeOrdersDB({ model }) {
           acceptedAt: order.acceptedAt,
           completedAt: order.completedAt,
           ownerId: order.ownerId,
+          isHospitalized: order.isHospitalized,
+          wilaya: order.wilaya,
+          city: order.city,
+          description: order.description,
         },
         {
           where: {
