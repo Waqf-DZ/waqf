@@ -32,15 +32,34 @@
           </div>
         </div>
         <div class="my-auto">
+          {% if order.isPending and authenticatedUser.isGivingHelp %}
           <button
             type="button"
             class="btn btn-sm btn-soft-success font-weight-semi-bold ml-2"
+            data-toggle="modal"
+            data-target="#acceptOrderModal"
           >
             <i class="fas fa-check pl-2"></i>التكفل بالطلب
           </button>
-          <button type="button" class="btn btn-sm btn-soft-dark">
-            <i class="far fa-flag"></i>
+          {% elif order.isPending %}
+          <div>طلب جديد</div>
+          {% elif order.isAccepted and authenticatedUser.isGivingHelp%}
+          <button
+            type="button"
+            class="btn btn-sm btn-soft-success font-weight-semi-bold ml-2"
+            data-toggle="modal"
+            data-target="#completeOrderModal"
+          >
+            <i class="fas fa-check pl-2"></i>إنهاء الطلب بنجاح
           </button>
+          {% elif order.isAccepted %}
+          <div class="text-primary">طلب مقبول</div>
+          {% elif order.isCompleted %}
+          <div class="text-success">طلب مكتمل بنجاح</div>
+          {% endif %}
+          {# <button type="button" class="btn btn-sm btn-soft-dark">
+            <i class="far fa-flag"></i>
+          </button> #}
         </div>
       </div>
 
@@ -222,6 +241,132 @@
     </div>
   </div>
 </div>
+
+{# order accept modal #}
+<form
+  class="modal fade"
+  id="acceptOrderModal"
+  tabindex="-1"
+  data-backdrop="static"
+  data-keyboard="true"
+  aria-labelledby="acceptOrderModalLabel"
+  aria-hidden="true"
+  method="POST"
+  action="/profile/orders/{{order.id}}/accept"
+>
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header border-0 py-2">
+        <span></span>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6 class="mb-2">هل تريد قبول هذا الطلب؟</h6>
+        <p class="medium mb-0">
+          اختر الجهاز الذي تريد إسناده لهذا الطلب
+        </p>
+        <div class="mt-3">
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend">
+              <div class="input-group-text border-0 z-index-9">
+                <i class="far fa-location-crosshairs font-size-2"></i>
+              </div>
+            </div>
+            <select
+              class="custom-select bg-transparent shadow-soft pr-5"
+              name="productId"
+              required
+            >
+              <option selected disabled value="">
+                اختر جهازا
+              </option>
+              {% for product in products %}
+              <option value="{{ product.id }}">
+                {{ product.name }} / {{ product.type }}
+              </option>
+              {% endfor %}
+            </select>
+            <div class="invalid-feedback">
+              يرجى اختيار أحد الأجهزة التي تملكها
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer d-block py-2 border-0">
+        <button
+          type="submit"
+          class="btn btn-sm btn-block btn-success-g text-white"
+        >
+          قبول
+        </button>
+        <button
+          type="button"
+          class="btn btn-sm btn-block"
+          data-dismiss="modal"
+        >
+          إلغاء
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
+
+{# order complete modal #}
+<form
+  class="modal fade"
+  id="completeOrderModal"
+  tabindex="-1"
+  data-backdrop="static"
+  data-keyboard="true"
+  aria-labelledby="completeOrderModalLabel"
+  aria-hidden="true"
+  method="POST"
+  action="/profile/orders/{{order.id}}/complete"
+>
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header border-0 py-2">
+        <span></span>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6 class="mb-2">هل تريد إنهاء هذا الطلب؟</h6>
+        <p class="medium mb-0">
+          إنهاء الطلب يعني أن المستفيد قد أرجع لك الجهاز، هل تريد المواصلة؟
+        </p>
+      </div>
+      <div class="modal-footer d-block py-2 border-0">
+        <button
+          type="submit"
+          class="btn btn-sm btn-block btn-success-g text-white"
+        >
+          إنهاء الطلب بنجاح
+        </button>
+        <button
+          type="button"
+          class="btn btn-sm btn-block"
+          data-dismiss="modal"
+        >
+          إلغاء
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
 
   
 {% endblock %}
