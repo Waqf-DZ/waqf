@@ -196,7 +196,7 @@
                           قم بالإختيار
                         </option>
                         <option value="true">نعم</option>
-                        <option value="true">لا</option>
+                        <option value="false">لا</option>
                       </select>
                       <div class="invalid-feedback">
                         رجاءا قم بتحديد الخيار المناسب
@@ -210,7 +210,7 @@
                 <div class="col-md-6 mb-3 mb-lg-4">
                   <label
                     class="medium font-weight-semi-bold"
-                    for="countryState"
+                    for="wilaya"
                   >
                     الولاية
                   </label>
@@ -222,7 +222,7 @@
                     </div>
                     <select
                       class="custom-select bg-transparent shadow-soft pr-5"
-                      id="countryState"
+                      id="wilaya"
                       name="wilaya"
                       required
                     >
@@ -236,7 +236,7 @@
                 <div class="col-md-6 mb-3 mb-lg-4">
                   <label
                     class="medium font-weight-semi-bold"
-                    for="countryDistrict"
+                    for="city"
                   >
                     البلدية/الدائرة
                   </label>
@@ -248,7 +248,7 @@
                     </div>
                     <select
                       class="custom-select bg-transparent shadow-soft pr-5"
-                      id="countryDistrict"
+                      id="city"
                       name="city"
                       required
                     >
@@ -265,6 +265,57 @@
                   </div>
                 </div>
               </div>
+
+              <div class="form-row">
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label
+                      class="medium font-weight-semi-bold"
+                      for="isHospitalized"
+                    >
+                    المريض في المستشفى
+                    </label>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-face-thermometer font-size-2"></i>
+                        </div>
+                      </div>
+                      <select
+                        name="isHospitalized"
+                        class="
+                          custom-select
+                          bg-transparent
+                          shadow-soft
+                          border-0
+                          pr-5
+                        "
+                        required
+                      >
+                        <option selected disabled value="">
+                          قم بالإختيار
+                        </option>
+                        <option value="true">نعم</option>
+                        <option value="false">لا</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        رجاءا قم بتحديد الخيار المناسب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group">
+                      <label for="description" class="medium font-weight-semi-bold">وصف إضافي:</label>
+                      <textarea class="form-control" id="description" rows="1" required></textarea>
+                      <div class="invalid-feedback">
+                          رجاءا قم بإدخال وصف 
+                      </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

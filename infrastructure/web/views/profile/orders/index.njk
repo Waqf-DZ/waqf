@@ -21,6 +21,7 @@
               <th>الأكسجين</th>
               <th>أمراض مزمنة؟</th>
               <th>كورونا؟</th>
+              <th>المريض في المستشفى</th>
               <th>الوصفة الطبية</th>
               <th>حالة الطلب</th>
               <th></th>
@@ -33,16 +34,25 @@
               <td>{{ order.patientName }}</td>
               <td>{{ order.patientAge }}</td>
               <td>{{ order.oxygenRatio }}</td>
+
               {% if order.hasChronicDesease %}
                 <td>نعم</td>
               {% else %}
                 <td>لا</td>
               {% endif %}
-              {% if order.isCovid%}
+              
+              {% if order.isCovid %}
                 <td>نعم</td>
               {% else %}
                 <td>لا</td>
               {% endif %}
+
+              {% if order.isHospitalized %}
+                <td>نعم</td>
+              {% else %}
+                <td>لا</td>
+              {% endif %}
+
               <td>
                 <figure class="image is-64x64">
                   <img src="{{ order.prescriptionUrl }}">

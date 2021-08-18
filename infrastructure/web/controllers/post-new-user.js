@@ -5,17 +5,8 @@ module.exports = function makePostNewUser({
   validator,
 }) {
   return async function postNewUser(req, res) {
-    const {
-      name,
-      phoneNumber,
-      email,
-      password,
-      description,
-      role,
-      verified,
-      wilaya,
-      city,
-    } = req.body
+    const { name, phoneNumber, email, password, description, role, verified } =
+      req.body
     if (
       !validator.isEmailValid(email) ||
       !validator.isPhoneValid(phoneNumber)
@@ -32,8 +23,6 @@ module.exports = function makePostNewUser({
       description,
       role,
       verified,
-      wilaya,
-      city,
     })
     if (!user) {
       req.flash('error', flashMessages.EMAIL_EXISTS)
