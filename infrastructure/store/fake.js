@@ -253,9 +253,9 @@ class Store {
   listProducts({ ownerId }) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        let products = this.products
+        let products = this.products.map((p) => makeProduct(p))
         if (ownerId) {
-          products = this.products.filter((p) => p.ownerId == ownerId)
+          products = products.filter((p) => p.ownerId == ownerId)
         }
         resolve(products)
       }, latency)
@@ -294,9 +294,9 @@ class Store {
   listOrders({ ownerId }) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        let orders = this.orders
+        let orders = this.orders.map((o) => makeOrder(o))
         if (ownerId) {
-          orders = this.orders.filter((o) => o.ownerId == ownerId)
+          orders = orders.filter((o) => o.ownerId == ownerId)
         }
         resolve(orders)
       }, latency)

@@ -5,61 +5,38 @@ module.exports = function makeGetAdminDashboard({
 }) {
   return async function getAdminDashboard(req, res) {
     try {
-      // users statistics /////////////////////////////////////////////
-      const usersList = await listUsers()
-      const registeredAssociations = usersList.filter(
-        (user) => user.role == 'GIVING_HELP'
-      )
-      const totalBeneficiaries = usersList.filter(
-        (user) => user.role == 'SEEKING_HELP'
-      )
-      const pendingUsers = usersList.filter((user) => user.isVerified == false)
-      const missionProgress = (pendingUsers.length / usersList.length) * 100
+      const allUsers = await listUsers()
+      const totalAdmins = allUsers.filter((u) => u.isAdmin)
+      const totalHelpGivers = allUsers.filter((u) => u.isGivingHelp)
+      const totalHelpSeekers = allUsers.filter((u) => u.isSeekingHelp)
+      const pendingUsers = allUsers.filter((u) => !u.isVerified)
 
-      // products statistics //////////////////////////////////////////
-      const productsList = await listProducts()
-      const availableDevices = productsList.filter(
-        (product) => product.isAvailable
-      )
-      const borrowedDevices = productsList.filter(
-        (product) => !product.isAvailable
-      )
-      const availability = Math.floor(
-        (availableDevices.length / productsList.length) * 100
-      )
+      const allProducts = await listProducts()
+      const availableProducts = allProducts.filter((o) => o.isAvailable)
 
-      // orders statistics ////////////////////////////////////////////
       const ordersList = await listOrders()
-      const totalNewOrders = ordersList.filter((order) => {
-        const hour = 60000 * 60
-        const twoDays = hour * 48
-        const now = Date.now()
-        return order.createdAt - twoDays < now
-      })
-      const fulfilledOrders = ordersList.filter(
-        (order) => order.status == 'COMPLETED'
-      )
+      const totalNewOrders = ordersList.filter((o) => o.isPending)
+      const acceptedOrders = ordersList.filter((o) => o.isAccepted)
+      const completedOrders = ordersList.filter((o) => o.isCompleted)
 
-      // FIXME: statisticsData will be replaced with real stats later
       let statisticsData = {
         users: {
-          totalUsers: usersList.length,
-          registeredAssociations: registeredAssociations.length,
-          totalBeneficiaries: totalBeneficiaries.length,
-          pendingUsers: pendingUsers.length,
-          missionProgress, // percentage
+          totalUsers: allUsers.length,
+          totalAdmins: totalAdmins.length,
+          totalHelpGivers: totalHelpGivers.length,
+          totalHelpSeekers: totalHelpSeekers.length,
+          totalPendingUsers: pendingUsers.length,
         },
         products: {
-          totalDevices: productsList.length,
-          availableDevices: availableDevices.length,
-          borrowedDevices: borrowedDevices.length,
-          availability, // percentage
+          totalProducts: allProducts.length,
+          totalAvailableProducts: availableProducts.length,
+          totalLendedProducts: allProducts.length - availableProducts.length,
         },
         orders: {
           totalOrders: ordersList.length,
           totalNewOrders: totalNewOrders.length,
-          fulfilledOrders: fulfilledOrders.length,
-          averageOrders: 9,
+          totalAcceptedOrders: acceptedOrders.length,
+          totalCompletedOrders: completedOrders.length,
         },
       }
       res.render('admin/index', { data: { statisticsData } })

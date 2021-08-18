@@ -1,46 +1,26 @@
 module.exports = function makeGetUserDashboard({ listProducts, listOrders }) {
   return async function getUserDashboard(req, res) {
     try {
-      // NOTE: THIS CODE IS DUPLICATED IN THE getAdminDashboard controller
-
       const ownerId = req.user.id
+      const allProducts = await listProducts({ ownerId })
+      const availableProducts = allProducts.filter((o) => o.isAvailable)
 
-      // products statistics
-      const productsList = await listProducts({ ownerId })
-      const availableDevices = productsList.filter(
-        (product) => product.isAvailable
-      )
-      const borrowedDevices = productsList.filter(
-        (product) => !product.isAvailable
-      )
-      const availability = Math.floor(
-        (availableDevices.length / productsList.length) * 100
-      )
-
-      // orders statistics
-      const ordersList = await listOrders({ ownerId })
-      const totalNewOrders = ordersList.filter((order) => {
-        const hour = 60000 * 60
-        const twoDays = hour * 48
-        const now = Date.now()
-        return order.createdAt - twoDays < now
-      })
-      const fulfilledOrders = ordersList.filter(
-        (order) => order.status == 'COMPLETED'
-      )
+      const allOrders = await listOrders({ ownerId })
+      const totalNewOrders = allOrders.filter((o) => o.isPending)
+      const acceptedOrders = allOrders.filter((o) => o.isAccepted)
+      const completedOrders = allOrders.filter((o) => o.isCompleted)
 
       let statisticsData = {
         products: {
-          totalDevices: productsList.length,
-          availableDevices: availableDevices.length,
-          borrowedDevices: borrowedDevices.length,
-          availability, // percentage
+          totalProducts: allProducts.length,
+          totalAvailableProducts: availableProducts.length,
+          totalLendedProducts: allProducts.length - availableProducts.length,
         },
         orders: {
-          totalOrders: ordersList.length,
+          totalOrders: allOrders.length,
           totalNewOrders: totalNewOrders.length,
-          fulfilledOrders: fulfilledOrders.length,
-          averageOrders: 9,
+          totalAcceptedOrders: acceptedOrders.length,
+          totalCompletedOrders: completedOrders.length,
         },
       }
       res.render('profile/index', { data: { statisticsData } })

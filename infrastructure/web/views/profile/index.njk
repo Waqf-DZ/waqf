@@ -7,13 +7,16 @@
 {% block content %}
 
   {% set stats = data.statisticsData %}
+  {% set users = stats.users %}
   {% set products = stats.products %}
   {% set orders = stats.orders %}
 
   <div class="covers bg-cover pt-5 pb-10">
     <div class="container" id="dash">
+
+      {# products summary #}
       <div class="bg-soft-primary rounded-lg px-5 px-lg-10 py-10 my-5">
-        <div class="row row-cols-1 row-cols-lg-6">
+        <div class="row row-cols-1 row-cols-lg-4">
           <div class="col my-lg-auto">
             <h4 class="mb-2">الأجهزة</h4>
             <p class="medium mb-0">معلومات وملخص حول الأجهزة</p>
@@ -21,47 +24,24 @@
           <div class="col">
             <div class="card border-0 rounded-lg">
               <div class="card-body text-center">
-                <h6 class="mb-4">عدد الأجهزة</h6>
-                <h6 class="font-size-3 mb-0">{{ products.totalDevices }}</h6>
+                <h6 class="mb-4">العدد الإجمالي</h6>
+                <h6 class="font-size-3 mb-0">{{ products.totalProducts }}</h6>
               </div>
             </div>
           </div>
           <div class="col">
             <div class="card border-0 rounded-lg">
               <div class="card-body text-center">
-                <h6 class="mb-4">الأجهزة المتوفرة</h6>
-                <h6 class="font-size-3 mb-0">{{ products.availableDevices }}</h6>
+                <h6 class="mb-4">المتوفرة</h6>
+                <h6 class="font-size-3 mb-0">{{ products.totalAvailableProducts }}</h6>
               </div>
             </div>
           </div>
           <div class="col">
             <div class="card border-0 rounded-lg">
               <div class="card-body text-center">
-                <h6 class="mb-4">الأجهزة المستعارة</h6>
-                <h6 class="font-size-3 mb-0">{{ products.borrowedDevices }}</h6>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card border-0 rounded-lg h-100">
-              <div class="card-body text-center">
-                <h6 class="mb-4">الكمية</h6>
-                <div class="mt-n2">
-                  <p class="medium font-weight-semi-bold mb-0">{{ products.availability }}%</p>
-                  <div class="progress">
-                    <div
-                      class="
-                        progress-bar progress-bar-striped
-                        bg-success
-                        w-95
-                      "
-                      role="progressbar"
-                      aria-valuenow="95"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    ></div>
-                  </div>
-                </div>
+                <h6 class="mb-4">المعارة</h6>
+                <h6 class="font-size-3 mb-0">{{ products.totalLendedProducts }}</h6>
               </div>
             </div>
           </div>
@@ -70,7 +50,7 @@
 
       {# orders #}
       <div class="bg-soft-danger rounded-lg px-5 px-lg-10 py-10">
-        <div class="row row-cols-1 row-cols-lg-6">
+        <div class="row row-cols-1 row-cols-lg-5">
           <div class="col my-lg-auto">
             <h4 class="mb-2">الطلبات</h4>
             <p class="medium mb-0">معلومات وملخص حول الطلبات</p>
@@ -78,7 +58,7 @@
           <div class="col">
             <div class="card border-0 rounded-lg">
               <div class="card-body text-center">
-                <h6 class="mb-4">عدد الطلبات الكلي</h6>
+                <h6 class="mb-4">العدد الإجمالي</h6>
                 <h6 class="font-size-3 mb-0">{{ orders.totalOrders }}</h6>
               </div>
             </div>
@@ -86,7 +66,7 @@
           <div class="col">
             <div class="card border-0 rounded-lg">
               <div class="card-body text-center">
-                <h6 class="mb-4">الطلبات الجديدة</h6>
+                <h6 class="mb-4">الجديدة</h6>
                 <h6 class="font-size-3 mb-0">{{ orders.totalNewOrders }}</h6>
               </div>
             </div>
@@ -94,31 +74,16 @@
           <div class="col">
             <div class="card border-0 rounded-lg">
               <div class="card-body text-center">
-                <h6 class="mb-4">طلبات تم تلبيتها</h6>
-                <h6 class="font-size-3 mb-0">{{ orders.fulfilledOrders }}</h6>
+                <h6 class="mb-4">المقبولة</h6>
+                <h6 class="font-size-3 mb-0">{{ orders.totalAcceptedOrders }}</h6>
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="card border-0 rounded-lg h-100">
+          <div class="col">
+            <div class="card border-0 rounded-lg">
               <div class="card-body text-center">
-                <h6 class="mb-4">التقدم في تلبية الطلبات</h6>
-                <div class="mt-n2">
-                  <p class="medium font-weight-semi-bold mb-0">{{orders.averageOrders}}%</p>
-                  <div class="progress">
-                    <div
-                      class="
-                        progress-bar progress-bar-striped
-                        bg-success
-                        w-95
-                      "
-                      role="progressbar"
-                      aria-valuenow="95"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                    ></div>
-                  </div>
-                </div>
+                <h6 class="mb-4">المكتملة</h6>
+                <h6 class="font-size-3 mb-0">{{ orders.totalCompletedOrders }}</h6>
               </div>
             </div>
           </div>
