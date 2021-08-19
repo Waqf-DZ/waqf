@@ -1,4 +1,4 @@
-function hashPassword(password) {
+async function hashPassword(password) {
   return password
 }
 

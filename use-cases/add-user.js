@@ -13,10 +13,11 @@ function makeAddUser({ usersDB, hashPassword }) {
     if (user) {
       return Promise.resolve(null)
     } else {
+      const passwordHash = await hashPassword(password)
       user = makeUser({
         displayName,
         email,
-        passwordHash: hashPassword(password),
+        passwordHash,
         phoneNumber,
         description,
         role,

@@ -1,8 +1,7 @@
 const bcrypt = require('bcryptjs')
 
-function hashPassword(password) {
-  let salt = bcrypt.genSaltSync(10)
-  let passwordHash = bcrypt.hashSync(password, salt)
+async function hashPassword(password) {
+  let passwordHash = await bcrypt.hash(password, 10)
 
   if (
     !passwordHash ||

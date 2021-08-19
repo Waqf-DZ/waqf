@@ -1,8 +1,8 @@
-function hashPassword(password) {
+async function hashPassword(password) {
   return password
 }
 
-function verifyPassword(password, hash) {
+async function verifyPassword(password, hash) {
   return password == hash
 }
 
