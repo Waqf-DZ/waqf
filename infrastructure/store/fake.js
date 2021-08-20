@@ -8,7 +8,7 @@ class Store {
         id: 'product_1',
         name: 'منتج 1',
         type: 'مكثف',
-        serial: '729893-TD',
+        serial: '729893',
         imageUrl: 'https://m.media-amazon.com/images/I/514xi17BAGL._SX679_.jpg',
         description: 'بعض الوصف العشوائي',
         isAvailable: true,
@@ -22,7 +22,7 @@ class Store {
         id: 'product_2',
         name: 'منتج 2',
         type: 'مكثف محمول',
-        serial: '223934-BS',
+        serial: '223934',
         imageUrl:
           'https://ae01.alicdn.com/kf/H45940412467d4ee3b8aa44e05d5b73afd/2-10LMP-10L-liter-portable-home-oxygen-concentrator-price-medical-machine-for-sales.jpg_Q90.jpg_.webp',
         description: 'بعض الوصف العشوائي',
@@ -37,7 +37,7 @@ class Store {
         id: 'product_3',
         name: 'منتج 3',
         type: 'مكثف محمول',
-        serial: '9988634-HQ',
+        serial: '9988636',
         imageUrl:
           'https://ae01.alicdn.com/kf/H45940412467d4ee3b8aa44e05d5b73afd/2-10LMP-10L-liter-portable-home-oxygen-concentrator-price-medical-machine-for-sales.jpg_Q90.jpg_.webp',
         description: 'بعض الوصف العشوائي',
