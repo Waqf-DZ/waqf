@@ -132,6 +132,7 @@ class Store {
         completedAt: null,
         assignedProductId: '',
         ownerId: 'user_1',
+        isHospitalized: true,
       },
       {
         id: 'order_2',
@@ -148,6 +149,24 @@ class Store {
         completedAt: null,
         assignedProductId: '',
         ownerId: 'user_2',
+        isHospitalized: false,
+      },
+      {
+        id: 'order_3',
+        patientName: 'جمال خير دين مكناس',
+        patientAge: 77,
+        oxygenRatio: 93,
+        hasChronicDesease: true,
+        isCovid: true,
+        prescriptionUrl:
+          'https://previews.123rf.com/images/jes2ufoto/jes2ufoto1407/jes2ufoto140700223/30278466-prescription-note-representing-a-doctor-s-medicine-remedy-given-to-a-pharmacist-.jpg',
+        createdAt: Date.now(),
+        status: 'PENDING',
+        acceptedAt: null,
+        completedAt: null,
+        assignedProductId: '',
+        ownerId: 'user_1',
+        isHospitalized: false,
       },
     ]
   }
