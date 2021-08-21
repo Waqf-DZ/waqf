@@ -23,6 +23,10 @@ router.get('/signin', function (req, res) {
 
 router.post('/signin', postSignin)
 
+router.get('/reset-password', (req, res) => {
+  res.render('reset-password')
+})
+
 router.get('/about', function (req, res) {
   res.render('about')
 })
