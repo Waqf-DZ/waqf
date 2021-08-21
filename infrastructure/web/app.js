@@ -16,6 +16,7 @@ const isAuthenticated = require('./middlewares/is-authenticated')
 const isAuthenticatedAdmin = require('./middlewares/is-authenticated-admin')
 const isAuthenticatedUser = require('./middlewares/is-authenticated-user')
 const renderFlashMessages = require('./middlewares/render-flash-messages')
+const injectAlgerianCities = require('./middlewares/inject-algerian-cities')
 
 const app = express()
 
@@ -56,6 +57,7 @@ app.use(
   isAuthenticated,
   express.static(path.join(__dirname, 'uploads'))
 )
+app.use(injectAlgerianCities)
 
 app.use('/', indexRouter)
 app.use('/admin', isAuthenticatedAdmin, adminRouter)

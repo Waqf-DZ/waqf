@@ -36,11 +36,18 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="/js/swiper-bundle.min.js"></script>
     <script src="/js/index.js"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/app.js"></script>
+    {% if wilayas and cities %}
+    <script>
+      window.WILAYAS = JSON.parse('{{ wilayas }}'.replace(/&quot;/g, '"'))
+      window.CITIES = JSON.parse('{{ cities }}'.replace(/&quot;/g, '"'))
+    </script>
+    <script src="/js/algerian-cities.js"></script>
+    {% endif %}
   </body>
 </html>
