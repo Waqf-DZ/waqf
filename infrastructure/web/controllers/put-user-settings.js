@@ -5,11 +5,14 @@ module.exports = function makePutUserSettings({
 }) {
   return async function putUserSettings(req, res) {
     try {
-      const { email, name, phoneNumber } = req.body
+      const { displayName, phoneNumber, description, city, wilaya } = req.body
       const updatedUser = await updateUser({
-        email,
-        name: sanitize(name),
-        phoneNumber,
+        id: req.user.id,
+        displayName: sanitize(displayName),
+        phoneNumber: sanitize(phoneNumber),
+        description: sanitize(description),
+        wilaya,
+        city,
       })
 
       if (updatedUser) {
@@ -20,7 +23,9 @@ module.exports = function makePutUserSettings({
         res.redirect('/profile/settings')
       }
     } catch (err) {
-      res.render('profile/settings', { errorMessages: [err.message] })
+      console.error(err)
+      req.flash('error', flashMessages.PROFILE_UPDATE_FAILURE)
+      res.redirect('/profile/settings')
     }
   }
 }

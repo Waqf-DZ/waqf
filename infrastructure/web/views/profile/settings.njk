@@ -11,10 +11,10 @@
 
   <div class="container mt-5 pb-10">
     <div class="row row-reverse">
-      <div class="col-12 col-lg-9 d-flex mb-4 mb-lg-0">
+      <div class="col-12 d-flex mb-4 mb-lg-0">
         <div class="card container shadow-sm border-0 px-0">
           <div class="card-body pt-5">
-            <form class="needs-validation" novalidate>
+            <form action="/profile/settings" method="POST" class="needs-validation">
               <!-- Profile Pic -->
               <div class="text-center mb-4">
                 <div class="btn px-0 position-relative file-attachment-btn">
@@ -46,16 +46,17 @@
                 </div>
 
                 <h5 class="card-title mb-0 text-lh-sm">
-                  <span
+                  {# <span
                     id="u-id-checked"
                     data-toggle="tooltip"
                     data-placement="top"
                     title="تم تأكيد هوية هذا الشخص"
                     ><i class="fas fa-badge-check text-success"></i
-                  ></span>
+                  ></span> #}
                   {{ user.displayName }}
                 </h5>
               </div>
+
               <!-- User Info -->
               <div class="form-row">
                 <div class="col-md-6 mb-3 mb-lg-4">
@@ -63,8 +64,9 @@
                     <label
                       class="medium font-weight-semi-bold"
                       for="name"
-                      >الإسم</label
                     >
+                      الإسم الكامل
+                    </label>
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <div class="input-group-text border-0 z-index-9">
@@ -75,46 +77,23 @@
                         type="text"
                         class="form-control form-control-sm"
                         id="name"
-                        name="name"
+                        name="displayName"
                         value="{{ user.displayName }}"
                         required
                       />
-                      <div class="invalid-feedback">رجاءا قم بإدخال إسمك</div>
+                      <div class="invalid-feedback"> رجاء أدخل إسمك الكامل</div>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 mb-3 mb-lg-4">
-                  <div class="form-group mb-0">
-                    <label
-                      class="medium font-weight-semi-bold"
-                      for="name"
-                      >اللقب</label
-                    >
-                    <div class="input-group input-group-sm">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text border-0 z-index-9">
-                          <i class="far fa-user-plus font-size-2"></i>
-                        </div>
-                      </div>
-                      <input
-                        type="text"
-                        class="form-control form-control-sm"
-                        id="name"
-                        name="name"
-                        value="{{ user.displayName }}"
-                        required
-                      />
-                      <div class="invalid-feedback">رجاءا قم بإدخال لقبك</div>
-                    </div>
-                  </div>
-                </div>
+
                 <div class="col-md-6 mb-3 mb-lg-4">
                   <div class="form-group mb-0">
                     <label
                       class="medium font-weight-semi-bold"
                       for="phoneNumber"
-                      >رقم الهاتف</label
                     >
+                      رقم الهاتف
+                    </label>
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <div class="input-group-text border-0 z-index-9">
@@ -135,13 +114,17 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 mb-3 mb-lg-4">
+              </div>
+
+              <div class="form-row">
+                <div class="col-md-12 mb-3 mb-lg-4">
                   <div class="form-group mb-0">
                     <label
                       class="medium font-weight-semi-bold"
                       for="email"
-                      >البريد الإلكتروني</label
                     >
+                      البريد الإلكتروني
+                    </label>
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <div class="input-group-text border-0 z-index-9">
@@ -152,9 +135,8 @@
                         type="email"
                         class="form-control form-control-sm"
                         id="email"
-                        name="email"
                         value="{{ user.email }}"
-                        required
+                        disabled
                       />
                       <div class="invalid-feedback">
                         رجاءا قم بإدخال بريدك الإلكتروني
@@ -163,13 +145,15 @@
                   </div>
                 </div>
               </div>
+
               <div class="form-row">
                 <div class="col-md-6 mb-3 mb-lg-4">
                   <label
                     class="medium font-weight-semi-bold"
-                    for="cityValidat"
-                    >الولاية</label
+                    for="wilayaInput"
                   >
+                    الولاية
+                  </label>
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                       <div class="input-group-text border-0 z-index-9">
@@ -178,7 +162,8 @@
                     </div>
                     <select
                       class="custom-select bg-transparent shadow-soft pr-5"
-                      id="cityValidat"
+                      id="wilayaInput"
+                      name="wilaya"
                       required
                       data-wilaya-input
                     >
@@ -191,9 +176,10 @@
                 <div class="col-md-6 mb-3 mb-lg-4">
                   <label
                     class="medium font-weight-semi-bold"
-                    for="municValidat"
-                    >البلدية/الدائرة</label
+                    for="cityInput"
                   >
+                    البلدية/الدائرة
+                  </label>
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                       <div class="input-group-text border-0 z-index-9">
@@ -202,7 +188,8 @@
                     </div>
                     <select
                       class="custom-select bg-transparent shadow-soft pr-5"
-                      id="municValidat"
+                      id="cityInput"
+                      name="city"
                       required
                       data-city-input
                     >
@@ -216,77 +203,31 @@
                   </div>
                 </div>
               </div>
+              
               <div class="form-row">
-                <div class="col-md-6 mb-3 mb-lg-4">
-                  <div class="form-group mb-0">
+                <div class="col-md-12 mb-3 mb-lg-4">
+                  <div class="form-group">
                     <label
+                      for="description"
                       class="medium font-weight-semi-bold"
-                      for="uProfileName"
-                      >ماهو دورك</label
                     >
-                    <div class="input-group input-group-sm">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text border-0 z-index-9">
-                          <i class="far fa-user-tie font-size-2"></i>
-                        </div>
-                      </div>
-                      <select
-                        class="
-                          custom-select
-                          bg-transparent
-                          shadow-soft
-                          border-0
-                          pr-5
-                        "
-                        required
-                      >
-                        <option selected disabled value="">
-                          ماهو هدفك في المنصة
-                        </option>
-                        <option>محتاج</option>
-                        <option>متطوع</option>
-                        <option>جمعية</option>
-                      </select>
-                      <div class="invalid-feedback">يرجى اختيار الدور</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 mb-3 mb-lg-4">
-                  <div class="form-group mb-0">
-                    <label
-                      class="medium font-weight-semi-bold"
-                      for="uProfileName"
-                      >حالة الحساب</label
+                      وصف مختصر:
+                    </label>
+                    <textarea
+                      class="form-control"
+                      id="description"
+                      name="description"
+                      rows="5"
                     >
-                    <div class="input-group input-group-sm">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text border-0 z-index-9">
-                          <i class="far fa-user-gear font-size-2"></i>
-                        </div>
-                      </div>
-                      <select
-                        class="
-                          custom-select
-                          bg-transparent
-                          shadow-soft
-                          border-0
-                          pr-5
-                        "
-                        required
-                      >
-                        <option selected disabled value="">
-                          يرجى اختيار حالة الحساب
-                        </option>
-                        <option>نشط</option>
-                        <option>معطل</option>
-                      </select>
-                      <div class="invalid-feedback">
-                        يرجى اختيار حالة الحساب
-                      </div>
+                      {{ product.description }}
+                    </textarea>
+                    <div class="invalid-feedback">
+                      رجاءا قم بإدخال وصف للوقف
                     </div>
                   </div>
                 </div>
               </div>
+
               <button
                 class="
                   btn btn-sm btn-success-g
@@ -302,14 +243,15 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-lg-3">
+
+      {# <div class="col-12 col-lg-3">
         <div class="card shadow-sm border-0 rounded mb-4">
           <div class="card-body py-4">
             <h1 class="font-size-2 mb-0">رابط الدعوة الخاص بك:</h1>
-            <small class="font-weight-semi-bold"
-              >قم بدعوة أصدقائك للإنضمام إلى مجتمعنا عن طريق مشاركة هذا
-              الرابط.</small
-            >
+            <small class="font-weight-semi-bold">
+              قم بدعوة أصدقائك للإنضمام إلى مجتمعنا عن طريق مشاركة هذا
+              الرابط.
+            </small>
             <div
               class="
                 u-inv-link
@@ -382,13 +324,13 @@
           </div>
         </div>
         <!-- Verified Account -->
-        <!-- <div class="card shadow-sm border-0 rounded mb-4">
+        <div class="card shadow-sm border-0 rounded mb-4">
             <div class="card-body text-center py-4">
                 <i class="fas fa-5x fa-badge-check text-success-g"></i>
                 <h1 class="font-size-2 mt-3 mb-0">لقد تم تأكيد حسابك</h1>
             </div>
-        </div> -->
-      </div>
+        </div>
+      </div> #}
     </div>
   </div>
 
