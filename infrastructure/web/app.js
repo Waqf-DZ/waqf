@@ -14,6 +14,7 @@ const adminRouter = require('./routes/admin')
 const profileRouter = require('./routes/profile')
 
 const passport = require('./middlewares/passport-local-strategy')
+const injectAuthenticatedUser = require('./middlewares/inject-authenticated-user')
 const isAuthenticated = require('./middlewares/is-authenticated')
 const isAuthenticatedAdmin = require('./middlewares/is-authenticated-admin')
 const isAuthenticatedUser = require('./middlewares/is-authenticated-user')
@@ -70,6 +71,7 @@ app.use(
   express.static(path.join(__dirname, 'uploads'))
 )
 app.use(injectAlgerianCities)
+app.use(injectAuthenticatedUser)
 
 app.use('/', indexRouter)
 app.use('/admin', isAuthenticatedAdmin, adminRouter)
