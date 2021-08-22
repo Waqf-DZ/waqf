@@ -57,7 +57,7 @@
                       </div>
                     </div>
                     <input
-                      type="number"
+                      type="text"
                       class="form-control form-control-sm"
                       id="serial"
                       name="serial"
@@ -90,59 +90,10 @@
                     required
                   >
                     <option selected disabled value="">اختر نوع الوقف</option>
-                    <option value="condenser">مكثف أكسجين</option>
+                    <option value="CONDENSER_10L">مكثف أكسجين 10 ل</option>
+                    <option value="CONDENSER_5L">مكثف أكسجين 5 ل</option>
                   </select>
                   <div class="invalid-feedback">يرجى اختيار نوع الوقف</div>
-                </div>
-              </div>
-
-              <div class="col-md-6 mb-3 mb-lg-4">
-                <label class="medium font-weight-semi-bold" for="countryState">
-                  الولاية
-                </label>
-                <div class="input-group input-group-sm">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text border-0 z-index-9">
-                      <i class="far fa-location-dot font-size-2"></i>
-                    </div>
-                  </div>
-                  <select
-                    class="custom-select bg-transparent shadow-soft pr-5"
-                    id="wilaya"
-                    name="wilaya"
-                    required
-                    data-wilaya-input
-                  >
-                    <option selected disabled value="">اختر الولاية</option>
-                  </select>
-                  <div class="invalid-feedback">يرجى اختيار الولاية</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 mb-3 mb-lg-4">
-              <label class="medium font-weight-semi-bold" for="countryDistrict">
-                البلدية/الدائرة
-              </label>
-              <div class="input-group input-group-sm">
-                <div class="input-group-prepend">
-                  <div class="input-group-text border-0 z-index-9">
-                    <i class="far fa-location-crosshairs font-size-2"></i>
-                  </div>
-                </div>
-                <select
-                  class="custom-select bg-transparent shadow-soft pr-5"
-                  id="countryDistrict"
-                  name="city"
-                  required
-                  data-city-input
-                >
-                  <option selected disabled value="">
-                    اختر البلدية/الدائرة
-                  </option>
-                </select>
-                <div class="invalid-feedback">
-                  يرجى اختيار دائرة / بلديتك سكنك
                 </div>
               </div>
             </div>
@@ -156,13 +107,13 @@
                 id="description"
                 name="description"
                 rows="5"
-                required
               ></textarea>
-              <div class="invalid-feedback">رجاءا قم بإدخال وصف للوقف</div>
+              <div class="invalid-feedback">رجاء قم بإدخال وصف للوقف</div>
             </div>
           </div>
         </div>
       </div>
+
       <div class="col-12 col-lg-3">
         <div class="card shadow-sm border-0 rounded mb-4">
           <div class="card-body py-4">
