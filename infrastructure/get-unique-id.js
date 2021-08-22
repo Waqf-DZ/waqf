@@ -1,3 +1,5 @@
+const short = require('short-uuid')
+
 module.exports = function getUniqueId() {
-  return parseInt(Math.random() * 10 ** 14)
+  return short.generate()
 }
