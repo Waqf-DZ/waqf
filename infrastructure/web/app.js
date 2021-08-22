@@ -1,6 +1,8 @@
 const createError = require('http-errors')
 const express = require('express')
 const session = require('express-session')
+const { sequelize } = require('../store/sequelize/index')
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const flash = require('connect-flash')
 const path = require('path')
 const cookieParser = require('cookie-parser')
@@ -24,16 +26,27 @@ const app = express()
 app.engine('njk', nunjucks.render)
 app.set('view engine', 'njk')
 
-// setup session
-var sessionConfig = {
-  secret: 'keyboard cat',
-  cookie: {},
-  resave: false,
-  saveUninitialized: false,
-}
+const sequelizeSessionStore = new SequelizeStore({
+  db: sequelize,
+  table: 'Session',
+})
 if (app.get('env') === 'production') {
-  app.set('trust proxy', 1)
-  sessionConfig.cookie.secure = true
+  const prodSessionConfig = {
+    secret: 'keyboard cat',
+    store: sequelizeSessionStore,
+    resave: false,
+    proxy: true,
+  }
+  app.use(session(prodSessionConfig))
+  sequelizeSessionStore.sync()
+} else {
+  const devSessionConfig = {
+    secret: 'keyboard cat',
+    cookie: {},
+    resave: false,
+    saveUninitialized: false,
+  }
+  app.use(session(devSessionConfig))
 }
 
 // view engine setup
@@ -42,7 +55,6 @@ nunjucks.configure(path.join(__dirname, './views'), {
   express: app,
 })
 
-app.use(session(sessionConfig))
 app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())

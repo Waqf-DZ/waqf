@@ -22,7 +22,7 @@ module.exports = function makeUsersDB({ model, Op }) {
           [Op.or]: [{ id }, { email }],
         },
       })
-      return makeUser(user)
+      return user ? makeUser(user) : null
     },
 
     async updateUser(user) {

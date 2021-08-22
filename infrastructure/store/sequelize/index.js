@@ -4,6 +4,7 @@ const { Op } = require('sequelize')
 const User = require('./models/user')
 const Order = require('./models/order')
 const Product = require('./models/product')
+require('./models/session')
 
 const makeUsersDB = require('./repositories/usersDB')
 const makeOrdersDB = require('./repositories/ordersDB')

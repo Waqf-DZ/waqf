@@ -1,11 +1,14 @@
 const FakeStore = require('../infrastructure/store/fake')
+const {
+  ordersDB,
+  usersDB,
+  productsDB,
+} = require('../infrastructure/store/sequelize/index')
 
 const {
   hashPassword,
   verifyPassword,
 } = require('../infrastructure/hash-password')
-
-const store = new FakeStore()
 
 const makeAddUser = require('./add-user')
 const makeSignInUser = require('./sign-in-user')
@@ -21,8 +24,12 @@ const makeListProducts = require('./list-products')
 const makeListUsers = require('./list-users')
 const makeUpdateUser = require('./update-user')
 const makeUpdateOrder = require('./update-order')
-
 const makeUpdateProduct = require('./update-product')
+
+const store =
+  process.env.NODE_ENV == 'production'
+    ? { ...ordersDB, ...usersDB, ...productsDB }
+    : new FakeStore()
 
 const addUser = makeAddUser({ usersDB: store, hashPassword })
 const getUser = makeGetUser({ usersDB: store })
