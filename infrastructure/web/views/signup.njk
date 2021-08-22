@@ -65,9 +65,9 @@
         </div>
       </div>
       <div class="form-group mb-4">
-        <label class="medium font-weight-semi-bold" for="phoneNumber"
-          >رقم الهاتف</label
-        >
+        <label class="medium font-weight-semi-bold" for="phoneNumber">
+          رقم الهاتف
+        </label>
         <div class="input-group input-group-sm">
           <div class="input-group-prepend">
             <div class="input-group-text border-0 z-index-9 border-0">
@@ -75,20 +75,20 @@
             </div>
           </div>
           <input
-            type="number"
+            type="tel"
             class="form-control form-control-sm"
             id="phoneNumber"
             name="phoneNumber"
-            placeholder="123-456-789"
+            placeholder="0555 55 55 55"
             required
           />
         </div>
       </div>
 
       <div class="form-group position-relative mb-4">
-        <label class="medium font-weight-semi-bold" for="passwordHash"
-          >كلمة السر</label
-        >
+        <label class="medium font-weight-semi-bold" for="passwordHash">
+          كلمة السر
+        </label>
         <div class="input-group input-group-sm position-relative">
           <div class="input-group-prepend">
             <div class="input-group-text border-0 z-index-9 border-0">
@@ -103,9 +103,7 @@
             placeholder="****************"
             required
           />
-          <div
-            class="position-absolute left-0 z-index-9 toggle-password"
-          >
+          <div class="position-absolute left-0 z-index-9 toggle-password">
             <span class="far fa-eye p-3 cursor-pointer op-50"></span>
           </div>
         </div>
@@ -120,10 +118,11 @@
           name="role"
           value="SEEKING_HELP"
           class="custom-control-input"
+          required
         />
-        <label class="custom-control-label" for="SEEKING_HELP"
-          >أريد المساعدة</label
-        >
+        <label class="custom-control-label" for="SEEKING_HELP">
+          محتاج
+        </label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
         <input
@@ -132,10 +131,11 @@
           name="role"
           value="GIVING_HELP"
           class="custom-control-input"
+          required
         />
-        <label class="custom-control-label" for="GIVING_HELP"
-          >أحتاج المساعدة</label
-        >
+        <label class="custom-control-label" for="GIVING_HELP">
+          جمعية
+        </label>
       </div>
 
       <button
