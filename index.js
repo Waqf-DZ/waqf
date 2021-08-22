@@ -1,7 +1,7 @@
 var http = require('http')
 const app = require('./infrastructure/web/app')
 const { sequelize } = require('./infrastructure/store/sequelize')
-const isProduction = process.env.NODE_ENV
+const isProduction = process.env.NODE_ENV === 'production'
 
 async function start() {
   const PORT = process.env.PORT || 3000
