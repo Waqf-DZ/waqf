@@ -28,6 +28,8 @@ const ORDER_UPDATE_SUCCESS = 'تعديل الطلب تم بنجاح'
 const ORDER_UPDATE_FAILURE = 'حدث خطأ أثناء محاولة تعديل هذا الطلب'
 
 const ORDER_ACCEPT_SUCCESS = 'قبول هذا الطلب تم بنجاح'
+const ORDER_ACCEPT_FAILURE =
+  'هذا الطلب قد تم قبوله من طرف جمعية أخرى، يمكنك قبول طلبات أخرى'
 
 const NOT_VERIFIED_USER_SIGNIN =
   'مرحبابك، لقد سجلت بنجاح في المنصة، نرجوا منك الإنتظار قليلا ريثما يتم تفعيل حسابك أو يمكنك التواصل مع المشرفين على المنصة'
@@ -47,5 +49,6 @@ module.exports = {
   ORDER_UPDATE_SUCCESS,
   ORDER_UPDATE_FAILURE,
   ORDER_ACCEPT_SUCCESS,
+  ORDER_ACCEPT_FAILURE,
   NOT_VERIFIED_USER_SIGNIN,
 }

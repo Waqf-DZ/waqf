@@ -6,8 +6,14 @@ module.exports = function makePostUserAcceptOrder({
     const assignedUserId = req.user.id
     const orderId = req.params.id
     const assignedProductId = req.body.productId
-    await acceptOrder({ orderId, assignedUserId, assignedProductId })
-    req.flash('success', flashMessages.ORDER_ACCEPT_SUCCESS)
-    res.redirect(`/profile/orders/${orderId}`)
+    try {
+      await acceptOrder({ orderId, assignedUserId, assignedProductId })
+      req.flash('success', flashMessages.ORDER_ACCEPT_SUCCESS)
+      res.redirect(`/profile/orders/${orderId}`)
+    } catch (err) {
+      console.error(err)
+      req.flash('error', flashMessages.ORDER_ACCEPT_FAILURE)
+      res.redirect('/profile/orders/')
+    }
   }
 }

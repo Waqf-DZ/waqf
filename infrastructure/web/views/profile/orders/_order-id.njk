@@ -27,7 +27,7 @@
               </button>
             {% elif order.isPending %}
               <div>طلب جديد</div>
-            {% elif order.isAccepted and authenticatedUser.isGivingHelp %}
+            {% elif order.isAccepted and authenticatedUser.isGivingHelp and order.assignedUserId == authenticatedUser.id %}
               <button
                 type="button"
                 class="btn btn-sm btn-soft-success font-weight-semi-bold ml-2"
@@ -41,16 +41,16 @@
               <div class="text-success">طلب مكتمل بنجاح</div>
             {% endif %}
             {# <button type="button" class="btn btn-sm btn-soft-dark">
-              <i class="far fa-flag"></i>
-            </button> #}
+                          <i class="far fa-flag"></i>
+                        </button> #}
           </div>
         </div>
         <div
           class="donate-title text-right my-4 rounded-lg">
           {# <h1 class="font-size-3 text-lh-md mb-">
-            لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايتسيت
-            دو أيوسمود تيمبور
-          </h1> #}
+                      لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايتسيت
+                      دو أيوسمود تيمبور
+                    </h1> #}
           <ul class="list-unstyledss mr-3">
             <li class="font-size-1 font-weight-semi-bold op-90">
               إسم المريض:
@@ -106,12 +106,12 @@
           </ul>
         </div>
         {# <p class="medium font-weight-semi-bold mb-2">ملاحظة:</p>
-        <div class="bg-light rounded-sm p-3">
-          <span class="font-size-1"
-            >لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل
-            ليتصور طريقه وضع النصوص</span
-          >
-        </div> #}
+                <div class="bg-light rounded-sm p-3">
+                  <span class="font-size-1"
+                    >لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل
+                    ليتصور طريقه وضع النصوص</span
+                  >
+                </div> #}
       </div>
       {# prescription image #}
       <div class="col-12 col-lg-6">
