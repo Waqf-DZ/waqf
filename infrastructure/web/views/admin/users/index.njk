@@ -4,67 +4,69 @@
   {% set users = data.users %}
   <div class="container pt-5 mb-10">
     <h2 class="mb-3">قائمة المستخدمين</h2>
-    <table class="table table-hover table-bordered table-content mb-0 hax-table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">الإسم</th>
-          <th scope="col">البريد الإلكتروني</th>
-          <th scope="col">رقم الهاتف</th>
-          <th scope="col">دور المستخدم</th>
-          <th scope="col">حالة الحساب</th>
-          <th scope="col">إجراءات</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for user in users %}
+    <div class="table-responsive-md">
+      <table class="table table-hover table-bordered table-content mb-0 hax-table">
+        <thead>
           <tr>
-            <th scope="row">{{ loop.index }}</th>
-            <td>{{ user.displayName }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.phoneNumber }}</td>
-            {% if user.role == "ADMIN" %}
-              <td>مشرف</td>
-            {% elif user.role == "DIRECTOR" %}
-              <td>مدير</td>
-            {% elif user.role == "GIVING_HELP" %}
-              <td>جمعية</td>
-            {% else %}
-              <td>محتاج</td>
-            {% endif %}
-            {% if user.isVerified %}
-              <td>مفعل</td>
-            {% else %}
-              <td>غير مفعل</td>
-            {% endif %}
-            <td>
-              <div class="dropdown">
-                <button
-                  class="btn py-0"
-                  type="button"
-                  id="userTableAction"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false">
-                  <i class="far fa-ellipsis-h opacity-80"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="userTableAction">
-                  <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ user.id }}-userInfo">
-                    <i class="far fa-circle-info pl-2"></i>الوصف
-                  </button>
-                  <a type="submit" class="dropdown-item" href="/admin/users/{{ user.id }}">
-                    <i class="far fa-arrows-rotate pl-2"></i>تحديث
-                  </a>
-                  <button type="button" class="dropdown-item" data-toggle="modal" data-target="#delUser">
-                    <i class="far fa-trash-can pl-2"></i>حذف
-                  </button>
-                </div>
-              </div>
-            </td>
+            <th scope="col">#</th>
+            <th scope="col">الإسم</th>
+            <th scope="col">البريد الإلكتروني</th>
+            <th scope="col">رقم الهاتف</th>
+            <th scope="col">دور المستخدم</th>
+            <th scope="col">حالة الحساب</th>
+            <th scope="col">إجراءات</th>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {% for user in users %}
+            <tr>
+              <th scope="row">{{ loop.index }}</th>
+              <td>{{ user.displayName }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phoneNumber }}</td>
+              {% if user.role == "ADMIN" %}
+                <td>مشرف</td>
+              {% elif user.role == "DIRECTOR" %}
+                <td>مدير</td>
+              {% elif user.role == "GIVING_HELP" %}
+                <td>جمعية</td>
+              {% else %}
+                <td>محتاج</td>
+              {% endif %}
+              {% if user.isVerified %}
+                <td>مفعل</td>
+              {% else %}
+                <td>غير مفعل</td>
+              {% endif %}
+              <td>
+                <div class="dropdown">
+                  <button
+                    class="btn py-0"
+                    type="button"
+                    id="userTableAction"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="far fa-ellipsis-h opacity-80"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="userTableAction">
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ user.id }}-userInfo">
+                      <i class="far fa-circle-info pl-2"></i>الوصف
+                    </button>
+                    <a type="submit" class="dropdown-item" href="/admin/users/{{ user.id }}">
+                      <i class="far fa-arrows-rotate pl-2"></i>تحديث
+                    </a>
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#delUser">
+                      <i class="far fa-trash-can pl-2"></i>حذف
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </div>
   {% for user in users %}
     <!-- Extra Info -->

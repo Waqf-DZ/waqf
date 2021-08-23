@@ -4,76 +4,78 @@
   {% set orders = data.orders %}
   <div class="container pt-5 mb-10">
     <h2 class="mb-3">قائمة الطلبات</h2>
-    <table class="table table-hover table-bordered table-content mb-0 hax-table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">اسم المريض</th>
-          <th scope="col">العمر</th>
-          <th scope="col">الأكسجين</th>
-          <th scope="col">أمراض مزمنة</th>
-          <th scope="col">كورونا</th>
-          <th scope="col">المريض في المستشفى</th>
-          <th scope="col">الوصفة الطبية</th>
-          <th scope="col">إجراءات</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for order in orders %}
+    <div class="table-responsive-md">
+      <table class="table table-hover table-bordered table-content mb-0 hax-table">
+        <thead>
           <tr>
-            <td scope="row">{{ loop.index }}</td>
-            <td scope="row">{{ order.patientName }}</td>
-            <td scope="row">{{ order.patientAge }}</td>
-            <td scope="row">{{ order.oxygenRatio }}</td>
-            {% if order.hasChronicDesease %}
-              <td scope="row">نعم</td>
-            {% else %}
-              <td scope="row">لا</td>
-            {% endif %}
-            {% if order.isCovid %}
-              <td scope="row">نعم</td>
-            {% else %}
-              <td scope="row">لا</td>
-            {% endif %}
-            {% if order.isHospitalized %}
-              <td scope="row">نعم</td>
-            {% else %}
-              <td scope="row">لا</td>
-            {% endif %}
-            <td scope="row">
-              <button
-                type="button"
-                class="btn btn-sm p-0 text-primary"
-                data-toggle="modal"
-                data-target="#{{ order.id }}-prescription">
-                رابط الوصفة
-              </button>
-            </td>
-            <td>
-              <div class="dropdown">
-                <button
-                  class="btn py-0"
-                  type="button"
-                  id="waqfTableAction"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false">
-                  <i class="far fa-ellipsis-h opacity-80"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="waqfTableAction">
-                  <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ order.id }}-editProductInfo">
-                    <i class="far fa-pen-to-square pl-2"></i>تعديل
-                  </button>
-                  <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ order.id }}-delProduct">
-                    <i class="far fa-trash-can pl-2"></i>حذف
-                  </button>
-                </div>
-              </div>
-            </td>
+            <th scope="col">#</th>
+            <th scope="col">اسم المريض</th>
+            <th scope="col">العمر</th>
+            <th scope="col">الأكسجين</th>
+            <th scope="col">أمراض مزمنة</th>
+            <th scope="col">كورونا</th>
+            <th scope="col">المريض في المستشفى</th>
+            <th scope="col">الوصفة الطبية</th>
+            <th scope="col">إجراءات</th>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {% for order in orders %}
+            <tr>
+              <td scope="row">{{ loop.index }}</td>
+              <td scope="row">{{ order.patientName }}</td>
+              <td scope="row">{{ order.patientAge }}</td>
+              <td scope="row">{{ order.oxygenRatio }}</td>
+              {% if order.hasChronicDesease %}
+                <td scope="row">نعم</td>
+              {% else %}
+                <td scope="row">لا</td>
+              {% endif %}
+              {% if order.isCovid %}
+                <td scope="row">نعم</td>
+              {% else %}
+                <td scope="row">لا</td>
+              {% endif %}
+              {% if order.isHospitalized %}
+                <td scope="row">نعم</td>
+              {% else %}
+                <td scope="row">لا</td>
+              {% endif %}
+              <td scope="row">
+                <button
+                  type="button"
+                  class="btn btn-sm p-0 text-primary"
+                  data-toggle="modal"
+                  data-target="#{{ order.id }}-prescription">
+                  رابط الوصفة
+                </button>
+              </td>
+              <td>
+                <div class="dropdown">
+                  <button
+                    class="btn py-0"
+                    type="button"
+                    id="waqfTableAction"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="far fa-ellipsis-h opacity-80"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="waqfTableAction">
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ order.id }}-editProductInfo">
+                      <i class="far fa-pen-to-square pl-2"></i>تعديل
+                    </button>
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ order.id }}-delProduct">
+                      <i class="far fa-trash-can pl-2"></i>حذف
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </div>
   {% for order in orders %}
     <!-- Prescription -->

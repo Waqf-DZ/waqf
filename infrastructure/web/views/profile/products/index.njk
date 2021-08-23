@@ -4,67 +4,69 @@
   {% set products = data.products %}
   <div class="container pt-5 mb-10">
     <h2 class="mb-3">كل الأوقاف</h2>
-    <table class="table table-hover table-bordered table-content mb-0 hax-table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">الإسم</th>
-          <th scope="col">النوع</th>
-          <th scope="col">الرقم</th>
-          <th scope="col">متاح</th>
-          <th scope="col">مكسور</th>
-          <th scope="col">أيام مجانية</th>
-          <th scope="col">سعر اليوم</th>
-          <th scope="col">إجراءات</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for product in products %}
+    <div class="table-responsive-md">
+      <table class="table table-hover table-bordered table-content mb-0 hax-table">
+        <thead>
           <tr>
-            <th scope="row">{{ loop.index }}</th>
-            <td>{{ product.name }}</td>
-            <td>{{ product.type }}</td>
-            <td>{{ product.serial }}</td>
-            {% if product.isAvailable %}
-              <td>نعم</td>
-            {% else %}
-              <td>لا</td>
-            {% endif %}
-            {% if product.isBroken %}
-              <td>نعم</td>
-            {% else %}
-              <td>لا</td>
-            {% endif %}
-            <td>{{ product.freeDays }}</td>
-            <td>{{ product.dayPrice }}</td>
-            <td>
-              <div class="dropdown">
-                <button
-                  class="btn py-0"
-                  type="button"
-                  id="waqfTableAction"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false">
-                  <i class="far fa-ellipsis-h opacity-80"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="waqfTableAction">
-                  <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ product.id }}">
-                    <i class="far fa-circle-info pl-2"></i>الوصف
-                  </button>
-                  <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ product.id }}">
-                    <i class="far fa-pen-to-square pl-2"></i>تعديل
-                  </button>
-                  <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ product.id }}">
-                    <i class="far fa-trash-can pl-2"></i>حذف
-                  </button>
-                </div>
-              </div>
-            </td>
+            <th scope="col">#</th>
+            <th scope="col">الإسم</th>
+            <th scope="col">النوع</th>
+            <th scope="col">الرقم</th>
+            <th scope="col">متاح</th>
+            <th scope="col">مكسور</th>
+            <th scope="col">أيام مجانية</th>
+            <th scope="col">سعر اليوم</th>
+            <th scope="col">إجراءات</th>
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {% for product in products %}
+            <tr>
+              <th scope="row">{{ loop.index }}</th>
+              <td>{{ product.name }}</td>
+              <td>{{ product.type }}</td>
+              <td>{{ product.serial }}</td>
+              {% if product.isAvailable %}
+                <td>نعم</td>
+              {% else %}
+                <td>لا</td>
+              {% endif %}
+              {% if product.isBroken %}
+                <td>نعم</td>
+              {% else %}
+                <td>لا</td>
+              {% endif %}
+              <td>{{ product.freeDays }}</td>
+              <td>{{ product.dayPrice }}</td>
+              <td>
+                <div class="dropdown">
+                  <button
+                    class="btn py-0"
+                    type="button"
+                    id="waqfTableAction"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="far fa-ellipsis-h opacity-80"></i>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="waqfTableAction">
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ product.id }}">
+                      <i class="far fa-circle-info pl-2"></i>الوصف
+                    </button>
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ product.id }}">
+                      <i class="far fa-pen-to-square pl-2"></i>تعديل
+                    </button>
+                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ product.id }}">
+                      <i class="far fa-trash-can pl-2"></i>حذف
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </div>
   {% for product in products %}
     <form action="/profile/products" method="POST" enctype="multipart/form-data" class="modal fade" id="{{ product.id }}" tabindex="-1" data-backdrop="static" data-keyboard="true" aria-labelledby="editProductInfoLabel" aria-hidden="true">
