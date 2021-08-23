@@ -21,7 +21,7 @@
         </thead>
         <tbody>
           {% for order in orders %}
-            <tr>
+            <tr class="{{ 'bg-soft-primary' if order.isAccepted }} {{ 'bg-soft-success' if order.isCompleted }}">
               <td scope="row">{{ loop.index }}</td>
               <td scope="row">{{ order.patientName }}</td>
               <td scope="row">{{ order.patientAge }}</td>
