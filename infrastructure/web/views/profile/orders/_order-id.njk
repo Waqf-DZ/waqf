@@ -1,372 +1,286 @@
 {% extends '../../layouts/profile.njk' %}
-
-{% block css %}
-
-{% endblock %}
-
+{% block css %}{% endblock %}
 {% block content %}
-
-{% set order = data.order %}
-{% set products = data.products %}
-
-<div class="container py-5 mb-5 my-lg-5 shadow-lg">
-  <div class="row px-3">
-    <div class="col-12 col-lg-6 mb-5 mb-lg-0">
-      <div
-        class="
-          d-block d-lg-flex
-          justify-content-center justify-content-lg-between
-          text-center text-lg-right
-        "
-      >
-        <div class="media d-block d-lg-flex">
-          <div
-            class="bg-cover u-avatar p-5 p-lg-0 rounded-circle mx-auto"
-            style="background: url('/img/users/01.png')"
-          ></div>
-          <div class="media-body d-lg-block my-3 my-lg-0 mb-lg-0 mr-2">
-            <h5 class="font-size-2 mb-1">{{order.patientName}}</h5>
-            <p class="medium font-weight-semi-bold mb-0">
-              عين التوتة - ولاية باتنة
-            </p>
-          </div>
-        </div>
-        <div class="my-auto">
-          {% if order.isPending and authenticatedUser.isGivingHelp %}
-          <button
-            type="button"
-            class="btn btn-sm btn-soft-success font-weight-semi-bold ml-2"
-            data-toggle="modal"
-            data-target="#acceptOrderModal"
-          >
-            <i class="fas fa-check pl-2"></i>التكفل بالطلب
-          </button>
-          {% elif order.isPending %}
-          <div>طلب جديد</div>
-          {% elif order.isAccepted and authenticatedUser.isGivingHelp%}
-          <button
-            type="button"
-            class="btn btn-sm btn-soft-success font-weight-semi-bold ml-2"
-            data-toggle="modal"
-            data-target="#completeOrderModal"
-          >
-            <i class="fas fa-check pl-2"></i>إنهاء الطلب بنجاح
-          </button>
-          {% elif order.isAccepted %}
-          <div class="text-primary">طلب مقبول</div>
-          {% elif order.isCompleted %}
-          <div class="text-success">طلب مكتمل بنجاح</div>
-          {% endif %}
-          {# <button type="button" class="btn btn-sm btn-soft-dark">
-            <i class="far fa-flag"></i>
-          </button> #}
-        </div>
-      </div>
-
-      <div class="donate-title text-right my-4 rounded-lg">
-        {# <h1 class="font-size-3 text-lh-md mb-">
-          لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايتسيت
-          دو أيوسمود تيمبور
-        </h1> #}
-        <ul class="list-unstyledss mr-3">
-          <li class="font-size-1 font-weight-semi-bold op-90">
-            إسم المريض: <span class="mr-2">{{order.patientName}}</span>
-          </li>
-          <li class="font-size-1 font-weight-semi-bold op-90">
-            عمر المريض: <span class="mr-2">{{order.patientAge}}</span>
-          </li>
-          <li class="font-size-1 font-weight-semi-bold op-90">
-            تركيز الأكسجين: <span class="mr-2">{{order.oxygenRatio}}</span>
-          </li>
-          <li class="font-size-1 font-weight-semi-bold op-90">
-            لديه مرض مزمن: 
-            <span class="mr-2">
-              {% if order.hasChronicDesease %}
-                نعم
-              {% else %}
-                لا
-              {% endif %}
-            </span>
-          </li>
-          <li class="font-size-1 font-weight-semi-bold op-90">
-            مصاب بفيروس كورونا:
-            <span class="mr-2">
-              {% if order.isCovid %}
-                نعم
-              {% else %}
-                لا
-              {% endif %}
-            </span>
-          </li>
-          <li class="font-size-1 font-weight-semi-bold op-90">
-            المريض في المستشفى:
-            <span class="mr-2">
-              {% if order.isHospitalized %}
-                نعم
-              {% else %}
-                لا
-              {% endif %}
-            </span>
-          </li>
-          <li class="font-size-1 font-weight-semi-bold op-90">
-            وصف إضافي:<span class="mr-2">{{order.description}}</span>
-          </li>
-        </ul>
-      </div>
-
-
-
-      {# <p class="medium font-weight-semi-bold mb-2">ملاحظة:</p>
-      <div class="bg-light rounded-sm p-3">
-        <span class="font-size-1"
-          >لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل
-          ليتصور طريقه وضع النصوص</span
-        >
-      </div> #}
-    </div>
-
-    {# prescription image #}
-    <div class="col-12 col-lg-6">
-      <div class="swiper-container donatSwips">
-        <div class="swiper-wrapper">
-          <div
-            class="swiper-slide bg-cover rounded-sm"
-            style="background: url('{{order.prescriptionUrl}}') center"
-          ></div>
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="d-none d-lg-flex">
-          <button type="button" class="swiper-next btn btn-sm btn-white">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-          <button type="button" class="swiper-prev btn btn-sm btn-white">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-        </div>
-      </div>
-      <p class="text-center medium mb-0">الوصفة الطبية / وثائق الإثبات</p>
-    </div>
-  </div>
-</div>
-
-<!-- Share Modal -->
-<div
-  class="modal fade d-blocks shows"
-  id="shareModal"
-  tabindex="-1"
-  aria-labelledby="shareModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered modal-sms">
-    <div class="modal-content">
-      <div class="modal-header border-0">
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true"><i class="fas fa-times small"></i></span>
-        </button>
-      </div>
-      <div class="modal-body pt-0">
-        <div class="card border-0">
-          <div class="card-body">
-            <small class="font-weight-semi-bold"
-              >قم بمشاركة رابط الوقف مع أشخاص اخرين على مواقع التواصل
-              الإجتماعي.</small
-            >
-            <div
-              class="
-                d-flex
-                justify-content-between
-                bg-soft-secondary
-                rounded-sm
-                text-left
-                px-3
-                py-2
-                my-3
-              "
-            >
-              <button
-                type="button"
-                class="
-                  btn btn-sm
-                  py-2
-                  btn-success-g
-                  font-weight-semi-bold
-                  text-white
-                  small
-                "
-                data-clipboard-action="copy"
-                data-clipboard-target="#invLink"
-              >
-                نسخ
-              </button>
-              <p
-                class="
-                  font-size-1 font-weight-semi-bold
-                  text-secondary
-                  my-auto
-                "
-                id="invId"
-              >
-                waqf.dz/?w_id=123
+  {% set order = data.order %}
+  {% set products = data.products %}
+  <div class="container py-5 mb-5 my-lg-5 shadow-lg">
+    <div class="row px-3">
+      <div class="col-12 col-lg-6 mb-5 mb-lg-0">
+        <div class=" d-block d-lg-flex justify-content-center justify-content-lg-between text-center text-lg-right ">
+          <div class="media d-block d-lg-flex">
+            <div class="bg-cover u-avatar p-5 p-lg-0 rounded-circle mx-auto" style="background: url('/img/users/01.png')"></div>
+            <div class="media-body d-lg-block my-3 my-lg-0 mb-lg-0 mr-2">
+              <h5 class="font-size-2 mb-1">{{ order.patientName }}</h5>
+              <p class="medium font-weight-semi-bold mb-0">
+                عين التوتة - ولاية باتنة
               </p>
             </div>
-            <div class="d-flex justify-content-between mt-3">
-              <a href="Fb_share_Link" class="btn btn-sm btn-soft-secondary">
-                <i class="fab fa-facebook-f pl-lg-0"></i>
-                <span class="icon-text">فيسبوك</span>
-              </a>
-              <a
-                href="Tw_sharetw_Link"
-                class="btn btn-sm btn-soft-secondary"
-              >
-                <i class="fab fa-twitter pl-lg-0"></i>
-                <span class="icon-text">تويتر</span>
-              </a>
-              <a href="Ig_share_Link" class="btn btn-sm btn-soft-secondary">
-                <i class="fab fa-instagram pl-lg-0"></i>
-                <span class="icon-text">إنستغرام</span>
-              </a>
-              <a href="Wa_share_Link" class="btn btn-sm btn-soft-secondary">
-                <i class="fab fa-whatsapp pl-lg-0"></i>
-                <span class="icon-text">واتساب</span>
-              </a>
-            </div>
+          </div>
+          <div class="my-auto">
+            {% if order.isPending and authenticatedUser.isGivingHelp %}
+              <button
+                type="button"
+                class="btn btn-sm btn-soft-success font-weight-semi-bold ml-2"
+                data-toggle="modal"
+                data-target="#acceptOrderModal">
+                <i class="fas fa-check pl-2"></i>التكفل بالطلب
+              </button>
+            {% elif order.isPending %}
+              <div>طلب جديد</div>
+            {% elif order.isAccepted and authenticatedUser.isGivingHelp %}
+              <button
+                type="button"
+                class="btn btn-sm btn-soft-success font-weight-semi-bold ml-2"
+                data-toggle="modal"
+                data-target="#completeOrderModal">
+                <i class="fas fa-check pl-2"></i>إنهاء الطلب بنجاح
+              </button>
+            {% elif order.isAccepted %}
+              <div class="text-primary">طلب مقبول</div>
+            {% elif order.isCompleted %}
+              <div class="text-success">طلب مكتمل بنجاح</div>
+            {% endif %}
+            {# <button type="button" class="btn btn-sm btn-soft-dark">
+              <i class="far fa-flag"></i>
+            </button> #}
           </div>
         </div>
+        <div
+          class="donate-title text-right my-4 rounded-lg">
+          {# <h1 class="font-size-3 text-lh-md mb-">
+            لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايتسيت
+            دو أيوسمود تيمبور
+          </h1> #}
+          <ul class="list-unstyledss mr-3">
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              إسم المريض:
+              <span class="mr-2">{{ order.patientName }}</span>
+            </li>
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              عمر المريض:
+              <span class="mr-2">{{ order.patientAge }}</span>
+            </li>
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              تركيز الأكسجين:
+              <span class="mr-2">{{ order.oxygenRatio }}</span>
+            </li>
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              لديه مرض مزمن:
+              <span class="mr-2">
+                {% if order.hasChronicDesease %}
+                  نعم
+                {% else %}
+                  لا
+                {% endif %}
+              </span>
+            </li>
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              مصاب بفيروس كورونا:
+              <span class="mr-2">
+                {% if order.isCovid %}
+                  نعم
+                {% else %}
+                  لا
+                {% endif %}
+              </span>
+            </li>
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              المريض في المستشفى:
+              <span class="mr-2">
+                {% if order.isHospitalized %}
+                  نعم
+                {% else %}
+                  لا
+                {% endif %}
+              </span>
+            </li>
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              العنوان:
+              <span class="mr-2">
+                {{ order.wilaya }}, {{ order.city }}
+              </span>
+            </li>
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              وصف إضافي:<span class="mr-2">{{ order.description }}</span>
+            </li>
+          </ul>
+        </div>
+        {# <p class="medium font-weight-semi-bold mb-2">ملاحظة:</p>
+        <div class="bg-light rounded-sm p-3">
+          <span class="font-size-1"
+            >لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل
+            ليتصور طريقه وضع النصوص</span
+          >
+        </div> #}
+      </div>
+      {# prescription image #}
+      <div class="col-12 col-lg-6">
+        <div class="swiper-container donatSwips">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide bg-cover rounded-sm" style="background: url('{{ order.prescriptionUrl }}') center"></div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="d-none d-lg-flex">
+            <button type="button" class="swiper-next btn btn-sm btn-white">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <button type="button" class="swiper-prev btn btn-sm btn-white">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+          </div>
+        </div>
+        <p class="text-center medium mb-0">الوصفة الطبية / وثائق الإثبات</p>
       </div>
     </div>
   </div>
-</div>
-
-{# order accept modal #}
-<form
-  class="modal fade"
-  id="acceptOrderModal"
-  tabindex="-1"
-  data-backdrop="static"
-  data-keyboard="true"
-  aria-labelledby="acceptOrderModalLabel"
-  aria-hidden="true"
-  method="POST"
-  action="/profile/orders/{{order.id}}/accept"
->
-  <div class="modal-dialog modal-dialog-centered modal-sm">
-    <div class="modal-content">
-      <div class="modal-header border-0 py-2">
-        <span></span>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h6 class="mb-2">هل تريد قبول هذا الطلب؟</h6>
-        <p class="medium mb-0">
-          اختر الجهاز الذي تريد إسناده لهذا الطلب
-        </p>
-        <div class="mt-3">
-          <div class="input-group input-group-sm">
-            <div class="input-group-prepend">
-              <div class="input-group-text border-0 z-index-9">
-                <i class="far fa-location-crosshairs font-size-2"></i>
+  <!-- Share Modal -->
+  <div
+    class="modal fade d-blocks shows"
+    id="shareModal"
+    tabindex="-1"
+    aria-labelledby="shareModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sms">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="fas fa-times small"></i>
+            </span>
+          </button>
+        </div>
+        <div class="modal-body pt-0">
+          <div class="card border-0">
+            <div class="card-body">
+              <small class="font-weight-semi-bold">قم بمشاركة رابط الوقف مع أشخاص اخرين على مواقع التواصل الإجتماعي.</small>
+              <div class=" d-flex justify-content-between bg-soft-secondary rounded-sm text-left px-3 py-2 my-3 ">
+                <button
+                  type="button"
+                  class=" btn btn-sm py-2 btn-success-g font-weight-semi-bold text-white small "
+                  data-clipboard-action="copy"
+                  data-clipboard-target="#invLink">
+                  نسخ
+                </button>
+                <p class=" font-size-1 font-weight-semi-bold text-secondary my-auto " id="invId">
+                  waqf.dz/?w_id=123
+                </p>
+              </div>
+              <div class="d-flex justify-content-between mt-3">
+                <a href="Fb_share_Link" class="btn btn-sm btn-soft-secondary">
+                  <i class="fab fa-facebook-f pl-lg-0"></i>
+                  <span class="icon-text">فيسبوك</span>
+                </a>
+                <a href="Tw_sharetw_Link" class="btn btn-sm btn-soft-secondary">
+                  <i class="fab fa-twitter pl-lg-0"></i>
+                  <span class="icon-text">تويتر</span>
+                </a>
+                <a href="Ig_share_Link" class="btn btn-sm btn-soft-secondary">
+                  <i class="fab fa-instagram pl-lg-0"></i>
+                  <span class="icon-text">إنستغرام</span>
+                </a>
+                <a href="Wa_share_Link" class="btn btn-sm btn-soft-secondary">
+                  <i class="fab fa-whatsapp pl-lg-0"></i>
+                  <span class="icon-text">واتساب</span>
+                </a>
               </div>
             </div>
-            <select
-              class="custom-select bg-transparent shadow-soft pr-5"
-              name="productId"
-              required
-            >
-              <option selected disabled value="">
-                اختر جهازا
-              </option>
-              {% for product in products %}
-              <option value="{{ product.id }}">
-                {{ product.name }} / {{ product.type }}
-              </option>
-              {% endfor %}
-            </select>
-            <div class="invalid-feedback">
-              يرجى اختيار أحد الأجهزة التي تملكها
-            </div>
           </div>
         </div>
       </div>
-      <div class="modal-footer d-block py-2 border-0">
-        <button
-          type="submit"
-          class="btn btn-sm btn-block btn-success-g text-white"
-        >
-          قبول
-        </button>
-        <button
-          type="button"
-          class="btn btn-sm btn-block"
-          data-dismiss="modal"
-        >
-          إلغاء
-        </button>
-      </div>
     </div>
   </div>
-</form>
-
-{# order complete modal #}
-<form
-  class="modal fade"
-  id="completeOrderModal"
-  tabindex="-1"
-  data-backdrop="static"
-  data-keyboard="true"
-  aria-labelledby="completeOrderModalLabel"
-  aria-hidden="true"
-  method="POST"
-  action="/profile/orders/{{order.id}}/complete"
->
-  <div class="modal-dialog modal-dialog-centered modal-sm">
-    <div class="modal-content">
-      <div class="modal-header border-0 py-2">
-        <span></span>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h6 class="mb-2">هل تريد إنهاء هذا الطلب؟</h6>
-        <p class="medium mb-0">
-          إنهاء الطلب يعني أن المستفيد قد أرجع لك الجهاز، هل تريد المواصلة؟
-        </p>
-      </div>
-      <div class="modal-footer d-block py-2 border-0">
-        <button
-          type="submit"
-          class="btn btn-sm btn-block btn-success-g text-white"
-        >
-          إنهاء الطلب بنجاح
-        </button>
-        <button
-          type="button"
-          class="btn btn-sm btn-block"
-          data-dismiss="modal"
-        >
-          إلغاء
-        </button>
+  {# order accept modal #}
+  <form
+    class="modal fade"
+    id="acceptOrderModal"
+    tabindex="-1"
+    data-backdrop="static"
+    data-keyboard="true"
+    aria-labelledby="acceptOrderModalLabel"
+    aria-hidden="true"
+    method="POST"
+    action="/profile/orders/{{ order.id }}/accept">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header border-0 py-2">
+          <span></span>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h6 class="mb-2">هل تريد قبول هذا الطلب؟</h6>
+          <p class="medium mb-0">
+            اختر الجهاز الذي تريد إسناده لهذا الطلب
+          </p>
+          <div class="mt-3">
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+                <div class="input-group-text border-0 z-index-9">
+                  <i class="far fa-location-crosshairs font-size-2"></i>
+                </div>
+              </div>
+              <select class="custom-select bg-transparent shadow-soft pr-5" name="productId" required>
+                <option selected disabled value="">
+                  اختر جهازا
+                </option>
+                {% for product in products %}
+                  <option value="{{ product.id }}">
+                    {{ product.name }} / {{ product.type }}
+                  </option>
+                {% endfor %}
+              </select>
+              <div class="invalid-feedback">
+                يرجى اختيار أحد الأجهزة التي تملكها
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer d-block py-2 border-0">
+          <button type="submit" class="btn btn-sm btn-block btn-success-g text-white">
+            قبول
+          </button>
+          <button type="button" class="btn btn-sm btn-block" data-dismiss="modal">
+            إلغاء
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-</form>
-
-  
+  </form>
+  {# order complete modal #}
+  <form
+    class="modal fade"
+    id="completeOrderModal"
+    tabindex="-1"
+    data-backdrop="static"
+    data-keyboard="true"
+    aria-labelledby="completeOrderModalLabel"
+    aria-hidden="true"
+    method="POST"
+    action="/profile/orders/{{ order.id }}/complete">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+        <div class="modal-header border-0 py-2">
+          <span></span>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h6 class="mb-2">هل تريد إنهاء هذا الطلب؟</h6>
+          <p class="medium mb-0">
+            إنهاء الطلب يعني أن المستفيد قد أرجع لك الجهاز، هل تريد المواصلة؟
+          </p>
+        </div>
+        <div class="modal-footer d-block py-2 border-0">
+          <button type="submit" class="btn btn-sm btn-block btn-success-g text-white">
+            إنهاء الطلب بنجاح
+          </button>
+          <button type="button" class="btn btn-sm btn-block" data-dismiss="modal">
+            إلغاء
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
 {% endblock %}

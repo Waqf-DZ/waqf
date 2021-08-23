@@ -10,9 +10,11 @@
               <h2 class="mb-5">طلب جديد</h2>
               <!-- User Info -->
               <div class="form-row">
-                <div class="col-md-6 mb-3 mb-lg-4">
+                <div class="col-md-12 mb-3 mb-lg-4">
                   <div class="form-group mb-0">
-                    <label class="medium font-weight-semi-bold" for="patientName">إسم المريض</label>
+                    <label class="medium font-weight-semi-bold" for="patientName">
+                      إسم المريض الكامل
+                    </label>
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <div class="input-group-text border-0 z-index-9">
@@ -26,23 +28,7 @@
                         class="form-control form-control-sm"
                         placeholder="الإسم"
                         required/>
-                      <div class="invalid-feedback">رجاء قم بإدخال إسمك</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 mb-3 mb-lg-4">
-                  <div class="form-group mb-0">
-                    <label class="medium font-weight-semi-bold" for="patientFamilyName">لقب المريض</label>
-                    <div class="input-group input-group-sm">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text border-0 z-index-9">
-                          <i class="far fa-user-plus font-size-2"></i>
-                        </div>
-                      </div>
-                      <input class="form-control form-control-sm" id="patientFamilyName" placeholder="اللقب" required/>
-                      <div class="invalid-feedback">
-                        رجاء قم بإدخال لقب المريض
-                      </div>
+                      <div class="invalid-feedback">رجاء قم بإدخال إسم المريض</div>
                     </div>
                   </div>
                 </div>
@@ -61,6 +47,9 @@
                         name="oxygenRatio"
                         class="form-control form-control-sm"
                         placeholder="90"
+                        min="0"
+                        max="100"
+                        value="95"
                         required/>
                       <div class="invalid-feedback">
                         رجاء قم بإدخال تركيز الأكسجين
@@ -78,7 +67,16 @@
                           <i class="far fa-calendar-range font-size-2"></i>
                         </div>
                       </div>
-                      <input type="text" class="form-control form-control-sm" id="patientAge" name="patientAge" placeholder="65" required/>
+                      <input
+                        type="number"
+                        class="form-control form-control-sm"
+                        id="patientAge"
+                        name="patientAge"
+                        placeholder="65"
+                        min="1"
+                        max="120"
+                        value="50"
+                        required/>
                       <div class="invalid-feedback">
                         رجاء قم بإدخال عمر المريض
                       </div>
@@ -98,10 +96,7 @@
                           <i class="far fa-face-thermometer font-size-2"></i>
                         </div>
                       </div>
-                      <select
-                        name="hasChronicDesease"
-                        class=" custom-select bg-transparent shadow-soft border-0 pr-5 "
-                        required>
+                      <select name="hasChronicDesease" class=" custom-select bg-transparent shadow-soft border-0 pr-5 " required>
                         <option selected disabled value="">
                           قم بالإختيار
                         </option>
@@ -125,10 +120,7 @@
                           <i class="far fa-virus font-size-2"></i>
                         </div>
                       </div>
-                      <select
-                        name="isCovid"
-                        class=" custom-select bg-transparent shadow-soft border-0 pr-5 "
-                        required>
+                      <select name="isCovid" class=" custom-select bg-transparent shadow-soft border-0 pr-5 " required>
                         <option selected disabled value="">
                           قم بالإختيار
                         </option>
@@ -192,10 +184,7 @@
                           <i class="far fa-face-thermometer font-size-2"></i>
                         </div>
                       </div>
-                      <select
-                        name="isHospitalized"
-                        class=" custom-select bg-transparent shadow-soft border-0 pr-5 "
-                        required>
+                      <select name="isHospitalized" class=" custom-select bg-transparent shadow-soft border-0 pr-5 " required>
                         <option selected disabled value="">
                           قم بالإختيار
                         </option>
@@ -211,7 +200,7 @@
                 <div class="col-md-6 mb-3 mb-lg-4">
                   <div class="form-group">
                     <label for="description" class="medium font-weight-semi-bold">وصف إضافي:</label>
-                    <textarea class="form-control" id="description" rows="1" required></textarea>
+                    <textarea class="form-control" id="description" rows="1"></textarea>
                     <div class="invalid-feedback">
                       رجاء قم بإدخال وصف
                     </div>
@@ -238,26 +227,18 @@
                 </span>
               </div>
               <small class="font-weight-semi-bold"></small>
-              <div
-                id="medAttach"
-                class=" position-relative dropzone-boxed text-center my-3 py-10 ">
+              <div id="medAttach" class=" position-relative dropzone-boxed text-center my-3 py-10 ">
                 <span class="small font-weight-semi-bold text-center">
                   تصفح الملفات الخاصة بك أو اسحبها إلى المربع
                 </span>
-                <input
-                  type="file"
-                  name="prescription"
-                  class=" file-attachment-btn-label custom-file-input cursor-pointer "
-                  required/>
+                <input type="file" name="prescription" class=" file-attachment-btn-label custom-file-input cursor-pointer " required/>
                 <div class="invalid-feedback">
                   رجاء قم برفع صور للوصفة الطبية أو الوثائق التي تثبت حالة المريض
                 </div>
               </div>
             </div>
           </div>
-          <button
-            type="submit"
-            class=" btn btn-sm btn-success-g w-100 font-weight-semi-bold text-white ">
+          <button type="submit" class=" btn btn-sm btn-success-g w-100 font-weight-semi-bold text-white ">
             إرسال الطلب
           </button>
         </div>
