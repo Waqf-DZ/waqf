@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=production node ./index.js",
+    "start": "NODE_ENV=production nodemon ./index.js",
     "dev": "nodemon ./index.js",
     "prepare": "husky install",
     "test": "tape ./**/*.test.js | tap-spec",

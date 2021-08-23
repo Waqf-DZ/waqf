@@ -20,14 +20,9 @@ module.exports = function makeUpdateAdminUser({ updateUser, flashMessages }) {
         role,
         isVerified: isVerified == 'true',
       }
-      const updatedUser = await updateUser(userInfo)
-      if (updatedUser) {
-        req.flash('success', flashMessages.PROFILE_UPDATE_SUCCESS)
-        res.redirect('/admin/users')
-      } else {
-        req.flash('error', flashMessages.PROFILE_UPDATE_FAILURE)
-        res.redirect('/admin/users')
-      }
+      await updateUser(userInfo)
+      req.flash('success', flashMessages.PROFILE_UPDATE_SUCCESS)
+      res.redirect('/admin/users')
     } catch (err) {
       console.error(err)
       req.flash('error', flashMessages.PROFILE_UPDATE_FAILURE)

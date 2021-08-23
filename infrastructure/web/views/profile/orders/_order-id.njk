@@ -12,7 +12,7 @@
             <div class="media-body d-lg-block my-3 my-lg-0 mb-lg-0 mr-2">
               <h5 class="font-size-2 mb-1">{{ order.patientName }}</h5>
               <p class="medium font-weight-semi-bold mb-0">
-                عين التوتة - ولاية باتنة
+                {{ order.city }} - {{ order.wilaya }}
               </p>
             </div>
           </div>
@@ -40,17 +40,9 @@
             {% elif order.isCompleted %}
               <div class="text-success">طلب مكتمل بنجاح</div>
             {% endif %}
-            {# <button type="button" class="btn btn-sm btn-soft-dark">
-                          <i class="far fa-flag"></i>
-                        </button> #}
           </div>
         </div>
-        <div
-          class="donate-title text-right my-4 rounded-lg">
-          {# <h1 class="font-size-3 text-lh-md mb-">
-                      لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايتسيت
-                      دو أيوسمود تيمبور
-                    </h1> #}
+        <div class="donate-title text-right my-4 rounded-lg">
           <ul class="list-unstyledss mr-3">
             <li class="font-size-1 font-weight-semi-bold op-90">
               إسم المريض:
@@ -95,23 +87,10 @@
               </span>
             </li>
             <li class="font-size-1 font-weight-semi-bold op-90">
-              العنوان:
-              <span class="mr-2">
-                {{ order.wilaya }}, {{ order.city }}
-              </span>
-            </li>
-            <li class="font-size-1 font-weight-semi-bold op-90">
               وصف إضافي:<span class="mr-2">{{ order.description }}</span>
             </li>
           </ul>
         </div>
-        {# <p class="medium font-weight-semi-bold mb-2">ملاحظة:</p>
-                <div class="bg-light rounded-sm p-3">
-                  <span class="font-size-1"
-                    >لوريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل
-                    ليتصور طريقه وضع النصوص</span
-                  >
-                </div> #}
       </div>
       {# prescription image #}
       <div class="col-12 col-lg-6">
