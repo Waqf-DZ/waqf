@@ -51,31 +51,12 @@
                 </button>
               </td>
               <td>
-                {% if authenticatedUser.isSeekingHelp %}
-                  <div class="dropdown">
-                    <button
-                      class="btn py-0"
-                      type="button"
-                      id="waqfTableAction"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false">
-                      <i class="far fa-ellipsis-h opacity-80"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="waqfTableAction">
-                      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ order.id }}-editProductInfo">
-                        <i class="far fa-pen-to-square pl-2"></i>تعديل
-                      </button>
-                      <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ order.id }}-delProduct">
-                        <i class="far fa-trash-can pl-2"></i>حذف
-                      </button>
-                    </div>
-                  </div>
-                {% else %}
-                  <a href="/profile/orders/{{ order.id }}" class="btn btn-sm btn-soft-primary">
-                    عرض
-                  </a>
-                {% endif %}
+                <a
+                  href="/profile/orders/{{ order.id }}"
+                  class="btn btn-sm btn-soft-primary"
+                >
+                  عرض
+                </a>
               </td>
             </tr>
           {% endfor %}

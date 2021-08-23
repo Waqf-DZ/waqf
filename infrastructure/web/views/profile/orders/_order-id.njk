@@ -16,6 +16,7 @@
               </p>
             </div>
           </div>
+
           <div class="my-auto">
             {% if order.isPending and authenticatedUser.isGivingHelp %}
               <button
@@ -42,6 +43,17 @@
             {% endif %}
           </div>
         </div>
+
+        {% if authenticatedUser.isSeekingHelp or authenticatedUser.isAdmin %}
+        <div class="mt-4 d-flex justify-content-center justify-content-lg-start">
+          <a
+            href="/profile/orders/{{order.id}}/edit"
+            class="text-primary ms-4">
+            تعديل
+          </a>
+        </div>
+        {% endif %}
+
         <div class="donate-title text-right my-4 rounded-lg">
           <ul class="list-unstyledss mr-3">
             <li class="font-size-1 font-weight-semi-bold op-90">

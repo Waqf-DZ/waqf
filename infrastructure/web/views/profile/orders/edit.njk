@@ -1,0 +1,261 @@
+{% extends '../../layouts/profile.njk' %}
+{% block css %}{% endblock %}
+{% block content %}
+  <form
+    class="needs-validation"
+    action="/profile/orders/{{ order.id }}"
+    method="POST"
+    enctype="multipart/form-data"
+    novalidate
+  >
+    <div class="container pt-5 pb-10">
+      <div class="row row-reverse">
+        <div class="col-12 col-lg-9 d-flex mb-4 mb-lg-0">
+          <div class="card container shadow-sm border-0 px-0">
+            <div class="card-body pt-5">
+              <h2 class="mb-5">تعديل الطلب</h2>
+              <!-- User Info -->
+              <div class="form-row">
+                <div class="col-md-12 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label class="medium font-weight-semi-bold" for="patientName">
+                      إسم المريض الكامل
+                    </label>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-user font-size-2"></i>
+                        </div>
+                      </div>
+                      <input
+                        id="patientName"
+                        type="text"
+                        name="patientName"
+                        class="form-control form-control-sm"
+                        placeholder="الإسم"
+                        value="{{order.patientName}}"
+                        required/>
+                      <div class="invalid-feedback">رجاء قم بإدخال إسم المريض</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label class="medium font-weight-semi-bold" for="oxygenRatio">تركيز الأكسجين</label>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-heart-pulse font-size-2"></i>
+                        </div>
+                      </div>
+                      <input
+                        id="oxygenRatio"
+                        type="number"
+                        name="oxygenRatio"
+                        class="form-control form-control-sm"
+                        placeholder="90"
+                        min="0"
+                        max="100"
+                        value="{{order.oxygenRatio}}"
+                        required/>
+                      <div class="invalid-feedback">
+                        رجاء قم بإدخال تركيز الأكسجين
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label class="medium font-weight-semi-bold" for="patientAge">
+                      عمر المريض</label>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-calendar-range font-size-2"></i>
+                        </div>
+                      </div>
+                      <input
+                        type="number"
+                        class="form-control form-control-sm"
+                        id="patientAge"
+                        name="patientAge"
+                        placeholder="65"
+                        min="1"
+                        max="120"
+                        value="{{order.patientAge}}"
+                        required/>
+                      <div class="invalid-feedback">
+                        رجاء قم بإدخال عمر المريض
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label class="medium font-weight-semi-bold" for="hasChronicDesease">
+                      لديه مرض مزمن
+                    </label>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-face-thermometer font-size-2"></i>
+                        </div>
+                      </div>
+                      <select name="hasChronicDesease" class=" custom-select bg-transparent shadow-soft border-0 pr-5 " required>
+                        <option selected disabled value="">
+                          قم بالإختيار
+                        </option>
+                        <option value="true" {{'selected' if order.hasChronicDesease}}>نعم</option>
+                        <option value="false" {{'selected' if not(order.hasChronicDesease)}}>لا</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        رجاء قم بتحديد الخيار المناسب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label class="medium font-weight-semi-bold" for="isCovid">
+                      مصاب بفيروس كورونا
+                    </label>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-virus font-size-2"></i>
+                        </div>
+                      </div>
+                      <select name="isCovid" class=" custom-select bg-transparent shadow-soft border-0 pr-5 " required>
+                        <option selected disabled value="">
+                          قم بالإختيار
+                        </option>
+                        <option value="true" {{'selected' if order.isCovid}}>نعم</option>
+                        <option value="false" {{'selected' if not(order.isCovid)}}>لا</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        رجاء قم بتحديد الخيار المناسب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <label class="medium font-weight-semi-bold" for="wilaya">
+                    الولاية
+                  </label>
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text border-0 z-index-9">
+                        <i class="far fa-location-dot font-size-2"></i>
+                      </div>
+                    </div>
+                    <select class="custom-select bg-transparent shadow-soft pr-5" id="wilaya" name="wilaya" required data-wilaya-input>
+                      <option selected disabled value="">اختر الولاية</option>
+                    </select>
+                    <div class="invalid-feedback">يرجى اختيار الولاية</div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <label class="medium font-weight-semi-bold" for="city">
+                    البلدية/الدائرة
+                  </label>
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text border-0 z-index-9">
+                        <i class="far fa-location-crosshairs font-size-2"></i>
+                      </div>
+                    </div>
+                    <select class="custom-select bg-transparent shadow-soft pr-5" id="city" name="city" required data-city-input>
+                      <option selected disabled value="">
+                        اختر البلدية/الدائرة
+                      </option>
+                    </select>
+                    <div class="invalid-feedback">
+                      يرجى اختيار دائرة / بلديتك سكنك
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label class="medium font-weight-semi-bold" for="isHospitalized">
+                      المريض في المستشفى
+                    </label>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-face-thermometer font-size-2"></i>
+                        </div>
+                      </div>
+                      <select name="isHospitalized" class=" custom-select bg-transparent shadow-soft border-0 pr-5 " required>
+                        <option selected disabled value="">
+                          قم بالإختيار
+                        </option>
+                        <option value="true" {{'selected' if order.isHospitalized}}>نعم</option>
+                        <option value="false" {{'selected' if not(order.isHospitalized)}}>لا</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        رجاء قم بتحديد الخيار المناسب
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group">
+                    <label for="description" class="medium font-weight-semi-bold">وصف إضافي:</label>
+                    <textarea class="form-control" id="description" rows="1">
+                      {{order.description}}
+                    </textarea>
+                    <div class="invalid-feedback">
+                      رجاء قم بإدخال وصف
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-12 col-lg-3">
+          <!-- Unverified Account -->
+          <div class="card shadow-sm border-0 rounded mb-4">
+            <div class="card-body py-4">
+              <div class="d-flex justify-content-between">
+                <h1 class="font-size-2 mb-0">
+                  الوصفة الطبية / وثائق الإثبات:
+                </h1>
+                <span
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="يرجى إرفاق صور الوصفة الطبية أو الوثائق التي تثبت حالة المريض، بعد أن نتحقق من الطلب سيتم الموافقة عليه مباشرة.">
+                  <i class="fa-regular fa-circle-info"></i>
+                </span>
+              </div>
+              <small class="font-weight-semi-bold"></small>
+              <div id="medAttach" class=" position-relative dropzone-boxed text-center my-3 py-10 ">
+                <span class="small font-weight-semi-bold text-center">
+                  تصفح الملفات الخاصة بك أو اسحبها إلى المربع
+                </span>
+                <input
+                  type="file"
+                  name="prescription"
+                  class=" file-attachment-btn-label custom-file-input cursor-pointer"
+                />
+                <div class="invalid-feedback">
+                  رجاء قم برفع صور للوصفة الطبية أو الوثائق التي تثبت حالة المريض
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class=" btn btn-sm btn-success-g w-100 font-weight-semi-bold text-white ">
+            إرسال الطلب
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock %}

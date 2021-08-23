@@ -40,6 +40,7 @@ const makeGetAdminOrders = require('./get-admin-orders')
 const makeGetAdminOrder = require('./get-admin-order')
 const makeGetUserOrders = require('./get-user-orders')
 const makeGetUserOrder = require('./get-user-order')
+const makeGetUserOrderEdit = require('./get-user-order-edit')
 const makePostUserAcceptOrder = require('./post-user-accept-order')
 const makePostUserCompleteOrder = require('./post-user-complete-order')
 
@@ -93,9 +94,10 @@ const putUserSettings = makePutUserSettings({
   sanitize,
 })
 const getAdminOrders = makeGetAdminOrders({ listOrders })
-const getAdminOrder = makeGetAdminOrder({ listOrders })
+const getAdminOrder = makeGetAdminOrder({ getOrder })
 const getUserOrders = makeGetUserOrders({ listOrders })
 const getUserOrder = makeGetUserOrder({ getOrder, listProducts })
+const getUserOrderEdit = makeGetUserOrderEdit({ getOrder })
 const postUserAcceptOrder = makePostUserAcceptOrder({
   acceptOrder,
   flashMessages,
@@ -171,6 +173,7 @@ module.exports = {
   getAdminOrders,
   getUserOrders,
   getUserOrder,
+  getUserOrderEdit,
   postUserAcceptOrder,
   postUserCompleteOrder,
   getUserNewProduct,

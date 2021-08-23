@@ -1,13 +1,12 @@
-module.exports = function makeGetAdminOrder({ listOrders }) {
+module.exports = function makeGetAdminOrder({ getOrder }) {
   return async function getAdminOrder(req, res) {
     try {
       const orderId = req.params.id
-      const ordersList = await listOrders()
-      const order = ordersList.filter((order) => order.id == orderId)[0]
-
+      const order = await getOrder(orderId)
       res.render('admin/orders/_order-id', { data: { order } })
     } catch (err) {
-      res.render('admin/orders/index', { errorMessages: [err.message] })
+      console.error(err)
+      res.render('admin/orders/index')
     }
   }
 }
