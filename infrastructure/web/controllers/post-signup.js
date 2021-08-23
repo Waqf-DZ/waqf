@@ -1,5 +1,6 @@
 module.exports = function makePostUser({
   addUser,
+  updateUser,
   flashMessages,
   sanitize,
   validator,
@@ -21,6 +22,14 @@ module.exports = function makePostUser({
       role,
       phoneNumber,
     })
+    if (user.isSeekingHelp) {
+      user.verify()
+      await updateUser(user)
+    }
+    if (!user.isVerified) {
+      req.flash('warning', flashMessages.NOT_VERIFIED_USER_SIGNIN)
+      return res.redirect('/signup')
+    }
     if (!user) {
       req.flash('error', flashMessages.EMAIL_EXISTS)
       res.redirect('/signup')

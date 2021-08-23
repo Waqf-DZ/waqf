@@ -10,23 +10,27 @@ const SIGNUP_SUCCESSFUL_GIVER =
 const INPUTS_NOT_VALID =
   'بعض المعلومات التي أدخلتها غير صالحة، الرجاء مراجعتها وإعادة الإرسال'
 
-const NEW_PRODUCT_SUCCESS = 'NEW PRODUCT SUCCESS MESSAGE'
+const NEW_PRODUCT_SUCCESS = 'إنشاء الوقف تم بنجاح'
 
-const NEW_PRODUCT_FAILURE = 'NEW PRODUCT FAILURE MESSAGE'
+const NEW_PRODUCT_FAILURE = 'حدث خطأ أثناء إنشاء الوقف الجديد'
 
-const NEW_ORDER_SUCCESS = 'NEW ORDER SUCCESS MESSAGE'
+const NEW_ORDER_SUCCESS = 'تم إنشاء الطلب بنجاح'
 
-const NEW_ORDER_FAILURE = 'NEW ORDER FAILURE MESSAGE'
+const NEW_ORDER_FAILURE =
+  'حدث خطأ أثناء إنشاء الطلب، الرجاء التحقق من المعلومات التي أدخلتها وإعادة المحاولة'
 
-const PROFILE_UPDATE_SUCCESS = 'PROFILE UPDATED SUCCESSFULLY'
+const PROFILE_UPDATE_SUCCESS = 'تعديل الحساب تم بنجاح'
 
-const PROFILE_UPDATE_FAILURE = 'PROFILE UPDATE HAS BEEN FAILED'
+const PROFILE_UPDATE_FAILURE = 'حدث خطأ أثناء محاولة تعديل الحساب'
 
-const ORDER_UPDATE_SUCCESS = 'ORDER UPDATED SUCCESSFULLY'
+const ORDER_UPDATE_SUCCESS = 'تعديل الطلب تم بنجاح'
 
-const ORDER_UPDATE_FAILURE = 'ORDER UPDATE HAS BEEN FAILED'
+const ORDER_UPDATE_FAILURE = 'حدث خطأ أثناء محاولة تعديل هذا الطلب'
 
-const ORDER_ACCEPT_SUCCESS = 'ORDER ACCEPTED SUCCESSFULLY'
+const ORDER_ACCEPT_SUCCESS = 'قبول هذا الطلب تم بنجاح'
+
+const NOT_VERIFIED_USER_SIGNIN =
+  'مرحبابك، لقد سجلت بنجاح في المنصة، نرجوا منك الإنتظار قليلا ريثما يتم تفعيل حسابك أو يمكنك التواصل مع المشرفين على المنصة'
 
 module.exports = {
   EMAIL_EXISTS,
@@ -43,4 +47,5 @@ module.exports = {
   ORDER_UPDATE_SUCCESS,
   ORDER_UPDATE_FAILURE,
   ORDER_ACCEPT_SUCCESS,
+  NOT_VERIFIED_USER_SIGNIN,
 }

@@ -85,7 +85,7 @@ class Store {
         passwordHash:
           '$2a$10$wz5ZphSSFSQMJ9VqDWBQ/.GJh9ZTOpkq/l8OUnNpY7POAGZkH3YrW',
         role: 'SEEKING_HELP',
-        isVerified: true,
+        isVerified: false,
         description: 'وصف مختصر 2',
         createdAt: Date.now(),
       },

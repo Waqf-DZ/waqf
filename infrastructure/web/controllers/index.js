@@ -70,6 +70,7 @@ const getSignUp = makeGetSignUp()
 const getSignout = makeGetSignout()
 const postSignup = makePostSignup({
   addUser,
+  updateUser,
   flashMessages,
   sanitize,
   validator,
