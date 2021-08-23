@@ -1,58 +1,28 @@
 {% extends '../../layouts/admin.njk' %}
-
-{% block css %}
-
-{% endblock %}
-
-
+{% block css %}{% endblock %}
 {% block content %}
-
-{% set user = data.user %}
-
+  {% set user = data.user %}
   <div class="container mt-5 pb-10">
     <div class="row row-reverse">
       <div class="col-12 col-lg-9 d-flex mb-4 mb-lg-0">
         <div class="card container shadow-sm border-0 px-0">
           <div class="card-body pt-5">
-            <form class="needs-validation" novalidate>
+            <form
+              action="/admin/users/{{ user.id }}" method="POST" class="needs-validation">
               <!-- Profile Pic -->
               <div class="text-center mb-4">
                 <div class="btn px-0 position-relative file-attachment-btn">
-                  <div
-                    class="u-xl-avatar bg-cover rounded-circle mx-auto"
-                    style="background: url('/img/users/01.png')"
-                  >
-                    <div
-                      class="
-                        btn-sm btn-icon
-                        position-absolute
-                        right-0
-                        bottom-0
-                        mb-3
-                        rounded-circle
-                        bg-white
-                        shadow-soft
-                        cursor-pointer
-                      "
-                    >
+                  <div class="u-xl-avatar bg-cover rounded-circle mx-auto" style="background: url('/img/users/01.png')">
+                    <div class=" btn-sm btn-icon position-absolute right-0 bottom-0 mb-3 rounded-circle bg-white shadow-soft cursor-pointer ">
                       <i class="far fa-pen"></i>
                     </div>
                   </div>
-                  <input
-                    type="file"
-                    class="file-attachment-btn-label cursor-pointer"
-                    id="UavatarUploader"
-                  />
+                  <input type="file" class="file-attachment-btn-label cursor-pointer" id="UavatarUploader"/>
                 </div>
-
                 <h5 class="card-title mb-0 text-lh-sm">
-                  <span
-                    id="u-id-checked"
-                    data-toggle="tooltip"
-                    data-placement="top"
-                    title="تم تأكيد هوية هذا الشخص"
-                    ><i class="fas fa-badge-check text-success"></i
-                  ></span>
+                  <span id="u-id-checked" data-toggle="tooltip" data-placement="top" title="تم تأكيد هوية هذا الشخص">
+                    <i class="fas fa-badge-check text-success"></i>
+                  </span>
                   {{ user.displayName }}
                 </h5>
               </div>
@@ -60,104 +30,46 @@
               <div class="form-row">
                 <div class="col-md-6 mb-3 mb-lg-4">
                   <div class="form-group mb-0">
-                    <label
-                      class="medium font-weight-semi-bold"
-                      for="name"
-                      >الإسم</label
-                    >
+                    <label class="medium font-weight-semi-bold" for="name">الإسم الكامل</label>
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <div class="input-group-text border-0 z-index-9">
                           <i class="far fa-user font-size-2"></i>
                         </div>
                       </div>
-                      <input
-                        type="text"
-                        class="form-control form-control-sm"
-                        id="name"
-                        name="name"
-                        value="{{ user.displayName }}"
-                        required
-                      />
-                      <div class="invalid-feedback">رجاءا قم بإدخال إسمك</div>
+                      <input type="text" class="form-control form-control-sm" id="name" name="displayName" value="{{ user.displayName }}" required/>
+                      <div class="invalid-feedback">رجاء قم بإدخال إسمك</div>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-6 mb-3 mb-lg-4">
                   <div class="form-group mb-0">
-                    <label
-                      class="medium font-weight-semi-bold"
-                      for="name"
-                      >اللقب</label
-                    >
-                    <div class="input-group input-group-sm">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text border-0 z-index-9">
-                          <i class="far fa-user-plus font-size-2"></i>
-                        </div>
-                      </div>
-                      <input
-                        type="text"
-                        class="form-control form-control-sm"
-                        id="name"
-                        name="name"
-                        value="{{ user.displayName }}"
-                        required
-                      />
-                      <div class="invalid-feedback">رجاءا قم بإدخال لقبك</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 mb-3 mb-lg-4">
-                  <div class="form-group mb-0">
-                    <label
-                      class="medium font-weight-semi-bold"
-                      for="phoneNumber"
-                      >رقم الهاتف</label
-                    >
+                    <label class="medium font-weight-semi-bold" for="phoneNumber">رقم الهاتف</label>
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <div class="input-group-text border-0 z-index-9">
                           <i class="far fa-phone-alt font-size-2"></i>
                         </div>
                       </div>
-                      <input
-                        type="number"
-                        class="form-control form-control-sm"
-                        id="phoneNumber"
-                        name="phoneNumber"
-                        value="{{ user.phoneNumber }}"
-                        required
-                      />
+                      <input type="number" class="form-control form-control-sm" id="phoneNumber" name="phoneNumber" value="{{ user.phoneNumber }}" required/>
                       <div class="invalid-feedback">
-                        رجاءا قم بإدخال رقم هاتفك
+                        رجاء قم بإدخال رقم هاتفك
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 mb-3 mb-lg-4">
+                <div class="col-md-12 mb-3 mb-lg-4">
                   <div class="form-group mb-0">
-                    <label
-                      class="medium font-weight-semi-bold"
-                      for="email"
-                      >البريد الإلكتروني</label
-                    >
+                    <label class="medium font-weight-semi-bold" for="email">البريد الإلكتروني</label>
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <div class="input-group-text border-0 z-index-9">
                           <i class="far fa-envelope font-size-2"></i>
                         </div>
                       </div>
-                      <input
-                        type="email"
-                        class="form-control form-control-sm"
-                        id="email"
-                        name="email"
-                        value="{{ user.email }}"
-                        required
-                      />
+                      <input type="email" class="form-control form-control-sm" id="email" name="email" value="{{ user.email }}" disabled/>
                       <div class="invalid-feedback">
-                        رجاءا قم بإدخال بريدك الإلكتروني
+                        رجاء قم بإدخال بريدك الإلكتروني
                       </div>
                     </div>
                   </div>
@@ -165,47 +77,28 @@
               </div>
               <div class="form-row">
                 <div class="col-md-6 mb-3 mb-lg-4">
-                  <label
-                    class="medium font-weight-semi-bold"
-                    for="cityValidat"
-                    >الولاية</label
-                  >
+                  <label class="medium font-weight-semi-bold" for="wilayaInput">الولاية</label>
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                       <div class="input-group-text border-0 z-index-9">
                         <i class="far fa-location-dot font-size-2"></i>
                       </div>
                     </div>
-                    <select
-                      class="custom-select bg-transparent shadow-soft pr-5"
-                      id="cityValidat"
-                      required
-                      data-wilaya-input
-                    >
+                    <select class="custom-select bg-transparent shadow-soft pr-5" id="wilayaInput" name="wilaya" required data-wilaya-input>
                       <option selected disabled value="">اختر الولاية</option>
                     </select>
                     <div class="invalid-feedback">يرجى اختيار الولاية</div>
                   </div>
                 </div>
-
                 <div class="col-md-6 mb-3 mb-lg-4">
-                  <label
-                    class="medium font-weight-semi-bold"
-                    for="municValidat"
-                    >البلدية/الدائرة</label
-                  >
+                  <label class="medium font-weight-semi-bold" for="cityInput">البلدية/الدائرة</label>
                   <div class="input-group input-group-sm">
                     <div class="input-group-prepend">
                       <div class="input-group-text border-0 z-index-9">
                         <i class="far fa-location-crosshairs font-size-2"></i>
                       </div>
                     </div>
-                    <select
-                      class="custom-select bg-transparent shadow-soft pr-5"
-                      id="municValidat"
-                      required
-                      data-city-input
-                    >
+                    <select class="custom-select bg-transparent shadow-soft pr-5" id="cityInput" name="city" required data-city-input>
                       <option selected disabled value="">
                         اختر البلدية/الدائرة
                       </option>
@@ -219,33 +112,20 @@
               <div class="form-row">
                 <div class="col-md-6 mb-3 mb-lg-4">
                   <div class="form-group mb-0">
-                    <label
-                      class="medium font-weight-semi-bold"
-                      for="uProfileName"
-                      >ماهو دورك</label
-                    >
+                    <label class="medium font-weight-semi-bold" for="uProfileName">ماهو دورك</label>
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <div class="input-group-text border-0 z-index-9">
                           <i class="far fa-user-tie font-size-2"></i>
                         </div>
                       </div>
-                      <select
-                        class="
-                          custom-select
-                          bg-transparent
-                          shadow-soft
-                          border-0
-                          pr-5
-                        "
-                        required
-                      >
-                        <option selected disabled value="">
+                      <select class=" custom-select bg-transparent shadow-soft border-0 pr-5 " name="role" required>
+                        <option disabled value="">
                           ماهو هدفك في المنصة
                         </option>
-                        <option>محتاج</option>
-                        <option>متطوع</option>
-                        <option>جمعية</option>
+                        <option value="ADMIN" {{ "selected" if user.isAdmin }}>مشرف</option>
+                        <option value="GIVING_HELP" {{ "selected" if user.isGivingHelp }}>جمعية</option>
+                        <option value="SEEKING_HELP" {{ "selected" if user.isSeekingHelp }}>محتاج</option>
                       </select>
                       <div class="invalid-feedback">يرجى اختيار الدور</div>
                     </div>
@@ -253,32 +133,19 @@
                 </div>
                 <div class="col-md-6 mb-3 mb-lg-4">
                   <div class="form-group mb-0">
-                    <label
-                      class="medium font-weight-semi-bold"
-                      for="uProfileName"
-                      >حالة الحساب</label
-                    >
+                    <label class="medium font-weight-semi-bold" for="uProfileName">حالة الحساب</label>
                     <div class="input-group input-group-sm">
                       <div class="input-group-prepend">
                         <div class="input-group-text border-0 z-index-9">
                           <i class="far fa-user-gear font-size-2"></i>
                         </div>
                       </div>
-                      <select
-                        class="
-                          custom-select
-                          bg-transparent
-                          shadow-soft
-                          border-0
-                          pr-5
-                        "
-                        required
-                      >
-                        <option selected disabled value="">
+                      <select class=" custom-select bg-transparent shadow-soft border-0 pr-5" name="isVerified" required>
+                        <option disabled value="">
                           يرجى اختيار حالة الحساب
                         </option>
-                        <option>نشط</option>
-                        <option>معطل</option>
+                        <option value="true" {{ "selected" if user.isVerified }}>نشط</option>
+                        <option value="false" {{ "selected" if not(user.isVerified) }}>معطل</option>
                       </select>
                       <div class="invalid-feedback">
                         يرجى اختيار حالة الحساب
@@ -287,15 +154,14 @@
                   </div>
                 </div>
               </div>
-              <button
-                class="
-                  btn btn-sm btn-success-g
-                  w-100 w-lg-35
-                  font-weight-semi-bold
-                  text-white
-                "
-                type="submit"
-              >
+              <div class="form-group">
+                <label for="description" class="medium font-weight-semi-bold">وصف المستخدم:</label>
+                <textarea class="form-control" id="description" name="description" rows="5">{{ product.description }}</textarea>
+                <div class="invalid-feedback">
+                  رجاء قم بإدخال وصف للوقف
+                </div>
+              </div>
+              <button class=" btn btn-sm btn-success-g w-100 w-lg-35 font-weight-semi-bold text-white " type="submit">
                 حفظ التغييرات
               </button>
             </form>
@@ -306,37 +172,17 @@
         <div class="card shadow-sm border-0 rounded mb-4">
           <div class="card-body py-4">
             <h1 class="font-size-2 mb-0">رابط الدعوة الخاص بك:</h1>
-            <small class="font-weight-semi-bold"
-              >قم بدعوة أصدقائك للإنضمام إلى مجتمعنا عن طريق مشاركة هذا
-              الرابط.</small
-            >
-            <div
-              class="
-                u-inv-link
-                bg-soft-secondary
-                rounded-sm
-                text-left
-                p-3
-                my-3
-              "
-            >
-              <p
-                class="font-size-1 font-weight-semi-bold text-secondary mb-0"
-                id="invLink"
-              >
+            <small class="font-weight-semi-bold">قم بدعوة أصدقائك للإنضمام إلى مجتمعنا عن طريق مشاركة هذا الرابط.</small>
+            <div class=" u-inv-link bg-soft-secondary rounded-sm text-left p-3 my-3 ">
+              <p class="font-size-1 font-weight-semi-bold text-secondary mb-0" id="invLink">
                 waqf.dz/luca18?=inv10
               </p>
             </div>
             <button
               type="button"
-              class="
-                btn btn-sm btn-success-g btn-block btn-pill
-                font-weight-semi-bold
-                text-white
-              "
+              class=" btn btn-sm btn-success-g btn-block btn-pill font-weight-semi-bold text-white "
               data-clipboard-action="copy"
-              data-clipboard-target="#invLink"
-            >
+              data-clipboard-target="#invLink">
               <i class="fas fa-link pl-2"></i>نسخ رابط الدعوة
             </button>
           </div>
@@ -349,34 +195,17 @@
               <span
                 data-toggle="tooltip"
                 data-placement="top"
-                title="بعد أن نتحقق من حسابك ، ستظهر شارة تحقق بجوار اسم حسابك على منصة waqf للإشارة إلى أن الحساب هو لشخصية عامة أو كيان يمثله."
-              >
+                title="بعد أن نتحقق من حسابك ، ستظهر شارة تحقق بجوار اسم حسابك على منصة waqf للإشارة إلى أن الحساب هو لشخصية عامة أو كيان
+                  يمثله.">
                 <i class="fa-regular fa-circle-info"></i>
               </span>
             </div>
             <small class="font-weight-semi-bold"></small>
-
-            <div
-              id="idValidationAttach"
-              class="position-relative dropzone-boxed text-center my-3"
-            >
-              <span class="small font-weight-semi-bold text-center"
-                >تصفح الملفات الخاصة بك أو اسحبها إلى المربع</span
-              >
-              <input
-                type="file"
-                class="file-attachment-btn-label cursor-pointer"
-                id="IDUploader"
-              />
+            <div id="idValidationAttach" class="position-relative dropzone-boxed text-center my-3">
+              <span class="small font-weight-semi-bold text-center">تصفح الملفات الخاصة بك أو اسحبها إلى المربع</span>
+              <input type="file" class="file-attachment-btn-label cursor-pointer" id="IDUploader"/>
             </div>
-            <button
-              type="button"
-              class="
-                btn btn-sm btn-success-g btn-block btn-pill
-                font-weight-semi-bold
-                text-white
-              "
-            >
+            <button type="button" class=" btn btn-sm btn-success-g btn-block btn-pill font-weight-semi-bold text-white ">
               <i class="far fa-paper-plane-top pl-2"></i>إرسال
             </button>
           </div>
@@ -391,5 +220,4 @@
       </div>
     </div>
   </div>
-
 {% endblock %}

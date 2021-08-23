@@ -24,7 +24,7 @@ module.exports = function makeUpdateAdminOrder({
       oxygenRatio: oxygenRatio,
       hasChronicDesease: hasChronicDesease == 'true',
       isCovid: isCovid == 'true',
-      isHospitalized,
+      isHospitalized: isHospitalized == 'true',
       wilaya,
       city,
       description,

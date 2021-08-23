@@ -24,7 +24,7 @@ module.exports = function makeUpdateUserOrder({
       oxygenRatio: oxygenRatio,
       hasChronicDesease: hasChronicDesease == 'true',
       isCovid: isCovid == 'true',
-      isHospitalized: isHospitalized,
+      isHospitalized: isHospitalized == 'true',
       wilaya: wilaya,
       city: city,
       description: description,

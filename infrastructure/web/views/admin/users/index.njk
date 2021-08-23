@@ -1,18 +1,10 @@
 {% extends '../../layouts/admin.njk' %}
-
-{% block css %}
-
-{% endblock %}
-
+{% block css %}{% endblock %}
 {% block content %}
-
   {% set users = data.users %}
-
   <div class="container pt-5 mb-10">
     <h2 class="mb-3">قائمة المستخدمين</h2>
-    <table
-      class="table table-hover table-bordered table-content mb-0 hax-table"
-    >
+    <table class="table table-hover table-bordered table-content mb-0 hax-table">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -26,170 +18,117 @@
       </thead>
       <tbody>
         {% for user in users %}
-        <tr>
-          <th scope="row">1</th>
-          <td>{{ user.displayName }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.phoneNumber }}</td>
-          
-          {% if user.role == "ADMIN" %}
-            <td>مشرف</td>
-          {% elif user.role == "DIRECTOR" %}
-            <td>مدير</td>
-          {% elif user.role == "GIVING_HELP" %}
-            <td>مانح المساعدة</td>
-          {% else %}
-            <td>محتاج</td>
-          {% endif %}
-
-          {% if user.isVerified %}
-            <td>مفعل</td>
-          {% else %}
-            <td>غير مفعل</td>
-          {% endif %}
-          
-          <td>
-            <div class="dropdown">
-              <button
-                class="btn py-0"
-                type="button"
-                id="userTableAction"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <i class="far fa-ellipsis-h opacity-80"></i>
-              </button>
-              <div
-                class="dropdown-menu dropdown-menu-right text-right"
-                aria-labelledby="userTableAction"
-              >
+          <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ user.displayName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phoneNumber }}</td>
+            {% if user.role == "ADMIN" %}
+              <td>مشرف</td>
+            {% elif user.role == "DIRECTOR" %}
+              <td>مدير</td>
+            {% elif user.role == "GIVING_HELP" %}
+              <td>جمعية</td>
+            {% else %}
+              <td>محتاج</td>
+            {% endif %}
+            {% if user.isVerified %}
+              <td>مفعل</td>
+            {% else %}
+              <td>غير مفعل</td>
+            {% endif %}
+            <td>
+              <div class="dropdown">
                 <button
+                  class="btn py-0"
                   type="button"
-                  class="dropdown-item"
-                  data-toggle="modal"
-                  data-target="#{{ user.id }}-userInfo"
-                >
-                  <i class="far fa-circle-info pl-2"></i>الوصف
+                  id="userTableAction"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false">
+                  <i class="far fa-ellipsis-h opacity-80"></i>
                 </button>
-                <a
-                  type="submit"
-                  class="dropdown-item"
-                  href="/admin/users/{{ user.id }}"
-                >
-                  <i class="far fa-arrows-rotate pl-2"></i>تحديث
-                </a>
-                <button
-                  type="button"
-                  class="dropdown-item"
-                  data-toggle="modal"
-                  data-target="#delUser"
-                >
-                  <i class="far fa-trash-can pl-2"></i>حذف
-                </button>
+                <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="userTableAction">
+                  <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ user.id }}-userInfo">
+                    <i class="far fa-circle-info pl-2"></i>الوصف
+                  </button>
+                  <a type="submit" class="dropdown-item" href="/admin/users/{{ user.id }}">
+                    <i class="far fa-arrows-rotate pl-2"></i>تحديث
+                  </a>
+                  <button type="button" class="dropdown-item" data-toggle="modal" data-target="#delUser">
+                    <i class="far fa-trash-can pl-2"></i>حذف
+                  </button>
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
+            </td>
+          </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
-
   {% for user in users %}
-  <!-- Extra Info -->
-  <div
-    class="modal fade"
-    id="{{ user.id }}-userInfo"
-    tabindex="-1"
-    aria-labelledby="userInfoLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header border-0 py-2">
-          <span></span>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h5 class="mb-2 text-center">وصف إضافي</h5>
-          <p class="medium mb-0">
-            {{ user.description }}
-          </p>
-        </div>
-        <div class="modal-footer d-block border-0">
-          <button
-            type="button"
-            class="
-              btn btn-sm btn-soft-secondary btn-block
-              medium
-              font-weight-semi-bold
-            "
-            data-dismiss="modal"
-          >
-            إغلاق
-          </button>
+    <!-- Extra Info -->
+    <div class="modal fade" id="{{ user.id }}-userInfo" tabindex="-1" aria-labelledby="userInfoLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0 py-2">
+            <span></span>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h5 class="mb-2 text-center">وصف إضافي</h5>
+            <p class="medium mb-0">
+              {{ user.description }}
+            </p>
+          </div>
+          <div class="modal-footer d-block border-0">
+            <button
+              type="button"
+              class=" btn btn-sm btn-soft-secondary btn-block medium font-weight-semi-bold "
+              data-dismiss="modal">
+              إغلاق
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- Delete -->
-  <form
-    class="modal fade"
-    id="delUser"
-    tabindex="-1"
-    data-backdrop="static"
-    data-keyboard="true"
-    aria-labelledby="delUserLabel"
-    aria-hidden="true"
-    action="/admin/users/{{ user.id }}"
-    method="POST"
-  >
-    <div class="modal-dialog modal-dialog-centered modal-sm">
-      <div class="modal-content">
-        <div class="modal-header border-0 py-2">
-          <span></span>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h6 class="mb-2">حذف هذا المستخدم؟</h6>
-          <p class="medium mb-0">
-            سيتم حذف هذا المستخدم على الفور. لا يمكنك التراجع عن هذا الإجراء
-          </p>
-        </div>
-        <div class="modal-footer d-block py-2 border-0">
-          <button
-            type="submit"
-            class="btn btn-sm btn-block btn-success-g text-white"
-          >
-            حذف
-          </button>
-          <button
-            type="button"
-            class="btn btn-sm btn-block"
-            data-dismiss="modal"
-          >
-            إلغاء
-          </button>
+    <!-- Delete -->
+    <form
+      class="modal fade"
+      id="delUser"
+      tabindex="-1"
+      data-backdrop="static"
+      data-keyboard="true"
+      aria-labelledby="delUserLabel"
+      aria-hidden="true"
+      action="/admin/users/{{ user.id }}"
+      method="POST">
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+          <div class="modal-header border-0 py-2">
+            <span></span>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h6 class="mb-2">حذف هذا المستخدم؟</h6>
+            <p class="medium mb-0">
+              سيتم حذف هذا المستخدم على الفور. لا يمكنك التراجع عن هذا الإجراء
+            </p>
+          </div>
+          <div class="modal-footer d-block py-2 border-0">
+            <button type="submit" class="btn btn-sm btn-block btn-success-g text-white">
+              حذف
+            </button>
+            <button type="button" class="btn btn-sm btn-block" data-dismiss="modal">
+              إلغاء
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
   {% endfor %}
-
 {% endblock %}
