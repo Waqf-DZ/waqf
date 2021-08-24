@@ -3,6 +3,7 @@
 {% block content %}
   {% set order = data.order %}
   {% set products = data.products %}
+  {% set orderOwner = data.orderOwner %}
   <div class="container py-5 mb-5 my-lg-5 shadow-lg">
     <div class="row px-3">
       <div class="col-12 col-lg-6 mb-5 mb-lg-0">
@@ -51,17 +52,19 @@
             class="text-primary ms-4">
             تعديل
           </a>
+
         </div>
         {% endif %}
 
         <div class="donate-title text-right my-4 rounded-lg">
+          <h4 class="font-size-2">معلومات المريض</h4>
           <ul class="list-unstyledss mr-3">
             <li class="font-size-1 font-weight-semi-bold op-90">
-              إسم المريض:
+              الإسم:
               <span class="mr-2">{{ order.patientName }}</span>
             </li>
             <li class="font-size-1 font-weight-semi-bold op-90">
-              عمر المريض:
+              العمر:
               <span class="mr-2">{{ order.patientAge }}</span>
             </li>
             <li class="font-size-1 font-weight-semi-bold op-90">
@@ -100,6 +103,24 @@
             </li>
             <li class="font-size-1 font-weight-semi-bold op-90">
               وصف إضافي:<span class="mr-2">{{ order.description }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="donate-title text-right my-4 rounded-lg">
+          <h4 class="font-size-2">معلومات صاحب الطلب</h4>
+          <ul class="list-unstyledss mr-3">
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              الإسم:
+              <span class="mr-2">{{ orderOwner.displayName }}</span>
+            </li>
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              رقم الهاتف:
+              <span class="mr-2">{{ orderOwner.phoneNumber }}</span>
+            </li>
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              البريد الإلكتروني:
+              <span class="mr-2">{{ orderOwner.email }}</span>
             </li>
           </ul>
         </div>

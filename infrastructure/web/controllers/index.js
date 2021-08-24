@@ -94,9 +94,9 @@ const putUserSettings = makePutUserSettings({
   sanitize,
 })
 const getAdminOrders = makeGetAdminOrders({ listOrders })
-const getAdminOrder = makeGetAdminOrder({ getOrder })
+const getAdminOrder = makeGetAdminOrder({ getOrder, getUser })
 const getUserOrders = makeGetUserOrders({ listOrders })
-const getUserOrder = makeGetUserOrder({ getOrder, listProducts })
+const getUserOrder = makeGetUserOrder({ getOrder, getUser, listProducts })
 const getUserOrderEdit = makeGetUserOrderEdit({ getOrder })
 const postUserAcceptOrder = makePostUserAcceptOrder({
   acceptOrder,
