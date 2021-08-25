@@ -36,6 +36,7 @@ if (app.get('env') === 'production') {
     store: sequelizeSessionStore,
     resave: false,
     proxy: true,
+    saveUninitialized: false,
   }
   app.use(session(prodSessionConfig))
   sequelizeSessionStore.sync()
