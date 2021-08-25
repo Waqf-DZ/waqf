@@ -13,9 +13,9 @@
             <th scope="col">النوع</th>
             <th scope="col">الرقم</th>
             <th scope="col">متاح</th>
-            <th scope="col">مكسور</th>
-            <th scope="col">أيام مجانية</th>
-            <th scope="col">سعر اليوم</th>
+            <th scope="col">معطل</th>
+            <th scope="col">المدة المجانية</th>
+            <th scope="col">سعر اليوم الإضافي</th>
             <th scope="col">إجراءات</th>
           </tr>
         </thead>
@@ -39,28 +39,12 @@
               <td>{{ product.freeDays }}</td>
               <td>{{ product.dayPrice }}</td>
               <td>
-                <div class="dropdown">
-                  <button
-                    class="btn py-0"
-                    type="button"
-                    id="waqfTableAction"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false">
-                    <i class="far fa-ellipsis-h opacity-80"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="waqfTableAction">
-                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ product.id }}">
-                      <i class="far fa-circle-info pl-2"></i>الوصف
-                    </button>
-                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ product.id }}">
-                      <i class="far fa-pen-to-square pl-2"></i>تعديل
-                    </button>
-                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#{{ product.id }}">
-                      <i class="far fa-trash-can pl-2"></i>حذف
-                    </button>
-                  </div>
-                </div>
+                <a
+                  href="/profile/products/{{ product.id }}"
+                  class="btn btn-sm btn-soft-primary"
+                >
+                  عرض
+                </a>
               </td>
             </tr>
           {% endfor %}

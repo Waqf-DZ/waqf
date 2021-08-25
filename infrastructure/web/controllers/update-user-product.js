@@ -2,24 +2,30 @@ module.exports = function makeUpdateUserProduct({
   updateProduct,
   flashMessages,
   adjustUploadPath,
+  sanitize,
 }) {
   return async function updateUserProduct(req, res) {
     try {
       const productInfo = {
         id: req.params.id,
-        productImage: req.file ? adjustUploadPath(req.file.path) : null,
-        ...req.body,
+        name: sanitize(req.body.name),
+        serial: sanitize(req.body.serial),
+        type: sanitize(req.body.type),
+        isBroken: req.body.isBroken == 'true',
+        freeDays: Number(req.body.freeDays),
+        dayPrice: Number(req.body.dayPrice),
+        description: sanitize(req.body.description),
       }
-      const updatedProduct = await updateProduct(productInfo)
-      if (updatedProduct) {
-        req.flash('success', flashMessages.PROFILE_UPDATE_SUCCESS)
-        res.redirect('/profile/products')
-      } else {
-        req.flash('error', flashMessages.PROFILE_UPDATE_FAILURE)
-        res.redirect('/profile/products')
+      if (req.file) {
+        productInfo.productImage = adjustUploadPath(req.file.path)
       }
+      await updateProduct(productInfo)
+      req.flash('success', flashMessages.PRODUCT_UPDATE_SUCCESS)
+      res.redirect('/profile/products')
     } catch (err) {
-      res.render('profile/products/index', { errorMessages: [err.message] })
+      console.error(err)
+      req.flash('error', flashMessages.PRODUCT_UPDATE_FAILURE)
+      res.redirect('/profile/products')
     }
   }
 }

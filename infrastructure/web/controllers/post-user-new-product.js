@@ -6,30 +6,27 @@ module.exports = function makePostUserNewProduct({
 }) {
   return async function postUserNewProduct(req, res) {
     try {
-      const ownerId = req.user.id
-      const { name, type, serial, description } = req.body
-      const imageFile = req.file
-      const imageUrl = imageFile ? adjustUploadPath(imageFile.path) : undefined
-
-      const newProduct = await addProduct({
-        ownerId,
-        type,
-        imageUrl,
-        name: sanitize(name),
-        serial: sanitize(serial),
-        description: sanitize(description),
-      })
-
-      if (newProduct) {
-        req.flash('success', flashMessages.NEW_PRODUCT_SUCCESS)
-        res.redirect('/profile/products')
-        return
-      } else {
-        req.flash('error', flashMessages.NEW_PRODUCT_FAILURE)
-        res.redirect('/profile/products/new')
+      const productInfo = {
+        id: req.params.id,
+        ownerId: req.user.id,
+        name: sanitize(req.body.name),
+        serial: sanitize(req.body.serial),
+        type: sanitize(req.body.type),
+        isBroken: req.body.isBroken == 'true',
+        freeDays: Number(req.body.freeDays),
+        dayPrice: Number(req.body.dayPrice),
+        description: sanitize(req.body.description),
       }
+      if (req.file) {
+        productInfo.imageUrl = adjustUploadPath(req.file.path)
+      }
+      await addProduct(productInfo)
+      req.flash('success', flashMessages.NEW_PRODUCT_SUCCESS)
+      res.redirect('/profile/products')
     } catch (err) {
-      res.render('profile/products/new', { errorMessages: [err.message] })
+      console.error(err)
+      req.flash('error', flashMessages.NEW_PRODUCT_FAILURE)
+      res.redirect('/profile/products/new')
     }
   }
 }

@@ -132,6 +132,7 @@ const updateUserProduct = makeUpdateUserProduct({
   updateProduct,
   flashMessages,
   adjustUploadPath,
+  sanitize,
 })
 
 const updateUserOrder = makeUpdateUserOrder({

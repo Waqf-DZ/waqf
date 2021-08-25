@@ -59,11 +59,102 @@
                       </div>
                     </div>
                     <select class="custom-select bg-transparent shadow-soft pr-5" id="type" name="type" required>
-                      <option selected disabled value="">اختر نوع الوقف</option>
-                      <option value="CONDENSER_10L">مكثف أكسجين 10 ل</option>
-                      <option value="CONDENSER_5L">مكثف أكسجين 5 ل</option>
+                      <option disabled value="">اختر نوع الوقف</option>
+                      <option
+                        value="CONDENSER_10L"
+                        {{'selected' if product.type == 'CONDENSER_10L'}}
+                      >
+                        مكثف أكسجين 10 ل
+                      </option>
+                      <option
+                        value="CONDENSER_5L"
+                        {{'selected' if product.type == 'CONDENSER_5L'}}
+                      >
+                        مكثف أكسجين 5 ل
+                      </option>
                     </select>
                     <div class="invalid-feedback">يرجى اختيار نوع الوقف</div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <label class="medium font-weight-semi-bold" for="type">
+                    حالة الوقف 
+                  </label>
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text border-0 z-index-9">
+                        <i class="far fa-location-crosshairs font-size-2"></i>
+                      </div>
+                    </div>
+                    <select class="custom-select bg-transparent shadow-soft pr-5" name="isBroken" required>
+                      <option disabled value="">اختر حالة الوقف</option>
+                      <option
+                        value="false"
+                        {{'selected' if not(product.isBroken) }}
+                      >
+                        في حالة جيدة
+                      </option>
+                      <option
+                        value="true"
+                        {{'selected' if product.isBroken }}
+                      >
+                        معطل
+                      </option>
+                    </select>
+                    <div class="invalid-feedback">يرجى اختيار حالة الوقف</div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label class="medium font-weight-semi-bold" for="freeDays">مدة الإعارة المجانية بالأيام</label>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-heart-pulse font-size-2"></i>
+                        </div>
+                      </div>
+                      <input
+                        id="freeDays"
+                        type="number"
+                        name="freeDays"
+                        class="form-control form-control-sm"
+                        min="0"
+                        max="60"
+                        value="{{ product.freeDays }}"
+                        required/>
+                      <div class="invalid-feedback">
+                        رجاء قم بإدخال مدة الإعارة المجانية
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-3 mb-lg-4">
+                  <div class="form-group mb-0">
+                    <label class="medium font-weight-semi-bold" for="dayPrice">سعر اليوم الإضافي (بعد المدة المجانية)</label>
+                    <div class="input-group input-group-sm">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text border-0 z-index-9">
+                          <i class="far fa-heart-pulse font-size-2"></i>
+                        </div>
+                      </div>
+                      <input
+                        id="dayPrice"
+                        type="number"
+                        name="dayPrice"
+                        class="form-control form-control-sm"
+                        min="0"
+                        max="10000"
+                        step="10"
+                        value="{{ product.dayPrice }}"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        رجاء قم بإدخال سعر اليوم الإضافي
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
