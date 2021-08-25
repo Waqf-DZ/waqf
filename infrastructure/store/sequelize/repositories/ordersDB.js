@@ -70,8 +70,10 @@ module.exports = function makeOrdersDB({ model }) {
       })
     },
 
-    async listOrders() {
-      const orders = await model.findAll()
+    async listOrders({ ownerId }) {
+      const orders = ownerId
+        ? await model.findAll({ where: { ownerId } })
+        : await model.findAll()
       return orders.map((o) => makeOrder(o))
     },
   })
