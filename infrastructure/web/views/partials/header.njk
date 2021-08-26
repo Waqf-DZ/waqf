@@ -231,13 +231,20 @@
           </a>
 
           {% if authenticatedUser.isAdmin or authenticatedUser.isGivingHelp %}
-          {% endif %}
           <div class="dropdown-divider"></div>
           <a
             class="dropdown-item font-weight-semi-bold"
             href="/{{ 'admin' if authenticatedUser.isAdmin else 'profile' }}/products">
             عرض الأوقاف
           </a>
+          {% endif %}
+          
+          {% if authenticatedUser.isAdmin %}
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item font-weight-semi-bold" href="/admin/users">
+            عرض المستخدمين
+          </a>
+          {% endif %}
         </div>
       </div>
       <!-- Home -->
