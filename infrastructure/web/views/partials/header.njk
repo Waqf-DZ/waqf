@@ -37,6 +37,12 @@
                 	mt-5
                 	shadow-lg
                 " aria-labelledby="dropdownMenuLink">
+                  <a
+                    class="dropdown-item font-weight-semi-bold"
+                    href="/{{ 'admin' if authenticatedUser.isAdmin else 'profile'}}">
+                    إحصائيات
+                  </a>
+                  <div class="dropdown-divider"></div>
                 {% if authenticatedUser.isSeekingHelp %}
                   <a class="dropdown-item font-weight-semi-bold" href="/profile/orders/new">
                     إنشاء طلب جديد
@@ -206,6 +212,12 @@
           class="dropdown-menu dropdown-wide text-right mb-7 shadow-lg"
           aria-labelledby="dropdownMenuLink"
         >
+          <a
+            class="dropdown-item font-weight-semi-bold"
+            href="/{{ 'admin' if authenticatedUser.isAdmin else 'profile'}}">
+            إحصائيات
+          </a>
+          <div class="dropdown-divider"></div>
           {% if authenticatedUser.isSeekingHelp %}
             <a
               class="dropdown-item font-weight-semi-bold"
