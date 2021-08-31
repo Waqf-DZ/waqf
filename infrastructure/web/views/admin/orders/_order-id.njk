@@ -1,8 +1,6 @@
-{% extends '../../layouts/profile.njk' %}
+{% extends '../../layouts/admin.njk' %}
 {% block css %}{% endblock %}
 {% block content %}
-  {% set order = data.order %}
-  {% set orderOwner = data.orderOwner %}
   <div class="container py-5 mb-5 my-lg-5 shadow-lg">
     <div class="row px-3">
       <div class="col-12 col-lg-6 mb-5 mb-lg-0">
@@ -44,7 +42,38 @@
           </div>
         </div>
 
+        {% if authenticatedUser.isSeekingHelp or authenticatedUser.isAdmin %}
+        <div class="mt-4 d-flex justify-content-center justify-content-lg-start">
+          <a
+            href="/admin/orders/{{order.id}}/edit"
+            class="text-primary ms-4">
+            تعديل
+          </a>
+
+        </div>
+        {% endif %}
+
         <div class="donate-title text-right my-4 rounded-lg">
+          {% if order.isAccepted %}
+          <div class="donate-title text-right my-4 rounded-lg">
+            <h4 class="font-size-2">معلومات الطلب</h4>
+            <ul class="list-unstyledss mr-3">
+              <li class="font-size-1 font-weight-semi-bold op-90">
+                الجمعية المتكفلة بالطلب:
+                <span class="mr-2">{{ assignedUserName }}</span>
+              </li>
+              <li class="font-size-1 font-weight-semi-bold op-90">
+                تاريخ القبول:
+                <span class="mr-2">{{ acceptedAt }}</span>
+              </li>
+              <li class="font-size-1 font-weight-semi-bold op-90">
+                الأيام المتبقية:
+                <span class="mr-2">{{ daysLeft }}</span>
+              </li>
+            </ul>
+          </div>
+          {% endif %}
+
           <h4 class="font-size-2">معلومات المريض</h4>
           <ul class="list-unstyledss mr-3">
             <li class="font-size-1 font-weight-semi-bold op-90">
@@ -113,6 +142,7 @@
           </ul>
         </div>
       </div>
+
       {# prescription image #}
       <div class="col-12 col-lg-6">
         <div class="swiper-container donatSwips">
@@ -199,7 +229,7 @@
     aria-labelledby="acceptOrderModalLabel"
     aria-hidden="true"
     method="POST"
-    action="/profile/orders/{{ order.id }}/accept">
+    action="/admin/orders/{{ order.id }}/accept">
     <div class="modal-dialog modal-dialog-centered modal-sm">
       <div class="modal-content">
         <div class="modal-header border-0 py-2">
@@ -257,7 +287,7 @@
     aria-labelledby="completeOrderModalLabel"
     aria-hidden="true"
     method="POST"
-    action="/profile/orders/{{ order.id }}/complete">
+    action="/admin/orders/{{ order.id }}/complete">
     <div class="modal-dialog modal-dialog-centered modal-sm">
       <div class="modal-content">
         <div class="modal-header border-0 py-2">
