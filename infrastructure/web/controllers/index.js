@@ -22,46 +22,37 @@ const {
   getUser,
 } = require('../../../use-cases/index')
 
-const makeGetAdminDashboard = require('./get-admin-dashboard')
-const makeGetUserDashboard = require('./get-user-dashboard')
-const makeGetSignUp = require('./get-signup')
-const makeGetSignout = require('./get-signout')
-const makePostSignup = require('./post-signup')
-const makePostSignin = require('./post-signin')
-const makeGetNewUser = require('./get-new-user')
-const makePostNewUser = require('./post-new-user')
-const makeGetUsers = require('./get-users')
-const makeGetAdminUser = require('./get-admin-user')
+const makeHandleGetDashboard = require('./handle-get-dashboard')
+const makeGetSignUp = require('./handle-get-signup')
+const makeGetSignout = require('./handle-get-signout')
+const makePostSignup = require('./handle-post-signup')
+const makePostSignin = require('./handle-post-signin')
+const makeGetNewUser = require('./handle-get-new-user')
+const makePostNewUser = require('./handle-create-user')
+const makeGetUsers = require('./handle-get-users')
+const makeGetAdminUser = require('./handle-get-user')
 
-const makeGetUserSettings = require('./get-user-settings')
-const makeGetUserNewOrder = require('./get-user-new-order')
-const makePostUserNewOrder = require('./post-user-new-order')
-const makeGetAdminOrders = require('./get-admin-orders')
-const makeGetAdminOrder = require('./get-admin-order')
-const makeGetUserOrders = require('./get-user-orders')
-const makeGetUserOrder = require('./get-user-order')
-const makeGetUserOrderEdit = require('./get-user-order-edit')
-const makePostUserAcceptOrder = require('./post-user-accept-order')
-const makePostUserCompleteOrder = require('./post-user-complete-order')
+const makeGetUserSettings = require('./handle-get-settings')
+const makeGetUserNewOrder = require('./handle-get-new-order')
+const makePostUserNewOrder = require('./handle-create-order')
+const makeGetUserOrders = require('./handle-get-orders')
+const makeGetUserOrder = require('./handle-get-order')
+const makeGetUserOrderEdit = require('./handle-get-order-edit')
+const makePostUserAcceptOrder = require('./handle-accept-order')
+const makePostUserCompleteOrder = require('./handle-complete-order')
 
-const makeGetUserNewProduct = require('./get-user-new-product')
-const makePostUserNewProduct = require('./post-user-new-product')
-const makeGetAdminProducts = require('./get-admin-products')
-const makePutUserSettings = require('./put-user-settings')
-const makeGetUserProducts = require('./get-user-products')
-const makeGetUserProduct = require('./get-user-product')
-const makeGetAdminProduct = require('./get-admin-product')
+const makeGetUserNewProduct = require('./handle-get-new-product')
+const makePostUserNewProduct = require('./handle-create-product')
+const makePutUserSettings = require('./handle-update-settings')
+const makeGetUserProducts = require('./handle-get-products')
+const makeGetUserProduct = require('./handle-get-product')
 
-const makeUpdateUserProduct = require('./update-user-product')
-const makeUpdateUserOrder = require('./update-user-order')
-const makeUpdateAdminProduct = require('./update-admin-product')
+const makeUpdateUserProduct = require('./handle-update-product')
+const makeUpdateUserOrder = require('./handle-update-order')
 
-const makeUpdateAdminOrder = require('./update-admin-order')
+const makeUpdateAdminUser = require('./handle-update-user')
 
-const makeUpdateAdminUser = require('./update-admin-user')
-
-const getUserDashboard = makeGetUserDashboard({ listProducts, listOrders })
-const getAdminDashboard = makeGetAdminDashboard({
+const handleGetDashboard = makeHandleGetDashboard({
   listUsers,
   listOrders,
   listProducts,
@@ -77,128 +68,101 @@ const postSignup = makePostSignup({
   validator,
 })
 const postSignin = makePostSignin({ signInUser, flashMessages, passport })
-const getUsers = makeGetUsers({ listUsers, flashMessages })
-const getNewUser = makeGetNewUser()
-const postNewUser = makePostNewUser({
+const handleGetUsers = makeGetUsers({ listUsers, flashMessages })
+const handleGetNewUser = makeGetNewUser()
+const handleCreateUser = makePostNewUser({
   addUser,
   flashMessages,
   sanitize,
   validator,
 })
 
-const getAdminUser = makeGetAdminUser({ getUser })
+const handleGetUser = makeGetAdminUser({ getUser })
 
-const putUserSettings = makePutUserSettings({
+const handleUpdateSettings = makePutUserSettings({
   updateUser,
   flashMessages,
   sanitize,
 })
-const getAdminOrders = makeGetAdminOrders({ listOrders })
-const getAdminOrder = makeGetAdminOrder({
-  getOrder,
-  getUser,
-  getProduct,
-  listProducts,
-})
 
-const getUserOrders = makeGetUserOrders({ listOrders })
-const getUserOrder = makeGetUserOrder({
+const handleGetOrders = makeGetUserOrders({ listOrders })
+const handleGetOrder = makeGetUserOrder({
   getOrder,
   getUser,
   getProduct,
   listProducts,
 })
-const getUserOrderEdit = makeGetUserOrderEdit({ getOrder })
-const postUserAcceptOrder = makePostUserAcceptOrder({
+const handleGetOrderEdit = makeGetUserOrderEdit({ getOrder })
+const handleAcceptOrder = makePostUserAcceptOrder({
   acceptOrder,
   flashMessages,
 })
-const postUserCompleteOrder = makePostUserCompleteOrder({
+const handleCompleteOrder = makePostUserCompleteOrder({
   completeOrder,
   flashMessages,
 })
 
-const getUserSettings = makeGetUserSettings({ getUser })
-const getUserNewOrder = makeGetUserNewOrder()
-const postUserNewOrder = makePostUserNewOrder({
+const handleGetSettings = makeGetUserSettings({ getUser })
+const handleGetNewOrder = makeGetUserNewOrder()
+const handleCreateOrder = makePostUserNewOrder({
   addOrder,
   flashMessages,
   sanitize,
   adjustUploadPath,
 })
 
-const getUserNewProduct = makeGetUserNewProduct()
-const postUserNewProduct = makePostUserNewProduct({
+const handleGetNewProduct = makeGetUserNewProduct()
+const handleCreateProduct = makePostUserNewProduct({
   addProduct,
   flashMessages,
   sanitize,
   adjustUploadPath,
 })
-const getAdminProducts = makeGetAdminProducts({ listProducts })
-const getUserProducts = makeGetUserProducts({ listProducts })
-const getUserProduct = makeGetUserProduct({ getProduct })
-const getAdminProduct = makeGetAdminProduct({ getProduct })
+const handleGetProducts = makeGetUserProducts({ listProducts })
+const handleGetProduct = makeGetUserProduct({ getProduct })
 
-const updateUserProduct = makeUpdateUserProduct({
+const handleUpdateProduct = makeUpdateUserProduct({
   updateProduct,
   flashMessages,
   adjustUploadPath,
   sanitize,
 })
 
-const updateUserOrder = makeUpdateUserOrder({
+const handleUpdateOrder = makeUpdateUserOrder({
   updateOrder,
   flashMessages,
   adjustUploadPath,
 })
 
-const updateAdminProduct = makeUpdateAdminProduct({
-  updateProduct,
-  flashMessages,
-  adjustUploadPath,
-})
-const updateAdminOrder = makeUpdateAdminOrder({
-  updateOrder,
-  flashMessages,
-  adjustUploadPath,
-})
-
-const updateAdminUser = makeUpdateAdminUser({
+const handleUpdateUser = makeUpdateAdminUser({
   updateUser,
   flashMessages,
 })
 
 module.exports = {
-  getAdminDashboard,
-  getUserDashboard,
+  handleGetDashboard,
   getSignUp,
   getSignout,
   postSignup,
   postSignin,
-  getNewUser,
-  postNewUser,
-  getUsers,
-  putUserSettings,
-  getUserSettings,
-  getUserNewOrder,
-  postUserNewOrder,
-  getAdminOrders,
-  getUserOrders,
-  getUserOrder,
-  getUserOrderEdit,
-  postUserAcceptOrder,
-  postUserCompleteOrder,
-  getUserNewProduct,
-  postUserNewProduct,
-  getAdminProducts,
-  getUserProduct,
-  getUserProducts,
-  updateUserProduct,
-  updateUserOrder,
-  getAdminProduct,
-  updateAdminProduct,
-  updateAdminOrder,
-  getAdminOrder,
-  getAdminUser,
-  updateAdminUser,
+  handleGetNewUser,
+  handleCreateUser,
+  handleGetUsers,
+  handleUpdateSettings,
+  handleGetSettings,
+  handleGetNewOrder,
+  handleCreateOrder,
+  handleGetOrders,
+  handleGetOrder,
+  handleGetOrderEdit,
+  handleAcceptOrder,
+  handleCompleteOrder,
+  handleGetNewProduct,
+  handleCreateProduct,
+  handleGetProduct,
+  handleGetProducts,
+  handleUpdateProduct,
+  handleUpdateOrder,
+  handleGetUser,
+  handleUpdateUser,
 }

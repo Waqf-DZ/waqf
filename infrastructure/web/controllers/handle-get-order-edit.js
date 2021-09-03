@@ -1,5 +1,5 @@
 module.exports = function makeGetUserOrderEdit({ getOrder }) {
-  return async function getUserOrderEdit(req, res) {
+  return async function handleGetOrderEdit(req, res) {
     try {
       const orderId = req.params.id
       const order = await getOrder(orderId)

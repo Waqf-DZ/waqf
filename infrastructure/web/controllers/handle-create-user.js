@@ -4,7 +4,7 @@ module.exports = function makePostNewUser({
   sanitize,
   validator,
 }) {
-  return async function postNewUser(req, res) {
+  return async function handleCreateUser(req, res) {
     const { name, phoneNumber, email, password, description, role, verified } =
       req.body
     if (

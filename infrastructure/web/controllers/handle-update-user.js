@@ -1,5 +1,5 @@
 module.exports = function makeUpdateAdminUser({ updateUser, flashMessages }) {
-  return async function updateAdminUser(req, res) {
+  return async function handleUpdateUser(req, res) {
     try {
       const {
         displayName,

@@ -1,9 +1,9 @@
-module.exports = function makeGetAdminDashboard({
+module.exports = function makeHandleGetDashboard({
   listUsers,
   listOrders,
   listProducts,
 }) {
-  return async function getAdminDashboard(req, res) {
+  return async function handleGetDashboard(req, res) {
     const user = req.user
     const isAdmin = user.isAdmin
     const isGivingHelp = user.isGivingHelp

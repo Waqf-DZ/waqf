@@ -1,5 +1,5 @@
 module.exports = function makeGetUserOrders({ listOrders }) {
-  return async function getUserOrders(req, res) {
+  return async function handleGetOrders(req, res) {
     try {
       const { id, isSeekingHelp, isGivingHelp } = req.user
       let ordersList = isSeekingHelp

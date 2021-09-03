@@ -3,7 +3,7 @@ module.exports = function makePutUserSettings({
   flashMessages,
   sanitize,
 }) {
-  return async function putUserSettings(req, res) {
+  return async function handleUpdateSettings(req, res) {
     try {
       const { displayName, phoneNumber, description, city, wilaya } = req.body
       await updateUser({

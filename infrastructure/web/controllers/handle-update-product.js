@@ -4,7 +4,7 @@ module.exports = function makeUpdateUserProduct({
   adjustUploadPath,
   sanitize,
 }) {
-  return async function updateUserProduct(req, res) {
+  return async function handleUpdateProduct(req, res) {
     try {
       const productInfo = {
         id: req.params.id,

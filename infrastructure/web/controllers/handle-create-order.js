@@ -4,7 +4,7 @@ module.exports = function makePostUserNewOrder({
   sanitize,
   adjustUploadPath,
 }) {
-  return async function postUserNewOrder(req, res) {
+  return async function handleCreateOrder(req, res) {
     try {
       const ownerId = req.user.id
       const {

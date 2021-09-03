@@ -4,7 +4,7 @@ module.exports = function makeGetUserOrder({
   getUser,
   listProducts,
 }) {
-  return async function getUserOrder(req, res) {
+  return async function handleGetOrder(req, res) {
     try {
       const orderId = req.params.id
       const order = await getOrder(orderId)

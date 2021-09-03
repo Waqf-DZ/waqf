@@ -1,5 +1,5 @@
 module.exports = function makeGetUserProducts({ listProducts }) {
-  return async function getUserProducts(req, res) {
+  return async function handleGetProducts(req, res) {
     try {
       const ownerId = req.user.id
       const productsList = req.user.isAdmin

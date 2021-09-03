@@ -1,5 +1,5 @@
 module.exports = function makeGetUserNewProduct() {
-  return async function getUserNewProduct(req, res) {
+  return async function handleGetNewProduct(req, res) {
     res.render('products/new')
   }
 }

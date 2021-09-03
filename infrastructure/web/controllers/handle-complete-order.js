@@ -2,7 +2,7 @@ module.exports = function makePostUserCompleteOrder({
   completeOrder,
   flashMessages,
 }) {
-  return async function postUserCompleteOrder(req, res) {
+  return async function handleCompleteOrder(req, res) {
     const orderId = req.params.id
     try {
       await completeOrder({ orderId })

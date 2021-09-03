@@ -1,5 +1,5 @@
 module.exports = function makeGetNewUser() {
-  return async function getNewUser(req, res) {
+  return async function handleGetNewUser(req, res) {
     res.render('users/new')
   }
 }

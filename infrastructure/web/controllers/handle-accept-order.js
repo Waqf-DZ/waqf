@@ -2,7 +2,7 @@ module.exports = function makePostUserAcceptOrder({
   acceptOrder,
   flashMessages,
 }) {
-  return async function postUserAcceptOrder(req, res) {
+  return async function handleAcceptOrder(req, res) {
     const assignedUserId = req.user.id
     const orderId = req.params.id
     const assignedProductId = req.body.productId

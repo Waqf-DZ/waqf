@@ -1,5 +1,5 @@
 module.exports = function makeGetUserSettings({ getUser }) {
-  return async function getUserSettings(req, res) {
+  return async function handleGetSettings(req, res) {
     try {
       const ownerId = req.user.id
       const user = await getUser({ id: ownerId })

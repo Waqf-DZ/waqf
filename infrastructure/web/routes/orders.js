@@ -4,24 +4,24 @@ const router = express.Router()
 const upload = require('../middlewares/upload')
 
 const {
-  getUserNewOrder,
-  postUserNewOrder,
-  getUserOrder,
-  getUserOrderEdit,
-  postUserAcceptOrder,
-  postUserCompleteOrder,
-  getUserOrders,
-  updateUserOrder,
+  handleGetNewOrder,
+  handleCreateOrder,
+  handleGetOrder,
+  handleGetOrderEdit,
+  handleAcceptOrder,
+  handleCompleteOrder,
+  handleGetOrders,
+  handleUpdateOrder,
 } = require('../controllers/index')
 
-router.get('/', getUserOrders)
-router.get('/new', getUserNewOrder)
-router.get('/:id', getUserOrder)
-router.get('/:id/edit', getUserOrderEdit)
-router.post('/:id/accept', postUserAcceptOrder)
-router.post('/:id/complete', postUserCompleteOrder)
+router.get('/', handleGetOrders)
+router.get('/new', handleGetNewOrder)
+router.get('/:id', handleGetOrder)
+router.get('/:id/edit', handleGetOrderEdit)
+router.post('/:id/accept', handleAcceptOrder)
+router.post('/:id/complete', handleCompleteOrder)
 
-router.post('/new', upload.single('prescription'), postUserNewOrder)
-router.post('/:id', upload.single('prescription'), updateUserOrder)
+router.post('/new', upload.single('prescription'), handleCreateOrder)
+router.post('/:id', upload.single('prescription'), handleUpdateOrder)
 
 module.exports = router

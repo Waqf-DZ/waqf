@@ -1,9 +1,9 @@
-module.exports = function makeUpdateAdminOrder({
+module.exports = function makeUpdateUserOrder({
   updateOrder,
   flashMessages,
   adjustUploadPath,
 }) {
-  return async function updateAdminOrder(req, res) {
+  return async function handleUpdateOrder(req, res) {
     const {
       patientName,
       patientAge,
@@ -25,16 +25,21 @@ module.exports = function makeUpdateAdminOrder({
       hasChronicDesease: hasChronicDesease == 'true',
       isCovid: isCovid == 'true',
       isHospitalized: isHospitalized == 'true',
-      wilaya,
-      city,
-      description,
+      wilaya: wilaya,
+      city: city,
+      description: description,
     }
     if (req.file) {
       orderInfo.prescriptionUrl = adjustUploadPath(req.file.path)
     }
-    const updatedOrder = await updateOrder(orderInfo)
-    if (updatedOrder) {
+
+    try {
+      await updateOrder(orderInfo)
       req.flash('success', flashMessages.ORDER_UPDATE_SUCCESS)
+      res.redirect('/orders')
+    } catch (err) {
+      console.error(err)
+      req.flash('error', flashMessages.ORDER_UPDATE_FAILURE)
       res.redirect('/orders')
     }
   }

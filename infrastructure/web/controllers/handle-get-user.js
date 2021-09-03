@@ -1,5 +1,5 @@
 module.exports = function makeGetAdminUser({ getUser }) {
-  return async function getAdminUser(req, res) {
+  return async function handleGetUser(req, res) {
     try {
       const userId = req.params.id
       const user = await getUser({ id: userId })
