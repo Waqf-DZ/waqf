@@ -22,11 +22,11 @@ module.exports = function makeUpdateAdminUser({ updateUser, flashMessages }) {
       }
       await updateUser(userInfo)
       req.flash('success', flashMessages.PROFILE_UPDATE_SUCCESS)
-      res.redirect('/admin/users')
+      res.redirect('/users')
     } catch (err) {
       console.error(err)
       req.flash('error', flashMessages.PROFILE_UPDATE_FAILURE)
-      res.redirect('/admin/users')
+      res.redirect('/users')
     }
   }
 }

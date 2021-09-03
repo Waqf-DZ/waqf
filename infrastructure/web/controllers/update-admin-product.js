@@ -15,13 +15,13 @@ module.exports = function makeUpdateAdminProduct({
       const updatedProduct = await updateProduct(productInfo)
       if (updatedProduct) {
         req.flash('success', flashMessages.PROFILE_UPDATE_SUCCESS)
-        res.redirect('/admin/products')
+        res.redirect('/products')
       } else {
         req.flash('error', flashMessages.PROFILE_UPDATE_FAILURE)
-        res.redirect('/admin/products')
+        res.redirect('/products')
       }
     } catch (err) {
-      res.render('admin/products/index', { errorMessages: [err.message] })
+      res.render('products/index', { errorMessages: [err.message] })
     }
   }
 }

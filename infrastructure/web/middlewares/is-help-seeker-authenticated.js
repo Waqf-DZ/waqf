@@ -4,6 +4,6 @@ module.exports = function (req, res, next) {
     res.locals.authenticatedUser = user
     next()
   } else {
-    res.redirect('/profile')
+    res.redirect('/dashboard')
   }
 }

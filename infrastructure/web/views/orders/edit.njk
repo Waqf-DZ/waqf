@@ -1,13 +1,19 @@
-{% extends '../../layouts/profile.njk' %}
+{% extends '../layouts/default.njk' %}
 {% block css %}{% endblock %}
 {% block content %}
-  <form class="needs-validation" action="/profile/orders/new" method="POST" enctype="multipart/form-data" novalidate>
+  <form
+    class="needs-validation"
+    action="/orders/{{ order.id }}"
+    method="POST"
+    enctype="multipart/form-data"
+    novalidate
+  >
     <div class="container pt-5 pb-10">
       <div class="row row-reverse">
         <div class="col-12 col-lg-9 d-flex mb-4 mb-lg-0">
           <div class="card container shadow-sm border-0 px-0">
             <div class="card-body pt-5">
-              <h2 class="mb-5">طلب جديد</h2>
+              <h2 class="mb-5">تعديل الطلب</h2>
               <!-- User Info -->
               <div class="form-row">
                 <div class="col-md-12 mb-3 mb-lg-4">
@@ -27,6 +33,7 @@
                         name="patientName"
                         class="form-control form-control-sm"
                         placeholder="الإسم"
+                        value="{{order.patientName}}"
                         required/>
                       <div class="invalid-feedback">رجاء قم بإدخال إسم المريض</div>
                     </div>
@@ -49,7 +56,7 @@
                         placeholder="90"
                         min="0"
                         max="100"
-                        value="95"
+                        value="{{order.oxygenRatio}}"
                         required/>
                       <div class="invalid-feedback">
                         رجاء قم بإدخال تركيز الأكسجين
@@ -75,7 +82,7 @@
                         placeholder="65"
                         min="1"
                         max="120"
-                        value="50"
+                        value="{{order.patientAge}}"
                         required/>
                       <div class="invalid-feedback">
                         رجاء قم بإدخال عمر المريض
@@ -100,8 +107,8 @@
                         <option selected disabled value="">
                           قم بالإختيار
                         </option>
-                        <option value="true">نعم</option>
-                        <option value="false">لا</option>
+                        <option value="true" {{'selected' if order.hasChronicDesease}}>نعم</option>
+                        <option value="false" {{'selected' if not(order.hasChronicDesease)}}>لا</option>
                       </select>
                       <div class="invalid-feedback">
                         رجاء قم بتحديد الخيار المناسب
@@ -124,8 +131,8 @@
                         <option selected disabled value="">
                           قم بالإختيار
                         </option>
-                        <option value="true">نعم</option>
-                        <option value="false">لا</option>
+                        <option value="true" {{'selected' if order.isCovid}}>نعم</option>
+                        <option value="false" {{'selected' if not(order.isCovid)}}>لا</option>
                       </select>
                       <div class="invalid-feedback">
                         رجاء قم بتحديد الخيار المناسب
@@ -188,8 +195,8 @@
                         <option selected disabled value="">
                           قم بالإختيار
                         </option>
-                        <option value="true">نعم</option>
-                        <option value="false">لا</option>
+                        <option value="true" {{'selected' if order.isHospitalized}}>نعم</option>
+                        <option value="false" {{'selected' if not(order.isHospitalized)}}>لا</option>
                       </select>
                       <div class="invalid-feedback">
                         رجاء قم بتحديد الخيار المناسب
@@ -200,7 +207,9 @@
                 <div class="col-md-6 mb-3 mb-lg-4">
                   <div class="form-group">
                     <label for="description" class="medium font-weight-semi-bold">وصف إضافي:</label>
-                    <textarea class="form-control" id="description" rows="1"></textarea>
+                    <textarea class="form-control" id="description" rows="1">
+                      {{order.description}}
+                    </textarea>
                     <div class="invalid-feedback">
                       رجاء قم بإدخال وصف
                     </div>
@@ -231,7 +240,11 @@
                 <span class="small font-weight-semi-bold text-center">
                   تصفح الملفات الخاصة بك أو اسحبها إلى المربع
                 </span>
-                <input type="file" name="prescription" class=" file-attachment-btn-label custom-file-input cursor-pointer " required/>
+                <input
+                  type="file"
+                  name="prescription"
+                  class=" file-attachment-btn-label custom-file-input cursor-pointer"
+                />
                 <div class="invalid-feedback">
                   رجاء قم برفع صور للوصفة الطبية أو الوثائق التي تثبت حالة المريض
                 </div>

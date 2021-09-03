@@ -1,7 +1,12 @@
 var express = require('express')
 var router = express.Router()
 
+const isAuthenticated = require('../middlewares/is-authenticated')
+
 const {
+  getAdminDashboard,
+  getUserSettings,
+  putUserSettings,
   getSignUp,
   getSignout,
   postSignup,
@@ -34,5 +39,9 @@ router.get('/about', function (req, res) {
 router.get('/contact', function (req, res) {
   res.render('contact')
 })
+
+router.get('/dashboard', isAuthenticated, getAdminDashboard)
+router.get('/settings', isAuthenticated, getUserSettings)
+router.post('/settings', isAuthenticated, putUserSettings)
 
 module.exports = router

@@ -2,12 +2,15 @@ module.exports = function makeGetUserProducts({ listProducts }) {
   return async function getUserProducts(req, res) {
     try {
       const ownerId = req.user.id
-      const productsList = await listProducts({ ownerId })
-      res.render('profile/products/index', {
+      const productsList = req.user.isAdmin
+        ? await listProducts()
+        : await listProducts({ ownerId })
+      res.render('products/index', {
         data: { products: productsList },
       })
     } catch (err) {
-      res.redirect('/profile/products', { errorMessages: [err.message] })
+      console.log(err)
+      res.redirect('/products')
     }
   }
 }

@@ -3,9 +3,9 @@ module.exports = function makeGetUserSettings({ getUser }) {
     try {
       const ownerId = req.user.id
       const user = await getUser({ id: ownerId })
-      res.render('profile/settings', { data: { user } })
+      res.render('settings', { data: { user } })
     } catch (err) {
-      res.render('profile/settings', { errorMessages: [err.message] })
+      res.render('settings', { errorMessages: [err.message] })
     }
   }
 }

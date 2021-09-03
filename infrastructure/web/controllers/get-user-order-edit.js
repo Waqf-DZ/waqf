@@ -3,10 +3,10 @@ module.exports = function makeGetUserOrderEdit({ getOrder }) {
     try {
       const orderId = req.params.id
       const order = await getOrder(orderId)
-      res.render('profile/orders/edit', { order })
+      res.render('orders/edit', { order })
     } catch (err) {
       console.error(err)
-      res.render('profile/orders/')
+      res.render('orders/')
     }
   }
 }

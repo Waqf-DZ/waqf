@@ -26,7 +26,7 @@ module.exports = function makePostUserNewOrder({
       // make an early check for the rquired fileds
       if (!ownerId || !patientAge || !patientAge || !oxygenRatio) {
         req.flash('error', flashMessages.INPUTS_NOT_VALID)
-        res.redirect('/profile/orders/new')
+        res.redirect('/orders/new')
         return
       }
 
@@ -46,15 +46,15 @@ module.exports = function makePostUserNewOrder({
 
       if (newOrder) {
         req.flash('success', flashMessages.NEW_ORDER_SUCCESS)
-        res.redirect('/profile/orders')
+        res.redirect('/orders')
         return
       } else {
         req.flash('error', flashMessages.NEW_ORDER_FAILURE)
-        res.redirect('/profile/orders/new')
+        res.redirect('/orders/new')
       }
     } catch (err) {
       req.flash('error', err.message)
-      res.redirect('/profile/orders/new')
+      res.redirect('/orders/new')
     }
   }
 }

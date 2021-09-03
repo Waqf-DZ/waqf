@@ -13,14 +13,8 @@ module.exports = function makePostSignIn({ flashMessages, passport }) {
         return res.redirect('/signin')
       }
       req.logIn(user, function (err) {
-        if (err) {
-          return next(err)
-        }
-        if (user.isAdmin && user.isDirector) {
-          return res.redirect('/admin')
-        } else {
-          return res.redirect('/profile')
-        }
+        if (err) return next(err)
+        return res.redirect('/dashboard')
       })
     })(req, res, next)
   }

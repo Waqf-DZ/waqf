@@ -9,14 +9,14 @@ const cookieParser = require('cookie-parser')
 const nunjucks = require('nunjucks')
 
 const indexRouter = require('./routes/index')
-const adminRouter = require('./routes/admin')
-const profileRouter = require('./routes/profile')
+const usersRouter = require('./routes/users')
+const ordersRouter = require('./routes/orders')
+const productsRouter = require('./routes/products')
 
 const passport = require('./middlewares/passport-local-strategy')
 const injectAuthenticatedUser = require('./middlewares/inject-authenticated-user')
 const isAuthenticated = require('./middlewares/is-authenticated')
 const isAuthenticatedAdmin = require('./middlewares/is-authenticated-admin')
-const isAuthenticatedUser = require('./middlewares/is-authenticated-user')
 const renderFlashMessages = require('./middlewares/render-flash-messages')
 const injectAlgerianCities = require('./middlewares/inject-algerian-cities')
 
@@ -73,8 +73,9 @@ app.use(injectAlgerianCities)
 app.use(injectAuthenticatedUser)
 
 app.use('/', indexRouter)
-app.use('/admin', isAuthenticatedAdmin, adminRouter)
-app.use('/profile', isAuthenticatedUser, profileRouter)
+app.use('/users', isAuthenticatedAdmin, usersRouter)
+app.use('/orders', isAuthenticated, ordersRouter)
+app.use('/products', isAuthenticated, productsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

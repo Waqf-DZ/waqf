@@ -22,11 +22,11 @@ module.exports = function makePostUserNewProduct({
       }
       await addProduct(productInfo)
       req.flash('success', flashMessages.NEW_PRODUCT_SUCCESS)
-      res.redirect('/profile/products')
+      res.redirect('/products')
     } catch (err) {
       console.error(err)
       req.flash('error', flashMessages.NEW_PRODUCT_FAILURE)
-      res.redirect('/profile/products/new')
+      res.redirect('/products/new')
     }
   }
 }

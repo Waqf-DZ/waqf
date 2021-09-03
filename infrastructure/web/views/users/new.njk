@@ -1,4 +1,4 @@
-{% extends '../../layouts/admin.njk' %}
+{% extends '../layouts/default.njk' %}
 
 {% block css %}
 
@@ -9,7 +9,7 @@
 
 <div class="columns">
   <div class="column is-8 is-offset-2">
-    <form action="/admin/users/new" method="POST">
+    <form action="/users/new" method="POST">
       <div class="field">
         <label class="label">الإسم</label>
         <div class="control has-icons-right">

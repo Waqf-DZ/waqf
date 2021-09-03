@@ -21,11 +21,11 @@ module.exports = function makeUpdateUserProduct({
       }
       await updateProduct(productInfo)
       req.flash('success', flashMessages.PRODUCT_UPDATE_SUCCESS)
-      res.redirect('/profile/products')
+      res.redirect('/products')
     } catch (err) {
       console.error(err)
       req.flash('error', flashMessages.PRODUCT_UPDATE_FAILURE)
-      res.redirect('/profile/products')
+      res.redirect('/products')
     }
   }
 }

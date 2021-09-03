@@ -12,7 +12,7 @@ module.exports = function makePostNewUser({
       !validator.isPhoneValid(phoneNumber)
     ) {
       req.flash('error', flashMessages.INPUTS_NOT_VALID)
-      res.redirect('/admin/users/new')
+      res.redirect('/users/new')
       return
     }
     const user = await addUser({
@@ -26,11 +26,11 @@ module.exports = function makePostNewUser({
     })
     if (!user) {
       req.flash('error', flashMessages.EMAIL_EXISTS)
-      res.redirect('/admin/users/new')
+      res.redirect('/users/new')
       return
     } else {
       req.flash('success', flashMessages.SIGNUP_SUCCESSFUL_GIVER)
-      res.redirect('/admin/users')
+      res.redirect('/users')
     }
   }
 }

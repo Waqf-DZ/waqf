@@ -35,7 +35,7 @@ module.exports = function makeUpdateAdminOrder({
     const updatedOrder = await updateOrder(orderInfo)
     if (updatedOrder) {
       req.flash('success', flashMessages.ORDER_UPDATE_SUCCESS)
-      res.redirect('/admin/orders')
+      res.redirect('/orders')
     }
   }
 }

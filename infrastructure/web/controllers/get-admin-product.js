@@ -3,9 +3,9 @@ module.exports = function makeGetAdminProduct({ getProduct }) {
     const productId = req.params.id
     try {
       const product = await getProduct(productId)
-      res.render('admin/products/_product-id', { data: { product } })
+      res.render('products/_product-id', { data: { product } })
     } catch (err) {
-      res.render('admin/products/index', { errorMessages: [err.message] })
+      res.render('products/index', { errorMessages: [err.message] })
     }
   }
 }

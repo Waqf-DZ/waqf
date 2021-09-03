@@ -1,4 +1,4 @@
-{% extends '../../layouts/admin.njk' %}
+{% extends '../layouts/default.njk' %}
 {% block css %}{% endblock %}
 {% block content %}
   <div class="container py-5 mb-5 my-lg-5 shadow-lg">
@@ -45,7 +45,7 @@
         {% if authenticatedUser.isSeekingHelp or authenticatedUser.isAdmin %}
         <div class="mt-4 d-flex justify-content-center justify-content-lg-start">
           <a
-            href="/admin/orders/{{order.id}}/edit"
+            href="/orders/{{order.id}}/edit"
             class="text-primary ms-4">
             تعديل
           </a>
@@ -229,7 +229,7 @@
     aria-labelledby="acceptOrderModalLabel"
     aria-hidden="true"
     method="POST"
-    action="/admin/orders/{{ order.id }}/accept">
+    action="/orders/{{ order.id }}/accept">
     <div class="modal-dialog modal-dialog-centered modal-sm">
       <div class="modal-content">
         <div class="modal-header border-0 py-2">
@@ -287,7 +287,7 @@
     aria-labelledby="completeOrderModalLabel"
     aria-hidden="true"
     method="POST"
-    action="/admin/orders/{{ order.id }}/complete">
+    action="/orders/{{ order.id }}/complete">
     <div class="modal-dialog modal-dialog-centered modal-sm">
       <div class="modal-content">
         <div class="modal-header border-0 py-2">

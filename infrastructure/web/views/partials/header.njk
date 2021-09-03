@@ -39,40 +39,40 @@
                 " aria-labelledby="dropdownMenuLink">
                   <a
                     class="dropdown-item font-weight-semi-bold"
-                    href="/{{ 'admin' if authenticatedUser.isAdmin else 'profile'}}">
+                    href="/dashboard">
                     إحصائيات
                   </a>
                   <div class="dropdown-divider"></div>
                 {% if authenticatedUser.isSeekingHelp %}
-                  <a class="dropdown-item font-weight-semi-bold" href="/profile/orders/new">
+                  <a class="dropdown-item font-weight-semi-bold" href="/orders/new">
                     إنشاء طلب جديد
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item font-weight-semi-bold" href="/profile/orders">
+                  <a class="dropdown-item font-weight-semi-bold" href="/orders">
                     عرض الطلبات
                   </a>
                 {% elif authenticatedUser.isGivingHelp %}
-                  <a class="dropdown-item font-weight-semi-bold" href="/profile/products/new">
+                  <a class="dropdown-item font-weight-semi-bold" href="/products/new">
                     إنشاء وقف جديد
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item font-weight-semi-bold" href="/profile/products">
+                  <a class="dropdown-item font-weight-semi-bold" href="/products">
                     عرض الأوقاف
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item font-weight-semi-bold" href="/profile/orders">
+                  <a class="dropdown-item font-weight-semi-bold" href="/orders">
                     عرض الطلبات
                   </a>
                 {% elif authenticatedUser.isAdmin %}
-                  <a class="dropdown-item font-weight-semi-bold" href="/admin/users">
+                  <a class="dropdown-item font-weight-semi-bold" href="/users">
                     عرض المستخدمين
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item font-weight-semi-bold" href="/admin/orders">
+                  <a class="dropdown-item font-weight-semi-bold" href="/orders">
                     عرض الطلبات
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item font-weight-semi-bold" href="/admin/products">
+                  <a class="dropdown-item font-weight-semi-bold" href="/products">
                     عرض الأوقاف
                   </a>
                 {% endif %}
@@ -115,7 +115,7 @@
             </div>
             <div class="row gx-0 text-center">
               <div class="col-6">
-                <a class=" dropdown-item font-size-2 font-weight-normal py-4 border-top border-left " href="/profile/settings">
+                <a class=" dropdown-item font-size-2 font-weight-normal py-4 border-top border-left " href="/settings">
                   <i class="fad fa-user-gear pl-2"></i>إعدادات
                 </a>
               </div>
@@ -185,7 +185,7 @@
           </div>
           <div class="row gx-0 text-center">
             <div class="col-6">
-              <a class=" dropdown-item font-size-2 font-weight-normal py-4 border-y settings " href="/profile/settings">
+              <a class=" dropdown-item font-size-2 font-weight-normal py-4 border-y settings " href="/settings">
                 <i class="fad fa-sliders pl-2"></i>إعدادات
               </a>
             </div>
@@ -214,14 +214,14 @@
         >
           <a
             class="dropdown-item font-weight-semi-bold"
-            href="/{{ 'admin' if authenticatedUser.isAdmin else 'profile'}}">
+            href="/dashboard">
             إحصائيات
           </a>
           <div class="dropdown-divider"></div>
           {% if authenticatedUser.isSeekingHelp %}
             <a
               class="dropdown-item font-weight-semi-bold"
-              href="/profile/orders/new"
+              href="/orders/new"
             >
               إنشاء طلب جديد
             </a>
@@ -229,7 +229,7 @@
           {% elif authenticatedUser.isSeekingHelp %}
             <a
               class="dropdown-item font-weight-semi-bold"
-              href="/profile/products/new"
+              href="/products/new"
             >
               إنشاء وقف جديد
             </a>
@@ -238,7 +238,7 @@
 
           <a
             class="dropdown-item font-weight-semi-bold"
-            href="/{{ 'admin' if authenticatedUser.isAdmin else 'profile' }}/orders">
+            href="//orders">
             عرض الطلبات
           </a>
 
@@ -246,21 +246,21 @@
           <div class="dropdown-divider"></div>
           <a
             class="dropdown-item font-weight-semi-bold"
-            href="/{{ 'admin' if authenticatedUser.isAdmin else 'profile' }}/products">
+            href="//products">
             عرض الأوقاف
           </a>
           {% endif %}
           
           {% if authenticatedUser.isAdmin %}
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item font-weight-semi-bold" href="/admin/users">
+          <a class="dropdown-item font-weight-semi-bold" href="/users">
             عرض المستخدمين
           </a>
           {% endif %}
         </div>
       </div>
       <!-- Home -->
-      <a href="/{{ 'admin' if authenticatedUser.isAdmin else 'profile' }}" class="btn btn-lg py-0">
+      <a href="/dashboard" class="btn btn-lg py-0">
         <i class="far fa-house"></i>
       </a>
     </div>

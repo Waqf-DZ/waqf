@@ -1,4 +1,4 @@
-{% extends '../../layouts/profile.njk' %}
+{% extends '../layouts/default.njk' %}
 {% block css %}{% endblock %}
 {% block content %}
   {% set products = data.products %}
@@ -40,7 +40,7 @@
               <td>{{ product.dayPrice }}</td>
               <td>
                 <a
-                  href="/profile/products/{{ product.id }}"
+                  href="/products/{{ product.id }}"
                   class="btn btn-sm btn-soft-primary"
                 >
                   عرض
@@ -53,7 +53,7 @@
     </div>
   </div>
   {% for product in products %}
-    <form action="/profile/products" method="POST" enctype="multipart/form-data" class="modal fade" id="{{ product.id }}" tabindex="-1" data-backdrop="static" data-keyboard="true" aria-labelledby="editProductInfoLabel" aria-hidden="true">
+    <form action="/products" method="POST" enctype="multipart/form-data" class="modal fade" id="{{ product.id }}" tabindex="-1" data-backdrop="static" data-keyboard="true" aria-labelledby="editProductInfoLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
           <div class="modal-header border-0 py-2">

@@ -58,8 +58,10 @@ module.exports = function makeProductsDB({ model }) {
       })
     },
 
-    async listProducts() {
-      const products = await model.findAll()
+    async listProducts({ ownerId }) {
+      const products = ownerId
+        ? await model.findAll({ where: { ownerId } })
+        : await model.findAll()
       return products.map((p) => makeProduct(p))
     },
   })

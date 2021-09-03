@@ -24,7 +24,7 @@ module.exports = function makeGetUserOrder({
       const orderElapsedDays = order.isAccepted
         ? Math.round((Date.now() - order.acceptedAt) / 1000 / 3600 / 24)
         : null
-      res.render('admin/orders/_order-id', {
+      res.render('orders/_order-id', {
         acceptedAt,
         order,
         orderOwner,
@@ -34,7 +34,7 @@ module.exports = function makeGetUserOrder({
       })
     } catch (err) {
       console.error(err)
-      res.redirect('/admin/orders/')
+      res.redirect('/orders/')
     }
   }
 }

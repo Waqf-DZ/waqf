@@ -23,9 +23,9 @@ module.exports = function makeGetUserDashboard({ listProducts, listOrders }) {
           totalCompletedOrders: completedOrders.length,
         },
       }
-      res.render('profile/index', { data: { statisticsData } })
+      res.render('dashboard', { data: { statisticsData } })
     } catch (err) {
-      res.render('profile/index', { errorMessages: [err.message] })
+      res.render('dashboard')
     }
   }
 }

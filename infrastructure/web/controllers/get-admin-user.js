@@ -3,9 +3,9 @@ module.exports = function makeGetAdminUser({ getUser }) {
     try {
       const userId = req.params.id
       const user = await getUser({ id: userId })
-      res.render('admin/users/_user-id', { data: { user } })
+      res.render('users/_user-id', { data: { user } })
     } catch (err) {
-      res.render('admin/users/index', { errorMessages: [err.message] })
+      res.render('users/index', { errorMessages: [err.message] })
     }
   }
 }

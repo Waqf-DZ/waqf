@@ -4,17 +4,28 @@ module.exports = function makeGetAdminDashboard({
   listProducts,
 }) {
   return async function getAdminDashboard(req, res) {
+    const user = req.user
+    const isAdmin = user.isAdmin
+    const isGivingHelp = user.isGivingHelp
     try {
-      const allUsers = await listUsers()
+      const allUsers = isAdmin ? await listUsers() : []
       const totalAdmins = allUsers.filter((u) => u.isAdmin)
       const totalHelpGivers = allUsers.filter((u) => u.isGivingHelp)
       const totalHelpSeekers = allUsers.filter((u) => u.isSeekingHelp)
       const pendingUsers = allUsers.filter((u) => !u.isVerified)
 
-      const allProducts = await listProducts()
+      /* eslint-disable indent */
+      const allProducts = isAdmin
+        ? await listProducts()
+        : isGivingHelp
+        ? await listProducts({ ownerId: user.id })
+        : []
       const availableProducts = allProducts.filter((o) => o.isAvailable)
 
-      const ordersList = await listOrders()
+      const ordersList =
+        isAdmin || isGivingHelp
+          ? await listOrders()
+          : await listOrders({ ownerId: user.id })
       const totalNewOrders = ordersList.filter((o) => o.isPending)
       const acceptedOrders = ordersList.filter((o) => o.isAccepted)
       const completedOrders = ordersList.filter((o) => o.isCompleted)
@@ -39,9 +50,9 @@ module.exports = function makeGetAdminDashboard({
           totalCompletedOrders: completedOrders.length,
         },
       }
-      res.render('admin/index', { data: { statisticsData } })
+      res.render('dashboard', { data: { statisticsData } })
     } catch (err) {
-      res.render('admin/index', { errorMessages: [err.message] })
+      res.render('dashboard')
     }
   }
 }

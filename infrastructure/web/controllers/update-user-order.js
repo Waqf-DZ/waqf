@@ -36,11 +36,11 @@ module.exports = function makeUpdateUserOrder({
     try {
       await updateOrder(orderInfo)
       req.flash('success', flashMessages.ORDER_UPDATE_SUCCESS)
-      res.redirect('/profile/orders')
+      res.redirect('/orders')
     } catch (err) {
       console.error(err)
       req.flash('error', flashMessages.ORDER_UPDATE_FAILURE)
-      res.redirect('/profile/orders')
+      res.redirect('/orders')
     }
   }
 }

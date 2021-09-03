@@ -1,4 +1,4 @@
-{% extends '../../layouts/profile.njk' %}
+{% extends '../layouts/default.njk' %}
 {% block css %}{% endblock %}
 {% block content %}
   {% set orders = data.orders %}
@@ -46,7 +46,7 @@
               </td>
               <td>
                 <a
-                  href="/profile/orders/{{ order.id }}"
+                  href="/orders/{{ order.id }}"
                   class="btn btn-sm btn-soft-primary"
                 >
                   عرض
@@ -60,7 +60,7 @@
   </div>
   {% for order in orders %}
     <!-- Edit -->
-    <form class="modal fade d-blocsk shsow" id="{{ order.id }}-editProductInfo" tabindex="-1" data-backdrop="static" data-keyboard="true" aria-labelledby="editProductInfoLabel" aria-hidden="true" method="POST" action="/profile/orders/{{ order.id }}" enctype="multipart/form-data">
+    <form class="modal fade d-blocsk shsow" id="{{ order.id }}-editProductInfo" tabindex="-1" data-backdrop="static" data-keyboard="true" aria-labelledby="editProductInfoLabel" aria-hidden="true" method="POST" action="/orders/{{ order.id }}" enctype="multipart/form-data">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
           <div class="modal-header border-0 py-2">

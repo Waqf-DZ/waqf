@@ -1,4 +1,4 @@
-{% extends '../../layouts/admin.njk' %}
+{% extends '../layouts/default.njk' %}
 {% block css %}{% endblock %}
 {% block content %}
   {% set users = data.users %}
@@ -50,7 +50,7 @@
                     <i class="far fa-ellipsis-h opacity-80"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="userTableAction">
-                    <a type="submit" class="dropdown-item" href="/admin/users/{{ user.id }}">
+                    <a type="submit" class="dropdown-item" href="/users/{{ user.id }}">
                       <i class="far fa-arrows-rotate pl-2"></i>عرض
                     </a>
                     <button type="button" class="dropdown-item" data-toggle="modal" data-target="#delUser">
@@ -102,7 +102,7 @@
       data-keyboard="true"
       aria-labelledby="delUserLabel"
       aria-hidden="true"
-      action="/admin/users/{{ user.id }}"
+      action="/users/{{ user.id }}"
       method="POST">
       <div class="modal-dialog modal-dialog-centered modal-sm">
         <div class="modal-content">

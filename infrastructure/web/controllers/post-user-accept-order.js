@@ -9,11 +9,11 @@ module.exports = function makePostUserAcceptOrder({
     try {
       await acceptOrder({ orderId, assignedUserId, assignedProductId })
       req.flash('success', flashMessages.ORDER_ACCEPT_SUCCESS)
-      res.redirect(`/profile/orders/${orderId}`)
+      res.redirect(`/orders/${orderId}`)
     } catch (err) {
       console.error(err)
       req.flash('error', flashMessages.ORDER_ACCEPT_FAILURE)
-      res.redirect('/profile/orders/')
+      res.redirect('/orders/')
     }
   }
 }

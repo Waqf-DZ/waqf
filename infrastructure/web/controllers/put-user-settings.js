@@ -6,7 +6,7 @@ module.exports = function makePutUserSettings({
   return async function putUserSettings(req, res) {
     try {
       const { displayName, phoneNumber, description, city, wilaya } = req.body
-      const updatedUser = await updateUser({
+      await updateUser({
         id: req.user.id,
         displayName: sanitize(displayName),
         phoneNumber: sanitize(phoneNumber),
@@ -15,17 +15,12 @@ module.exports = function makePutUserSettings({
         city,
       })
 
-      if (updatedUser) {
-        req.flash('success', flashMessages.PROFILE_UPDATE_SUCCESS)
-        res.redirect('/profile/settings')
-      } else {
-        req.flash('error', flashMessages.PROFILE_UPDATE_FAILURE)
-        res.redirect('/profile/settings')
-      }
+      req.flash('success', flashMessages.PROFILE_UPDATE_SUCCESS)
+      res.redirect('/settings')
     } catch (err) {
       console.error(err)
       req.flash('error', flashMessages.PROFILE_UPDATE_FAILURE)
-      res.redirect('/profile/settings')
+      res.redirect('/settings')
     }
   }
 }

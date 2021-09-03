@@ -38,12 +38,12 @@ module.exports = function makePostUser({
     if (user.isGivingHelp) {
       req.logIn(user, () => {
         req.flash('success', flashMessages.SIGNUP_SUCCESSFUL_SEEKER)
-        res.redirect('/profile/products/new')
+        res.redirect('/products/new')
       })
     } else if (user.isSeekingHelp) {
       req.logIn(user, () => {
         req.flash('success', flashMessages.SIGNUP_SUCCESSFUL_GIVER)
-        res.redirect('/profile/orders/new')
+        res.redirect('/orders/new')
       })
     }
   }
