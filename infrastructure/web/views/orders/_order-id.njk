@@ -52,29 +52,36 @@
         </div>
         {% endif %}
 
-        {% if order.isAccepted %}
+        {% if order.isAccepted or order.isCompleted %}
         <div class="donate-title text-right my-4 rounded-lg">
-          <h4 class="font-size-2">معلومات الجمعية المتكفلة بالطلب</h4>
+          <h4 class="font-size-2">معلومات حول الطلب</h4>
           <ul class="list-unstyledss mr-3">
             <li class="font-size-1 font-weight-semi-bold op-90">
-              إسم الجمعية:
+              الجمعية المتكفلة بالطلب:
               <span class="mr-2">{{ assignedUserName }}</span>
             </li>
             <li class="font-size-1 font-weight-semi-bold op-90">
-              تاريخ القبول:
+              تاريخ قبول الطلب:
               <span class="mr-2">{{ acceptedAt }}</span>
             </li>
+            {% if order.isCompleted %}
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              تاريخ إرجاع الجهاز:
+              <span class="mr-2">{{ completedAt }}</span>
+            </li>
+            {% else %}
             <li class="font-size-1 font-weight-semi-bold op-90">
               الأيام المتبقية:
               <span class="mr-2">{{ daysLeft }}</span>
             </li>
+            {% endif %}
           </ul>
         </div>
         {% endif %}
 
         <div class="row my-4">
           <div class="col-lg-6">
-            <h4 class="font-size-2">معلومات المريض</h4>
+            <h4 class="font-size-2">معلومات حول المريض</h4>
             <ul class="list-unstyledss mr-3">
               <li class="font-size-1 font-weight-semi-bold op-90">
                 الإسم:
@@ -125,7 +132,7 @@
           </div>
 
           <div class="col-lg-6 donate-title text-right rounded-lg">
-            <h4 class="font-size-2">معلومات صاحب الطلب</h4>
+            <h4 class="font-size-2">معلومات حول صاحب الطلب</h4>
             <ul class="list-unstyledss mr-3">
               <li class="font-size-1 font-weight-semi-bold op-90">
                 الإسم:

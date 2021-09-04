@@ -1,3 +1,10 @@
+function formatDate(date) {
+  const parsedDate = new Date(date)
+  return parsedDate
+    ? parsedDate.toISOString().split('T')[0].split('-').reverse().join('-')
+    : null
+}
+
 module.exports = function makeGetUserOrder({
   getOrder,
   getProduct,
@@ -19,13 +26,15 @@ module.exports = function makeGetUserOrder({
         ? await listProducts({ ownerId: req.user.id })
         : []
       const availableProducts = products.filter((p) => p.isAvailable)
-      const acceptedAt = new Date(order.acceptedAt).toISOString().split('T')[0]
+      const acceptedAt = formatDate(order.acceptedAt)
+      const completedAt = formatDate(order.completedAt)
       const productFreeDays = assignedProduct?.freeDays
       const orderElapsedDays = order.isAccepted
         ? Math.round((Date.now() - order.acceptedAt) / 1000 / 3600 / 24)
         : null
       res.render('orders/_order-id', {
         acceptedAt,
+        completedAt,
         order,
         orderOwner,
         assignedUserName: assignedUser?.displayName,
