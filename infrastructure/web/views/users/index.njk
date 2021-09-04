@@ -39,25 +39,12 @@
                 <td>غير مفعل</td>
               {% endif %}
               <td>
-                <div class="dropdown">
-                  <button
-                    class="btn py-0"
-                    type="button"
-                    id="userTableAction"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false">
-                    <i class="far fa-ellipsis-h opacity-80"></i>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="userTableAction">
-                    <a type="submit" class="dropdown-item" href="/users/{{ user.id }}">
-                      <i class="far fa-arrows-rotate pl-2"></i>عرض
-                    </a>
-                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#delUser">
-                      <i class="far fa-trash-can pl-2"></i>حذف
-                    </button>
-                  </div>
-                </div>
+                <a
+                  href="/users/{{ user.id }}"
+                  class="btn btn-sm btn-soft-primary"
+                >
+                  عرض
+                </a>
               </td>
             </tr>
           {% endfor %}
