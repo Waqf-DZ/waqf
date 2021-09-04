@@ -31,9 +31,6 @@ module.exports = function buildMakeOrder({ getUniqueId }) {
     if (!oxygenRatio) throw new Error('Order must have a oxygenRatio')
     if (hasChronicDesease == undefined)
       throw new Error('Order must have a hasChronicDesease')
-    if (!prescriptionUrl) {
-      throw new Error('Order must have a prescriptionUrl')
-    }
     if (isCovid == undefined) {
       throw new Error('Order must have isCovid flag')
     }

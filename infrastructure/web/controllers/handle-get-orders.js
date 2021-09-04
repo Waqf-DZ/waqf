@@ -3,7 +3,7 @@ module.exports = function makeGetUserOrders({ listOrders }) {
     try {
       const { id, isSeekingHelp, isGivingHelp } = req.user
       let ordersList = isSeekingHelp
-        ? await listOrders({ ownerId: isSeekingHelp })
+        ? await listOrders({ ownerId: id })
         : await listOrders()
       if (isGivingHelp) {
         ordersList = ordersList.filter((o) => {

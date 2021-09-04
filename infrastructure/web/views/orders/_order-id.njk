@@ -3,7 +3,7 @@
 {% block content %}
   <div class="container py-5 mb-5 my-lg-5 shadow-lg">
     <div class="row px-3">
-      <div class="col-12 col-lg-6 mb-5 mb-lg-0">
+      <div class="col-12 mb-5 mb-lg-0">
         <div class=" d-block d-lg-flex justify-content-center justify-content-lg-between text-center text-lg-right ">
           <div class="media d-block d-lg-flex">
             <div class="bg-cover u-avatar p-5 p-lg-0 rounded-circle mx-auto" style="background: url('/img/users/01.png')"></div>
@@ -49,117 +49,100 @@
             class="text-primary ms-4">
             تعديل
           </a>
-
         </div>
         {% endif %}
 
+        {% if order.isAccepted %}
         <div class="donate-title text-right my-4 rounded-lg">
-          {% if order.isAccepted %}
-          <div class="donate-title text-right my-4 rounded-lg">
-            <h4 class="font-size-2">معلومات الطلب</h4>
+          <h4 class="font-size-2">معلومات الجمعية المتكفلة بالطلب</h4>
+          <ul class="list-unstyledss mr-3">
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              إسم الجمعية:
+              <span class="mr-2">{{ assignedUserName }}</span>
+            </li>
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              تاريخ القبول:
+              <span class="mr-2">{{ acceptedAt }}</span>
+            </li>
+            <li class="font-size-1 font-weight-semi-bold op-90">
+              الأيام المتبقية:
+              <span class="mr-2">{{ daysLeft }}</span>
+            </li>
+          </ul>
+        </div>
+        {% endif %}
+
+        <div class="row my-4">
+          <div class="col-lg-6">
+            <h4 class="font-size-2">معلومات المريض</h4>
             <ul class="list-unstyledss mr-3">
               <li class="font-size-1 font-weight-semi-bold op-90">
-                الجمعية المتكفلة بالطلب:
-                <span class="mr-2">{{ assignedUserName }}</span>
+                الإسم:
+                <span class="mr-2">{{ order.patientName }}</span>
               </li>
               <li class="font-size-1 font-weight-semi-bold op-90">
-                تاريخ القبول:
-                <span class="mr-2">{{ acceptedAt }}</span>
+                العمر:
+                <span class="mr-2">{{ order.patientAge }}</span>
               </li>
               <li class="font-size-1 font-weight-semi-bold op-90">
-                الأيام المتبقية:
-                <span class="mr-2">{{ daysLeft }}</span>
+                تركيز الأكسجين:
+                <span class="mr-2">{{ order.oxygenRatio }}</span>
+              </li>
+              <li class="font-size-1 font-weight-semi-bold op-90">
+                لديه مرض مزمن:
+                <span class="mr-2">
+                  {% if order.hasChronicDesease %}
+                    نعم
+                  {% else %}
+                    لا
+                  {% endif %}
+                </span>
+              </li>
+              <li class="font-size-1 font-weight-semi-bold op-90">
+                مصاب بفيروس كورونا:
+                <span class="mr-2">
+                  {% if order.isCovid %}
+                    نعم
+                  {% else %}
+                    لا
+                  {% endif %}
+                </span>
+              </li>
+              <li class="font-size-1 font-weight-semi-bold op-90">
+                المريض في المستشفى:
+                <span class="mr-2">
+                  {% if order.isHospitalized %}
+                    نعم
+                  {% else %}
+                    لا
+                  {% endif %}
+                </span>
+              </li>
+              <li class="font-size-1 font-weight-semi-bold op-90">
+                وصف إضافي:<span class="mr-2">{{ order.description }}</span>
               </li>
             </ul>
           </div>
-          {% endif %}
 
-          <h4 class="font-size-2">معلومات المريض</h4>
-          <ul class="list-unstyledss mr-3">
-            <li class="font-size-1 font-weight-semi-bold op-90">
-              الإسم:
-              <span class="mr-2">{{ order.patientName }}</span>
-            </li>
-            <li class="font-size-1 font-weight-semi-bold op-90">
-              العمر:
-              <span class="mr-2">{{ order.patientAge }}</span>
-            </li>
-            <li class="font-size-1 font-weight-semi-bold op-90">
-              تركيز الأكسجين:
-              <span class="mr-2">{{ order.oxygenRatio }}</span>
-            </li>
-            <li class="font-size-1 font-weight-semi-bold op-90">
-              لديه مرض مزمن:
-              <span class="mr-2">
-                {% if order.hasChronicDesease %}
-                  نعم
-                {% else %}
-                  لا
-                {% endif %}
-              </span>
-            </li>
-            <li class="font-size-1 font-weight-semi-bold op-90">
-              مصاب بفيروس كورونا:
-              <span class="mr-2">
-                {% if order.isCovid %}
-                  نعم
-                {% else %}
-                  لا
-                {% endif %}
-              </span>
-            </li>
-            <li class="font-size-1 font-weight-semi-bold op-90">
-              المريض في المستشفى:
-              <span class="mr-2">
-                {% if order.isHospitalized %}
-                  نعم
-                {% else %}
-                  لا
-                {% endif %}
-              </span>
-            </li>
-            <li class="font-size-1 font-weight-semi-bold op-90">
-              وصف إضافي:<span class="mr-2">{{ order.description }}</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="donate-title text-right my-4 rounded-lg">
-          <h4 class="font-size-2">معلومات صاحب الطلب</h4>
-          <ul class="list-unstyledss mr-3">
-            <li class="font-size-1 font-weight-semi-bold op-90">
-              الإسم:
-              <span class="mr-2">{{ orderOwner.displayName }}</span>
-            </li>
-            <li class="font-size-1 font-weight-semi-bold op-90">
-              رقم الهاتف:
-              <span class="mr-2">{{ orderOwner.phoneNumber }}</span>
-            </li>
-            <li class="font-size-1 font-weight-semi-bold op-90">
-              البريد الإلكتروني:
-              <span class="mr-2">{{ orderOwner.email }}</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      {# prescription image #}
-      <div class="col-12 col-lg-6">
-        <div class="swiper-container donatSwips">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide bg-cover rounded-sm" style="background: url('{{ order.prescriptionUrl }}') center"></div>
-          </div>
-          <div class="swiper-pagination"></div>
-          <div class="d-none d-lg-flex">
-            <button type="button" class="swiper-next btn btn-sm btn-white">
-              <i class="fas fa-chevron-right"></i>
-            </button>
-            <button type="button" class="swiper-prev btn btn-sm btn-white">
-              <i class="fas fa-chevron-left"></i>
-            </button>
+          <div class="col-lg-6 donate-title text-right rounded-lg">
+            <h4 class="font-size-2">معلومات صاحب الطلب</h4>
+            <ul class="list-unstyledss mr-3">
+              <li class="font-size-1 font-weight-semi-bold op-90">
+                الإسم:
+                <span class="mr-2">{{ orderOwner.displayName }}</span>
+              </li>
+              <li class="font-size-1 font-weight-semi-bold op-90">
+                رقم الهاتف:
+                <span class="mr-2">{{ orderOwner.phoneNumber }}</span>
+              </li>
+              <li class="font-size-1 font-weight-semi-bold op-90">
+                البريد الإلكتروني:
+                <span class="mr-2">{{ orderOwner.email }}</span>
+              </li>
+            </ul>
           </div>
         </div>
-        <p class="text-center medium mb-0">الوصفة الطبية / وثائق الإثبات</p>
+
       </div>
     </div>
   </div>
