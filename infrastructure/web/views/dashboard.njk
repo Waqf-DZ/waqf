@@ -13,88 +13,92 @@
 
   <div class="covers bg-cover pt-5 pb-10">
     <div class="container" id="dash">
-      <div class="bg-soft-success rounded-lg px-5 px-lg-10 py-10">
-        <div class="row row-cols-1 row-cols-lg-6">
-          <div class="col my-lg-auto">
-            <h4 class="mb-2">المستخدمون</h4>
-            <p class="medium mb-0">معلومات وملخص حول المستخدمين</p>
-          </div>
-          <div class="col">
-            <div class="card border-0 rounded-lg">
-              <div class="card-body text-center">
-                <h6 class="mb-4">العدد الإجمالي</h6>
-                <h6 class="font-size-3 mb-0">{{ users.totalUsers }}</h6>
+      {% if authenticatedUser.isAdmin %}
+        <div class="bg-soft-success rounded-lg px-5 px-lg-10 py-10">
+          <div class="row row-cols-1 row-cols-lg-6">
+            <div class="col my-lg-auto">
+              <h4 class="mb-2">المستخدمون</h4>
+              <p class="medium mb-0">معلومات وملخص حول المستخدمين</p>
+            </div>
+            <div class="col">
+              <div class="card border-0 rounded-lg">
+                <div class="card-body text-center">
+                  <h6 class="mb-4">العدد الإجمالي</h6>
+                  <h6 class="font-size-3 mb-0">{{ users.totalUsers }}</h6>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card border-0 rounded-lg">
-              <div class="card-body text-center">
-                <h6 class="mb-4">المشرفون</h6>
-                <h6 class="font-size-3 mb-0">{{ users.totalAdmins }}</h6>
+            <div class="col">
+              <div class="card border-0 rounded-lg">
+                <div class="card-body text-center">
+                  <h6 class="mb-4">المشرفون</h6>
+                  <h6 class="font-size-3 mb-0">{{ users.totalAdmins }}</h6>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card border-0 rounded-lg">
-              <div class="card-body text-center">
-                <h6 class="mb-4">الجمعيات</h6>
-                <h6 class="font-size-3 mb-0">{{ users.totalHelpGivers }}</h6>
+            <div class="col">
+              <div class="card border-0 rounded-lg">
+                <div class="card-body text-center">
+                  <h6 class="mb-4">الجمعيات</h6>
+                  <h6 class="font-size-3 mb-0">{{ users.totalHelpGivers }}</h6>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card border-0 rounded-lg">
-              <div class="card-body text-center">
-                <h6 class="mb-4">المحتاجون</h6>
-                <h6 class="font-size-3 mb-0">{{ users.totalHelpSeekers }}</h6>
+            <div class="col">
+              <div class="card border-0 rounded-lg">
+                <div class="card-body text-center">
+                  <h6 class="mb-4">المحتاجون</h6>
+                  <h6 class="font-size-3 mb-0">{{ users.totalHelpSeekers }}</h6>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card border-0 rounded-lg">
-              <div class="card-body text-center">
-                <h6 class="mb-4">في الإنتظار</h6>
-                <h6 class="font-size-3 mb-0">{{ users.totalPendingUsers }}</h6>
+            <div class="col">
+              <div class="card border-0 rounded-lg">
+                <div class="card-body text-center">
+                  <h6 class="mb-4">في الإنتظار</h6>
+                  <h6 class="font-size-3 mb-0">{{ users.totalPendingUsers }}</h6>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      {% endif %}
 
       {# products summary #}
-      <div class="bg-soft-primary rounded-lg px-5 px-lg-10 py-10 my-5">
-        <div class="row row-cols-1 row-cols-lg-4">
-          <div class="col my-lg-auto">
-            <h4 class="mb-2">الأجهزة</h4>
-            <p class="medium mb-0">معلومات وملخص حول الأجهزة</p>
-          </div>
-          <div class="col">
-            <div class="card border-0 rounded-lg">
-              <div class="card-body text-center">
-                <h6 class="mb-4">العدد الإجمالي</h6>
-                <h6 class="font-size-3 mb-0">{{ products.totalProducts }}</h6>
+      {% if authenticatedUser.isAdmin or authenticatedUser.isGivingHelp %}
+        <div class="bg-soft-primary rounded-lg px-5 px-lg-10 py-10 my-5">
+          <div class="row row-cols-1 row-cols-lg-4">
+            <div class="col my-lg-auto">
+              <h4 class="mb-2">الأجهزة</h4>
+              <p class="medium mb-0">معلومات وملخص حول الأجهزة</p>
+            </div>
+            <div class="col">
+              <div class="card border-0 rounded-lg">
+                <div class="card-body text-center">
+                  <h6 class="mb-4">العدد الإجمالي</h6>
+                  <h6 class="font-size-3 mb-0">{{ products.totalProducts }}</h6>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card border-0 rounded-lg">
-              <div class="card-body text-center">
-                <h6 class="mb-4">المتوفرة</h6>
-                <h6 class="font-size-3 mb-0">{{ products.totalAvailableProducts }}</h6>
+            <div class="col">
+              <div class="card border-0 rounded-lg">
+                <div class="card-body text-center">
+                  <h6 class="mb-4">المتوفرة</h6>
+                  <h6 class="font-size-3 mb-0">{{ products.totalAvailableProducts }}</h6>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card border-0 rounded-lg">
-              <div class="card-body text-center">
-                <h6 class="mb-4">المعارة</h6>
-                <h6 class="font-size-3 mb-0">{{ products.totalLendedProducts }}</h6>
+            <div class="col">
+              <div class="card border-0 rounded-lg">
+                <div class="card-body text-center">
+                  <h6 class="mb-4">المعارة</h6>
+                  <h6 class="font-size-3 mb-0">{{ products.totalLendedProducts }}</h6>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      {% endif %}
 
       {# orders #}
       <div class="bg-soft-danger rounded-lg px-5 px-lg-10 py-10">
